@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-
-Sitemap: http://albertyw.github.io/sitemap.xml
