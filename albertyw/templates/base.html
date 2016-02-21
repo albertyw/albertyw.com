@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    {% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='skeleton-2.0.4/normalize.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='skeleton-2.0.4/skeleton.css') }}">
+    <title>{% block title %}{% endblock %}</title>
+    {% endblock %}
+  </head>
+  <body>
+    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="footer">
+      {% block footer %}
+      &copy; Copyright 2016 by <a href="https://www.albertyw.com/">Albert Wang</a>.
+      {% endblock %}
+    </div>
+  </body>
+</html>
