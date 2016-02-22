@@ -1,18 +1,22 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     {% block head %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/css/tether.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" />
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
   </head>
   <body>
-    <div id="content">{% block content %}{% endblock %}</div>
-    <div id="footer">
-      {% block footer %}
-      &copy; Copyright 2016 by <a href="https://www.albertyw.com/">Albert Wang</a>.
-      {% endblock %}
+    <div class="container">
+      {% block content %}{% endblock %}
+      <div id="footer">
+        {% block footer %}
+        &copy; Copyright 2016 by <a href="https://www.albertyw.com/">Albert Wang</a>.
+        {% endblock %}
+      </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>
