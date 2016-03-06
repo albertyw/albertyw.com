@@ -20,8 +20,8 @@ sudo apt-get install -y nginx
 # Configure nginx
 sudo mv /etc/nginx/sites-available /etc/nginx/sites-available.bak
 sudo mv /etc/nginx/sites-enabled /etc/nginx/sites-enabled.bak
-sudo ln -s /var/www/website/sites-available /etc/nginx/sites-available
-sudo ln -s /var/www/website/sites-enabled /etc/nginx/sites-enabled
+sudo ln -s /var/www/website/config/sites-available /etc/nginx/sites-available
+sudo ln -s /var/www/website/config/sites-enabled /etc/nginx/sites-enabled
 sudo service nginx restart
 sudo rm -r /var/www/html
 
@@ -46,6 +46,6 @@ pip install -r /var/www/website/requirements.txt
 sudo ln -s $HOME/.virtualenvs /var/www/.virtualenvs
 
 # Set up uwsgi
-sudo ln -s /var/www/website/uwsgi/website.ini /etc/uwsgi/apps-available/website.ini
+sudo ln -s /var/www/website/config/uwsgi/website.ini /etc/uwsgi/apps-available/website.ini
 sudo ln -s ../apps-available/website.ini /etc/uwsgi/apps-enabled/website.ini
 sudo service uwsgi restart

@@ -1,6 +1,6 @@
 import os
 import sys
-tracker_path = os.path.dirname(os.path.realpath(__file__))+'/../albertyw.com/'
+tracker_path = os.path.dirname(os.path.realpath(__file__))+'/../../albertyw.com/'
 sys.path.append(tracker_path)
 
 import monitor
