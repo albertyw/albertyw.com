@@ -11,7 +11,7 @@ pip install -r requirements.txt
 
 # Configure settings
 cd albertyw.com
-ln -sf prod_settings.py settings.py
+ln -sf .env.production .env
 
 # Restart services
 sudo service nginx restart
