@@ -2,6 +2,7 @@
 
 # Update repository
 cd /var/www/website/
+git checkout master
 git pull
 
 # Update python packages
