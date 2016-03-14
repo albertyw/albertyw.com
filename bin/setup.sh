@@ -31,7 +31,7 @@ openssl dhparam -out /etc/nginx/ssl/dhparams.pem 2048
 sudo service nginx restart
 
 # Install uwsgi
-sudo apt-get install -y uwsgi uwsgi-plugin-python python-dev
+sudo apt-get install -y uwsgi uwsgi-plugin-python3 python3-dev python3-setuptools
 
 # Install python/pip/virtualenvwrapper
 curl https://bootstrap.pypa.io/get-pip.py | sudo python2
@@ -41,8 +41,8 @@ sudo pip3 install virtualenvwrapper
 
 # Install python packages
 . /usr/local/bin/virtualenvwrapper.sh
-mkvirtualenv albertyw.com
-pip install -r /var/www/website/requirements.txt
+mkvirtualenv --python=/usr/bin/python3 albertyw.com
+pip3 install -r /var/www/website/requirements.txt
 sudo ln -s $HOME/.virtualenvs /var/www/.virtualenvs
 
 # Set up uwsgi
