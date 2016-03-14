@@ -1,24 +1,26 @@
+from __future__ import print_function
+
 import os
 import sys
 import time
 import signal
 import threading
 import atexit
-import Queue
+import queue
 
 _interval = 1.0
 _times = {}
 _files = []
 
 _running = False
-_queue = Queue.Queue()
+_queue = queue.Queue()
 _lock = threading.Lock()
 
 def _restart(path):
     _queue.put(True)
     prefix = 'monitor (pid=%d):' % os.getpid()
-    print >> sys.stderr, '%s Change detected to \'%s\'.' % (prefix, path)
-    print >> sys.stderr, '%s Triggering process restart.' % prefix
+    print('%s Change detected to \'%s\'.' % (prefix, path), file=sys.stderr)
+    print('%s Triggering process restart.', file=sys.stderr)
     os.kill(os.getpid(), signal.SIGINT)
 
 def _modified(path):
@@ -57,7 +59,7 @@ def _monitor():
     while 1:
         # Check modification times on all files in sys.modules.
 
-        for module in sys.modules.values():
+        for module in list(sys.modules.values()):
             if not hasattr(module, '__file__'):
                 continue
             path = getattr(module, '__file__')
@@ -107,7 +109,7 @@ def start(interval=1.0):
     _lock.acquire()
     if not _running:
         prefix = 'monitor (pid=%d):' % os.getpid()
-        print >> sys.stderr, '%s Starting change monitor.' % prefix
+        print('%s Starting change monitor.' % prefix, file=sys.stderr)
         _running = True
         _thread.start()
     _lock.release()
