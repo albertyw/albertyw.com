@@ -50,12 +50,14 @@
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
-      {% block content %}{% endblock %}
-      <div id="footer">
+      <div id="main">
+        {% block content %}{% endblock %}
+      </div>
+      <footer id="footer">
         {% block footer %}
         &copy; Copyright 2016 by <a href="https://www.albertyw.com/">Albert Wang</a>.
         {% endblock %}
-      </div>
+      </footer>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/js/tether.min.js"></script>

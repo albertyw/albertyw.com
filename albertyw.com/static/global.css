@@ -1,3 +1,20 @@
+html {
+    position: relative;
+    min-height: 100%;
+}
+
 .project-logos {
     height: 50px;
+}
+
+body {
+    margin-bottom: 150px;
+}
+
+#footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-top: 50px;
+    height: 150px;
 }
