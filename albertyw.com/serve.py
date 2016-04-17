@@ -19,7 +19,7 @@ if env('ENV') == 'production':
 
         """init rollbar module"""
         rollbar.init(
-            'f40c35cdc38a4dba906088d9b327a264',
+            env('ROLLBAR_SERVER_TOKEN'),
             # environment name
             env('ENV'),
             # server root directory, makes tracebacks prettier
