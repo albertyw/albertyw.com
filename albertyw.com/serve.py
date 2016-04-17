@@ -30,6 +30,14 @@ if env('ENV') == 'production':
         # send exceptions from `app` to rollbar, using flask's signal system.
         got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 
+
+@app.context_processor
+def inject_envs():
+    envs = {}
+    envs['ROLLBAR_CLIENT_TOKEN'] = env('ROLLBAR_CLIENT_TOKEN')
+    return {'ENV': envs}
+
+
 @app.route("/")
 def index():
     return render_template("index.htm")

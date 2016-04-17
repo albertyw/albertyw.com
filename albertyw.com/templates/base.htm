@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}" />
     <script type="text/javascript">
       var _rollbarConfig = {
-        accessToken: "f0cbf212506745a99dfbbb912de0f26b",
+        accessToken: '{{ ENV['ROLLBAR_CLIENT_TOKEN'] }}',
         captureUncaught: true,
         payload: {
           environment: "production"
