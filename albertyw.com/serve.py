@@ -51,6 +51,10 @@ def resume():
 def projects():
     return render_template("projects.htm")
 
+@app.route("/notes")
+def notes():
+    return render_template("notes.htm")
+
 @app.route("/contact")
 def contact():
     return render_template("contact.htm")
