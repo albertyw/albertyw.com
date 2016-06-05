@@ -6,3 +6,5 @@ newrelic==2.66.0.49
 # Error tracking
 blinker==1.4
 rollbar==0.13.0
+
+pytz==2016.4

@@ -1,5 +1,12 @@
+import datetime
 import json
 import os
+
+import dotenv
+root_path = os.path.dirname(os.path.realpath(__file__))+'/../'
+dotenv.read_dotenv(os.path.join(root_path, '.env'))
+from getenv import env
+import pytz
 
 def prune_note_files(note_files):
     files = [note_file for note_file in note_files if '~' not in note_file]
@@ -24,5 +31,7 @@ def get_notes():
             note = json.loads(note)
         except ValueError:
             continue
+        timezone = pytz.timezone(env('DISPLAY_TIMEZONE'))
+        note['time'] = datetime.datetime.fromtimestamp(note['time'], timezone)
         notes.append(note)
     return notes
