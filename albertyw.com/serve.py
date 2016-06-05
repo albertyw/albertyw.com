@@ -8,6 +8,8 @@ root_path = os.path.dirname(os.path.realpath(__file__))+'/../'
 dotenv.read_dotenv(os.path.join(root_path, '.env'))
 from getenv import env
 
+import utils
+
 app = Flask(__name__)
 
 if env('ENV') == 'production':
@@ -50,6 +52,11 @@ def resume():
 @app.route("/projects")
 def projects():
     return render_template("projects.htm")
+
+@app.route("/notes")
+def notes():
+    posts = utils.get_notes()
+    return render_template("notes.htm", posts=posts)
 
 @app.route("/contact")
 def contact():
