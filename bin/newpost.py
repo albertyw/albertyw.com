@@ -8,7 +8,8 @@ import os
 current_time = datetime.datetime.utcnow()
 
 current_directory = os.path.dirname(os.path.realpath(__file__))
-notes_directory = os.path.join(current_directory, '..', 'albertyw.com', 'notes')
+notes_directory = os.path.join(
+    current_directory, '..', 'albertyw.com', 'notes')
 note_filename = current_time.strftime('%Y%m%d-%H%M')
 note_path = os.path.join(notes_directory, note_filename)
 note_path = os.path.normpath(note_path)
