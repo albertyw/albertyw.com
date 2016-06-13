@@ -1,9 +1,7 @@
-{
-"title": "Tuning Postgres",
-"note": "I was trying to tune a PostgreSQL database and found that default
+Tuning Postgres
+1465455778
+I was trying to tune a PostgreSQL database and found that default
 settings for PostgreSQL are optimized for really old computers.  If you want to
 fix it, you can spend an hour reading through documentation, or you can use
-<a href=\"https://github.com/gregs1104/pgtune\">pgtune</a>.  If CLI isn't your
-thing, you can try the <a href=\"http://pgtune.leopard.in.ua/\">web version</a>.",
-"time": 1465455778
-}
+<a href="https://github.com/gregs1104/pgtune">pgtune</a>.  If CLI isn't your
+thing, you can try the <a href="http://pgtune.leopard.in.ua/">web version</a>.
