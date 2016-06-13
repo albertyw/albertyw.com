@@ -26,6 +26,7 @@ def get_note_files():
 
 def get_notes():
     note_files = get_note_files()
+    timezone = pytz.timezone(env('DISPLAY_TIMEZONE'))
     notes = []
     for note_file in note_files:
         with open(note_file) as note_handle:
@@ -34,7 +35,6 @@ def get_notes():
             note = json.loads(note)
         except ValueError:
             continue
-        timezone = pytz.timezone(env('DISPLAY_TIMEZONE'))
         note['time'] = datetime.datetime.fromtimestamp(note['time'], timezone)
         notes.append(note)
     return notes
