@@ -2,7 +2,6 @@
 
 import calendar
 import datetime
-import json
 import os
 
 current_time = datetime.datetime.utcnow()
@@ -14,13 +13,8 @@ note_filename = current_time.strftime('%Y%m%d-%H%M')
 note_path = os.path.join(notes_directory, note_filename)
 note_path = os.path.normpath(note_path)
 
-note = {
-    'time': calendar.timegm(current_time.utctimetuple()),
-    'title': '',
-    'note': '',
-}
-
-note = json.dumps(note, indent=0)
+timestamp = calendar.timegm(current_time.utctimetuple())
+note = "\n%s\n\n" % timestamp
 
 with open(note_path, 'w') as note_handle:
     note_handle.write(note)
