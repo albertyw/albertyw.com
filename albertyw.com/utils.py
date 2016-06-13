@@ -1,5 +1,4 @@
 import datetime
-import json
 import os
 
 import dotenv
@@ -30,11 +29,14 @@ def get_notes():
     notes = []
     for note_file in note_files:
         with open(note_file) as note_handle:
-            note = note_handle.read()
-        try:
-            note = json.loads(note)
-        except ValueError:
+            note = note_handle.readlines()
+        note = [line.strip() for line in note]
+        if len(note) < 3 or not note[1].isdigit():
             continue
-        note['time'] = datetime.datetime.fromtimestamp(note['time'], timezone)
-        notes.append(note)
+        timestamp = int(note[1])
+        note_parsed = {}
+        note_parsed['title'] = note[0]
+        note_parsed['time'] = datetime.datetime.fromtimestamp(timestamp, timezone)
+        note_parsed['note'] = "\n".join(note[2:])
+        notes.append(note_parsed)
     return notes
