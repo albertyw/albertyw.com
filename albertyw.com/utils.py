@@ -18,7 +18,7 @@ def get_note_files():
     current_directory = os.path.dirname(os.path.realpath(__file__))
     notes_directory = os.path.join(current_directory, 'notes')
     files = os.listdir(notes_directory)
-    files.sort()
+    files.sort(reverse=True)
     files = prune_note_files(files)
     files = [os.path.join(notes_directory, note_file) for note_file in files]
     return files
