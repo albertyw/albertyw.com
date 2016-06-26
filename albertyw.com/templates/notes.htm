@@ -12,7 +12,7 @@
           {{ post['title'] | safe }}
         </h2>
         <subtitle>
-          {{ post['time'] }}
+          {{ post['time'].strftime("%B %-d, %Y") }}
         </subtitle>
         <p>
           {{ post['note'] | safe }}
