@@ -1,0 +1,17 @@
+Calculating Rails Database Connections
+1466978327
+<p>
+I recently ran into a problem with calculating the number of database connections
+used by Rails.  It turns out that for a typical production environment, it's
+actually hard to find the maximum number of connections that would be made.
+MySQL and PostgreSQL also have relatively low default maximum connection limits
+(151 and 100, respectively) which means it's really easy to get an error like
+"PG::ConnectionBad: FATAL:  sorry, too many clients already."
+</p>
+<p>
+After some digging, I believe the formula for getting the maximum number of
+open connections is by multiplying the "pool" value in config/database.yaml
+against the number of processes (workers in Puma).  If you're running sidekiq
+or other background job processor, you'll also need to add in the number of
+background processors into your web server's processes count.
+</p>
