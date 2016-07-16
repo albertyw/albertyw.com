@@ -7,4 +7,4 @@ newrelic==2.66.0.49
 blinker==1.4
 rollbar==0.13.2
 
-pytz==2016.6
+pytz==2016.6.1
