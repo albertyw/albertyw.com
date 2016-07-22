@@ -11,6 +11,10 @@ body {
     margin-bottom: 150px;
 }
 
+img {
+    max-width: 100%;
+}
+
 #footer {
     position: absolute;
     bottom: 0;
