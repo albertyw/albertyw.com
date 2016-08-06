@@ -5,6 +5,6 @@ newrelic==2.68.0.50
 
 # Error tracking
 blinker==1.4
-rollbar==0.13.2
+rollbar==0.13.3
 
 pytz==2016.6.1
