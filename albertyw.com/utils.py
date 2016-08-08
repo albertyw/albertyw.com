@@ -36,7 +36,8 @@ def get_notes():
         timestamp = int(note[1])
         note_parsed = {}
         note_parsed['title'] = note[0]
-        note_parsed['time'] = datetime.datetime.fromtimestamp(timestamp, timezone)
+        note_parsed['time'] = datetime.datetime.fromtimestamp(
+            timestamp, timezone)
         note_parsed['note'] = "\n".join(note[2:])
         notes.append(note_parsed)
     return notes
