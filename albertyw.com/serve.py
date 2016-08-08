@@ -11,6 +11,7 @@ from getenv import env
 import utils
 
 app = Flask(__name__)
+app.debug = env('DEBUG') == 'true'
 
 if env('ENV') == 'production':
     import rollbar
@@ -68,5 +69,4 @@ def contact():
 
 
 if __name__ == "__main__":
-    app.debug = True
     app.run(host="0.0.0.0")
