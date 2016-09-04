@@ -6,3 +6,11 @@
 [![New Relic Status](https://img.shields.io/badge/New%20Relic-Monitored-blue.svg)](https://rpm.newrelic.com/accounts/565493/applications/)
 
 Personal website
+
+Testing
+-------
+
+```
+cd albertyw.com
+python tests.py
+```
