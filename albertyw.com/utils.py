@@ -2,11 +2,12 @@ import datetime
 import os
 
 import dotenv
-root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
-dotenv.read_dotenv(os.path.join(root_path, '.env'))
 from getenv import env
 import markdown2
 import pytz
+
+root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
+dotenv.read_dotenv(os.path.join(root_path, '.env'))
 
 
 def prune_note_files(note_files):
