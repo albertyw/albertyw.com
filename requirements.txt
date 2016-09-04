@@ -10,3 +10,6 @@ blinker==1.4
 rollbar==0.13.3
 
 pytz==2016.6.1
+
+# Testing
+flake8==3.0.4 # Python linting
