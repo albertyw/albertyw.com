@@ -1,16 +1,14 @@
 Tech Hiring Misperceptions At Different Companies
 1469177213
-<p>
 I've seen many companies' technical interview processes and I feel many of them
 are wrong.  For almost any advice about technical interviewing you're likely to
 hear the opposite from a different person.  What people don't realize is that
 different types of companies need different types of engineers, and that you
 can't select the correct type of engineer if you're interviewing for the same
 qualities.
-</p>
-<p>
+
 Many people, especially those firmly in the Silicon Valley
-<a href="https://xkcd.com/181/">Blogosphere</a>, opine that you should only
+[Blogosphere](https://xkcd.com/181/), opine that you should only
 hire ninja rockstar jedi engineers (nobody calls them that anymore, but the
 mindset is still there) for your startup (because you obviously work at a
 startup, right?) whether your startup is trying to sell a static program
@@ -22,4 +20,3 @@ whose success doesn't depend on the strength of your engineering organization (
 which is most companies), I think you should stop trying to attract really good
 engineers - they're going to get bored writing yet another CRUD app and you're
 going to be paying a lot more money.
-</p>
