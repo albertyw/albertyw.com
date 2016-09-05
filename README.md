@@ -7,6 +7,16 @@
 
 Personal website
 
+Development
+-----------
+
+With virtualenvwrapper:
+```
+mkvirtualenv albertyw -p python3.5
+pip install -r requirements.txt
+python albertyw.com/serve.py
+```
+
 Testing
 -------
 
