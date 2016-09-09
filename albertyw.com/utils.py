@@ -17,6 +17,7 @@ MARKDOWN_EXTRAS = [
     'tables',
 ]
 
+
 def prune_note_files(note_files):
     files = [note_file for note_file in note_files if '~' not in note_file]
     return files
@@ -47,6 +48,9 @@ def get_notes():
         note_parsed['title'] = note[0]
         note_parsed['time'] = datetime.datetime.fromtimestamp(
             timestamp, timezone)
-        note_parsed['note'] = markdown2.markdown("\n".join(note[2:]), extras=MARKDOWN_EXTRAS)
+        note_parsed['note'] = markdown2.markdown(
+            "\n".join(note[2:]),
+            extras=MARKDOWN_EXTRAS,
+        )
         notes.append(note_parsed)
     return notes
