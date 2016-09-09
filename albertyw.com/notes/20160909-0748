@@ -1,0 +1,36 @@
+Comparison of country and company GDPs
+1473403692
+I've noticed that many companies have yearly revenues on the order of many
+(non-insignificant countries).  With countries though, yearly revenues are
+usually called gross domestic product (GDP).  I therefore present a comparison
+of national revenues and corporate GDPs:
+
+Company? | Rank within type | GDP (billions of USD) | Name
+         | 1                | 18,558                | USA
+         | 2                | 11,383                | China
+         | 23               | 509                   | Taiwan
+Y        | 1                | 482                   | Walmart
+         | 24               | 474                   | Poland
+         | 37               | 306                   | Israel
+Y        | 6                | 305                   | Samsung
+         | 38               | 302                   | Denmark
+         | 39               | 295                   | Singapore
+Y        | 7                | 273                   | Royal Dutch Shell
+Y        | 8                | 270                   | Vitol
+Y        | 9                | 268                   | ExonMobil
+         | 40               | 266                   | South Africa
+         | 42               | 253                   | Columbia
+Y        | 11               | 245                   | Volkswagen
+         | 43               | 235                   | Chile
+         | 44               | 234                   | Finland
+Y        | 12               | 234                   | Apple
+         | 45               | 226                   | Bangladesh
+
+This table does not include state-owned companies.  Fun fact -
+[Vitol](https://en.wikipedia.org/wiki/Vitol), which has a revenue of $270B is
+headquartered in Switzerland, which has a GDP of $652B.
+
+Sources:
+
+- [Companies](https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue)
+ - [Countries](http://statisticstimes.com/economy/countries-by-projected-gdp.php)
