@@ -9,6 +9,13 @@ import pytz
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
 dotenv.read_dotenv(os.path.join(root_path, '.env'))
 
+# See https://github.com/trentm/python-markdown2/wiki/Extras
+MARKDOWN_EXTRAS = [
+    'code-friendly',
+    'fenced-code-blocks',
+    'smarty-pants',
+    'tables',
+]
 
 def prune_note_files(note_files):
     files = [note_file for note_file in note_files if '~' not in note_file]
@@ -40,6 +47,6 @@ def get_notes():
         note_parsed['title'] = note[0]
         note_parsed['time'] = datetime.datetime.fromtimestamp(
             timestamp, timezone)
-        note_parsed['note'] = markdown2.markdown("\n".join(note[2:]))
+        note_parsed['note'] = markdown2.markdown("\n".join(note[2:]), extras=MARKDOWN_EXTRAS)
         notes.append(note_parsed)
     return notes
