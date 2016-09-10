@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 # Update repository
 cd /var/www/website/
 git checkout master

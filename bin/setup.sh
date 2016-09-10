@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -ex
+
 # Setup directories
 sudo mkdir -p /var/www/log/nginx
 sudo mkdir -p /var/www/log/uwsgi
