@@ -8,7 +8,9 @@ git checkout master
 git pull
 
 # Update python packages
-source `which virtualenvwrapper.sh`
+virtualenvlocation=$(which virtualenvwrapper.sh)
+# shellcheck source=/dev/null
+source "$virtualenvlocation"
 workon albertyw.com
 pip install -r requirements.txt
 
