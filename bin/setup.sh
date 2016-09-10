@@ -44,7 +44,7 @@ sudo pip3 install virtualenvwrapper
 . /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv --python=/usr/bin/python3 albertyw.com
 pip3 install -r /var/www/website/requirements.txt
-sudo ln -s "$HOME/.virtualenvs /var/www/.virtualenvs"
+sudo ln -s "$HOME/.virtualenvs" "/var/www/.virtualenvs"
 
 # Set up uwsgi
 sudo ln -s /var/www/website/config/uwsgi/website.ini /etc/uwsgi/apps-available/website.ini
