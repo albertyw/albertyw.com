@@ -33,24 +33,30 @@ def get_note_files():
     return files
 
 
+def get_note(note_file, timezone):
+    with open(note_file) as note_handle:
+        note = note_handle.readlines()
+    note = [line.strip() for line in note]
+    if len(note) < 3 or not note[1].isdigit():
+        return None
+    timestamp = int(note[1])
+    note_parsed = {}
+    note_parsed['title'] = note[0]
+    note_parsed['time'] = datetime.datetime.fromtimestamp(
+        timestamp, timezone)
+    note_parsed['note'] = markdown2.markdown(
+        "\n".join(note[2:]),
+        extras=MARKDOWN_EXTRAS,
+    )
+    return note_parsed
+
+
 def get_notes():
     note_files = get_note_files()
     timezone = pytz.timezone(env('DISPLAY_TIMEZONE'))
     notes = []
     for note_file in note_files:
-        with open(note_file) as note_handle:
-            note = note_handle.readlines()
-        note = [line.strip() for line in note]
-        if len(note) < 3 or not note[1].isdigit():
-            continue
-        timestamp = int(note[1])
-        note_parsed = {}
-        note_parsed['title'] = note[0]
-        note_parsed['time'] = datetime.datetime.fromtimestamp(
-            timestamp, timezone)
-        note_parsed['note'] = markdown2.markdown(
-            "\n".join(note[2:]),
-            extras=MARKDOWN_EXTRAS,
-        )
-        notes.append(note_parsed)
+        note_parsed = get_note(note_file, timezone)
+        if note_parsed:
+            notes.append(note_parsed)
     return notes
