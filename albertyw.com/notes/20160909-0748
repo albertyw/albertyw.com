@@ -6,7 +6,7 @@ usually called gross domestic product (GDP).  I therefore present a comparison
 of national revenues and corporate GDPs:
 
 | Company? | Rank within type | GDP (billions of USD) | Name              |
-|:--------:|:----------------:|----------------------:|:------------------|
+|:--------:|:----------------:|:---------------------:|:------------------|
 |          | 1                | 18,558                | USA               |
 |          | 2                | 11,383                | China             |
 |          | 23               | 509                   | Taiwan            |
@@ -33,5 +33,5 @@ headquartered in Switzerland, which has a GDP of $652B.
 
 Sources:
 
-- [Companies](https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue)
+ - [Companies](https://en.wikipedia.org/wiki/List_of_largest_companies_by_revenue)
  - [Countries](http://statisticstimes.com/economy/countries-by-projected-gdp.php)
