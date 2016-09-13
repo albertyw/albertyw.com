@@ -23,3 +23,9 @@ img {
     height: 150px;
     width: 100%;
 }
+
+.note td, .note th {
+    border:solid;
+    border-width: 1px;
+    padding: 5px;
+}
