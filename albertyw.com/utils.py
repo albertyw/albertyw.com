@@ -19,7 +19,13 @@ MARKDOWN_EXTRAS = [
 
 
 def prune_note_files(note_files):
-    files = [note_file for note_file in note_files if '~' not in note_file]
+    def is_valid_note(note_file):
+        if '~' in note_file:
+            return False
+        if note_file[0] == '.':
+            return False
+        return True
+    files = [note_file for note_file in note_files if is_valid_note(note_file)]
     return files
 
 
