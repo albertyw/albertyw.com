@@ -62,7 +62,7 @@ server {
 
     # static files used for the website
     location /static {
-        alias        "/var/www/website/albertyw.com/static/";
+        alias        "/var/www/website/app/static/";
         try_files $uri.html $uri $uri/ =404;
         expires     7d;
         add_header Cache-Control "public";
