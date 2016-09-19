@@ -17,7 +17,7 @@ engines:
     enabled: true
 ratings:
   paths:
-    - albertyw.com/**
+    - app/**
     - bin/**
 exclude_paths:
   - config/

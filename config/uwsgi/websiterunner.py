@@ -7,7 +7,7 @@ from getenv import env
 import newrelic.agent
 
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../../'
-sys.path.append(root_path + '/albertyw.com/')
+sys.path.append(root_path + '/app/')
 dotenv.read_dotenv(os.path.join(root_path, '.env'))
 
 monitor.start(interval=1.0)

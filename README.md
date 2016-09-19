@@ -14,13 +14,13 @@ With virtualenvwrapper:
 ```
 mkvirtualenv albertyw -p python3.5
 pip install -r requirements.txt
-python albertyw.com/serve.py
+python app/serve.py
 ```
 
 Testing
 -------
 
 ```
-cd albertyw.com
+cd app
 python tests.py
 ```
