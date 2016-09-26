@@ -25,6 +25,9 @@ class PageCase(unittest.TestCase):
     def test_contact_load(self):
         self.page_test('/contact', b'Contact')
 
+    def test_robots_load(self):
+        self.page_test('/robots.txt', b'')
+
     def page_test(self, path, string):
         response = self.app.get(path)
         self.assertEqual(response.status_code, 200)
