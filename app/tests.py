@@ -3,7 +3,8 @@ from __future__ import absolute_import
 import tempfile
 import unittest
 
-import serve, utils
+import serve
+import utils
 
 
 class PageCase(unittest.TestCase):
