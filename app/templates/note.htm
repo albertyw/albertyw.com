@@ -1,0 +1,21 @@
+{% extends "base.htm" %}
+{% block title %}Albert Wang - Note - {{ post['title'] | safe }}{% endblock %}
+{% block head %}
+  {{ super() }}
+{% endblock %}
+{% block content %}
+  <div class="content">
+    <h1>Notes</h1>
+    <section class="note">
+      <h2>
+        {{ post['title'] | safe }}
+      </h2>
+      <subtitle>
+        {{ post['time'].strftime("%B %-d, %Y") }}
+      </subtitle>
+      <p>
+        {{ post['note'] | safe }}
+      </p>
+    </section>
+  </div>
+{% endblock %}

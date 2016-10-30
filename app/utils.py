@@ -39,7 +39,7 @@ def get_note_files():
     return files
 
 
-def get_note(note_file, timezone):
+def get_note_file_data(note_file, timezone):
     with open(note_file) as note_handle:
         note = note_handle.readlines()
     note = [line.strip() for line in note]
@@ -63,7 +63,16 @@ def get_notes():
     timezone = pytz.timezone(env('DISPLAY_TIMEZONE'))
     notes = []
     for note_file in note_files:
-        note_parsed = get_note(note_file, timezone)
+        note_parsed = get_note_file_data(note_file, timezone)
         if note_parsed:
             notes.append(note_parsed)
     return notes
+
+
+def get_note_from_slug(slug):
+    """ Given the slug of a note, reurn the note contents """
+    notes = get_notes()
+    for note in notes:
+        if note['slug'] == slug:
+            return note
+    return None

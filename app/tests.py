@@ -44,7 +44,7 @@ class UtilCase(unittest.TestCase):
         note = b''
         note_file = tempfile.NamedTemporaryFile()
         note_file.write(note)
-        note = utils.get_note(note_file.name, None)
+        note = utils.get_note_file_data(note_file.name, None)
         self.assertEqual(note, None)
         note_file.close()
 
