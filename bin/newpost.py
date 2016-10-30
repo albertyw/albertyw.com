@@ -14,7 +14,7 @@ note_path = os.path.join(notes_directory, note_filename)
 note_path = os.path.normpath(note_path)
 
 timestamp = calendar.timegm(current_time.utctimetuple())
-note = "\n%s\n\n" % timestamp
+note = "title\nslug\n%s\nnote\n" % timestamp
 
 with open(note_path, 'w') as note_handle:
     note_handle.write(note)
