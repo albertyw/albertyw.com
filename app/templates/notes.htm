@@ -17,6 +17,7 @@
         <p>
           {{ post['note'] | safe }}
         </p>
+        <a href="{{ url_for('note', slug=post['slug']) }}">Permalink</a>
       </section>
     {% endfor %}
   </div>
