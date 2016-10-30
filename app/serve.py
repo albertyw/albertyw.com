@@ -1,6 +1,6 @@
 import os
 
-from flask import Flask, render_template, got_request_exception
+from flask import Flask, render_template, got_request_exception, abort
 from flask_sitemap import Sitemap
 
 import dotenv
@@ -69,6 +69,14 @@ def projects():
 def notes():
     posts = utils.get_notes()
     return render_template("notes.htm", posts=posts)
+
+
+@app.route("/note/<slug>")
+def note(slug=''):
+    post = utils.get_note_from_slug(slug)
+    if not post:
+        abort(404)
+    return render_template("note.htm", post=post)
 
 
 @app.route("/contact")
