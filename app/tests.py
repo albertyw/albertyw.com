@@ -33,6 +33,9 @@ class PageCase(unittest.TestCase):
     def test_sitemap_load(self):
         self.page_test('/sitemap.xml', b'xml')
 
+    def test_note_load(self):
+        self.page_test('/note/fibonaccoli', b'Romanesco')
+
     def page_test(self, path, string):
         response = self.app.get(path)
         self.assertEqual(response.status_code, 200)
