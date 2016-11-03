@@ -14,4 +14,4 @@ pytz==2016.7
 
 # Testing
 flake8==3.0.4 # Python linting
-codeclimate-test-reporter==0.1.2 # Test coverage
+codeclimate-test-reporter==0.2.0 # Test coverage
