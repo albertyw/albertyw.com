@@ -23,6 +23,6 @@ class UtilCase(unittest.TestCase):
         note_files = utils.prune_note_files(note_files)
         self.assertEqual(note_files, ['asdf'])
 
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_get_note_from_unknown_slug(self):
+        note = utils.get_note_from_slug('asdf')
+        self.assertEqual(note, None)
