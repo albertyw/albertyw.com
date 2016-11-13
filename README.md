@@ -23,5 +23,5 @@ Testing
 
 ```
 cd app
-python tests.py
+python -m unittest
 ```
