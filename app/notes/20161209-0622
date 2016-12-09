@@ -1,0 +1,42 @@
+Tunnel v2
+tunnel-v2
+1481264528
+I posted a handy [single-line trick to forward connections from one ip/port
+address to another](/note/ssh-tunnel).  I recently had a problem where I
+needed to forward to a port on a local host but the service was only listening
+on the public interface.  OpenSSH however tries to be clever and rewrites the
+public ip to localhost, which isn't overridable (the tunnel entrance is
+overridable but not the exit, which is what I was trying to change).
+
+I therefore present tunnel v2, using NodeJS instead of SSH:
+```
+'use strict';
+
+var net = require('net');
+var process = require('process');
+var console = require('console');
+
+// parse "80" and "localhost:80" or even "42mEANINg-life.com:80"
+var addrRegex = /^(([a-zA-Z\-\.0-9]+):)?(\d+)$/;
+
+var addr = {
+    from: addrRegex.exec(process.argv[2]),
+    to: addrRegex.exec(process.argv[3])
+};
+
+if (!addr.from || !addr.to) {
+    console.log('Usage: <from> <to>'); // eslint-disable-line no-console
+    throw new Error('Not enough arguments');
+}
+
+net.createServer(function onServer(from) {
+    var to = net.createConnection({
+        host: addr.to[2],
+        port: addr.to[3]
+    });
+    from.pipe(to);
+    to.pipe(from);
+}).listen(addr.from[3], addr.from[2]);
+```
+
+Adapted from [Andrey Sidorov](http://stackoverflow.com/questions/6490898/node-js-forward-all-traffic-from-port-a-to-port-b)
