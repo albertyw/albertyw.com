@@ -9,7 +9,7 @@ public ip to localhost, which isn't overridable (the tunnel entrance is
 overridable but not the exit, which is what I was trying to change).
 
 I therefore present tunnel v2, using NodeJS instead of SSH:
-```
+```javascript
 'use strict';
 
 var net = require('net');
