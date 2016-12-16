@@ -7,6 +7,7 @@ import dotenv
 from getenv import env
 
 import note_util
+import util
 
 
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
@@ -48,6 +49,14 @@ def inject_envs():
     envs['ROLLBAR_CLIENT_TOKEN'] = env('ROLLBAR_CLIENT_TOKEN')
     envs['SEGMENT_TOKEN'] = env('SEGMENT_TOKEN')
     return {'ENV': envs}
+
+
+shouldCache = env('ENV') == 'production'
+note_util.get_notes = util.cached_function(note_util.get_notes, shouldCache)
+note_util.get_note_from_slug = util.cached_function(
+    note_util.get_note_from_slug,
+    shouldCache
+)
 
 
 @app.route("/")
