@@ -6,7 +6,7 @@ from flask_sitemap import Sitemap
 import dotenv
 from getenv import env
 
-import utils
+import note_util
 
 
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
@@ -67,13 +67,13 @@ def projects():
 
 @app.route("/notes")
 def notes():
-    posts = utils.get_notes()
+    posts = note_util.get_notes()
     return render_template("notes.htm", posts=posts)
 
 
 @app.route("/note/<slug>")
 def note(slug=''):
-    post = utils.get_note_from_slug(slug)
+    post = note_util.get_note_from_slug(slug)
     if not post:
         abort(404)
     return render_template("note.htm", post=post)
