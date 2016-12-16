@@ -10,6 +10,7 @@ def rand(base):
 
 cached_rand = util.cached_function(rand, True)
 
+
 class TestCachedFunction(unittest.TestCase):
     def test_noncached_function(self):
         first = rand(2)
