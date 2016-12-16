@@ -1,12 +1,10 @@
 # Various utility functions
 
 
-def cached_function(func):
+def cached_function(func, should_cache):
     data = {}
 
     def wrapper(*args):
-        should_cache = args[-1]
-        args = args[:-1]
         if not should_cache:
             return func(*args)
         cache_key = ' '.join([str(x) for x in args])
