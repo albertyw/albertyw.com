@@ -38,6 +38,7 @@ curl https://bootstrap.pypa.io/get-pip.py | sudo python2
 curl https://bootstrap.pypa.io/get-pip.py | sudo python3
 sudo pip2 install virtualenvwrapper
 sudo pip3 install virtualenvwrapper
+sudo apt-get install python3-dev
 
 # Install python packages
 # shellcheck disable=SC1091

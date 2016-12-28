@@ -1,7 +1,9 @@
 import os
 
-from flask import Flask, render_template, got_request_exception, abort
-from flask_sitemap import Sitemap
+from jinja2 import Environment, PackageLoader
+from sanic import Sanic
+from sanic.exceptions import NotFound
+from sanic.response import html, text
 
 import dotenv
 from getenv import env
@@ -13,42 +15,11 @@ import util
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
 dotenv.read_dotenv(os.path.join(root_path, '.env'))
 
-app = Flask(__name__)
-app.debug = env('DEBUG') == 'true'
-app.config['SERVER_NAME'] = env('SERVER_NAME')
-
-app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
-app.config['SITEMAP_URL_SCHEME'] = 'https'
-ext = Sitemap(app=app)
-
-
-if env('ENV') == 'production':
-    import rollbar
-    import rollbar.contrib.flask
-
-    @app.before_first_request
-    def init_rollbar():
-        """init rollbar module"""
-        rollbar.init(
-            env('ROLLBAR_SERVER_TOKEN'),
-            # environment name
-            env('ENV'),
-            # server root directory, makes tracebacks prettier
-            root=os.path.dirname(os.path.realpath(__file__)),
-            # flask already sets up logging
-            allow_logging_basic_config=False)
-
-        # send exceptions from `app` to rollbar, using flask's signal system.
-        got_request_exception.connect(
-            rollbar.contrib.flask.report_exception, app)
-
-
-@app.context_processor
-def inject_envs():
-    envs = {}
-    envs['ROLLBAR_CLIENT_TOKEN'] = env('ROLLBAR_CLIENT_TOKEN')
-    envs['SEGMENT_TOKEN'] = env('SEGMENT_TOKEN')
-    return {'ENV': envs}
+app = Sanic(__name__)
+jinja_env = Environment(
+    loader=PackageLoader('__main__', 'templates'),
+)
+jinja_env.globals['ENV'] = env
 
 
 shouldCache = env('ENV') == 'production'
@@ -60,43 +31,49 @@ note_util.get_note_from_slug = util.cached_function(
 
 
 @app.route("/")
-def index():
-    return render_template("index.htm")
+async def index(request):
+    template = jinja_env.get_template("index.htm")
+    return html(template.render(request=request))
 
 
 @app.route("/resume")
-def resume():
-    return render_template("resume.htm")
+async def resume(request):
+    template = jinja_env.get_template("resume.htm")
+    return html(template.render(request=request))
 
 
 @app.route("/projects")
-def projects():
-    return render_template("projects.htm")
+async def projects(request):
+    template = jinja_env.get_template("projects.htm")
+    return html(template.render(request=request))
 
 
 @app.route("/notes")
-def notes():
+async def notes(request):
     posts = note_util.get_notes()
-    return render_template("notes.htm", posts=posts)
+    template = jinja_env.get_template("notes.htm")
+    return html(template.render(request=request, posts=posts))
 
 
 @app.route("/note/<slug>")
-def note(slug=''):
+async def note(request, slug=''):
     post = note_util.get_note_from_slug(slug)
     if not post:
-        abort(404)
-    return render_template("note.htm", post=post)
+        raise NotFound()
+    template = jinja_env.get_template("note.htm")
+    return html(template.render(request=request, post=post))
 
 
 @app.route("/contact")
-def contact():
-    return render_template("contact.htm")
+async def contact(request):
+    template = jinja_env.get_template("contact.htm")
+    return html(template.render(request=request))
 
 
 @app.route("/robots.txt")
-def robots():
-    return ""
+async def robots(request):
+    return text("")
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0")
+    app.run(host="0.0.0.0", debug=env('DEBUG'), port=5000)
