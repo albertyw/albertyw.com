@@ -9,8 +9,8 @@ sudo ln -s /var/www/log/nginx /var/log/nginx
 sudo ln -s ~/website /var/www/website
 
 # Clone repository
-git clone git@github.com:albertyw/albertyw.com
-sudo mv albertyw.com /var/www/website
+git clone GIT_REPOSITORY
+sudo mv GIT_REPOSITORY_NAME /var/www/website
 
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable
@@ -40,9 +40,9 @@ sudo pip3 install virtualenvwrapper
 # Install python packages
 # shellcheck disable=SC1091
 . /usr/local/bin/virtualenvwrapper.sh
-mkvirtualenv --python=/usr/bin/python3 albertyw.com
+mkvirtualenv --python=/usr/bin/python3 GIT_REPOSITORY_NAME
 pip3 install -r /var/www/website/requirements.txt
-sudo ln -s "$HOME/.virtualenvs" "/var/www/.virtualenvs"
+sudo ln -s "$HOME/.virtualenvs" /var/www/.virtualenvs
 
 # Set up uwsgi
 sudo ln -s /var/www/website/config/uwsgi/website.ini /etc/uwsgi/apps-available/website.ini

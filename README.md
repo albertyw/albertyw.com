@@ -13,16 +13,26 @@ Development
 -----------
 
 With virtualenvwrapper:
-```
+```bash
 mkvirtualenv albertyw -p python3.5
 pip install -r requirements.txt
+ln -s .env.development .env
 python app/serve.py
 ```
 
 Testing
 -------
 
-```
+```bash
+pip install -r requirements-test.txt
 cd app
-python -m unittest
+coverage run -m unittest discover
+```
+
+Production
+----------
+
+```bash
+ln -s .env.production .env
+bin/setup.sh
 ```
