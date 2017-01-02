@@ -1,0 +1,49 @@
+Golang Review
+golang-review
+1483366314
+I've been using Go for several projects at Uber and
+[personally](https://github.com/albertyw/devops-reactions-index).
+From my experience, I've developed some opinions on the Go programming
+language, from both objective and subjective points of view.  Compared to other
+languages, I find that Go has much to be desired in terms of its language
+design.
+
+Let's start off with the nice points.  Go is pretty opinionated about its
+development setup with standardized layouts of packages and build systems.
+Language-wise, it has a simple, easy-to-learn syntax that can be easily learned
+by anybody with backgrounds in C, Java, or Python.  It's statically typed,
+expressive while legible, and has understandable concurrency primitives.
+
+On the other hand, Go has a lot of downsides in terms of environment and
+language.  Environment first.  A glaring issue with Go is dependency
+management.  Go's development layout assumes you're working on a monorepo
+(more on this later).  If you're not working on a monorepo and/or you don't
+have direct control over your dependencies, you're going to have a bad time
+trying to keep your dependencies up to date without breaking things.  Many
+[tools](https://github.com/Masterminds/glide) have been written to work around
+this, but the core issue is that many Go packages aren't themselves versioned.
+It seems [semantic versioning](http://semver.org/) and even change logs seem to
+be new and controversial in many Go communities.
+
+My other gripe with Go's environment is the work it takes to set up and
+maintain a new project.  A go repo not only requires the entire `$GOPATH` to be
+set up, with attendant dependencies and repositories, but also requires
+`Makefile`s, and a lot of testing boilerplate.  Arguably, in a monorepo-style
+development process,
+this is a cost that scales `O(1)` instead of `O(n)`, but I feel that in many Go
+projects, the amount of Bash and scripting language (most commonly python) code
+exceeds the amount of actual Go code.  Maintaining this (often untested and
+hacky) code is an extra source of work for a Go developer.
+
+As for the language itself, I'll freely echo the common criticism about Go's
+[lack of generics](https://golang.org/doc/faq#generics) and while I have gotten
+used to the [lack of exceptions](https://golang.org/doc/faq#exceptions), this
+all seems to oversimplify the language.  Many nice programming idioms found in
+other languages (e.g. monads, classes, duck typing) are unavailable in Go due
+to the restricted feature set.
+
+From these points, I find that Go is a fine language for large teams of
+average programmers creating large monorepo systems.  Go caters to this
+demographic of programmers by being essentially a compilable, statically-typed
+BASIC while ignoring the last several decades of
+[Programming Language Theory](https://en.wikipedia.org/wiki/Programming_language_theory).
