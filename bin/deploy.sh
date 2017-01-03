@@ -12,10 +12,6 @@ source "$virtualenvlocation"
 workon albertyw.com
 pip install -r requirements.txt
 
-# Configure settings
-cd albertyw.com || exit 1
-ln -sf .env.production .env
-
 # Restart services
 sudo service nginx restart
 sudo service uwsgi restart
