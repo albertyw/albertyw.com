@@ -43,16 +43,16 @@ def get_note_file_data(note_file, timezone):
     with open(note_file) as note_handle:
         note = note_handle.readlines()
     note = [line.strip() for line in note]
-    if len(note) < 4 or not note[2].isdigit():
+    if len(note) < 4 or not note[4].isdigit():
         return None
-    timestamp = int(note[2])
     note_parsed = {}
     note_parsed['title'] = note[0]
-    note_parsed['slug'] = note[1]
+    note_parsed['slug'] = note[2]
+    timestamp = int(note[4])
     note_parsed['time'] = datetime.datetime.fromtimestamp(
         timestamp, timezone)
     note_parsed['note'] = markdown2.markdown(
-        "\n".join(note[3:]),
+        "\n".join(note[6:]),
         extras=MARKDOWN_EXTRAS,
     )
     return note_parsed
