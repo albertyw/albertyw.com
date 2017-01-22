@@ -1,0 +1,7 @@
+Underused Python Package: webbrowser
+uberused-python-package-webbrowser
+1485059144
+While I was working on [git-browse](https://github.com/albertyw/git-browse)
+(post coming soon), I found out about [python's webbrowser package](https://docs.python.org/3/library/webbrowser.html).
+It's a super-simple way of opening a URL in one of many different browsers.
+Python's standard library is pretty awesome.
