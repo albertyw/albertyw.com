@@ -1,6 +1,12 @@
 import os
 
-from flask import Flask, render_template, got_request_exception, abort
+from flask import (Flask,
+    abort,
+    got_request_exception,
+    redirect,
+    render_template,
+    url_for,
+)
 from flask_sitemap import Sitemap
 
 import dotenv
@@ -90,7 +96,12 @@ def note(slug=''):
 
 @app.route("/contact")
 def contact():
-    return render_template("contact.htm")
+    return redirect(url_for('about'))
+
+
+@app.route("/about")
+def about():
+    return render_template("about.htm")
 
 
 @app.route("/robots.txt")

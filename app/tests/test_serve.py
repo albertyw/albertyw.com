@@ -1,4 +1,5 @@
 import unittest
+from urllib.parse import urlparse
 
 import serve
 
@@ -21,7 +22,12 @@ class PageCase(unittest.TestCase):
         self.page_test('/notes', b'Notes')
 
     def test_contact_load(self):
-        self.page_test('/contact', b'Contact')
+        response = self.app.get('/contact')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(urlparse(response.location).path, '/about')
+
+    def test_about_load(self):
+        self.page_test('/about', b'Contact')
 
     def test_robots_load(self):
         self.page_test('/robots.txt', b'')
