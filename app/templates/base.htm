@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="UYCq-dPrxkMhC7ZfCAhr9-sZQL_cJoOBf2EzJpqKho8" />
     <link rel="alternate" href="{{ request.base_url }}" hreflang="en-us" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tether/1.2.0/css/tether.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='global.css') }}" />
-    <link rel="stylesheet" href="{{ url_for('static', filename='syntax.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/tether.min.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css' ) }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/global.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/syntax.css') }}" />
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
     <script type="text/javascript">
@@ -65,8 +65,8 @@
         {% endblock %}
       </footer>
     </div>
-    <script src="/static/js/jquery.min.js"></script>
-    <script src="/static/js/tether.min.js"></script>
-    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/tether.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
   </body>
 </html>
