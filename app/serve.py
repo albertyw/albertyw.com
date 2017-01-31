@@ -1,6 +1,7 @@
 import os
 
-from flask import (Flask,
+from flask import (
+    Flask,
     abort,
     got_request_exception,
     redirect,
