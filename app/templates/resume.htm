@@ -7,7 +7,9 @@
   <div class="content">
     <section>
       <h1>Resum&eacute;</h1>
-      <iframe src="https://docs.google.com/gview?url=https://github.com/albertyw/resume/raw/master/resume.pdf&embedded=true" style="width:80%;height:800px;" frameborder="0"></iframe>
+      <div id="resume" style="width:80%;height:800px"></div>
     </section>
   </div>
+  <script src="{{ url_for('static', filename='js/pdfobject.min.js') }}"></script>
+  <script>PDFObject.embed("/static/resume.pdf", "#resume");</script>
 {% endblock %}
