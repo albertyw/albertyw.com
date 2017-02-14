@@ -19,3 +19,7 @@ sudo chown www-data app/static/.webassets-cache
 # Restart services
 sudo service nginx restart
 sudo service uwsgi restart
+
+# Download static files
+wget https://github.com/albertyw/resume/raw/master/resume.pdf
+mv resume.pdf app/static/resume.pdf
