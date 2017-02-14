@@ -16,6 +16,10 @@ pip install -r requirements.txt
 sudo chown www-data app/static/gen
 sudo chown www-data app/static/.webassets-cache
 
+# Download static files
+wget https://github.com/albertyw/resume/raw/master/resume.pdf
+mv resume.pdf app/static/gen/resume.pdf
+
 # Restart services
 sudo service nginx restart
 sudo service uwsgi restart
