@@ -73,3 +73,5 @@ target/
 
 # dotenv
 .env
+
+app/static/gen/resume.pdf
