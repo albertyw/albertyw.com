@@ -1,12 +1,7 @@
 #!/bin/bash
 
 # Setup directories
-sudo mkdir -p /var/www/log/nginx
-sudo mkdir -p /var/www/log/uwsgi
-sudo chmod -R 777 /var/www/log
-sudo ln -s /var/www/log/uwsgi /var/log/uwsgi
-sudo ln -s /var/www/log/nginx /var/log/nginx
-sudo ln -s ~/website /var/www/website
+sudo ln -s /var/www/website ~/website
 
 # Clone repository
 git clone GIT_REPOSITORY
