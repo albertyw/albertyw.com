@@ -22,4 +22,4 @@ mv resume.pdf app/static/gen/resume.pdf
 
 # Restart services
 sudo service nginx restart
-sudo service uwsgi restart
+sudo systemctl restart uwsgi
