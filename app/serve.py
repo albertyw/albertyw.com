@@ -35,7 +35,7 @@ js = Bundle(
     'js/jquery.js',
     'js/tether.js',
     'js/bootstrap.js',
-    'js/pdfobject.min.js',
+    'js/pdfobject.js',
     'js/global.js',
     filters='rjsmin', output='gen/bundle.min.js'
 )
