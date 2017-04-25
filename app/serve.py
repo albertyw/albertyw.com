@@ -32,18 +32,18 @@ ext = Sitemap(app=app)
 
 
 js = Bundle(
-    'js/jquery.min.js',
-    'js/tether.min.js',
-    'js/bootstrap.min.js',
+    'js/jquery.js',
+    'js/tether.js',
+    'js/bootstrap.js',
     'js/pdfobject.min.js',
     'js/global.js',
     filters='rjsmin', output='gen/bundle.min.js'
 )
 assets.register('js_all', js)
 css = Bundle(
-    'css/normalize.min.css',
-    'css/tether.min.css',
-    'css/bootstrap.min.css',
+    'css/normalize.css',
+    'css/tether.css',
+    'css/bootstrap.css',
     'css/syntax.css',
     'css/global.css',
     filters='cssmin', output='gen/bundle.min.css'
