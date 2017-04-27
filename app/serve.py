@@ -1,4 +1,5 @@
 import os
+from urllib.parse import urljoin
 
 from flask import (
     Flask,
@@ -6,6 +7,7 @@ from flask import (
     got_request_exception,
     redirect,
     render_template,
+    request,
     url_for,
 )
 from flask_assets import Environment, Bundle
@@ -13,6 +15,7 @@ from flask_sitemap import Sitemap
 
 import dotenv
 from getenv import env
+from werkzeug.contrib.atom import AtomFeed
 
 import note_util
 import util
@@ -125,6 +128,22 @@ def contact():
 @app.route("/about")
 def about():
     return render_template("about.htm")
+
+
+@app.route("/atom.xml")
+def atom_feed():
+    feed = AtomFeed('albertyw.com', feed_url=request.url, url=request.url_root)
+    for post in list(note_util.get_notes())[:5]:
+        url=urljoin(request.url_root, url_for('note', slug=post['slug']))
+        feed.add(
+            post['title'],
+            post['note'],
+            content_type='html',
+            author='Albert Wang',
+            url=url,
+            updated=post['time'],
+        )
+    return feed.get_response()
 
 
 @app.route("/robots.txt")
