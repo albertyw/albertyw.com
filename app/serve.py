@@ -134,7 +134,7 @@ def about():
 def atom_feed():
     feed = AtomFeed('albertyw.com', feed_url=request.url, url=request.url_root)
     for post in list(note_util.get_notes())[:5]:
-        url=urljoin(request.url_root, url_for('note', slug=post['slug']))
+        url = urljoin(request.url_root, url_for('note', slug=post['slug']))
         feed.add(
             post['title'],
             post['note'],
