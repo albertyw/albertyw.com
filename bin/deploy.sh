@@ -25,4 +25,4 @@ mv resume.pdf app/static/gen/resume.pdf
 
 # Restart services
 sudo service nginx restart
-sudo systemctl restart uwsgi
+sudo systemctl restart albertyw.com-uwsgi
