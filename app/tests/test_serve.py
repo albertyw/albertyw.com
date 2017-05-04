@@ -38,6 +38,9 @@ class PageCase(unittest.TestCase):
     def test_note_load(self):
         self.page_test('/note/fibonaccoli', b'Romanesco')
 
+    def test_atom_feed_load(self):
+        self.page_test('/atom.xml', b'xml')
+
     def test_nonexistent_note_load(self):
         response = self.app.get('/note/asdf')
         self.assertEqual(response.status_code, 404)
