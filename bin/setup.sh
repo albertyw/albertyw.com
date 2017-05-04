@@ -11,11 +11,11 @@ sudo hostnamectl set-hostname "albertyw.com"
 # Clone repository
 git clone "git@github.com:albertyw/albertyw.com"
 sudo mkdir -p /var/www
-rm -rf /var/www/website
-sudo mv "albertyw.com" /var/www/website
-cd /var/www/website || exit 1
+rm -rf /var/www/albertyw.com
+sudo mv "albertyw.com" /var/www/albertyw.com
+cd /var/www/albertyw.com || exit 1
 ln -s .env.production .env
-sudo ln -s /var/www/website ~/website
+sudo ln -s /var/www/albertyw.com ~/albertyw.com
 
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable
@@ -24,8 +24,9 @@ sudo apt-get install -y nginx
 
 # Configure nginx
 sudo rm -rf /etc/nginx/sites-available
-sudo rm -rf /etc/nginx/sites-enabled
-sudo ln -s /var/www/website/config/sites-enabled /etc/nginx/sites-enabled
+sudo rm -rf /etc/nginx/sites-enabled/*
+sudo ln -s /var/www/albertyw.com/config/sites-available/app /etc/nginx/sites-enabled/albertyw.com-app
+sudo ln -s /var/www/albertyw.com/config/sites-available/headers /etc/nginx/sites-enabled/albertyw.com-headers
 sudo rm -rf /var/www/html
 
 # Secure nginx
@@ -51,7 +52,7 @@ sudo pip3 install virtualenvwrapper
 # shellcheck disable=SC1091
 . /usr/local/bin/virtualenvwrapper.sh
 mkvirtualenv --python=/usr/bin/python3 "albertyw.com"
-pip install -r /var/www/website/requirements.txt
+pip install -r /var/www/albertyw.com/requirements.txt
 sudo ln -s "$HOME/.virtualenvs" /var/www/.virtualenvs
 
 # Make generated static file directory writable
@@ -60,7 +61,7 @@ sudo chown www-data app/static/.webassets-cache
 
 # Set up uwsgi
 sudo rm -f /etc/systemd/system/uwsgi.service
-sudo ln -s /var/www/website/config/uwsgi/uwsgi.service /etc/systemd/system/uwsgi.service
+sudo ln -s /var/www/albertyw.com/config/uwsgi/uwsgi.service /etc/systemd/system/albertyw.com-uwsgi.service
 
 # Start uwsgi
 sudo systemctl start uwsgi
