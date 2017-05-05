@@ -6,15 +6,9 @@ server_tokens off;
 
 # Change IP address to domain name
 server {
-    include         sites-enabled/albertyw.com-headers;
-    server_name     $server_addr;
-    return          301 https://www.albertyw.com$request_uri;
-}
-
-server {
     listen          80;
-    server_name     _; # catch-all
-    rewrite         ^ https://www.albertyw.com$request_uri;
+    server_name     $server_addr albertyw.com www.albertyw.com;
+    return          301 https://www.albertyw.com$request_uri;
 }
 
 # Change naked domain to www
