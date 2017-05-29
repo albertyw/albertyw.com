@@ -61,8 +61,7 @@ sudo chown www-data app/static/.webassets-cache
 
 # Set up uwsgi
 sudo rm -f /etc/systemd/system/uwsgi.service
-sudo ln -s /var/www/albertyw.com/config/uwsgi/albertyw.com-uwsgi.service /etc/systemd/system/albertyw.com-uwsgi.service
 
 # Start uwsgi
-sudo systemctl start albertyw.com-uwsgi
-sudo systemctl enable albertyw.com-uwsgi
+sudo systemctl enable /var/www/albertyw.com/config/uwsgi/albertyw.com-uwsgi.service
+sudo systemctl start albertyw.com-uwsgi.service
