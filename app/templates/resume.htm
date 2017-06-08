@@ -10,6 +10,4 @@
       <div id="resume" style="width:80%;height:800px"></div>
     </section>
   </div>
-  <script src="{{ url_for('static', filename='js/pdfobject.min.js') }}"></script>
-  <script>PDFObject.embed("{{ url_for('static', filename='gen/resume.pdf') }}", "#resume");</script>
 {% endblock %}
