@@ -3,9 +3,12 @@
 # This script is meant to be run on a server with the production app running.
 # It can be called from a CI/CD tool like Codeship.
 
+set -ex
+
 # Update repository
 cd /var/www/albertyw.com/ || exit 1
 git checkout master
+git fetch -tp
 git pull
 
 # Update python packages
@@ -25,4 +28,4 @@ mv resume.pdf app/static/gen/resume.pdf
 
 # Restart services
 sudo service nginx restart
-sudo systemctl restart albertyw.com-uwsgi
+sudo systemctl restart albertyw.com-uwsgi.service
