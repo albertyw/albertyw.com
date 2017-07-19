@@ -20,7 +20,7 @@
       <div id="disqus_thread"></div>
       <script>
       var disqus_config = function () {
-        this.page.url = "{{ url_for('note', slug=post['slug'], _external=True, _scheme='https') }}";
+        this.page.url = "{{ url_for('handlers.note', slug=post['slug'], _external=True, _scheme='https') }}";
         this.page.identifier = "{{ post['slug'] }}";
       };
       (function() { // DON'T EDIT BELOW THIS LINE
