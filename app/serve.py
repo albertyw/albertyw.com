@@ -1,21 +1,15 @@
 import os
-from urllib.parse import urljoin
 
 from flask import (
     Flask,
-    abort,
     got_request_exception,
-    redirect,
     render_template,
-    request,
-    url_for,
 )
 from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
 
 import dotenv
 from getenv import env
-from werkzeug.contrib.atom import AtomFeed
 
 from routes import handlers
 import note_util

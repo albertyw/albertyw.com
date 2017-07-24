@@ -11,7 +11,6 @@ from flask import (
 )
 
 import note_util
-import util
 
 
 handlers = Blueprint('handlers', __name__)
@@ -60,7 +59,8 @@ def about():
 def atom_feed():
     feed = AtomFeed('albertyw.com', feed_url=request.url, url=request.url_root)
     for post in list(note_util.get_notes())[:5]:
-        url = urljoin(request.url_root, url_for('handlers.note', slug=post['slug']))
+        url = url_for('handlers.note', slug=post['slug'])
+        url = urljoin(request.url_root, url)
         feed.add(
             post['title'],
             post['note'],
