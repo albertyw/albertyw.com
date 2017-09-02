@@ -1,12 +1,9 @@
 import datetime
 import os
 
-import dotenv
 import markdown2
 import pytz
 
-root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
-dotenv.read_dotenv(os.path.join(root_path, '.env'))
 
 # See https://github.com/trentm/python-markdown2/wiki/Extras
 MARKDOWN_EXTRAS = [
