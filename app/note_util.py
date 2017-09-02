@@ -2,7 +2,6 @@ import datetime
 import os
 
 import dotenv
-from getenv import env
 import markdown2
 import pytz
 
@@ -60,7 +59,7 @@ def get_note_file_data(note_file, timezone):
 
 def get_notes():
     note_files = get_note_files()
-    timezone = pytz.timezone(env('DISPLAY_TIMEZONE'))
+    timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
     notes = []
     for note_file in note_files:
         note_parsed = get_note_file_data(note_file, timezone)
