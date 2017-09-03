@@ -1,5 +1,5 @@
 {% extends "base.htm" %}
-{% block title %}Albert Wang - Note - {{ post['title'] | safe }}{% endblock %}
+{% block title %}Albert Wang - Note - {{ post.title | safe }}{% endblock %}
 {% block head %}
   {{ super() }}
 {% endblock %}
@@ -8,20 +8,20 @@
     <h1>Notes</h1>
     <section class="note">
       <h2>
-        {{ post['title'] | safe }}
+        {{ post.title | safe }}
       </h2>
       <subtitle>
-        {{ post['time'].strftime("%B %-d, %Y") }}
+        {{ post.time.strftime("%B %-d, %Y") }}
       </subtitle>
       <p>
-        {{ post['note'] | safe }}
+        {{ post.note | safe }}
       </p>
 
       <div id="disqus_thread"></div>
       <script>
       var disqus_config = function () {
-        this.page.url = "{{ url_for('handlers.note', slug=post['slug'], _external=True, _scheme='https') }}";
-        this.page.identifier = "{{ post['slug'] }}";
+        this.page.url = "{{ url_for('handlers.note', slug=post.slug, _external=True, _scheme='https') }}";
+        this.page.identifier = "{{ post.slug }}";
       };
       (function() { // DON'T EDIT BELOW THIS LINE
           var d = document, s = d.createElement('script');
