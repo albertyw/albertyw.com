@@ -14,6 +14,26 @@ MARKDOWN_EXTRAS = [
 ]
 
 
+class Note(object):
+    def __init__(self):
+        self.note = ''
+        self.slug = ''
+        self.time = ''
+        self.note = ''
+
+    def parse_time(self, timestamp, timezone):
+        timestamp = int(timestamp)
+        self.time = datetime.datetime.fromtimestamp(timestamp, timezone)
+        return self.time
+
+    def parse_note(self, note):
+        self.note = markdown2.markdown(
+            "\n".join(note),
+            extras=MARKDOWN_EXTRAS,
+        )
+        return self.note
+
+
 def prune_note_files(note_files):
     def is_valid_note(note_file):
         if '~' in note_file:
@@ -41,16 +61,11 @@ def get_note_file_data(note_file, timezone):
     note = [line.strip() for line in note]
     if len(note) < 4 or not note[4].isdigit():
         return None
-    note_parsed = {}
-    note_parsed['title'] = note[0]
-    note_parsed['slug'] = note[2]
-    timestamp = int(note[4])
-    note_parsed['time'] = datetime.datetime.fromtimestamp(
-        timestamp, timezone)
-    note_parsed['note'] = markdown2.markdown(
-        "\n".join(note[6:]),
-        extras=MARKDOWN_EXTRAS,
-    )
+    note_parsed = Note()
+    note_parsed.title = note[0]
+    note_parsed.slug = note[2]
+    note_parsed.parse_time(note[4], timezone)
+    note_parsed.parse_note(note[6:])
     return note_parsed
 
 
@@ -69,6 +84,6 @@ def get_note_from_slug(slug):
     """ Given the slug of a note, reurn the note contents """
     notes = get_notes()
     for note in notes:
-        if note['slug'] == slug:
+        if note.slug == slug:
             return note
     return None

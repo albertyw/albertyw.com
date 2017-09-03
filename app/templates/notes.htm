@@ -10,15 +10,15 @@
     {% for post in posts %}
       <section class="note">
         <h2>
-          {{ post['title'] | safe }}
+          {{ post.title | safe }}
         </h2>
         <subtitle>
-          {{ post['time'].strftime("%B %-d, %Y") }}
+          {{ post.time.strftime("%B %-d, %Y") }}
         </subtitle>
         <p>
-          {{ post['note'] | safe }}
+          {{ post.note | safe }}
         </p>
-        <a href="{{ url_for('handlers.note', slug=post['slug']) }}">Permalink</a>
+        <a href="{{ url_for('handlers.note', slug=post.slug) }}">Permalink</a>
       </section>
     {% endfor %}
   </div>
