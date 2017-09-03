@@ -32,3 +32,9 @@ img {
 .note {
     padding-bottom: 30px;
 }
+
+.note img {
+    display: block;
+    margin: 0 auto;
+    text-align: center;
+}
