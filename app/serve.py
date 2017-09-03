@@ -11,8 +11,6 @@ from flask_sitemap import Sitemap
 import dotenv
 
 from routes import handlers
-import note_util
-import util
 
 
 root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
@@ -75,14 +73,6 @@ def inject_envs():
     envs['ROLLBAR_CLIENT_TOKEN'] = os.environ['ROLLBAR_CLIENT_TOKEN']
     envs['SEGMENT_TOKEN'] = os.environ['SEGMENT_TOKEN']
     return {'ENV': envs}
-
-
-shouldCache = os.environ['ENV'] == 'production'
-note_util.get_notes = util.cached_function(note_util.get_notes, shouldCache)
-note_util.get_note_from_slug = util.cached_function(
-    note_util.get_note_from_slug,
-    shouldCache
-)
 
 
 app.register_blueprint(handlers)

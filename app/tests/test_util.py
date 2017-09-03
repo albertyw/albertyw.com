@@ -8,7 +8,9 @@ def rand(base):
     return base + random.random()
 
 
-cached_rand = util.cached_function(rand, True)
+@util.cached_function(True)
+def cached_rand(base):
+    return rand(base)
 
 
 class TestCachedFunction(unittest.TestCase):
@@ -25,10 +27,4 @@ class TestCachedFunction(unittest.TestCase):
     def test_cached_nonmatching_function(self):
         first = cached_rand(2)
         second = cached_rand(3)
-        self.assertNotEqual(first, second)
-
-    def test_separate_cached_function(self):
-        cached_rand2 = util.cached_function(rand, True)
-        first = cached_rand(2)
-        second = cached_rand2(2)
         self.assertNotEqual(first, second)
