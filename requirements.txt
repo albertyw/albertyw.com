@@ -8,7 +8,7 @@ uWSGI==2.0.15        # Application server
 
 # Features
 flask-sitemap==0.2.0 # Web sitemaps
-markdown2==2.3.4     # Markdown formatting
+markdown2==2.3.5     # Markdown formatting
 Pygments==2.2.0      # Syntax highlighting support
 pytz==2017.3         # Timezone support
 
