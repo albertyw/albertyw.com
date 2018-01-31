@@ -32,15 +32,19 @@ class UtilCase(unittest.TestCase):
         self.assertEqual(note, None)
         note_file.close()
 
+    def check_prune_note_files(self, file_name, assert_contains):
+        note_files = note_util.prune_note_files([file_name])
+        contains = file_name in note_files
+        self.assertTrue(contains == assert_contains)
+
+    def test_normal_notes(self):
+        self.check_prune_note_files('asdf', True)
+
     def test_prune_tilde_notes(self):
-        note_files = ['asdf', 'asdf~']
-        note_files = note_util.prune_note_files(note_files)
-        self.assertEqual(note_files, ['asdf'])
+        self.check_prune_note_files('asdf~', False)
 
     def test_prune_dotfile_notes(self):
-        note_files = ['asdf', '.asdf']
-        note_files = note_util.prune_note_files(note_files)
-        self.assertEqual(note_files, ['asdf'])
+        self.check_prune_note_files('.asdf', False)
 
     def test_get_note_from_unknown_slug(self):
         note = note_util.get_note_from_slug('asdf')
