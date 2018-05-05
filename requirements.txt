@@ -1,18 +1,17 @@
 # Core packages
 python-dotenv==0.8.2 # Read environment variables from .env
-Flask==0.12.2        # Web microframework
+Flask==1.0.2         # Web microframework
 Flask-Assets==0.12   # Merge and minify CSS and JS assets
-Jinja2>=2.8.1        # Templating for Flask; pinned past security update
 cssmin==0.2.0        # CSS minification
 uWSGI==2.0.17        # Application server
 
 # Features
-flask-sitemap==0.2.0 # Web sitemaps
+flask-sitemap==0.3.0 # Web sitemaps
 markdown2==2.3.5     # Markdown formatting
 Pygments==2.2.0      # Syntax highlighting support
 pytz==2018.3         # Timezone support
 
 # Monitoring/tracking/logging
 blinker==1.4         # Dependency of rollbar
-newrelic==3.0.0.89 # Website monitoring
+newrelic==3.2.0.91   # Website monitoring
 rollbar==0.13.18     # rollbar.com error logging
