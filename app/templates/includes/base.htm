@@ -10,8 +10,8 @@
     {% endassets %}
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
-    {% include "rollbar.htm" %}
-    {% include "segment.htm" %}
+    {% include "includes/rollbar.htm" %}
+    {% include "includes/segment.htm" %}
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
   </head>
@@ -50,6 +50,6 @@
     {% assets "js_all" %}
       <script src="{{ ASSET_URL }}"></script>
     {% endassets %}
-    {% include "logfit.htm" %}
+    {% include "includes/logfit.htm" %}
   </body>
 </html>
