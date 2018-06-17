@@ -2,7 +2,7 @@
 python-dotenv==0.8.2 # Read environment variables from .env
 Flask==1.0.2         # Web microframework
 Flask-Assets==0.12   # Merge and minify CSS and JS assets
-cssmin==0.2.0        # CSS minification
+pyscss==1.3.5        # CSS minification
 uWSGI==2.0.17        # Application server
 
 # Features
@@ -13,5 +13,5 @@ pytz==2018.4         # Timezone support
 
 # Monitoring/tracking/logging
 blinker==1.4         # Dependency of rollbar
-newrelic==3.2.0.91   # Website monitoring
-rollbar==0.13.18     # rollbar.com error logging
+newrelic==3.2.2.94   # Website monitoring
+rollbar==0.14.0      # rollbar.com error logging
