@@ -49,3 +49,8 @@ class UtilCase(unittest.TestCase):
     def test_get_note_from_unknown_slug(self):
         note = note_util.get_note_from_slug('asdf')
         self.assertEqual(note, None)
+
+    def test_slug_lower_case(self):
+        notes = note_util.get_notes()
+        for note in notes:
+            self.assertEqual(note.slug, note.slug.lower())
