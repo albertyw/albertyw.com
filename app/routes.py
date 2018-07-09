@@ -39,6 +39,8 @@ def notes():
 
 @handlers.route("/note/<slug>")
 def note(slug=''):
+    if slug.lower() != slug:
+        return redirect(url_for('handlers.note', slug=slug.lower()))
     post = note_util.get_note_from_slug(slug)
     if not post:
         abort(404)

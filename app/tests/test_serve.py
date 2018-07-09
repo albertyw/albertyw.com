@@ -43,6 +43,11 @@ class PageCase(unittest.TestCase):
     def test_note_load(self):
         self.page_test('/note/fibonaccoli', b'Romanesco')
 
+    def test_note_capital_load(self):
+        response = self.app.get('/note/Fibonaccoli')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(urlparse(response.location).path, '/note/fibonaccoli')
+
     def test_atom_feed_load(self):
         self.page_test('/atom.xml', b'xml')
 
