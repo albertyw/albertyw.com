@@ -10,7 +10,7 @@ syspath==1.1.0       # Modify paths
 flask-sitemap==0.3.0 # Web sitemaps
 markdown2==2.3.5     # Markdown formatting
 Pygments==2.2.0      # Syntax highlighting support
-pytz==2018.4         # Timezone support
+pytz==2018.5         # Timezone support
 
 # Monitoring/tracking/logging
 blinker==1.4         # Dependency of rollbar
