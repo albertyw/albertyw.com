@@ -1,8 +1,6 @@
 import unittest
 from urllib.parse import urlparse
 
-from syspath import git_root  # NOQA
-
 from app import serve
 
 

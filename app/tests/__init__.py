@@ -1,6 +1,6 @@
 import os
 
-from syspath import get_git_root
+from syspath import git_root, get_git_root  # NOQA
 import dotenv
 
 
