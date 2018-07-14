@@ -7,18 +7,17 @@ from flask import (
 )
 from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
+from syspath import git_root, get_git_root  # NOQA
+
+from app.routes import handlers, sitemap_urls
 
 import dotenv
-
-root_path = os.path.dirname(os.path.realpath(__file__)) + '/../'
-dotenv.load_dotenv(os.path.join(root_path, '.env'))
-
-from routes import handlers, sitemap_urls
+dotenv.load_dotenv(os.path.join(get_git_root(), '.env'))
 
 
 app = Flask(__name__)
 app.debug = os.environ['DEBUG'] == 'true'
-if os.environ['SERVER_NAME']:
+if os.environ.get('SERVER_NAME', ''):  # pragma: no cover
     app.config['SERVER_NAME'] = os.environ['SERVER_NAME']
 
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True

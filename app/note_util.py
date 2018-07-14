@@ -4,7 +4,7 @@ import os
 import markdown2
 import pytz
 
-from util import cached_function
+from app.util import cached_function
 
 
 # See https://github.com/trentm/python-markdown2/wiki/Extras

@@ -1,7 +1,7 @@
 import random
 import unittest
 
-import util
+from app import util
 
 
 def rand(base):

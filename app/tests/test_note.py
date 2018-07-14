@@ -3,7 +3,7 @@ import unittest
 
 import pytz
 
-import note_util
+from app import note_util
 
 
 class TestNote(unittest.TestCase):

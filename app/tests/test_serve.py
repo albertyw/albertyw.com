@@ -1,7 +1,9 @@
 import unittest
 from urllib.parse import urlparse
 
-import serve
+from syspath import git_root  # NOQA
+
+from app import serve
 
 
 class PageCase(unittest.TestCase):

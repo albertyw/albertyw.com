@@ -10,7 +10,7 @@ from flask import (
     url_for,
 )
 
-import note_util
+from app import note_util
 
 
 handlers = Blueprint('handlers', __name__)
