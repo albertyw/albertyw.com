@@ -11,7 +11,7 @@ git pull
 # Build and start container
 docker build -t albertyw.com:production .
 docker stop $(docker ps -q --filter ancestor=albertyw.com:production )
-docker run --detach --restart always -p 127.0.0.1:8080:8080 albertyw.com:production
+docker run --detach --restart always -p 127.0.0.1:5000:5000 albertyw.com:production
 
 # Cleanup dockeer
 docker container prune -f
