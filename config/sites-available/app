@@ -62,15 +62,6 @@ server {
     gzip_http_version 1.1;
     gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript application/javascript;
 
-    # static files used for the website
-    location /static {
-        include      sites-enabled/albertyw.com-headers;
-        alias        "/var/www/albertyw.com/app/static/";
-        try_files $uri.html $uri $uri/ =404;
-        expires     7d;
-        add_header Cache-Control "public";
-    }
-
     location / {
         include          sites-enabled/albertyw.com-headers;
         proxy_pass       http://127.0.0.1:5000;
