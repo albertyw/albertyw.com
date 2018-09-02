@@ -7,6 +7,10 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get install -y build-essential python-minimal python3-dev python3-setuptools curl supervisor locales
 
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
+ENV LC_ALL en_US.UTF-8
+
 # Set up directory structures
 RUN mkdir -p /var/www/app
 COPY . /var/www/app
