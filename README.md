@@ -50,7 +50,7 @@ coverage report
 codeclimate-test-reporter
 
 # Deployment
-ssh ubuntu@direct.albertyw.com /var/www/website/bin/deploy.sh
+ssh ubuntu@direct.albertyw.com website/bin/deploy.sh
 ```
 
 Production
