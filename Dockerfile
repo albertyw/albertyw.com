@@ -16,6 +16,9 @@ RUN ln -fs .env.production .env
 
 RUN pip install -r requirements.txt
 
+# Download static files
+RUN bin/container_setup.sh
+
 COPY config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 ENTRYPOINT ["bin/start.sh"]
