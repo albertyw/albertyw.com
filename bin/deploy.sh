@@ -10,9 +10,12 @@ git pull
 
 # Build and start container
 docker build -t albertyw.com:production .
-docker stop $(docker ps -q --filter ancestor=albertyw.com:production )
+docker stop $(docker ps -q --filter ancestor=albertyw.com:production ) || echo
 docker run --detach --restart always -p 127.0.0.1:5000:5000 albertyw.com:production
 
 # Cleanup dockeer
 docker container prune -f
 docker image prune -f
+
+# Update nginx
+sudo service nginx reload
