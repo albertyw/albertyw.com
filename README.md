@@ -53,10 +53,24 @@ codeclimate-test-reporter
 ssh ubuntu@direct.albertyw.com website/bin/deploy.sh
 ```
 
+### Building and starting the docker container
+
+```bash
+docker build -t albertyw.com:test .
+docker run -t -i -p 127.0.0.1:5000:5000 albertyw.com:test
+```
+
 Production
 ----------
 
+### Setup
+
 ```bash
-ln -s .env.production .env
 bin/setup.sh
+```
+
+### Deployment
+
+```bash
+bin/deploy.sh
 ```
