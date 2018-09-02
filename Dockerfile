@@ -3,7 +3,8 @@ LABEL maintainer="git@albertyw.com"
 EXPOSE 5000
 
 # Install updates and system packages
-RUN apt-get update -y
+RUN apt-get update
+RUN apt-get upgrade -y
 RUN apt-get install -y build-essential python-minimal python3-dev python3-setuptools curl supervisor locales
 
 # Set locale
