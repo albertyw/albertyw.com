@@ -9,13 +9,8 @@
 sudo hostnamectl set-hostname "albertyw.com"
 
 # Clone repository
+cd ~
 git clone "git@github.com:albertyw/albertyw.com"
-sudo mkdir -p /var/www
-rm -rf /var/www/albertyw.com
-sudo mv "albertyw.com" /var/www/albertyw.com
-cd /var/www/albertyw.com || exit 1
-ln -s .env.production .env
-sudo ln -s /var/www/albertyw.com ~/albertyw.com
 
 # Install nginx
 sudo add-apt-repository ppa:nginx/stable
@@ -25,8 +20,8 @@ sudo apt install -y nginx
 # Configure nginx
 sudo rm -rf /etc/nginx/sites-available
 sudo rm -rf /etc/nginx/sites-enabled/*
-sudo ln -s /var/www/albertyw.com/config/sites-available/app /etc/nginx/sites-enabled/albertyw.com-app
-sudo ln -s /var/www/albertyw.com/config/sites-available/headers /etc/nginx/sites-enabled/albertyw.com-headers
+sudo ln -s ~/albertyw.com/config/sites-available/app /etc/nginx/sites-enabled/albertyw.com-app
+sudo ln -s ~/albertyw.com/config/sites-available/headers /etc/nginx/sites-enabled/albertyw.com-headers
 sudo rm -rf /var/www/html
 
 # Secure nginx

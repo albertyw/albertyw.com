@@ -3,7 +3,7 @@
 # This script will build and deploy a new docker image
 
 # Update repository
-cd /var/www/albertyw.com/ || exit 1
+cd ~/albertyw.com/ || exit 1
 git checkout master
 git fetch -tp
 git pull
