@@ -2,8 +2,10 @@
 
 # This script will build and deploy a new docker image
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+cd "$DIR"/..
+
 # Update repository
-cd ~/albertyw.com/ || exit 1
 git checkout master
 git fetch -tp
 git pull
@@ -15,7 +17,7 @@ docker container prune -f
 docker run --detach --restart always -p 127.0.0.1:5000:5000 --name albertyw.com albertyw.com:production
 
 # Cleanup docker
-docker image prune -f
+docker image prune -f --filter "until=14d"
 
 # Update nginx
 sudo service nginx reload
