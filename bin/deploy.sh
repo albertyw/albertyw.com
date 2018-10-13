@@ -14,10 +14,15 @@ git pull
 docker build -t albertyw.com:production .
 docker stop albertyw.com || echo
 docker container prune -f
-docker run --detach --restart always -p 127.0.0.1:5000:5000 --name albertyw.com albertyw.com:production
+docker run \
+    --detach \
+    --restart=always \
+    --publish=127.0.0.1:5000:5000 \
+    --noetwork=host \
+    --name albertyw.com albertyw.com:production
 
 # Cleanup docker
-docker image prune -f --filter "until=14d"
+docker image prune -f --filter "until=336h"
 
 # Update nginx
 sudo service nginx reload

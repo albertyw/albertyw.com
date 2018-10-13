@@ -14,5 +14,5 @@ pytz==2018.5         # Timezone support
 
 # Monitoring/tracking/logging
 blinker==1.4         # Dependency of rollbar
-newrelic==4.4.0.103  # Website monitoring
-rollbar==0.14.4      # rollbar.com error logging
+newrelic==4.4.1.104  # Website monitoring
+rollbar==0.14.5      # rollbar.com error logging
