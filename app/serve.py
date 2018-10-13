@@ -28,7 +28,6 @@ ext.register_generator(sitemap_urls)
 
 js = Bundle(
     'js/jquery.js',
-    'js/tether.js',
     'js/bootstrap.js',
     'js/pdfobject.js',
     'js/global.js',
@@ -37,7 +36,6 @@ js = Bundle(
 assets.register('js_all', js)
 css = Bundle(
     'css/normalize.css',
-    'css/tether.css',
     'css/bootstrap.css',
     'css/syntax.css',
     'css/global.css',
