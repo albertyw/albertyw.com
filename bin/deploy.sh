@@ -7,23 +7,29 @@ set -ex
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
 cd "$DIR"/..
 
-# Update repository
-git checkout master
-git fetch -tp
-git pull
+source .env
+
+if [ "$ENV" = "production" ]; then
+    # Update repository
+    git checkout master
+    git fetch -tp
+    git pull
+fi
 
 # Build and start container
-docker build -t albertyw.com:production .
+docker build -t albertyw.com:$ENV .
 docker stop albertyw.com || echo
 docker container prune -f
 docker run \
     --detach \
     --restart=always \
     --publish=127.0.0.1:5000:5000 \
-    --name albertyw.com albertyw.com:production
+    --name albertyw.com albertyw.com:$ENV
 
-# Cleanup docker
-docker image prune -f --filter "until=336h"
+if [ "$ENV" = "production" ]; then
+    # Cleanup docker
+    docker image prune -f --filter "until=336h"
 
-# Update nginx
-sudo service nginx reload
+    # Update nginx
+    sudo service nginx reload
+fi
