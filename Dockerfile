@@ -1,4 +1,4 @@
-FROM debian:18.04
+FROM debian:stable
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5000
 
