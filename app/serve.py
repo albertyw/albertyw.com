@@ -28,7 +28,7 @@ ext.register_generator(sitemap_urls)
 
 js = Bundle(
     'js/jquery.js',
-    'js/bootstrap.js',
+    'js/bootstrap.bundle.js',
     'js/pdfobject.js',
     'js/global.js',
     filters='rjsmin', output='gen/bundle.min.js'
