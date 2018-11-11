@@ -24,6 +24,7 @@ docker run \
     --detach \
     --restart=always \
     --publish=127.0.0.1:5000:5000 \
+    --mount type=bind,source="$(pwd)"/app/static,target=/var/www/app/app/static \
     --name albertyw.com albertyw.com:$ENV
 
 if [ "$ENV" = "production" ]; then

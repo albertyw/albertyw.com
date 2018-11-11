@@ -5,5 +5,8 @@
 
 set -ex
 
+# Download resume
+curl https://github.com/albertyw/resume/raw/master/resume.pdf > app/static/gen/resume.pdf
+
 # Run supervisor to run uwsgi
 supervisord
