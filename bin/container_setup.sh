@@ -20,6 +20,3 @@ pip3 install -r requirements.txt
 
 # Set up supervisor
 cp config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
-
-# Download resume
-curl https://github.com/albertyw/resume/raw/master/resume.pdf > app/static/gen/resume.pdf
