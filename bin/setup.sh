@@ -22,8 +22,8 @@ sudo apt-get install -y nginx
 # Configure nginx
 sudo rm -rf /etc/nginx/sites-available
 sudo rm -rf /etc/nginx/sites-enabled/*
-sudo ln -s ~/albertyw.com/config/sites-available/app /etc/nginx/sites-enabled/albertyw.com-app
-sudo ln -s ~/albertyw.com/config/sites-available/headers /etc/nginx/sites-enabled/albertyw.com-headers
+sudo ln -s ~/albertyw.com/config/nginx/app /etc/nginx/sites-enabled/albertyw.com-app
+sudo ln -s ~/albertyw.com/config/nginx/headers /etc/nginx/sites-enabled/albertyw.com-headers
 sudo rm -rf /var/www/html
 
 # Secure nginx
@@ -39,3 +39,6 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt-get update
 sudo apt-get install -y docker-ce
 sudo usermod -aG docker ${USER}
+
+# Set up directory structures
+ln -s .env.production .env
