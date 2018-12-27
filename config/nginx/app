@@ -74,7 +74,7 @@ server {
     }
 
     location /static {
-        root             /home/albertyw/albertyw.com/app;
+        root             /home/ubuntu/albertyw.com/app;
         expires          24h;
         include          sites-enabled/albertyw.com-headers;
         add_header       'Access-Control-Allow-Origin' "https://www.albertyw.com";
