@@ -20,11 +20,13 @@ fi
 docker build -t albertyw.com:$ENV .
 docker stop albertyw.com || echo
 docker container prune --force --filter "until=336h"
+docker container rm albertyw.com
 docker run \
     --detach \
     --restart=always \
     --publish=127.0.0.1:5000:5000 \
     --mount type=bind,source="$(pwd)"/app/static,target=/var/www/app/app/static \
+    --mount type=bind,source="$(pwd)"/logs,target=/var/www/app/logs \
     --name albertyw.com albertyw.com:$ENV
 
 if [ "$ENV" = "production" ]; then
