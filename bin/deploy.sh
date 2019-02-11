@@ -18,9 +18,9 @@ fi
 
 # Build and start container
 docker build -t albertyw.com:$ENV .
-docker stop albertyw.com || echo
+docker stop albertyw.com || true
 docker container prune --force --filter "until=336h"
-docker container rm albertyw.com
+docker container rm albertyw.com || true
 docker run \
     --detach \
     --restart=always \
