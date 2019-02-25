@@ -3,6 +3,9 @@
 import calendar
 import datetime
 import os
+import subprocess
+
+EDITOR = os.environ.get('EDITOR', 'vim')
 
 current_time = datetime.datetime.utcnow()
 
@@ -20,3 +23,4 @@ with open(note_path, 'w') as note_handle:
     note_handle.write(note)
 
 print('Note template written to %s' % note_path)
+subprocess.call([EDITOR, note_path])
