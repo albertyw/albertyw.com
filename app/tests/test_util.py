@@ -8,12 +8,19 @@ def rand(base):
     return base + random.random()
 
 
-@util.cached_function(True)
+@util.cached_function
 def cached_rand(base):
     return rand(base)
 
 
 class TestCachedFunction(unittest.TestCase):
+    def setUp(self):
+        self.orig_cache = util.SHOULD_CACHE
+        util.SHOULD_CACHE = True
+
+    def tearDown(self):
+        util.SHOULD_CACHE = self.orig_cache
+
     def test_noncached_function(self):
         first = rand(2)
         second = rand(2)

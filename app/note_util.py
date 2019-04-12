@@ -14,7 +14,6 @@ MARKDOWN_EXTRAS = [
     'smarty-pants',
     'tables',
 ]
-SHOULD_CACHE = os.environ['ENV'] == 'production'
 
 
 class Note(object):
@@ -72,7 +71,7 @@ def get_note_file_data(note_file, timezone):
     return note_parsed
 
 
-@cached_function(SHOULD_CACHE)
+@cached_function
 def get_notes():
     note_files = get_note_files()
     timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
@@ -84,7 +83,7 @@ def get_notes():
     return notes
 
 
-@cached_function(SHOULD_CACHE)
+@cached_function
 def get_note_from_slug(slug):
     """ Given the slug of a note, reurn the note contents """
     notes = get_notes()
