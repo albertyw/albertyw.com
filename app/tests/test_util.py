@@ -22,16 +22,10 @@ class TestCachedFunction(unittest.TestCase):
         util.SHOULD_CACHE = self.orig_cache
 
     def test_noncached_function(self):
-        first = rand(2)
-        second = rand(2)
-        self.assertNotEqual(first, second)
+        self.assertNotEqual(rand(2), rand(2))
 
     def test_cached_function(self):
-        first = cached_rand(2)
-        second = cached_rand(2)
-        self.assertEqual(first, second)
+        self.assertEqual(cached_rand(2), cached_rand(2))
 
     def test_cached_nonmatching_function(self):
-        first = cached_rand(2)
-        second = cached_rand(3)
-        self.assertNotEqual(first, second)
+        self.assertNotEqual(cached_rand(2), cached_rand(3))
