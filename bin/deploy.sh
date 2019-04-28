@@ -18,6 +18,8 @@ fi
 
 # Build and start container
 docker build -t albertyw.com:$ENV .
+docker network inspect "albertyw.com" &>/dev/null ||
+    docker network create --driver bridge "albertyw.com"
 docker stop albertyw.com || true
 docker container prune --force --filter "until=336h"
 docker container rm albertyw.com || true
@@ -25,6 +27,7 @@ docker run \
     --detach \
     --restart=always \
     --publish=127.0.0.1:5000:5000 \
+    --network="albertyw.com"
     --mount type=bind,source="$(pwd)"/app/static,target=/var/www/app/app/static \
     --mount type=bind,source="$(pwd)"/logs,target=/var/www/app/logs \
     --name albertyw.com albertyw.com:$ENV
