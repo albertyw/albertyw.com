@@ -9,7 +9,7 @@ syspath==1.1.0         # Modify paths
 # Features
 flask-sitemap==0.3.0   # Web sitemaps
 markdown2==2.3.7       # Markdown formatting
-Pygments==2.2.0        # Syntax highlighting support
+Pygments==2.3.1        # Syntax highlighting support
 pytz==2018.7           # Timezone support
 
 # Monitoring/tracking/logging
