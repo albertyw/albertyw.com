@@ -28,7 +28,7 @@ docker run \
     --detach \
     --restart=always \
     --publish="127.0.0.1:5000:5000" \
-    --network="albertyw.com"
+    --network="albertyw.com" \
     --mount type=bind,source="$(pwd)"/app/static,target=/var/www/app/app/static \
     --mount type=bind,source="$(pwd)"/logs,target=/var/www/app/logs \
     --name "albertyw.com" "albertyw.com:$ENV"
