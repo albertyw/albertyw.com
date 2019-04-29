@@ -12,21 +12,30 @@ Personal website
 Development
 -----------
 
-With virtualenvwrapper:
+### Setup (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)):
 
 ```bash
 mkvirtualenv albertyw -p python3.5
 pip install -r requirements.txt
+pip install -r requirements-test.txt
 ln -s .env.development .env
+
+# Install shellcheck
+# brew install shellcheck
+# sudo apt-get install shellcheck
+```
+
+### Spinning up the server:
+
+```bash
 python app/serve.py
 ```
 
-Testing
--------
-
+### Running tests:
 ```bash
-pip install -r requirements-test.txt
+flake8
 mypy app --ignore-missing-imports
+shellcheck --exclude=SC1091 bin/*
 coverage run -m unittest discover
 ```
 

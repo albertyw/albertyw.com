@@ -3,7 +3,8 @@
 # This is a script that can be run on a freshly setup server (see the README
 # for more details) and bring it up to a production-ready state.
 
-set -ex
+set -exuo pipefail
+IFS=$'\n\t'
 
 # Download resume
 curl https://github.com/albertyw/resume/raw/master/resume.pdf > app/static/gen/resume.pdf
