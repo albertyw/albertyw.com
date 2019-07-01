@@ -22,6 +22,7 @@ class Note(object):
         self.slug = ''
         self.time = ''
         self.note = ''
+        self.markdown = ''
 
     def parse_time(self, timestamp, timezone):
         timestamp = int(timestamp)
@@ -68,6 +69,7 @@ def get_note_file_data(note_file, timezone):
     note_parsed.slug = note[2]
     note_parsed.parse_time(note[4], timezone)
     note_parsed.parse_note(note[6:])
+    note_parsed.markdown = '\n'.join(note[6:])
     return note_parsed
 
 
