@@ -1,7 +1,11 @@
+import json
+import os
+import re
 import tempfile
 import unittest
 
 import pytz
+import requests
 
 from app import note_util
 
@@ -54,3 +58,65 @@ class UtilCase(unittest.TestCase):
         notes = note_util.get_notes()
         for note in notes:
             self.assertEqual(note.slug, note.slug.lower())
+
+
+class TestGrammar(unittest.TestCase):
+
+    IGNORED = [
+        'DASH_RULE',
+        'EN_QUOTES',
+        'MORFOLOGIK_RULE_EN_US',
+        'NUMEROUS_DIFFERENT',
+        'PUNCTUATION_PARAGRAPH_END',
+        'SENTENCE_WHITESPACE',
+        'SOME_OF_THE',
+        'WHITESPACE_RULE',
+        'METRIC_UNITS_EN_US',
+    ]
+    IGNORED_KEYWORDS = [
+        'curriculum',
+        'Use a comma before',
+        '777',
+    ]
+
+    def check_grammar(self, text):
+        text = re.sub(r"```[.\w\W]*```", "", text)
+        text = re.sub(r"\[[.\w\W]*?\]\(.*?\)", "Z", text)
+        text = re.sub(r"^\|.*\|$", "", text, flags=re.MULTILINE)
+        text = re.sub(r"^>.*$", "", text, flags=re.MULTILINE)
+        text = text.replace("`", "\"")
+        text = text.replace("\n", " ")
+        url = 'http://api.grammarbot.io/v2/check'
+        headers = {
+            'content-type': 'application/json',
+        }
+        data = {
+            'api_key': os.environ.get('GRAMMARBOT_TOKEN'),
+            'language': 'en-US',
+            'text': text,
+        }
+        response = requests.get(url, data, headers=headers)
+        content = json.loads(response.content)
+        matches = content['matches']
+        matches = [
+            m for m in matches
+            if m['rule']['id'] not in TestGrammar.IGNORED
+        ]
+        matches = [
+            m for m in matches
+            if not any([
+                i in m['message'] for i in TestGrammar.IGNORED_KEYWORDS
+            ])
+        ]
+        self.assertEqual(len(matches), 0, matches)
+
+
+def make_check_name(note):
+    def test(self):
+        self.check_grammar(note.markdown)
+    return test
+
+
+for note in note_util.get_notes():
+    test_func = make_check_name(note)
+    setattr(TestGrammar, 'test_%s' % note.slug, test_func)
