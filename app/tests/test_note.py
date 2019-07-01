@@ -1,7 +1,10 @@
+import json
+import os
 import tempfile
 import unittest
 
 import pytz
+import requests
 
 from app import note_util
 
@@ -54,3 +57,28 @@ class UtilCase(unittest.TestCase):
         notes = note_util.get_notes()
         for note in notes:
             self.assertEqual(note.slug, note.slug.lower())
+
+
+class TestGrammar(unittest.TestCase):
+    def check_grammar(self, text):
+        url = 'http://api.grammarbot.io/v2/check'
+        headers = {
+            'content-type': 'application/json',
+        }
+        data = {
+            'api_key': os.environ.get('GRAMMARBOT_TOKEN'),
+            'language': 'en-US',
+            'text': text,
+        }
+        response = requests.get(url, data, headers=headers)
+        # TODO
+
+
+def make_check_name(note):
+    def test(self):
+        self.check_grammar(note.note)
+    return test
+
+for note in note_util.get_notes():
+    test_func = make_check_name(note)
+    setattr(TestGrammar, 'test_%s' % note.slug, test_func)
