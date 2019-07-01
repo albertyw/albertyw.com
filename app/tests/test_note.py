@@ -60,6 +60,7 @@ class UtilCase(unittest.TestCase):
 
 
 class TestGrammar(unittest.TestCase):
+    IGNORED = ['PUNCTUATION_PARAGRAPH_END', 'MORFOLOGIK_RULE_EN_US']
     def check_grammar(self, text):
         url = 'http://api.grammarbot.io/v2/check'
         headers = {
@@ -71,13 +72,17 @@ class TestGrammar(unittest.TestCase):
             'text': text,
         }
         response = requests.get(url, data, headers=headers)
-        # TODO
+        content = json.loads(response.content)
+        matches = content['matches']
+        matches = [m for m in matches if m['rule']['id'] not in TestGrammar.IGNORED]
+        self.assertEqual(len(matches), 0, matches)
 
 
 def make_check_name(note):
     def test(self):
-        self.check_grammar(note.note)
+        self.check_grammar(note.markdown)
     return test
+
 
 for note in note_util.get_notes():
     test_func = make_check_name(note)
