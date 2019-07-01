@@ -18,7 +18,7 @@ MARKDOWN_EXTRAS = [
 
 class Note(object):
     def __init__(self):
-        self.note = ''
+        self.title = ''
         self.slug = ''
         self.time = ''
         self.note = ''
