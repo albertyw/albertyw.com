@@ -80,7 +80,7 @@ app.register_blueprint(handlers)
 
 @app.route("/robots.txt")
 def robots():
-    return render_template("robots.txt")
+    return ""
 
 
 @app.errorhandler(404)
