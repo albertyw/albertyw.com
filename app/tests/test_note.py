@@ -1,3 +1,4 @@
+import datetime
 import json
 import os
 import re
@@ -117,6 +118,10 @@ def make_check_name(note):
     return test
 
 
+timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
 for note in note_util.get_notes():
+    delta = datetime.datetime.now(tz=timezone) - note.time
+    if delta > datetime.timedelta(days=30):
+        continue
     test_func = make_check_name(note)
     setattr(TestGrammar, 'test_%s' % note.slug, test_func)
