@@ -1,4 +1,5 @@
 from urllib.parse import urljoin
+from varsnap import varsnap
 from werkzeug.contrib.atom import AtomFeed
 
 from flask import (
@@ -17,27 +18,32 @@ handlers = Blueprint('handlers', __name__)
 
 
 @handlers.route("/")
+@varsnap
 def index():
     return render_template("index.htm")
 
 
 @handlers.route("/resume")
+@varsnap
 def resume():
     return render_template("resume.htm")
 
 
 @handlers.route("/projects")
+@varsnap
 def projects():
     return render_template("projects.htm")
 
 
 @handlers.route("/notes")
+@varsnap
 def notes():
     posts = note_util.get_notes()
     return render_template("notes.htm", posts=posts)
 
 
 @handlers.route("/note/<slug>")
+@varsnap
 def note(slug=''):
     if slug.lower() != slug:
         return redirect(url_for('handlers.note', slug=slug.lower()))
@@ -48,16 +54,19 @@ def note(slug=''):
 
 
 @handlers.route("/contact")
+@varsnap
 def contact():
     return redirect(url_for('handlers.about'))
 
 
 @handlers.route("/about")
+@varsnap
 def about():
     return render_template("about.htm")
 
 
 @handlers.route("/atom.xml")
+@varsnap
 def atom_feed():
     feed = AtomFeed('albertyw.com', feed_url=request.url, url=request.url_root)
     for post in list(note_util.get_notes())[:5]:
