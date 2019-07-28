@@ -3,6 +3,7 @@ import os
 
 import markdown2
 import pytz
+from varsnap import varsnap
 
 from app.util import cached_function
 
@@ -73,6 +74,7 @@ def get_note_file_data(note_file, timezone):
     return note_parsed
 
 
+@varsnap
 @cached_function
 def get_notes():
     note_files = get_note_files()
