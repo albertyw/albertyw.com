@@ -2,4 +2,3 @@
 coverage==4.5.3                  # Test coverage
 flake8==3.7.8                    # Python linting
 mypy==0.711                      # Type checking
-varsnap==0.5.2                   # Test discovery
