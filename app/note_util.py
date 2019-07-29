@@ -62,7 +62,7 @@ def get_note_files():
 def get_note_file_data(note_file, timezone):
     with open(note_file) as note_handle:
         note = note_handle.readlines()
-    note = [line.strip() for line in note]
+    note = [line.strip("\n") for line in note]
     if len(note) < 4 or not note[4].isdigit():
         return None
     note_parsed = Note()
