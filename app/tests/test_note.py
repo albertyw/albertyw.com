@@ -7,6 +7,7 @@ import unittest
 
 import pytz
 import requests
+from varsnap import TestVarSnap
 
 from app import note_util
 
