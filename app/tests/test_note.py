@@ -7,7 +7,7 @@ import unittest
 
 import pytz
 import requests
-from varsnap import TestVarSnap
+from varsnap import TestVarSnap  # noqa: F401
 
 from app import note_util
 
