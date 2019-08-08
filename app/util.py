@@ -16,4 +16,5 @@ def cached_function(func):
             data[cache_key] = func(*args)
         return data[cache_key]
 
+    wrapper.__name__ = func.__name__
     return wrapper
