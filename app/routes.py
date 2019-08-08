@@ -9,6 +9,7 @@ from flask import (
     request,
     url_for,
 )
+from varsnap import varsnap
 
 from app import note_util
 
