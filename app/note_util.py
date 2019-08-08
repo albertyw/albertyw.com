@@ -87,6 +87,7 @@ def get_notes():
     return notes
 
 
+@varsnap
 @cached_function
 def get_note_from_slug(slug):
     """ Given the slug of a note, reurn the note contents """
