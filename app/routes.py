@@ -74,6 +74,7 @@ def atom_feed():
     return feed.get_response()
 
 
+@varsnap
 def sitemap_urls():
     for post in list(note_util.get_notes()):
         yield url_for('handlers.note', slug=post.slug, _external=True)
