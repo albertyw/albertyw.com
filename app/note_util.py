@@ -74,7 +74,6 @@ def get_note_file_data(note_file, timezone):
     return note_parsed
 
 
-@varsnap
 @cached_function
 def get_notes():
     note_files = get_note_files()
@@ -87,7 +86,6 @@ def get_notes():
     return notes
 
 
-@varsnap
 @cached_function
 def get_note_from_slug(slug):
     """ Given the slug of a note, reurn the note contents """
