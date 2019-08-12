@@ -2,7 +2,7 @@
 import os
 
 
-SHOULD_CACHE = os.environ['ENV'] == 'production'
+SHOULD_CACHE = os.environ.get('ENV', 'development') == 'production'
 
 
 def cached_function(func):
