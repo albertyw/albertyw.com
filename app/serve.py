@@ -11,7 +11,7 @@ from flask_sitemap import Sitemap
 from syspath import git_root
 dotenv.load_dotenv(os.path.join(git_root.path, '.env'))
 
-from app.routes import handlers, sitemap_urls
+from app.routes import handlers, sitemap_urls  # noqa: E402
 
 
 app = Flask(__name__)
