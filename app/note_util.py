@@ -74,7 +74,7 @@ def get_note_file_data(note_file, timezone):
     return note_parsed
 
 
-@varsnap
+# @varsnap
 @cached_function
 def get_notes():
     note_files = get_note_files()
