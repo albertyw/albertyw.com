@@ -16,4 +16,4 @@ pytz==2019.2           # Timezone support
 blinker==1.4           # Dependency of rollbar
 newrelic==5.0.2.126    # Website monitoring
 rollbar==0.14.7        # rollbar.com error logging
-varsnap==0.8.1         # Test discovery
+varsnap==0.8.2         # Test discovery
