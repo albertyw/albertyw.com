@@ -25,11 +25,13 @@ class Note(object):
         self.note = ''
         self.markdown = ''
 
+    @varsnap
     def parse_time(self, timestamp, timezone):
         timestamp = int(timestamp)
         self.time = datetime.datetime.fromtimestamp(timestamp, timezone)
         return self.time
 
+    @varsnap
     def parse_note(self, note):
         self.note = markdown2.markdown(
             "\n".join(note),
@@ -38,6 +40,7 @@ class Note(object):
         return self.note
 
 
+@varsnap
 def prune_note_files(note_files):
     def is_valid_note(note_file):
         if '~' in note_file:
