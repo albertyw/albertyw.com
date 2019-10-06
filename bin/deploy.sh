@@ -23,6 +23,7 @@ docker network inspect "albertyw.com" &>/dev/null ||
     docker network create --driver bridge "albertyw.com"
 docker stop "albertyw.com" || true
 docker container prune --force --filter "until=336h"
+docker image prune --force --filter "until=336h"
 docker container rm "albertyw.com" || true
 docker run \
     --detach \

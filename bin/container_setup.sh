@@ -11,7 +11,7 @@ cd "$DIR/.."
 # Install updates and system packages
 apt-get update
 apt-get install -y build-essential locales software-properties-common
-apt-get install -y gcc curl supervisor
+apt-get install -y gcc curl supervisor git
 apt-get install -y python-minimal python3.7-dev python3.7 python3-setuptools
 
 # Set locale
@@ -21,6 +21,11 @@ sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-g
 curl https://bootstrap.pypa.io/get-pip.py | python3.7
 pip3 install virtualenvwrapper
 pip3 install -r requirements.txt
+
+# Set up node
+curl -sL https://deb.nodesource.com/setup_11.x | bash -
+apt-get install nodejs
+npm install
 
 # Set up supervisor
 cp config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
