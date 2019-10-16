@@ -12,6 +12,9 @@ cd "$DIR/.."
 apt-get update
 apt-get install -y build-essential locales software-properties-common
 apt-get install -y gcc curl supervisor git
+
+apt-get update
+add-apt-repository ppa:deadsnakes/ppa
 apt-get install -y python-minimal python3.8-dev python3.8 python3-setuptools
 
 # Set locale
