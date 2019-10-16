@@ -15,7 +15,7 @@ apt-get install -y gcc curl supervisor git
 
 apt-get update
 add-apt-repository ppa:deadsnakes/ppa
-apt-get install -y python-minimal python3.8-dev python3.8 python3-setuptools
+apt-get install -y python-minimal python3.8-dev python3.8-distutils python3.8 python3-setuptools
 
 # Set locale
 sed -i -e 's/# en_US.UTF-8 UTF-8/en_US.UTF-8 UTF-8/' /etc/locale.gen && locale-gen
