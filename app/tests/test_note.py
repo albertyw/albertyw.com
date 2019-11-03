@@ -110,7 +110,7 @@ class TestGrammar(unittest.TestCase):
                 i in m['message'] for i in TestGrammar.IGNORED_KEYWORDS
             ])
         ]
-        self.assertEqual(len(matches), 0, matches)
+        self.assertEqual(len(matches), 0, json.dumps(matches, indent=4))
 
 
 def make_check_name(note):
