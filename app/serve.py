@@ -6,7 +6,6 @@ from flask import (
     got_request_exception,
     render_template,
 )
-from flask_assets import Environment, Bundle
 from flask_sitemap import Sitemap
 from syspath import git_root
 dotenv.load_dotenv(os.path.join(git_root.path, '.env'))
@@ -21,29 +20,8 @@ if os.environ.get('SERVER_NAME', ''):  # pragma: no cover
 
 app.config['SITEMAP_INCLUDE_RULES_WITHOUT_PARAMS'] = True
 app.config['SITEMAP_URL_SCHEME'] = 'https'
-assets = Environment(app)
-cleancss_bin = os.path.join(git_root.path, 'node_modules', '.bin', 'cleancss')
-assets.config['cleancss_bin'] = cleancss_bin
 ext = Sitemap(app=app)
 ext.register_generator(sitemap_urls)
-
-
-js = Bundle(
-    'js/jquery.js',
-    'js/bootstrap.bundle.js',
-    'js/pdfobject.js',
-    'js/global.js',
-    filters='rjsmin', output='gen/bundle.min.js'
-)
-assets.register('js_all', js)
-css = Bundle(
-    'css/normalize.css',
-    'css/bootstrap.css',
-    'css/syntax.css',
-    'css/global.css',
-    filters='cleancss', output='gen/bundle.min.css'
-)
-assets.register('css_all', css)
 
 
 if os.environ['ENV'] == 'production':
