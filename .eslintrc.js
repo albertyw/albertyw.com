@@ -27,5 +27,7 @@ module.exports = {
       "always"
     ]
   },
-  "globals": {}
+  "globals": {
+    "PDFObject": true
+  }
 };

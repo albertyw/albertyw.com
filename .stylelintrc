@@ -3,5 +3,8 @@
   "rules": {
     "selector-list-comma-newline-after": "never-multi-line",
     "indentation": 4
-  }
+  },
+  "ignoreFiles": [
+    "app/static/css/syntax.css"
+  ]
 }
