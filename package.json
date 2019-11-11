@@ -2,7 +2,9 @@
   "name": "albertyw.com",
   "scripts": {
     "minify": "node bin/minify.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "eslint": "eslint .",
+    "stylelint": "stylelint app/static/css/*",
+    "test": "npm run eslint && npm run stylelint"
   },
   "repository": {
     "type": "git",
@@ -20,9 +22,15 @@
     "envify": "^4.1.0",
     "jquery": "^3.4.1",
     "logfit": "^0.8.0",
+    "normalize.css": "^8.0.1",
     "popper.js": "^1.16.0",
     "rollbar": "^2.14.3",
     "uglifyify": "^5.0.2",
     "varsnap": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^6.6.0",
+    "stylelint": "^11.1.1",
+    "stylelint-config-standard": "^19.0.0"
   }
 }

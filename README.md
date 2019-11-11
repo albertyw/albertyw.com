@@ -39,6 +39,7 @@ flake8
 mypy app --ignore-missing-imports
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
+npm test
 ```
 
 CI/CD
@@ -59,6 +60,7 @@ mypy app --ignore-missing-imports
 coverage run -m unittest discover
 coverage report
 codeclimate-test-reporter
+npm test
 
 # Deployment
 ssh ubuntu@direct.albertyw.com website/bin/deploy.sh

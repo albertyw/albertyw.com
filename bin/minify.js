@@ -7,18 +7,18 @@ require('dotenv').config();
 
 // CSS Minification Configs
 const cssSources = [
-  "app/static/css/normalize.css",
-  "node_modules/bootstrap/dist/css/bootstrap.css",
-  "app/static/css/global.css",
+  path.join('node_modules', 'normalize.css', 'normalize.css'),
+  path.join('node_modules', 'bootstrap', 'dist', 'css', 'bootstrap.css'),
+  path.join('app', 'static', 'css', 'global.css'),
 ];
-const cssOutputFile = 'app/static/gen/bundle.min.css';
+const cssOutputFile = path.join('app', 'static', 'gen', 'bundle.min.css');
 
 // JS Minification Configs
-const jsInputFile = path.join(__dirname, '..', 'app', 'static', 'js', 'index.js');
-const jsOutputFile = path.join(__dirname, '..', 'app', 'static', 'gen', 'bundle.min.js');
+const jsInputFile = path.join('app', 'static', 'js', 'index.js');
+const jsOutputFile = path.join('app', 'static', 'gen', 'bundle.min.js');
 const jsRawAppends = [
-  path.join(__dirname, '..', 'node_modules', 'bootstrap', 'dist', 'js', 'bootstrap.min.js'),
-  path.join(__dirname, '..', 'app', 'static', 'js', 'pdfobject.js'),
+  path.join('node_modules', 'bootstrap', 'dist', 'js', 'bootstrap.min.js'),
+  path.join('app', 'static', 'js', 'pdfobject.js'),
 ];
 
 // Minify js
@@ -37,7 +37,7 @@ const jsRawAppendPromises = jsRawAppends.map(rawAppend => {
 jsOutputStream.on('finish', () => {
   Promise.all(jsRawAppendPromises).then(rawAppendData => {
     const stream = fs.createWriteStream(jsOutputFile, {flags: 'a'});
-    for(data of rawAppendData) {
+    for(let data of rawAppendData) {
       stream.write(data);
     }
   });
@@ -51,4 +51,4 @@ new CleanCSS({returnPromise: true})
     const stream = fs.createWriteStream(cssOutputFile);
     stream.write(output.styles);
   })
-  .catch(error => { console.error(error); })
+  .catch(error => { console.error(error); });
