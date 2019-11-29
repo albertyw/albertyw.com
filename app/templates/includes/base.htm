@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='gen/bundle.min.css') }}" />
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
     <link rel="icon" href="/static/favicon.ico" type="image/x-icon">
+    <meta name="Description" content="{% block description %}{% endblock %}">
     {% include "includes/segment.htm" %}
     <title>{% block title %}{% endblock %}</title>
     {% endblock %}
