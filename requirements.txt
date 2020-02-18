@@ -6,6 +6,7 @@ syspath==2.0.0         # Modify paths
 Werkzeug==0.16.1       # Pinned to <1.0.0 because of werkzeug.contrib.atom
 
 # Features
+feedgen==0.9.0         # Generate atom feeds
 flask-sitemap==0.3.0   # Web sitemaps
 markdown2==2.3.8       # Markdown formatting
 Pygments==2.5.2        # Syntax highlighting support
