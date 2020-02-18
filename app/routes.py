@@ -1,6 +1,6 @@
 from urllib.parse import urljoin
-from werkzeug.contrib.atom import AtomFeed
 
+from feedgen.feed import FeedGenerator
 from flask import (
     Blueprint,
     abort,
@@ -60,19 +60,25 @@ def about():
 
 @handlers.route("/atom.xml")
 def atom_feed():
-    feed = AtomFeed('albertyw.com', feed_url=request.url, url=request.url_root)
+    fg = FeedGenerator()
+    fg.title('albertyw.com')
+    fg.id(request.url)
+    fg.author(name='Albert Wang', email='me@albertyw.com')
+    fg.link(href=request.url, rel='self')
+    fg.link(href=request.url_root, rel='alternate')
+    fg.language('en')
     for post in list(note_util.get_notes())[:5]:
         url = url_for('handlers.note', slug=post.slug)
         url = urljoin(request.url_root, url)
-        feed.add(
-            post.title,
-            post.note,
-            content_type='html',
-            author='Albert Wang',
-            url=url,
-            updated=post.time,
-        )
-    return feed.get_response()
+
+        fe = fg.add_entry()
+        fe.title(post.title)
+        fe.id(url)
+        fe.content(post.note, type='html')
+        fe.author(name='Albert Wang', email='me@albertyw.com')
+        fe.source(url)
+        fe.updated(post.time)
+    return fg.atom_str(pretty=True)
 
 
 @varsnap
