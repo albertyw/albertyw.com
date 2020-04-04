@@ -1,6 +1,6 @@
 # Core packages
-python-dotenv==0.11.0  # Read environment variables from .env
-Flask==1.1.1           # Web microframework
+python-dotenv==0.12.0  # Read environment variables from .env
+Flask==1.1.2           # Web microframework
 uWSGI==2.0.18          # Application server
 syspath==2.0.0         # Modify paths
 
@@ -13,6 +13,6 @@ pytz==2019.3           # Timezone support
 
 # Monitoring/tracking/logging
 blinker==1.4           # Dependency of rollbar
-newrelic==5.6.0.135    # Website monitoring
+newrelic==5.10.0.138   # Website monitoring
 rollbar==0.14.7        # rollbar.com error logging
 varsnap==1.1.1         # Test discovery

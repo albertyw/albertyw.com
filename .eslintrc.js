@@ -28,6 +28,14 @@ module.exports = {
     ]
   },
   "globals": {
-    "PDFObject": true
+    "describe": true,
+    "context": true,
+    "it": true,
+    "specify": true,
+    "before": true,
+    "after": true,
+    "beforeEach": true,
+    "afterEach": true,
+    "PDFObject": true,
   }
 };
