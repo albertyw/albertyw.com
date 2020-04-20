@@ -28,16 +28,16 @@ class TestNote(unittest.TestCase):
         self.note.parse_markdown(note)
         self.assertEqual(self.note.note, '<p><a href="y">x</a></p>\n')
 
-
-class UtilCase(unittest.TestCase):
     def test_get_malformed_note(self):
         note = b''
         note_file = tempfile.NamedTemporaryFile()
         note_file.write(note)
-        note = note_util.get_note_file_data(note_file.name, None)
+        note = note_util.Note.get_note_file_data(note_file.name, None)
         self.assertEqual(note, None)
         note_file.close()
 
+
+class UtilCase(unittest.TestCase):
     def check_prune_note_files(self, file_name, assert_contains):
         note_files = note_util.prune_note_files([file_name])
         contains = file_name in note_files
