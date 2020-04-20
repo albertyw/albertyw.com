@@ -7,6 +7,7 @@ import unittest
 
 import pytz
 import requests
+from titlecase import titlecase
 from varsnap import TestVarsnap  # noqa: F401
 
 from app import note_util
@@ -115,7 +116,7 @@ class TestGrammar(unittest.TestCase):
 
 class TestStyle(unittest.TestCase):
     def check_title_case(self, note):
-        self.assertEqual(note.title, note.title.title())
+        self.assertEqual(note.title, titlecase(note.title))
 
 
 def make_check_grammar(note):
