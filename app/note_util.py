@@ -55,6 +55,14 @@ class Note(object):
         note = markdown2.markdown(markdown, extras=MARKDOWN_EXTRAS)
         return note
 
+    def write_note(self):
+        assert Note.parse_markdown(self.markdown) == self.note
+        with open(self.note_file, 'w') as handle:
+            handle.write(self.title + "\n\n")
+            handle.write(self.slug + "\n\n")
+            handle.write(str(int(self.time.timestamp())) + "\n\n")
+            handle.write(self.markdown + "\n")
+
 
 @varsnap
 def prune_note_files(note_files):
