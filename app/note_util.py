@@ -19,6 +19,7 @@ MARKDOWN_EXTRAS = [
 
 class Note(object):
     def __init__(self):
+        self.note_file = ''
         self.title = ''
         self.slug = ''
         self.time = ''
@@ -26,23 +27,19 @@ class Note(object):
         self.markdown = ''
 
     @staticmethod
-    def parse_note(lines, timezone):
+    def get_note_file_data(note_file, timezone):
+        with open(note_file) as note_handle:
+            lines = note_handle.readlines()
         lines = [line.strip("\n") for line in lines]
         if len(lines) < 4 or not lines[4].isdigit():
             return None
         note_parsed = Note()
+        note_parsed.note_file = note_file
         note_parsed.title = lines[0]
         note_parsed.slug = lines[2]
         note_parsed.parse_time(lines[4], timezone)
         note_parsed.parse_markdown(lines[6:])
         note_parsed.markdown = '\n'.join(lines[6:])
-        return note_parsed
-
-    @staticmethod
-    def get_note_file_data(note_file, timezone):
-        with open(note_file) as note_handle:
-            lines = note_handle.readlines()
-        note_parsed = Note.parse_note(lines, timezone)
         return note_parsed
 
     @varsnap
