@@ -32,7 +32,7 @@ class Note(object):
         return self.time
 
     @varsnap
-    def parse_note(self, note):
+    def parse_markdown(self, note):
         self.note = markdown2.markdown(
             "\n".join(note),
             extras=MARKDOWN_EXTRAS,
@@ -72,7 +72,7 @@ def get_note_file_data(note_file, timezone):
     note_parsed.title = note[0]
     note_parsed.slug = note[2]
     note_parsed.parse_time(note[4], timezone)
-    note_parsed.parse_note(note[6:])
+    note_parsed.parse_markdown(note[6:])
     note_parsed.markdown = '\n'.join(note[6:])
     return note_parsed
 

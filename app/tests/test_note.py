@@ -23,9 +23,9 @@ class TestNote(unittest.TestCase):
         self.assertEqual(self.note.time.month, 9)
         self.assertEqual(self.note.time.day, 1)
 
-    def test_parse_note(self):
+    def test_parse_markdown(self):
         note = ['[x](y)']
-        self.note.parse_note(note)
+        self.note.parse_markdown(note)
         self.assertEqual(self.note.note, '<p><a href="y">x</a></p>\n')
 
 
