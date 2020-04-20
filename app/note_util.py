@@ -37,24 +37,26 @@ class Note(object):
         note_parsed.note_file = note_file
         note_parsed.title = lines[0]
         note_parsed.slug = lines[2]
-        note_parsed.parse_time(lines[4], timezone)
-        note_parsed.parse_markdown(lines[6:])
+        note_parsed.time = Note.parse_time(lines[4], timezone)
+        note_parsed.note = Note.parse_markdown(lines[6:])
         note_parsed.markdown = '\n'.join(lines[6:])
         return note_parsed
 
+    @staticmethod
     @varsnap
-    def parse_time(self, timestamp, timezone):
+    def parse_time(timestamp, timezone):
         timestamp = int(timestamp)
-        self.time = datetime.datetime.fromtimestamp(timestamp, timezone)
-        return self.time
+        time = datetime.datetime.fromtimestamp(timestamp, timezone)
+        return time
 
+    @staticmethod
     @varsnap
-    def parse_markdown(self, note):
-        self.note = markdown2.markdown(
-            "\n".join(note),
+    def parse_markdown(markdown):
+        note = markdown2.markdown(
+            "\n".join(markdown),
             extras=MARKDOWN_EXTRAS,
         )
-        return self.note
+        return note
 
 
 @varsnap
