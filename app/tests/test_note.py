@@ -7,6 +7,7 @@ import unittest
 
 import pytz
 import requests
+from titlecase import titlecase
 from varsnap import TestVarsnap  # noqa: F401
 
 from app import note_util
@@ -18,15 +19,18 @@ class TestNote(unittest.TestCase):
 
     def test_parse_time(self):
         time = 1504334092
-        self.note.parse_time(time, pytz.timezone('America/Los_Angeles'))
-        self.assertEqual(self.note.time.year, 2017)
-        self.assertEqual(self.note.time.month, 9)
-        self.assertEqual(self.note.time.day, 1)
+        parsed_time = note_util.Note.parse_time(
+            time,
+            pytz.timezone('America/Los_Angeles')
+        )
+        self.assertEqual(parsed_time.year, 2017)
+        self.assertEqual(parsed_time.month, 9)
+        self.assertEqual(parsed_time.day, 1)
 
     def test_parse_markdown(self):
-        note = ['[x](y)']
-        self.note.parse_markdown(note)
-        self.assertEqual(self.note.note, '<p><a href="y">x</a></p>\n')
+        markdown = '[x](y)'
+        note = note_util.Note.parse_markdown(markdown)
+        self.assertEqual(note, '<p><a href="y">x</a></p>\n')
 
     def test_get_malformed_note(self):
         note = b''
@@ -113,16 +117,28 @@ class TestGrammar(unittest.TestCase):
         self.assertEqual(len(matches), 0, json.dumps(matches, indent=4))
 
 
-def make_check_name(note):
+class TestStyle(unittest.TestCase):
+    def check_title_case(self, note):
+        self.assertEqual(note.title, titlecase(note.title), note.note_file)
+
+
+def make_check_grammar(note):
     def test(self):
         self.check_grammar(note.markdown)
+    return test
+
+
+def make_check_style(note):
+    def test(self):
+        self.check_title_case(note)
     return test
 
 
 timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
 for note in note_util.get_notes():
     delta = datetime.datetime.now(tz=timezone) - note.time
-    if delta > datetime.timedelta(days=30):
-        continue
-    test_func = make_check_name(note)
-    setattr(TestGrammar, 'test_%s' % note.slug, test_func)
+    if delta <= datetime.timedelta(days=30):
+        test_func = make_check_grammar(note)
+        setattr(TestGrammar, 'test_%s' % note.slug, test_func)
+    test_func = make_check_style(note)
+    setattr(TestStyle, 'test_%s' % note.slug, test_func)
