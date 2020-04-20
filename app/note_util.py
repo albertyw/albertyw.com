@@ -19,11 +19,28 @@ MARKDOWN_EXTRAS = [
 
 class Note(object):
     def __init__(self):
+        self.note_file = ''
         self.title = ''
         self.slug = ''
         self.time = ''
         self.note = ''
         self.markdown = ''
+
+    @staticmethod
+    def get_note_file_data(note_file, timezone):
+        with open(note_file) as note_handle:
+            lines = note_handle.readlines()
+        lines = [line.strip("\n") for line in lines]
+        if len(lines) < 4 or not lines[4].isdigit():
+            return None
+        note_parsed = Note()
+        note_parsed.note_file = note_file
+        note_parsed.title = lines[0]
+        note_parsed.slug = lines[2]
+        note_parsed.parse_time(lines[4], timezone)
+        note_parsed.parse_markdown(lines[6:])
+        note_parsed.markdown = '\n'.join(lines[6:])
+        return note_parsed
 
     @varsnap
     def parse_time(self, timestamp, timezone):
@@ -32,7 +49,7 @@ class Note(object):
         return self.time
 
     @varsnap
-    def parse_note(self, note):
+    def parse_markdown(self, note):
         self.note = markdown2.markdown(
             "\n".join(note),
             extras=MARKDOWN_EXTRAS,
@@ -62,21 +79,6 @@ def get_note_files():
     return files
 
 
-def get_note_file_data(note_file, timezone):
-    with open(note_file) as note_handle:
-        note = note_handle.readlines()
-    note = [line.strip("\n") for line in note]
-    if len(note) < 4 or not note[4].isdigit():
-        return None
-    note_parsed = Note()
-    note_parsed.title = note[0]
-    note_parsed.slug = note[2]
-    note_parsed.parse_time(note[4], timezone)
-    note_parsed.parse_note(note[6:])
-    note_parsed.markdown = '\n'.join(note[6:])
-    return note_parsed
-
-
 # @varsnap
 @cached_function
 def get_notes():
@@ -84,7 +86,7 @@ def get_notes():
     timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
     notes = []
     for note_file in note_files:
-        note_parsed = get_note_file_data(note_file, timezone)
+        note_parsed = Note.get_note_file_data(note_file, timezone)
         if note_parsed:
             notes.append(note_parsed)
     return notes
