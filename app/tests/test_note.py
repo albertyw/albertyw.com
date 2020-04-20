@@ -113,16 +113,28 @@ class TestGrammar(unittest.TestCase):
         self.assertEqual(len(matches), 0, json.dumps(matches, indent=4))
 
 
-def make_check_name(note):
+class TestStyle(unittest.TestCase):
+    def check_title_case(self, note):
+        self.assertEqual(note.title, note.title.title())
+
+
+def make_check_grammar(note):
     def test(self):
         self.check_grammar(note.markdown)
+    return test
+
+
+def make_check_style(note):
+    def test(self):
+        self.check_title_case(note)
     return test
 
 
 timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
 for note in note_util.get_notes():
     delta = datetime.datetime.now(tz=timezone) - note.time
-    if delta > datetime.timedelta(days=30):
-        continue
-    test_func = make_check_name(note)
-    setattr(TestGrammar, 'test_%s' % note.slug, test_func)
+    if delta <= datetime.timedelta(days=30):
+        test_func = make_check_grammar(note)
+        setattr(TestGrammar, 'test_%s' % note.slug, test_func)
+    test_func = make_check_style(note)
+    setattr(TestStyle, 'test_%s' % note.slug, test_func)
