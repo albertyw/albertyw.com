@@ -38,8 +38,8 @@ class Note(object):
         note_parsed.title = lines[0]
         note_parsed.slug = lines[2]
         note_parsed.time = Note.parse_time(lines[4], timezone)
-        note_parsed.note = Note.parse_markdown(lines[6:])
         note_parsed.markdown = '\n'.join(lines[6:])
+        note_parsed.note = Note.parse_markdown(note_parsed.markdown)
         return note_parsed
 
     @staticmethod
@@ -52,10 +52,7 @@ class Note(object):
     @staticmethod
     @varsnap
     def parse_markdown(markdown):
-        note = markdown2.markdown(
-            "\n".join(markdown),
-            extras=MARKDOWN_EXTRAS,
-        )
+        note = markdown2.markdown(markdown, extras=MARKDOWN_EXTRAS)
         return note
 
 
