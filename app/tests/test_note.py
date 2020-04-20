@@ -19,15 +19,18 @@ class TestNote(unittest.TestCase):
 
     def test_parse_time(self):
         time = 1504334092
-        self.note.parse_time(time, pytz.timezone('America/Los_Angeles'))
-        self.assertEqual(self.note.time.year, 2017)
-        self.assertEqual(self.note.time.month, 9)
-        self.assertEqual(self.note.time.day, 1)
+        parsed_time = note_util.Note.parse_time(
+            time,
+            pytz.timezone('America/Los_Angeles')
+        )
+        self.assertEqual(parsed_time.year, 2017)
+        self.assertEqual(parsed_time.month, 9)
+        self.assertEqual(parsed_time.day, 1)
 
     def test_parse_markdown(self):
-        note = ['[x](y)']
-        self.note.parse_markdown(note)
-        self.assertEqual(self.note.note, '<p><a href="y">x</a></p>\n')
+        markdown = '[x](y)'
+        note = note_util.Note.parse_markdown(markdown)
+        self.assertEqual(note, '<p><a href="y">x</a></p>\n')
 
     def test_get_malformed_note(self):
         note = b''
