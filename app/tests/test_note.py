@@ -116,7 +116,7 @@ class TestGrammar(unittest.TestCase):
 
 class TestStyle(unittest.TestCase):
     def check_title_case(self, note):
-        self.assertEqual(note.title, titlecase(note.title))
+        self.assertEqual(note.title, titlecase(note.title), note.note_file)
 
 
 def make_check_grammar(note):
