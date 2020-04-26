@@ -21,8 +21,10 @@ sudo apt-get update
 sudo apt-get install -y nginx
 
 # Configure nginx
+sudo rm /etc/nginx/nginx.conf
 sudo rm -rf /etc/nginx/sites-available
 sudo rm -rf /etc/nginx/sites-enabled/*
+sudo ln -s ~/albertyw.com/config/nginx/nginx.conf /etc/nginx/nginx.conf
 sudo ln -s ~/albertyw.com/config/nginx/app /etc/nginx/sites-enabled/albertyw.com-app
 sudo ln -s ~/albertyw.com/config/nginx/headers /etc/nginx/sites-enabled/albertyw.com-headers
 sudo rm -rf /var/www/html
