@@ -44,10 +44,7 @@ docker run \
 
 if [ "$ENV" = "production" ] && [ "$BRANCH" = "master" ]; then
     # Cleanup docker
-    docker container prune --force --filter "until=168h"
-    docker image prune --force --filter "until=168h"
-    docker volume prune --force
-    docker network prune --force
+    docker system prune --volumes --force --filter "until=168h"
 
     # Update nginx
     sudo service nginx reload
