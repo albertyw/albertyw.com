@@ -26,6 +26,14 @@ class Note(object):
         self.note = ''
         self.markdown = ''
 
+    def __eq__(self, other):
+        return type(self) == type(other) and \
+                self.title == getattr(other, 'title') and \
+                self.slug == getattr(other, 'slug') and \
+                self.time == getattr(other, 'time') and \
+                self.note == getattr(other, 'note') and \
+                self.markdown == getattr(other, 'markdown')
+
     @staticmethod
     def get_note_file_data(note_file, timezone):
         with open(note_file) as note_handle:
