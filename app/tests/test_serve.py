@@ -5,57 +5,57 @@ from app import serve
 
 
 class PageCase(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         serve.app.config['TESTING'] = True
         self.app = serve.app.test_client()
 
-    def test_index_load(self):
+    def test_index_load(self) -> None:
         self.page_test('/', b'Albert Wang')
 
-    def test_resume_load(self):
+    def test_resume_load(self) -> None:
         self.page_test('/resume', b'Resum')
 
-    def test_projects_load(self):
+    def test_projects_load(self) -> None:
         self.page_test('/projects', b'Projects')
 
-    def test_notes_load(self):
+    def test_notes_load(self) -> None:
         self.page_test('/notes', b'Notes')
 
-    def test_contact_load(self):
+    def test_contact_load(self) -> None:
         response = self.app.get('/contact')
         self.assertEqual(response.status_code, 302)
         self.assertEqual(urlparse(response.location).path, '/about')
 
-    def test_about_load(self):
+    def test_about_load(self) -> None:
         self.page_test('/about', b'Contact')
 
-    def test_robots_load(self):
+    def test_robots_load(self) -> None:
         self.page_test('/robots.txt', b'')
 
-    def test_sitemap_load(self):
+    def test_sitemap_load(self) -> None:
         self.page_test('/sitemap.xml', b'xml')
 
-    def test_not_found(self):
+    def test_not_found(self) -> None:
         response = self.app.get('/asdf')
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Not Found', response.get_data())
 
-    def test_note_load(self):
+    def test_note_load(self) -> None:
         self.page_test('/note/fibonaccoli', b'Romanesco')
 
-    def test_note_capital_load(self):
+    def test_note_capital_load(self) -> None:
         response = self.app.get('/note/Fibonaccoli')
         self.assertEqual(response.status_code, 302)
         self.assertEqual(urlparse(response.location).path, '/note/fibonaccoli')
 
-    def test_atom_feed_load(self):
+    def test_atom_feed_load(self) -> None:
         self.page_test('/atom.xml', b'xml')
 
-    def test_nonexistent_note_load(self):
+    def test_nonexistent_note_load(self) -> None:
         response = self.app.get('/note/asdf')
         self.assertEqual(response.status_code, 404)
 
-    def page_test(self, path, string):
+    def page_test(self, path: str, string: bytes) -> None:
         response = self.app.get(path)
         self.assertEqual(response.status_code, 200)
         self.assertIn(string, response.get_data())

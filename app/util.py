@@ -1,14 +1,16 @@
 # Various utility functions
 import os
 
+from typing import Any, Callable
+
 
 SHOULD_CACHE = os.environ.get('ENV', 'development') == 'production'
 
 
-def cached_function(func):
+def cached_function(func: Callable[..., Any]) -> Callable[..., Any]:
     data = {}
 
-    def wrapper(*args):
+    def wrapper(*args: Any) -> Any:
         if not SHOULD_CACHE:
             return func(*args)
         cache_key = ' '.join([str(x) for x in args])

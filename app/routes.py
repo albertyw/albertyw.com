@@ -10,6 +10,7 @@ from flask import (
     url_for,
 )
 from varsnap import varsnap
+from typing import Any
 
 from app import note_util
 
@@ -18,28 +19,28 @@ handlers = Blueprint('handlers', __name__)
 
 
 @handlers.route("/")
-def index():
+def index() -> Any:
     return render_template("index.htm")
 
 
 @handlers.route("/resume")
-def resume():
+def resume() -> Any:
     return render_template("resume.htm")
 
 
 @handlers.route("/projects")
-def projects():
+def projects() -> Any:
     return render_template("projects.htm")
 
 
 @handlers.route("/notes")
-def notes():
+def notes() -> Any:
     posts = note_util.get_notes()
     return render_template("notes.htm", posts=posts)
 
 
 @handlers.route("/note/<slug>")
-def note(slug=''):
+def note(slug: str = '') -> Any:
     if slug.lower() != slug:
         return redirect(url_for('handlers.note', slug=slug.lower()))
     post = note_util.get_note_from_slug(slug)
@@ -49,17 +50,17 @@ def note(slug=''):
 
 
 @handlers.route("/contact")
-def contact():
+def contact() -> Any:
     return redirect(url_for('handlers.about'))
 
 
 @handlers.route("/about")
-def about():
+def about() -> Any:
     return render_template("about.htm")
 
 
 @handlers.route("/atom.xml")
-def atom_feed():
+def atom_feed() -> Any:
     fg = FeedGenerator()
     fg.title('albertyw.com')
     fg.id(request.url)
@@ -82,6 +83,6 @@ def atom_feed():
 
 
 @varsnap
-def sitemap_urls():
+def sitemap_urls() -> Any:
     for post in list(note_util.get_notes()):
         yield url_for('handlers.note', slug=post.slug, _external=True)
