@@ -3,6 +3,7 @@ import os
 
 import markdown2
 import pytz
+from typing import Any, List, Optional, cast
 from varsnap import varsnap
 
 from app.util import cached_function
@@ -18,15 +19,15 @@ MARKDOWN_EXTRAS = [
 
 
 class Note(object):
-    def __init__(self):
+    def __init__(self) -> None:
         self.note_file = ''
         self.title = ''
         self.slug = ''
-        self.time = ''
+        self.time: datetime.datetime = datetime.datetime.now()
         self.note = ''
         self.markdown = ''
 
-    def __eq__(self, other):
+    def __eq__(self, other: Any) -> bool:
         return type(self) == type(other) and \
                 self.title == getattr(other, 'title') and \
                 self.slug == getattr(other, 'slug') and \
@@ -35,7 +36,7 @@ class Note(object):
                 self.markdown == getattr(other, 'markdown')
 
     @staticmethod
-    def get_note_file_data(note_file, timezone):
+    def get_note_file_data(note_file: str, timezone: datetime.tzinfo) -> Optional[Note]:
         with open(note_file) as note_handle:
             lines = note_handle.readlines()
         lines = [line.strip("\n") for line in lines]
@@ -52,18 +53,19 @@ class Note(object):
 
     @staticmethod
     @varsnap
-    def parse_time(timestamp, timezone):
-        timestamp = int(timestamp)
+    def parse_time(timestamp_str: str, timezone: datetime.tzinfo) -> datetime.datetime:
+        timestamp = int(timestamp_str)
         time = datetime.datetime.fromtimestamp(timestamp, timezone)
         return time
 
     @staticmethod
     @varsnap
-    def parse_markdown(markdown):
+    def parse_markdown(markdown: str) -> str:
         note = markdown2.markdown(markdown, extras=MARKDOWN_EXTRAS)
-        return note
+        note_str = cast(str, note)
+        return note_str
 
-    def write_note(self):
+    def write_note(self) -> None:
         assert Note.parse_markdown(self.markdown) == self.note
         with open(self.note_file, 'w') as handle:
             handle.write(self.title + "\n\n")
@@ -73,8 +75,8 @@ class Note(object):
 
 
 @varsnap
-def prune_note_files(note_files):
-    def is_valid_note(note_file):
+def prune_note_files(note_files: List[str]) -> List[str]:
+    def is_valid_note(note_file: str) -> bool:
         if '~' in note_file:
             return False
         if note_file[0] == '.':
@@ -84,7 +86,7 @@ def prune_note_files(note_files):
     return files
 
 
-def get_note_files():
+def get_note_files() -> List[str]:
     current_directory = os.path.dirname(os.path.realpath(__file__))
     notes_directory = os.path.join(current_directory, 'notes')
     files = os.listdir(notes_directory)
@@ -96,7 +98,7 @@ def get_note_files():
 
 # @varsnap
 @cached_function
-def get_notes():
+def get_notes() -> List[Note]:
     note_files = get_note_files()
     timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
     notes = []
@@ -109,10 +111,10 @@ def get_notes():
 
 @varsnap
 @cached_function
-def get_note_from_slug(slug):
+def get_note_from_slug(slug: str) -> Optional[Note]:
     """ Given the slug of a note, reurn the note contents """
     notes = get_notes()
     for note in notes:
         if note.slug == slug:
-            return note
+            return cast(Note, note)
     return None
