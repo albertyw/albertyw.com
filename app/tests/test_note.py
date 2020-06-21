@@ -8,16 +8,17 @@ import unittest
 import pytz
 import requests
 from titlecase import titlecase
+from typing import Any, Callable, cast
 from varsnap import test
 
 from app import note_util
 
 
 class TestNote(unittest.TestCase):
-    def setUp(self):
+    def setUp(self) -> None:
         self.note = note_util.Note()
 
-    def test_parse_time(self):
+    def test_parse_time(self) -> None:
         time = 1504334092
         parsed_time = note_util.Note.parse_time(
             time,
@@ -27,40 +28,40 @@ class TestNote(unittest.TestCase):
         self.assertEqual(parsed_time.month, 9)
         self.assertEqual(parsed_time.day, 1)
 
-    def test_parse_markdown(self):
+    def test_parse_markdown(self) -> None:
         markdown = '[x](y)'
         note = note_util.Note.parse_markdown(markdown)
         self.assertEqual(note, '<p><a href="y">x</a></p>\n')
 
-    def test_get_malformed_note(self):
-        note = b''
+    def test_get_malformed_note(self) -> None:
+        note_data = b''
         note_file = tempfile.NamedTemporaryFile()
-        note_file.write(note)
-        note = note_util.Note.get_note_file_data(note_file.name, None)
+        note_file.write(note_data)
+        note = note_util.Note.get_note_file_data(note_file.name, pytz.UTC)
         self.assertEqual(note, None)
         note_file.close()
 
 
 class UtilCase(unittest.TestCase):
-    def check_prune_note_files(self, file_name, assert_contains):
+    def check_prune_note_files(self, file_name: str, assert_contains: bool) -> None:
         note_files = note_util.prune_note_files([file_name])
         contains = file_name in note_files
         self.assertTrue(contains == assert_contains)
 
-    def test_normal_notes(self):
+    def test_normal_notes(self) -> None:
         self.check_prune_note_files('asdf', True)
 
-    def test_prune_tilde_notes(self):
+    def test_prune_tilde_notes(self) -> None:
         self.check_prune_note_files('asdf~', False)
 
-    def test_prune_dotfile_notes(self):
+    def test_prune_dotfile_notes(self) -> None:
         self.check_prune_note_files('.asdf', False)
 
-    def test_get_note_from_unknown_slug(self):
+    def test_get_note_from_unknown_slug(self) -> None:
         note = note_util.get_note_from_slug('asdf')
         self.assertEqual(note, None)
 
-    def test_slug_lower_case(self):
+    def test_slug_lower_case(self) -> None:
         notes = note_util.get_notes()
         for note in notes:
             self.assertEqual(note.slug, note.slug.lower())
@@ -85,7 +86,7 @@ class TestGrammar(unittest.TestCase):
         '777',
     ]
 
-    def check_grammar(self, text):
+    def check_grammar(self, text: str) -> None:
         text = re.sub(r"```[.\w\W]*```", "", text)
         text = re.sub(r"\[[.\w\W]*?\]\(.*?\)", "Z", text)
         text = re.sub(r"^\|.*\|$", "", text, flags=re.MULTILINE)
@@ -101,7 +102,7 @@ class TestGrammar(unittest.TestCase):
             'language': 'en-US',
             'text': text,
         }
-        response = requests.get(url, data, headers=headers)
+        response = requests.get(url, cast(Any, data), headers=headers)
         content = json.loads(response.content)
         matches = content['matches']
         matches = [
@@ -118,18 +119,18 @@ class TestGrammar(unittest.TestCase):
 
 
 class TestStyle(unittest.TestCase):
-    def check_title_case(self, note):
+    def check_title_case(self, note: note_util.Note) -> None:
         self.assertEqual(note.title, titlecase(note.title), note.note_file)
 
 
-def make_check_grammar(note):
-    def test(self):
+def make_check_grammar(note: note_util.Note) -> Callable[..., None]:
+    def test(self: Any) -> None:
         self.check_grammar(note.markdown)
     return test
 
 
-def make_check_style(note):
-    def test(self):
+def make_check_style(note: note_util.Note) -> Callable[..., None]:
+    def test(self: Any) -> None:
         self.check_title_case(note)
     return test
 
