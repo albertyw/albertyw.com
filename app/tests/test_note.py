@@ -43,7 +43,11 @@ class TestNote(unittest.TestCase):
 
 
 class UtilCase(unittest.TestCase):
-    def check_prune_note_files(self, file_name: str, assert_contains: bool) -> None:
+    def check_prune_note_files(
+        self,
+        file_name: str,
+        assert_contains: bool
+    ) -> None:
         note_files = note_util.prune_note_files([file_name])
         contains = file_name in note_files
         self.assertTrue(contains == assert_contains)

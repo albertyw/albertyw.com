@@ -36,7 +36,10 @@ class Note(object):
                 self.markdown == getattr(other, 'markdown')
 
     @staticmethod
-    def get_note_file_data(note_file: str, timezone: datetime.tzinfo) -> Optional[Note]:
+    def get_note_file_data(
+        note_file: str,
+        timezone: datetime.tzinfo
+    ) -> Optional["Note"]:
         with open(note_file) as note_handle:
             lines = note_handle.readlines()
         lines = [line.strip("\n") for line in lines]
@@ -53,7 +56,10 @@ class Note(object):
 
     @staticmethod
     @varsnap
-    def parse_time(timestamp_str: str, timezone: datetime.tzinfo) -> datetime.datetime:
+    def parse_time(
+        timestamp_str: str,
+        timezone: datetime.tzinfo
+    ) -> datetime.datetime:
         timestamp = int(timestamp_str)
         time = datetime.datetime.fromtimestamp(timestamp, timezone)
         return time
