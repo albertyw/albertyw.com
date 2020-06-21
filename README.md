@@ -36,7 +36,7 @@ python app/serve.py
 ### Running tests:
 ```bash
 flake8
-mypy app --ignore-missing-imports --strict
+mypy app --ignore-missing-imports --strict --allow-untyped-decorators
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
 npm test
@@ -56,7 +56,7 @@ ln -s .env.development .env
 
 # Test
 flake8
-mypy app --ignore-missing-imports --strict
+mypy app --ignore-missing-imports --strict --allow-untyped-decorators
 coverage run -m unittest discover
 coverage report
 codeclimate-test-reporter
