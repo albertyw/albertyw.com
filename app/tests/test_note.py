@@ -8,7 +8,7 @@ import unittest
 import pytz
 import requests
 from titlecase import titlecase
-from varsnap import TestVarsnap  # noqa: F401
+from varsnap import test
 
 from app import note_util
 
@@ -142,3 +142,11 @@ for note in note_util.get_notes():
         setattr(TestGrammar, 'test_%s' % note.slug, test_func)
     test_func = make_check_style(note)
     setattr(TestStyle, 'test_%s' % note.slug, test_func)
+
+
+class TestIntegration(unittest.TestCase):
+    def test_varsnap(self) -> None:
+        matches, logs = test()
+        if matches is None:
+            raise unittest.case.SkipTest('No Snaps found')
+        self.assertTrue(matches, logs)
