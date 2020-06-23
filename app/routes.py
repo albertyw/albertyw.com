@@ -80,6 +80,7 @@ def atom_feed() -> Any:
         fe.author(name='Albert Wang', email='me@albertyw.com')
         fe.source(url)
         fe.updated(post.time)
+        fe.link(href=url)
     return Response(fg.atom_str(pretty=True), mimetype='application/atom+xml')
 
 
