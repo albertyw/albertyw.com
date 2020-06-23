@@ -3,6 +3,7 @@ from urllib.parse import urljoin
 from feedgen.feed import FeedGenerator
 from flask import (
     Blueprint,
+    Response,
     abort,
     redirect,
     render_template,
@@ -79,7 +80,7 @@ def atom_feed() -> Any:
         fe.author(name='Albert Wang', email='me@albertyw.com')
         fe.source(url)
         fe.updated(post.time)
-    return fg.atom_str(pretty=True)
+    return Response(fg.atom_str(pretty=True), mimetype='application/atom+xml')
 
 
 @varsnap
