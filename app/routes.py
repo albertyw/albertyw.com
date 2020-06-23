@@ -69,6 +69,7 @@ def atom_feed() -> Any:
     fg.link(href=request.url, rel='self')
     fg.link(href=request.url_root, rel='alternate')
     fg.language('en')
+    fg.updated(note_util.get_notes()[0].time)
     for post in list(note_util.get_notes())[:5]:
         url = url_for('handlers.note', slug=post.slug)
         url = urljoin(request.url_root, url)
