@@ -1,2 +1,2 @@
-app/static/gen/*
-app/static/js/pdfobject.js
+static/gen/*
+static/js/pdfobject.js

@@ -77,4 +77,4 @@ target/
 
 node_modules
 
-app/static/gen/resume.pdf
+static/gen/resume.pdf

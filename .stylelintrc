@@ -5,6 +5,6 @@
     "indentation": 4
   },
   "ignoreFiles": [
-    "app/static/css/syntax.css"
+    "static/css/syntax.css"
   ]
 }
