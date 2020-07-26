@@ -14,7 +14,11 @@ dotenv.load_dotenv(os.path.join(git_root.path, '.env'))
 from app.routes import handlers, sitemap_urls  # noqa: E402
 
 
-app = Flask(__name__)
+app = Flask(
+    __name__,
+    static_url_path='/static',
+    static_folder=os.path.join(git_root.path, 'static'),
+)
 app.debug = os.environ['DEBUG'] == 'true'
 if os.environ.get('SERVER_NAME', ''):  # pragma: no cover
     app.config['SERVER_NAME'] = os.environ['SERVER_NAME']
