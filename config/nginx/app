@@ -3,7 +3,7 @@
 # Change IP address to domain name
 server {
     listen          80;
-    server_name     $server_addr albertyw.com www.albertyw.com;
+    server_name     albertyw.com www.albertyw.com;
     return          301 https://www.albertyw.com$request_uri;
 }
 
