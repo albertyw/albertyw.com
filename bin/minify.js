@@ -18,7 +18,6 @@ const jsInputFile = path.join('static', 'js', 'index.js');
 const jsOutputFile = path.join('static', 'gen', 'bundle.min.js');
 const jsRawAppends = [
   path.join('node_modules', 'bootstrap', 'dist', 'js', 'bootstrap.min.js'),
-  path.join('static', 'js', 'pdfobject.js'),
 ];
 
 // Minify js
