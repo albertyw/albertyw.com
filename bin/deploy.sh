@@ -24,6 +24,11 @@ if [ -n "$DEPLOY_BRANCH" ]; then
     git pull
 fi
 
+# Download resume
+git clone git@github.com:albertyw/resume
+mv resume/resume.pdf static/gen/resume.pdf
+rm -rf resume
+
 # Build container and network
 docker pull "$(grep FROM Dockerfile | awk '{print $2}')"
 docker build -t "$CONTAINER:$BRANCH" .
