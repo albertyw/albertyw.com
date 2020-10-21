@@ -91,11 +91,11 @@ class TestGrammar(unittest.TestCase):
     ]
 
     def check_grammar(self, text: str) -> None:
-        text = re.sub(r"```[.\w\W]*```", "", text)
+        text = re.sub(r"```[.\w\W]*```", "CODE", text)
+        text = re.sub(r"`[.\w\W]*`", "CODE", text)
         text = re.sub(r"\[[.\w\W]*?\]\(.*?\)", "Z", text)
         text = re.sub(r"^\|.*\|$", "", text, flags=re.MULTILINE)
         text = re.sub(r"^>.*$", "", text, flags=re.MULTILINE)
-        text = text.replace("`", "\"")
         text = text.replace("\n", " ")
         url = 'http://api.grammarbot.io/v2/check'
         headers = {
