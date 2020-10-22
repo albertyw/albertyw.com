@@ -22,6 +22,9 @@ const jsRawAppends = [
 ];
 
 // Minify js
+console.log('Minifying JS:');
+console.log(jsInputFile);
+console.log('');
 const jsOutputStream = fs.createWriteStream(jsOutputFile);
 browserify(jsInputFile, {debug: true})
   .transform('envify')
@@ -45,6 +48,8 @@ jsOutputStream.on('finish', () => {
 
 
 // Minify CSS
+console.log('Minifying CSS:');
+console.log(cssSources.join(', '));
 new CleanCSS({returnPromise: true})
   .minify(cssSources)
   .then(output => {
