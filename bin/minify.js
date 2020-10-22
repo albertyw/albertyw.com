@@ -10,6 +10,7 @@ const cssSources = [
   path.join('node_modules', 'normalize.css', 'normalize.css'),
   path.join('node_modules', 'bootstrap', 'dist', 'css', 'bootstrap.css'),
   path.join('static', 'css', 'global.css'),
+  path.join('static', 'css', 'syntax.css'),
 ];
 const cssOutputFile = path.join('static', 'gen', 'bundle.min.css');
 
