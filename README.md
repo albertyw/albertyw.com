@@ -16,7 +16,7 @@ Development
 ### Setup (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)):
 
 ```bash
-mkvirtualenv albertyw -p python3.8
+mkvirtualenv albertyw -p python3.9
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
@@ -50,7 +50,7 @@ This repo uses:
 
 ```bash
 # Setup
-pyenv local 3.8
+pyenv local 3.9
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
