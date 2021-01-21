@@ -40,6 +40,11 @@ def notes() -> Any:
     return render_template("notes.htm", posts=posts)
 
 
+@handlers.route("/shelf")
+def shelf() -> Any:
+    return render_template("shelf.htm")
+
+
 @handlers.route("/note/<slug>")
 def note(slug: str = '') -> Any:
     if slug.lower() != slug:
