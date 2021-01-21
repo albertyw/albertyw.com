@@ -24,11 +24,6 @@ class PageCase(unittest.TestCase):
     def test_shelf_load(self) -> None:
         self.page_test('/shelf', b'Shelf')
 
-    def test_contact_load(self) -> None:
-        response = self.app.get('/contact')
-        self.assertEqual(response.status_code, 302)
-        self.assertEqual(urlparse(response.location).path, '/about')
-
     def test_about_load(self) -> None:
         self.page_test('/about', b'Contact')
 

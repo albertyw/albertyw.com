@@ -55,11 +55,6 @@ def note(slug: str = '') -> Any:
     return render_template("note.htm", post=post)
 
 
-@handlers.route("/contact")
-def contact() -> Any:
-    return redirect(url_for('handlers.about'))
-
-
 @handlers.route("/about")
 def about() -> Any:
     return render_template("about.htm")
