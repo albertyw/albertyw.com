@@ -22,9 +22,9 @@ server {
 
 ### Redirects ###
 server {
-    listen          80;
-    server_name     albertyw.com www.albertyw.com;
-    return          301 https://www.albertyw.com$request_uri;
+    listen         80;
+    server_name    albertyw.com www.albertyw.com;
+    return         301 https://www.albertyw.com$request_uri;
 }
 
 # Change naked domain to www
@@ -64,10 +64,6 @@ server {
     ssl_certificate_key         /etc/nginx/ssl/server.key;
     ssl_dhparam                 /etc/nginx/ssl/dhparams.pem;
 
-    # config to enable HSTS(HTTP Strict Transport Security) https://developer.mozilla.org/en-US/docs/Security/HTTP_Strict_Transport_Security
-    # to avoid ssl stripping https://en.wikipedia.org/wiki/SSL_stripping#SSL_stripping
-    add_header Strict-Transport-Security "max-age=1209600; includeSubdomains;";
-
     gzip on;
     gzip_disable "msie6";
     gzip_vary on;
@@ -80,23 +76,20 @@ server {
     location / {
         include          sites-enabled/albertyw.com-headers;
         proxy_pass       http://127.0.0.1:5000;
-        proxy_set_header X-Real-IP         $remote_addr;
-        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
-        proxy_set_header Host              $http_host;
-        proxy_set_header X-Forwarded-Proto $scheme;
         proxy_buffering  off;
+        add_header       'Cache-Control'                 'public';
         expires          7d;
-        add_header       Cache-Control "public";
     }
 
     location /static {
-        root             /home/albertyw/albertyw.com;
-        expires          24h;
         include          sites-enabled/albertyw.com-headers;
+        root             /home/albertyw/albertyw.com;
         add_header       'Access-Control-Allow-Origin'   'https://www.albertyw.com';
         add_header       'Access-Control-Allow-Methods'  'GET, HEAD, OPTIONS';
         add_header       'Access-Control-Allow-Headers'  'range';
         add_header       'Access-Control-Expose-Headers' 'content-length';
         add_header       'Access-Control-Max-Age'        '1728000';
+        add_header       'Cache-Control'                 'public';
+        expires          24h;
     }
 }
