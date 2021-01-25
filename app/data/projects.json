@@ -1,0 +1,90 @@
+{
+    "Ruby": {
+        "AppleClassClient": {
+            "description": "API for Apple's Class Roster",
+            "github": "https://github.com/albertyw/apple_class_client",
+            "rubygems": "https://rubygems.org/gems/apple_class_client"
+        },
+        "AppleDEPClient": {
+            "description": "API for Apple's Device Enrollment Program",
+            "github": "https://github.com/albertyw/apple_dep_client",
+            "rubygems": "https://rubygems.org/gems/apple_dep_client"
+        },
+        "IOSConfigProfile": {
+            "description": "Library for making configuration profiles for iOS",
+            "github": "https://github.com/albertyw/ios_config_profile",
+            "rubygems": "https://rubygems.org/gems/ios_config_profile"
+        }
+    },
+    "Python": {
+        "ItolAPI": {
+            "description": "API for creating/downloading trees for the interactive Tree of Life (iTOL)",
+            "github": "https://github.com/albertyw/itolapi",
+            "pypi": "https://pypi.python.org/pypi/itolapi"
+        },
+        "Mailgun2": {
+            "description": "Small legacy API for Mailgun",
+            "github": "https://github.com/albertyw/python-mailgun2",
+            "pypi": "https://pypi.python.org/pypi/mailgun2"
+        },
+        "PyZipTax": {
+            "description": "API for grabbing US tax rates",
+            "github": "https://github.com/albertyw/pyziptax",
+            "pypi": "https://pypi.python.org/pypi/pyziptax"
+        },
+        "Git Browse": {
+            "description": "Git alias extension for opening up git repositories on github and phabricator",
+            "github": "https://github.com/albertyw/git-browse",
+            "pypi": "https://pypi.python.org/pypi/git-browse"
+        },
+        "Git Reviewers": {
+            "description": "Git alias extension for finding code reviewers based on git history",
+            "github": "https://github.com/albertyw/git-reviewers",
+            "pypi": "ttps://pypi.python.org/pypi/git-browse"
+        },
+        "SysPath": {
+            "description": "Python module to simplify appending common paths to sys.path",
+            "github": "https://github.com/albertyw/syspath",
+            "pypi": "https://pypi.python.org/pypi/syspath"
+        },
+        "CSV-iCAL": {
+            "description": "Library for converting between CSV and iCAL files",
+            "github": "https://github.com/albertyw/csv-ical",
+            "pypi": "https://pypi.python.org/pypi/csv-ical"
+        },
+        "Req-Update": {
+            "description": "CLI to update python dependencies",
+            "github": "https://github.com/albertyw/req-update",
+            "pypi": "https://pypi.python.org/pypi/req-update"
+        }
+    },
+    "Javascript": {
+        "ajax-cache-parser": {
+            "description": "Library for parsing HTTP headers for caching information",
+            "github": "https://github.com/albertyw/ajax-cache-parser",
+            "npm": "https://www.npmjs.com/package/ajax-cache-parser"
+        },
+        "gentle-alerts": {
+            "description": " Google chrome extension to convert alerts into gentle notifications",
+            "github": "https://github.com/albertyw/gentle-alerts",
+            "npm": "https://www.npmjs.com/package/gentle-alerts"
+        }
+    },
+    "Web Apps": {
+        "Reaction.Pics": {
+            "description": "Single page app for finding programming memes",
+            "github": "https://github.com/albertyw/reaction-pics",
+            "web": "http://www.reaction.pics/"
+        },
+        "Codemancer": {
+            "description": "Repackaged Currently Extension",
+            "github": "https://github.com/albertyw/codemancer",
+            "web": "https://codemancer.com/"
+        },
+        "Albertyw.com": {
+            "description": "This Website",
+            "github": "https://github.com/albertyw/albertyw.com",
+            "web": "https://www.albertyw.com/"
+        }
+    }
+}
