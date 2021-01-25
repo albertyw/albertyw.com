@@ -41,6 +41,22 @@ class TestNote(unittest.TestCase):
         self.assertEqual(note, None)
         note_file.close()
 
+    def test_write_note(self) -> None:
+        with tempfile.NamedTemporaryFile() as note_file:
+            self.note.note_file = note_file.name
+            self.note.title = 'title'
+            self.note.slug = 'slug'
+            self.note.time = datetime.datetime.now()
+            self.note.markdown = 'markdown'
+            self.note.note = note_util.Note.parse_markdown(self.note.markdown)
+            self.note.write_note()
+            note_file.flush()
+            with open(note_file.name, 'r') as handle:
+                data = handle.read()
+            self.assertIn('title', data)
+            self.assertIn('slug', data)
+            self.assertIn('markdown', data)
+
 
 class UtilCase(unittest.TestCase):
     def check_prune_note_files(
