@@ -155,5 +155,5 @@ class TestIntegration(unittest.TestCase):
     def test_varsnap(self) -> None:
         matches, logs = test()
         if matches is None:
-            raise unittest.case.SkipTest('No Snaps found')
+            raise unittest.case.SkipTest('No Snaps found')  # pragma: no cover
         self.assertTrue(matches, logs)
