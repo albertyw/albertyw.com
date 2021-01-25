@@ -13,31 +13,11 @@
               <h3>{{ project_name }}</h3>
               {{ language_project.description }}
               <br />
-              {% if language_project.github %}
-                <a href="{{ language_project.github }}">
-                  <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
+              {% for info_name, info in language_project.items() if info_name != 'description' %}
+                <a href="{{ info }}">
+                  <img class="project-logos" src="{{ url_for('static', filename=info_name+'.png') }}" />
                 </a>
-              {% endif %}
-              {% if language_project.rubygems %}
-                <a href="{{ language_project.rubygems }}">
-                  <img class="project-logos" src="{{ url_for('static', filename='rubygems.png') }}" />
-                </a>
-              {% endif %}
-              {% if language_project.pypi %}
-                <a href="{{ language_project.pypi }}">
-                  <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-                </a>
-              {% endif %}
-              {% if language_project.npm %}
-                <a href="{{ language_project.npm }}">
-                  <img class="project-logos" src="{{ url_for('static', filename='npm.png') }}" />
-                </a>
-              {% endif %}
-              {% if language_project.web %}
-                <a href="{{ language_project.web }}">
-                  <img class="project-logos" src="{{ url_for('static', filename='web.png') }}" />
-                </a>
-              {% endif %}
+              {% endfor %}
             {% endfor %}
           </section>
         </section>
