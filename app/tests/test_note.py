@@ -140,11 +140,13 @@ def make_check_style(note: note_util.Note) -> Callable[..., None]:
 
 
 timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
+first = True
 for note in note_util.get_notes():
     delta = datetime.datetime.now(tz=timezone) - note.time
-    if delta <= datetime.timedelta(days=30):
+    if delta <= datetime.timedelta(days=30) or first:
         test_func = make_check_grammar(note)
         setattr(TestGrammar, 'test_%s' % note.slug, test_func)
+        first = False
     test_func = make_check_style(note)
     setattr(TestStyle, 'test_%s' % note.slug, test_func)
 
