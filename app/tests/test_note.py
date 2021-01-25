@@ -35,11 +35,10 @@ class TestNote(unittest.TestCase):
 
     def test_get_malformed_note(self) -> None:
         note_data = b''
-        note_file = tempfile.NamedTemporaryFile()
-        note_file.write(note_data)
-        note = note_util.Note.get_note_file_data(note_file.name, pytz.UTC)
-        self.assertEqual(note, None)
-        note_file.close()
+        with tempfile.NamedTemporaryFile() as note_file:
+            note_file.write(note_data)
+            note = note_util.Note.get_note_file_data(note_file.name, pytz.UTC)
+            self.assertEqual(note, None)
 
     def test_write_note(self) -> None:
         with tempfile.NamedTemporaryFile() as note_file:
