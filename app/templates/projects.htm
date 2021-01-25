@@ -5,194 +5,43 @@
   <div class="content">
     <section>
       <h1>Open Source</h1>
-      <section>
-        <h2>Ruby</h2>
+      {% for language_name, language_projects in projects.items() %}
         <section>
-          <h3>AppleClassClient</h3>
-          API for Apple's Class Roster
-          <br />
-          <a href="https://github.com/albertyw/apple_class_client">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://rubygems.org/gems/apple_class_client">
-            <img class="project-logos" src="{{ url_for('static', filename='rubygems.png') }}" />
-          </a>
+          <h2>{{ language_name }}</h2>
+          <section>
+            {% for project_name, language_project in language_projects.items() %}
+              <h3>{{ project_name }}</h3>
+              {{ language_project.description }}
+              <br />
+              {% if language_project.github %}
+                <a href="{{ language_project.github }}">
+                  <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
+                </a>
+              {% endif %}
+              {% if language_project.rubygems %}
+                <a href="{{ language_project.rubygems }}">
+                  <img class="project-logos" src="{{ url_for('static', filename='rubygems.png') }}" />
+                </a>
+              {% endif %}
+              {% if language_project.pypi %}
+                <a href="{{ language_project.pypi }}">
+                  <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
+                </a>
+              {% endif %}
+              {% if language_project.npm %}
+                <a href="{{ language_project.npm }}">
+                  <img class="project-logos" src="{{ url_for('static', filename='npm.png') }}" />
+                </a>
+              {% endif %}
+              {% if language_project.web %}
+                <a href="{{ language_project.web }}">
+                  <img class="project-logos" src="{{ url_for('static', filename='web.png') }}" />
+                </a>
+              {% endif %}
+            {% endfor %}
+          </section>
         </section>
-        <section>
-          <h3>AppleDEPClient</h3>
-          API for Apple's Device Enrollment Program
-          <br />
-          <a href="https://github.com/albertyw/apple_dep_client">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://rubygems.org/gems/apple_dep_client">
-            <img class="project-logos" src="{{ url_for('static', filename='rubygems.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>IOSConfigProfile</h3>
-          Library for making configuration profiles for iOS
-          <br />
-          <a href="https://github.com/albertyw/ios_config_profile">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://rubygems.org/gems/ios_config_profile">
-            <img class="project-logos" src="{{ url_for('static', filename='rubygems.png') }}" />
-          </a>
-        </section>
-      </section>
-      <section>
-        <h2>Python</h2>
-        <section>
-          <h3>ItolAPI</h3>
-          API for creating/downloading trees for the interactive Tree of Life (iTOL)
-          <br />
-          <a href="https://github.com/albertyw/itolapi">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/itolapi">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>Mailgun2</h3>
-          Small legacy API for Mailgun
-          <br />
-          <a href="https://github.com/albertyw/python-mailgun2">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/mailgun2">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>PyZipTax</h3>
-          API for grabbing US tax rates
-          <br />
-          <a href="https://github.com/albertyw/pyziptax">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/pyziptax">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>Git Browse</h3>
-          Git alias extension for opening up git repositories on github and phabricator
-          <br />
-          <a href="https://github.com/albertyw/git-browse">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/git-browse">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>Git Reviewers</h3>
-          Git alias extension for finding code reviewers based on git history
-          <br />
-          <a href="https://github.com/albertyw/git-reviewers">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/git-browse">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>Sys Path</h3>
-          Python module to simplify appending common paths to sys.path.
-          <br />
-          <a href="https://github.com/albertyw/syspath">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/syspath">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>CSV-iCAL</h3>
-          Library for converting between CSV and iCAL files
-          <br />
-          <a href="https://github.com/albertyw/csv-ical">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/csv-ical">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>Req-Update</h3>
-          CLI to update python dependencies
-          <br />
-          <a href="https://github.com/albertyw/req-update">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://pypi.python.org/pypi/req-update">
-            <img class="project-logos" src="{{ url_for('static', filename='pypi.png') }}" />
-          </a>
-        </section>
-      </section>
-      <section>
-        <h2>Javascript</h2>
-        <section>
-          <h3>ajax-cache-parser</h3>
-          Library for parsing HTTP headers for caching information
-          <br />
-          <a href="https://github.com/albertyw/ajax-cache-parser">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://www.npmjs.com/package/ajax-cache-parser">
-            <img class="project-logos" src="{{ url_for('static', filename='npm.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>gentle-alerts</h3>
-          Google chrome extension to convert alerts into gentle notifications
-          <br />
-          <a href="https://github.com/albertyw/gentle-alerts">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://www.npmjs.com/package/gentle-alerts">
-            <img class="project-logos" src="{{ url_for('static', filename='npm.png') }}" />
-          </a>
-        </section>
-      </section>
-      <section>
-        <h2>Web Apps</h2>
-        <section>
-          <h3>Reaction Pics</h3>
-          Single page app for finding programming memes
-          <br />
-          <a href="https://github.com/albertyw/reaction-pics">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="http://www.reaction.pics/">
-            <img class="project-logos" src="{{ url_for('static', filename='web.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>Codemancer</h3>
-          Repackaged <a href="https://chrome.google.com/webstore/detail/currently/ojhmphdkpgbibohbnpbfiefkgieacjmh">Currently</a> extension.
-          <br />
-          <a href="https://github.com/albertyw/currently-website">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://codemancer.com/">
-            <img class="project-logos" src="{{ url_for('static', filename='web.png') }}" />
-          </a>
-        </section>
-        <section>
-          <h3>Albertyw.com</h3>
-          This website
-          <br />
-          <a href="https://github.com/albertyw/albertyw.com">
-            <img class="project-logos" src="{{ url_for('static', filename='github.png') }}" />
-          </a>
-          <a href="https://www.albertyw.com/">
-            <img class="project-logos" src="{{ url_for('static', filename='web.png') }}" />
-          </a>
-        </section>
-      </section>
+      {% endfor %}
     </section>
   </div>
   <div class="content">

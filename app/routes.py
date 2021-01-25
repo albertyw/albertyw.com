@@ -13,7 +13,7 @@ from flask import (
 from varsnap import varsnap
 from typing import Any
 
-from app import note_util
+from app import data, note_util
 
 
 handlers = Blueprint('handlers', __name__)
@@ -31,7 +31,8 @@ def resume() -> Any:
 
 @handlers.route("/projects")
 def projects() -> Any:
-    return render_template("projects.htm")
+    projects = data.get_projects()
+    return render_template("projects.htm", projects=projects.data)
 
 
 @handlers.route("/notes")
