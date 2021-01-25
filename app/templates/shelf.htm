@@ -4,25 +4,15 @@
 {% block content %}
   <section class="content">
     <h1>Shelf</h1>
-    <h2>Tech</h2>
-    <ul>
-      <li><a href="https://www.python.org/dev/peps/pep-0020/#the-zen-of-python">The Zen of Python</a></li>
-    </ul>
-    <h2>Technical Leadership</h2>
-    <ul>
-      <li><a href="https://www.amazon.com/gp/product/1484261461/">Building a Career in Software: A Comprehensive Guide to Success in the Software Industry</a></li>
-      <li><a href="https://softwareleadweekly.com/">Software Lead Weekly</a></li>
-      <li><a href="https://chriskiehl.com/article/thoughts-after-6-years">Software development topics I've changed my mind on after 6 years in the industry</a></li>
-    </ul>
-    <h2>People &amp; Management</h2>
-    <ul>
-      <li><a href="https://brucefwebster.com/2008/04/11/the-wetware-crisis-the-dead-sea-effect/">The Wetware Crisis: The Dead Sea Effect</a></li>
-      <li><a href="https://www.ribbonfarm.com/2009/10/07/the-gervais-principle-or-the-office-according-to-the-office/">The Gervais Principle, Or The Office According To "The Office"</a></li>
-    </ul>
-    <h2>Other</h2>
-    <ul>
-      <li><a href="https://acoup.blog/2019/05/10/collections-the-siege-of-gondor/">A Collection of Unmitigated Pedantry: The Siege of Gondor</a></li>
-      <li><a href="https://factorio.com/">Factorio</a></li>
-    </ul>
+    {% for shelf_name, section in shelf.items() %}
+      <h2>{{ shelf_name }}</h2>
+      <ul>
+        {% for item in section %}
+          <li>
+            <a href="{{ item.link }}">{{ item.name }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% endfor %}
   </section>
 {% endblock %}
