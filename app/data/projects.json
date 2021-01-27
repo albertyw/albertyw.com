@@ -1,19 +1,19 @@
 {
-    "Ruby": {
-        "AppleClassClient": {
-            "description": "API for Apple's Class Roster",
-            "github": "https://github.com/albertyw/apple_class_client",
-            "rubygems": "https://rubygems.org/gems/apple_class_client"
+    "Web Apps": {
+        "Reaction.Pics": {
+            "description": "Single page app for finding programming memes",
+            "github": "https://github.com/albertyw/reaction-pics",
+            "web": "http://www.reaction.pics/"
         },
-        "AppleDEPClient": {
-            "description": "API for Apple's Device Enrollment Program",
-            "github": "https://github.com/albertyw/apple_dep_client",
-            "rubygems": "https://rubygems.org/gems/apple_dep_client"
+        "Codemancer": {
+            "description": "Repackaged Currently Extension",
+            "github": "https://github.com/albertyw/codemancer",
+            "web": "https://codemancer.com/"
         },
-        "IOSConfigProfile": {
-            "description": "Library for making configuration profiles for iOS",
-            "github": "https://github.com/albertyw/ios_config_profile",
-            "rubygems": "https://rubygems.org/gems/ios_config_profile"
+        "Albertyw.com": {
+            "description": "This Website",
+            "github": "https://github.com/albertyw/albertyw.com",
+            "web": "https://www.albertyw.com/"
         }
     },
     "Python": {
@@ -70,21 +70,21 @@
             "npm": "https://www.npmjs.com/package/gentle-alerts"
         }
     },
-    "Web Apps": {
-        "Reaction.Pics": {
-            "description": "Single page app for finding programming memes",
-            "github": "https://github.com/albertyw/reaction-pics",
-            "web": "http://www.reaction.pics/"
+    "Ruby": {
+        "AppleClassClient": {
+            "description": "API for Apple's Class Roster",
+            "github": "https://github.com/albertyw/apple_class_client",
+            "rubygems": "https://rubygems.org/gems/apple_class_client"
         },
-        "Codemancer": {
-            "description": "Repackaged Currently Extension",
-            "github": "https://github.com/albertyw/codemancer",
-            "web": "https://codemancer.com/"
+        "AppleDEPClient": {
+            "description": "API for Apple's Device Enrollment Program",
+            "github": "https://github.com/albertyw/apple_dep_client",
+            "rubygems": "https://rubygems.org/gems/apple_dep_client"
         },
-        "Albertyw.com": {
-            "description": "This Website",
-            "github": "https://github.com/albertyw/albertyw.com",
-            "web": "https://www.albertyw.com/"
+        "IOSConfigProfile": {
+            "description": "Library for making configuration profiles for iOS",
+            "github": "https://github.com/albertyw/ios_config_profile",
+            "rubygems": "https://rubygems.org/gems/ios_config_profile"
         }
     }
 }
