@@ -1,19 +1,29 @@
 {
     "Web Apps": {
-        "Reaction.Pics": {
+        "reaction.pics": {
             "description": "Single page app for finding programming memes",
             "github": "https://github.com/albertyw/reaction-pics",
             "web": "http://www.reaction.pics/"
         },
-        "Codemancer": {
+        "codemancer.com": {
             "description": "Repackaged Currently Extension",
             "github": "https://github.com/albertyw/codemancer",
             "web": "https://codemancer.com/"
         },
-        "Albertyw.com": {
+        "albertyw.com": {
             "description": "This Website",
             "github": "https://github.com/albertyw/albertyw.com",
             "web": "https://www.albertyw.com/"
+        },
+        "pharmadataassociates.com": {
+            "description": "",
+            "github": "https://github.com/albertyw/pharmadataassociates",
+            "web": "https://www.pharmadataassociates.com/"
+        },
+        "statsonice.com": {
+            "description": "Figure Skating Statistics",
+            "github.com": "https://github.com/curranoi/statsonice",
+            "web": "https://www.statsonice.com/"
         }
     },
     "Python": {
