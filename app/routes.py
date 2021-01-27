@@ -32,7 +32,7 @@ def resume() -> Any:
 @handlers.route("/projects")
 def projects() -> Any:
     projects = data.get_projects()
-    return render_template("projects.htm", projects=projects.data)
+    return render_template("projects.htm", projects=projects)
 
 
 @handlers.route("/notes")

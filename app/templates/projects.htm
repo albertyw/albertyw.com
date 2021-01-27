@@ -5,17 +5,17 @@
   <div class="content">
     <section>
       <h1>Open Source</h1>
-      {% for language_name, language_projects in projects.items() %}
+      {% for language in projects.languages %}
         <section>
-          <h2>{{ language_name }}</h2>
+          <h2>{{ language.name }}</h2>
           <section>
-            {% for project_name, language_project in language_projects.items() %}
-              <h3>{{ project_name }}</h3>
-              {{ language_project.description }}
+            {% for project in language.projects %}
+              <h3>{{ project.name }}</h3>
+              {{ project.description }}
               <br />
-              {% for info_name, info in language_project.items() if info_name != 'description' %}
-                <a href="{{ info }}">
-                  <img class="project-logos" src="{{ url_for('static', filename=info_name+'.png') }}" />
+              {% for link_type, link in project.links().items() %}
+                <a href="{{ link }}">
+                  <img class="project-logos" src="{{ url_for('static', filename=link_type+'.png') }}" />
                 </a>
               {% endfor %}
             {% endfor %}
