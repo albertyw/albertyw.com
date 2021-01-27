@@ -11,12 +11,13 @@ class TestProjects(unittest.TestCase):
     def tearDown(self) -> None:
         util.SHOULD_CACHE = self.original_cache
 
-    def test_load(self) -> None:
-        projects = data.Projects.load()
-        self.assertNotEqual(projects.data, {})
-        self.assertIn('Python', projects.data)
-        self.assertIn('Git Browse', projects.data['Python'])
-        self.assertIn('description', projects.data['Python']['Git Browse'])
+    def test_load_from_file(self) -> None:
+        projects = data.Projects.load_from_file()
+        self.assertNotEqual(projects.languages, [])
+        self.assertTrue(len(projects.languages) > 0)
+        self.assertTrue(len(projects.languages[0].projects) > 0)
+        self.assertTrue(len(projects.languages[0].projects[0].name) > 0)
+        self.assertTrue(len(projects.languages[0].projects[0].description) > 0)
 
     def test_get_projects(self) -> None:
         projects1 = data.get_projects()
