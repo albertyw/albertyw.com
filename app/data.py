@@ -84,20 +84,55 @@ def get_projects() -> Projects:
 
 class Shelf():
     def __init__(self) -> None:
-        self.data: Dict[str, List[Dict[str, str]]]
+        self.sections: List[Section] = []
 
     @staticmethod
-    def load() -> 'Shelf':
+    def load_from_file() -> 'Shelf':
         current_directory = os.path.dirname(os.path.realpath(__file__))
         path = os.path.join(current_directory, 'data', 'shelf.json')
         with open(path, 'r') as handle:
             shelf_data = handle.read()
+        parsed_data = json.loads(shelf_data)
+        return Shelf.load(parsed_data)
+
+    @staticmethod
+    def load(shelf_data: Dict[str, List[Dict[str, str]]]) -> 'Shelf':
         shelf = Shelf()
-        shelf.data = json.loads(shelf_data)
+        for key, value in shelf_data.items():
+            section = Section.load(key, value)
+            shelf.sections.append(section)
         return shelf
+
+
+class Section():
+    def __init__(self) -> None:
+        self.name: str = ''
+        self.items: List[Item] = []
+
+    @staticmethod
+    def load(name: str, data: List[Dict[str, str]]) -> 'Section':
+        section = Section()
+        section.name = name
+        for d in data:
+            item = Item.load(d)
+            section.items.append(item)
+        return section
+
+
+class Item():
+    def __init__(self) -> None:
+        self.name: str = ''
+        self.link: str = ''
+
+    @staticmethod
+    def load(data: Dict[str, str]) -> 'Item':
+        item = Item()
+        item.name = data['name']
+        item.link = data['link']
+        return item
 
 
 @cached_function
 def get_shelf() -> Shelf:
-    loaded_shelf = Shelf.load()
+    loaded_shelf = Shelf.load_from_file()
     return loaded_shelf
