@@ -33,11 +33,13 @@ class TestShelf(unittest.TestCase):
     def tearDown(self) -> None:
         util.SHOULD_CACHE = self.original_cache
 
-    def test_load(self) -> None:
-        shelf = data.Shelf.load()
-        self.assertNotEqual(shelf.data, {})
-        self.assertIn('Technology', shelf.data)
-        self.assertIn('link', shelf.data['Technology'][0])
+    def test_load_from_file(self) -> None:
+        shelf = data.Shelf.load_from_file()
+        self.assertNotEqual(shelf.sections, [])
+        self.assertNotEqual(shelf.sections[0].name, '')
+        self.assertNotEqual(shelf.sections[0].items, [])
+        self.assertNotEqual(shelf.sections[0].items[0].name, '')
+        self.assertNotEqual(shelf.sections[0].items[0].link, '')
 
     def test_get_shelf(self) -> None:
         shelf1 = data.get_shelf()
