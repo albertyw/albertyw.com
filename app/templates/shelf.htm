@@ -4,10 +4,10 @@
 {% block content %}
   <section class="content">
     <h1>Shelf</h1>
-    {% for shelf_name, section in shelf.items() %}
-      <h2>{{ shelf_name }}</h2>
+    {% for section in shelf.sections %}
+      <h2>{{ section.name }}</h2>
       <ul>
-        {% for item in section %}
+        {% for item in section.items %}
           <li>
             <a href="{{ item.link }}">{{ item.name }}</a>
           </li>

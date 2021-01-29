@@ -44,7 +44,7 @@ def notes() -> Any:
 @handlers.route("/shelf")
 def shelf() -> Any:
     shelf = data.get_shelf()
-    return render_template("shelf.htm", shelf=shelf.data)
+    return render_template("shelf.htm", shelf=shelf)
 
 
 @handlers.route("/note/<slug>")
