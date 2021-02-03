@@ -79,11 +79,15 @@ Production
 
 ### Setup
 
+Run this once on a new server to set up the web app:
+
 ```bash
 bin/setup.sh
 ```
 
 ### Deployment
+
+Run this every time for a new commit to the repository:
 
 ```bash
 bin/deploy.sh
