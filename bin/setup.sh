@@ -15,18 +15,6 @@ sudo hostnamectl set-hostname "albertyw.com"
 cd ~
 git clone "git@github.com:albertyw/albertyw.com"
 
-# Install nginx
-sudo add-apt-repository ppa:nginx/stable
-sudo apt-get update
-sudo apt-get install -y nginx
-
-# Secure nginx
-sudo mkdir -p /etc/nginx/ssl
-curl https://ssl-config.mozilla.org/ffdhe2048.txt | sudo tee /etc/nginx/ssl/dhparams.pem > /dev/null
-# Copy server.key and server.pem to /etc/nginx/ssl.  The private/public key
-# pair can be generated from Cloudflare or letsencrypt.
-sudo service nginx restart
-
 # Setup up docker
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
