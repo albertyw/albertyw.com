@@ -30,7 +30,7 @@
     "varsnap": "^1.6.4"
   },
   "devDependencies": {
-    "chai": "^4.2.0",
+    "chai": "^4.3.0",
     "eslint": "^7.19.0",
     "mocha": "^8.2.1",
     "stylelint": "^13.9.0",
