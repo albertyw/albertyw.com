@@ -37,6 +37,10 @@
         {
             "link": "https://factorio.com/",
             "name": "Factorio"
+        },
+        {
+            "link": "https://www.nohello.com/",
+            "name": "No Hello"
         }
     ]
 }
