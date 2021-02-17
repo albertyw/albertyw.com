@@ -1,6 +1,7 @@
 [albertyw.com](https://www.albertyw.com)
 ========================================
 
+[![Build Status](https://drone.albertyw.com/api/badges/albertyw/albertyw.com/status.svg)](https://drone.albertyw.com/albertyw/albertyw.com)
 [![Codeship Status for albertyw/albertyw.com](https://codeship.com/projects/74d1ec30-ba55-0133-5935-025ac38368ea/status?branch=master)](https://codeship.com/projects/135665)
 [![Updates](https://pyup.io/repos/github/albertyw/albertyw.com/shield.svg)](https://pyup.io/repos/github/albertyw/albertyw.com/)
 [![Code Climate](https://codeclimate.com/github/albertyw/albertyw.com/badges/gpa.svg)](https://codeclimate.com/github/albertyw/albertyw.com)
