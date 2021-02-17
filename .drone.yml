@@ -2,6 +2,11 @@ kind: pipeline
 type: docker
 name: test
 
+volumes:
+  - name: ssh_key
+    host:
+      path: /home/albertyw/.ssh/id_ed25519
+
 steps:
   - name: Test Python
     image: python:3.9
@@ -51,3 +56,20 @@ steps:
       repo: albertyw.com
       tags: test
       dry_run: true
+
+  - name: Deploy
+    depends_on:
+      - Build Docker Container
+    image: appleboy/drone-ssh
+    settings:
+      host: direct.albertyw.com
+      username: albertyw
+      key_path: /root/ssh/id_ed25519
+      script:
+        - "/home/albertyw/albertyw.com/bin/deploy.sh"
+    volumes:
+      - name: ssh_key
+        path: /root/ssh/id_ed25519
+    when:
+      branch:
+        - master
