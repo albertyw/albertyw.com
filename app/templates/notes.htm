@@ -5,7 +5,7 @@
   <div class="content">
     <h1>Notes</h1>
     <a href="/atom.xml">Atom Feed</a>
-    {% for post in posts %}
+    {% for post in posts[:5] %}
       <section class="note">
         <h2>
           {{ post.title | safe }}
@@ -17,6 +17,16 @@
           {{ post.note | safe }}
         </p>
         <a href="{{ url_for('handlers.note', slug=post.slug) }}">Permalink</a>
+      </section>
+    {% endfor %}
+    {% for post in posts[5:] %}
+      <section class="note">
+        <h2>
+          <a href="{{ url_for('handlers.note', slug=post.slug) }}">{{ post.title | safe }}</a>
+        </h2>
+        <subtitle>
+          {{ post.time.strftime("%B %-d, %Y") }}
+        </subtitle>
       </section>
     {% endfor %}
   </div>
