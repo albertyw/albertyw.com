@@ -1,5 +1,4 @@
-[albertyw.com](https://www.albertyw.com)
-========================================
+# [albertyw.com](https://www.albertyw.com)
 
 [![Build Status](https://drone.albertyw.com/api/badges/albertyw/albertyw.com/status.svg)](https://drone.albertyw.com/albertyw/albertyw.com)
 [![Updates](https://pyup.io/repos/github/albertyw/albertyw.com/shield.svg)](https://pyup.io/repos/github/albertyw/albertyw.com/)
@@ -10,10 +9,9 @@
 
 Personal website
 
-Development
------------
+## Development
 
-### Setup (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)):
+### Setup (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/))
 
 ```bash
 mkvirtualenv albertyw -p python3.9
@@ -27,14 +25,15 @@ npm install
 # sudo apt-get install shellcheck
 ```
 
-### Spinning up the server:
+### Spinning up the server
 
 ```bash
 npm run minify
 python app/serve.py
 ```
 
-### Running tests:
+### Running tests
+
 ```bash
 flake8
 mypy app --ignore-missing-imports --strict --allow-untyped-decorators
@@ -43,8 +42,7 @@ coverage run -m unittest discover
 npm test
 ```
 
-CI/CD
------
+## CI/CD
 
 This repo uses:
 
@@ -74,8 +72,7 @@ docker build -t albertyw.com:test .
 docker run -t -i -p 127.0.0.1:5000:5000 albertyw.com:test
 ```
 
-Production
-----------
+## Production
 
 ### Setup
 
