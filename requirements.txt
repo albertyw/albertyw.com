@@ -7,7 +7,7 @@ syspath==2.0.4         # Modify paths
 # Features
 feedgen==0.9.0         # Generate atom feeds
 flask-sitemap==0.3.0   # Web sitemaps
-markdown2==2.3.10       # Markdown formatting
+markdown2==2.4.0        # Markdown formatting
 Pygments==2.8.0        # Syntax highlighting support
 pytz==2020.1           # Timezone support
 
