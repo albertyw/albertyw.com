@@ -61,16 +61,19 @@ app.register_blueprint(handlers)
 
 
 @app.route("/robots.txt")
+@varsnap
 def robots() -> Any:
     return ""
 
 
 @app.route("/health")
+@varsnap
 def health() -> Any:
     return '{"status": "ok"}'
 
 
 @app.errorhandler(404)
+@varsnap
 def page_not_found(e: Exception) -> Any:
     return render_template("404.htm"), 404
 

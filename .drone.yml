@@ -51,7 +51,7 @@ steps:
       - Test Node
       - Test Bash
       - Test Dockerfile
-    image: plugins/docker
+    image: plugins/docker:19
     settings:
       repo: albertyw.com
       tags: test
