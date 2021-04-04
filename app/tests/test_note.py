@@ -168,7 +168,7 @@ for note in note_util.get_notes():
 
 class TestIntegration(unittest.TestCase):
     def test_varsnap(self) -> None:
-        with serve.app.test_request_context():
+        with serve.app.test_request_context(base_url='https://www.albertyw.com/'):
             matches, logs = test()
         if matches is None:
             raise unittest.case.SkipTest('No Snaps found')  # pragma: no cover
