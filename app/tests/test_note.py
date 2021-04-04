@@ -11,7 +11,7 @@ from titlecase import titlecase
 from typing import Any, Callable, cast
 from varsnap import test
 
-from app import note_util
+from app import note_util, serve
 
 
 class TestNote(unittest.TestCase):

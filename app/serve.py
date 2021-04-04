@@ -1,4 +1,5 @@
 import os
+from typing import Any, Mapping
 
 import dotenv
 from flask import (
@@ -8,7 +9,7 @@ from flask import (
 )
 from flask_sitemap import Sitemap
 from syspath import git_root
-from typing import Any, Mapping
+from varsnap import varsnap
 dotenv.load_dotenv(os.path.join(git_root.path, '.env'))
 
 from app.routes import handlers, sitemap_urls  # noqa: E402
