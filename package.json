@@ -18,7 +18,7 @@
     "@babel/preset-env": "^7.12.13",
     "babelify": "^10.0.0",
     "bootstrap": "^4.6.0",
-    "browserify": "=16.5.1",
+    "browserify": "^17.0.0",
     "clean-css": "^5.0.1",
     "dotenv": "^8.2.0",
     "envify": "^4.1.0",
@@ -36,7 +36,7 @@
     "eslint": "^7.19.0",
     "mocha": "^8.2.1",
     "mochify": "^7.0.0",
-    "nyc": "^15.1.0",
+    "nyc": "^14.1.1",
     "source-map-support": "^0.5.19",
     "stylelint": "^13.9.0",
     "stylelint-config-standard": "^21.0.0"

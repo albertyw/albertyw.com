@@ -1,9 +1,9 @@
 import datetime
 import os
+from typing import Any, List, Optional, cast
 
 import markdown2
 import pytz
-from typing import Any, List, Optional, cast
 from varsnap import varsnap
 
 from app.util import cached_function

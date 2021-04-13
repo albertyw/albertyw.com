@@ -1,3 +1,4 @@
+from typing import Any
 from urllib.parse import urljoin
 
 from feedgen.feed import FeedGenerator
@@ -11,7 +12,6 @@ from flask import (
     url_for,
 )
 from varsnap import varsnap
-from typing import Any
 
 from app import data, note_util
 

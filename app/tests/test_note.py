@@ -3,12 +3,12 @@ import json
 import os
 import re
 import tempfile
+from typing import Any, Callable, cast
 import unittest
 
 import pytz
 import requests
 from titlecase import titlecase
-from typing import Any, Callable, cast
 from varsnap import test
 
 from app import note_util, serve

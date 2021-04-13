@@ -1,6 +1,5 @@
 # Various utility functions
 import os
-
 from typing import Any, Callable
 
 
