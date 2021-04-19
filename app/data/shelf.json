@@ -3,6 +3,10 @@
         {
             "link": "https://www.python.org/dev/peps/pep-0020/#the-zen-of-python",
             "name": "The Zen of Python"
+        },
+        {
+            "link": "http://sunnyday.mit.edu/papers/therac.pdf",
+            "name": "Therac-25"
         }
     ],
     "Technical Leadership": [
