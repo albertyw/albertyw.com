@@ -25,18 +25,20 @@
   <body>
     <div class="container">
       <nav class="navbar navbar-expand-md navbar-light bg-light">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <a class="navbar-brand mb-0 h1" href="/">albertyw.com</a>
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-          <div class="navbar-nav">
-            <a class="nav-item nav-link" href="{{ url_for('handlers.resume') }}">Resum&eacute;</a>
-            <a class="nav-item nav-link" href="{{ url_for('handlers.projects') }}">Projects</a>
-            <a class="nav-item nav-link" href="{{ url_for('handlers.notes') }}">Notes</a>
-            <a class="nav-item nav-link" href="{{ url_for('handlers.shelf') }}">Shelf</a>
-            <a class="nav-item nav-link" href="{{ url_for('handlers.about') }}">About</a>
-            <a class="nav-item nav-link" href="https://github.com/albertyw">Github</a>
+        <div class="container-fluid">
+          <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <a class="navbar-brand mb-0 h1" href="/">albertyw.com</a>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+              <a class="nav-item nav-link" href="{{ url_for('handlers.resume') }}">Resum&eacute;</a>
+              <a class="nav-item nav-link" href="{{ url_for('handlers.projects') }}">Projects</a>
+              <a class="nav-item nav-link" href="{{ url_for('handlers.notes') }}">Notes</a>
+              <a class="nav-item nav-link" href="{{ url_for('handlers.shelf') }}">Shelf</a>
+              <a class="nav-item nav-link" href="{{ url_for('handlers.about') }}">About</a>
+              <a class="nav-item nav-link" href="https://github.com/albertyw">Github</a>
+            </div>
           </div>
         </div>
       </nav>
