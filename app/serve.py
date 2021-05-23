@@ -1,5 +1,5 @@
 import os
-from typing import Any, Mapping
+from typing import Any, Dict
 
 import dotenv
 from flask import (
@@ -53,7 +53,7 @@ if os.environ['ENV'] == 'production':
 
 
 @app.context_processor
-def inject_envs() -> Mapping[str, Mapping[str, str]]:
+def inject_envs() -> Dict[str, Any]:
     envs = {}
     envs['SEGMENT_TOKEN'] = os.environ['SEGMENT_TOKEN']
     return {'ENV': envs}
