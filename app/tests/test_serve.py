@@ -13,7 +13,7 @@ class PageCase(unittest.TestCase):
         self.page_test('/', b'Albert Wang')
 
     def test_resume_load(self) -> None:
-        self.page_test('/resume', b'Resum')
+        self.page_test('/resume', b'R&eacute;sum&eacute;')
 
     def test_projects_load(self) -> None:
         self.page_test('/projects', b'Projects')
