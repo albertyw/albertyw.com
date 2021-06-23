@@ -56,5 +56,5 @@ if [ "$ENV" = "production" ]; then
 
     # Update nginx
     sudo cp "/home/albertyw/albertyw.com/config/nginx/app" "/etc/nginx/sites-enabled/albertyw.com-app"
-    docker container restart nginx
+    docker exec nginx /etc/init.d/nginx reload
 fi
