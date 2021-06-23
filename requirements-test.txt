@@ -4,4 +4,4 @@ flake8==3.9.2                    # Python linting
 mypy==0.910                      # Type checking
 
 # Testing Help
-titlecase==2.0.0                 # Used for checking that note titles are title case
+titlecase==2.2.0                 # Used for checking that note titles are title case
