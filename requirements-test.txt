@@ -1,7 +1,11 @@
 # Testing
 coverage==5.5                    # Test coverage
 flake8==3.9.2                    # Python linting
-mypy==0.910                      # Type checking
 
 # Testing Help
 titlecase==2.2.0                 # Used for checking that note titles are title case
+
+# Types
+mypy==0.910                      # Type checking
+types-pytz==0.1.0                # Type stubs for pytz package
+types-requests==0.1.10           # Type stubs for requests package
