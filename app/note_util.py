@@ -35,6 +35,11 @@ class Note(object):
                 self.note == getattr(other, 'note') and \
                 self.markdown == getattr(other, 'markdown')
 
+    def __repr__(self) -> str:
+        return 'Note: %s\n%s\n%s\n%s\n%s' % (
+            self.title, self.slug, self.time, self.note, self.markdown
+        )
+
     @staticmethod
     def get_note_file_data(
         note_file: str,
