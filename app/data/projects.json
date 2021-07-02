@@ -15,6 +15,11 @@
             "github": "https://github.com/albertyw/albertyw.com",
             "web": "https://www.albertyw.com/"
         },
+        "chasecentercalendar.com": {
+            "description": "iCal Calendar for the SF Chase Center",
+            "github": "https://github.com/albertyw/chase-center-calendar",
+            "web": "https://chasecentercalendar.com/"
+        },
         "owloid.com": {
             "description": "Whiteboard",
             "github.com": "https://github.com/albertyw/owloid",
