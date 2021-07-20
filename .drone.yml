@@ -46,12 +46,18 @@ steps:
     commands:
       - hadolint Dockerfile --ignore=DL3008 --ignore=SC2046 --ignore=SC2006
 
+  - name: Test Markdown
+    image: pipelinecomponents/markdownlint:0.8.0
+    commands:
+      - mdl --style app/tests/mdl_style.rb .
+
   - name: Build Docker Container
     depends_on:
       - Test Python
       - Test Node
       - Test Bash
       - Test Dockerfile
+      - Test Markdown
     image: plugins/docker:19
     settings:
       repo: albertyw.com
