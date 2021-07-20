@@ -49,7 +49,7 @@ steps:
   - name: Test Markdown
     image: pipelinecomponents/markdownlint:0.8.0
     commands:
-      - mdl --style all --warnings app/notes/*
+      - mdl --style app/tests/mdl_style.rb .
 
   - name: Build Docker Container
     depends_on:
