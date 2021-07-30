@@ -46,6 +46,11 @@ steps:
     commands:
       - hadolint Dockerfile --ignore=DL3008 --ignore=SC2046 --ignore=SC2006
 
+  - name: Test Nginx
+    image: yandex/gixy:0.1.20
+    commands:
+      - gixy config/nginx/*
+
   - name: Test Markdown
     image: pipelinecomponents/markdownlint:0.8.0
     commands:
@@ -57,6 +62,7 @@ steps:
       - Test Node
       - Test Bash
       - Test Dockerfile
+      - Test Nginx
       - Test Markdown
     image: plugins/docker:19
     settings:
