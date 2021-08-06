@@ -7,6 +7,10 @@
         {
             "link": "http://sunnyday.mit.edu/papers/therac.pdf",
             "name": "Therac-25"
+        },
+        {
+            "link": "https://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time",
+            "name": "Falsehoods programmers believe about time"
         }
     ],
     "Technical Leadership": [
