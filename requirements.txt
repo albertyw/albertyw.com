@@ -7,11 +7,11 @@ syspath==2.0.5         # Modify paths
 # Features
 feedgen==0.9.0         # Generate atom feeds
 flask-sitemap==0.3.0   # Web sitemaps
-markdown2==2.4.0        # Markdown formatting
-Pygments==2.9.0        # Syntax highlighting support
-pytz==2021.1           # Timezone support
+markdown2==2.4.1        # Markdown formatting
+Pygments==2.10.0       # Syntax highlighting support
+pytz==2021.3           # Timezone support
 
 # Monitoring/tracking/logging
 blinker==1.4           # Dependency of rollbar
-rollbar==0.16.1        # rollbar.com error logging
+rollbar==0.16.2        # rollbar.com error logging
 varsnap==1.4.4         # Test discovery
