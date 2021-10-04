@@ -3,7 +3,6 @@
 [![Build Status](https://drone.albertyw.com/api/badges/albertyw/albertyw.com/status.svg)](https://drone.albertyw.com/albertyw/albertyw.com)
 [![Updates](https://pyup.io/repos/github/albertyw/albertyw.com/shield.svg)](https://pyup.io/repos/github/albertyw/albertyw.com/)
 [![Code Climate](https://codeclimate.com/github/albertyw/albertyw.com/badges/gpa.svg)](https://codeclimate.com/github/albertyw/albertyw.com)
-[![codecov](https://codecov.io/gh/albertyw/albertyw.com/branch/master/graph/badge.svg)](https://codecov.io/gh/albertyw/albertyw.com)
 [![Varsnap Status](https://www.varsnap.com/project/6bf37bef-44a3-4c93-947b-47a21f2d3f3a/varsnap_badge.svg)](https://www.varsnap.com/project/6bf37bef-44a3-4c93-947b-47a21f2d3f3a/)
 
 Personal website
