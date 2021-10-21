@@ -7,5 +7,5 @@ titlecase==2.3                   # Used for checking that note titles are title 
 
 # Types
 mypy==0.910                      # Type checking
-types-pytz==2021.1.2             # Type stubs for pytz package
+types-pytz==2021.3.0             # Type stubs for pytz package
 types-requests==2.25.9           # Type stubs for requests package
