@@ -1,6 +1,6 @@
 # Testing
-coverage==6.0                    # Test coverage
-flake8==3.9.2                    # Python linting
+coverage==6.0.2                  # Test coverage
+flake8==4.0.1                    # Python linting
 
 # Testing Help
 titlecase==2.3                   # Used for checking that note titles are title case
