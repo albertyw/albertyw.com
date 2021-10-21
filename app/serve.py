@@ -75,6 +75,7 @@ def health() -> Any:
 
 
 @app.errorhandler(404)
+@varsnap
 def page_not_found(e: Exception) -> Any:
     return render_template("404.htm"), 404
 
