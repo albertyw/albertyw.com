@@ -9,7 +9,7 @@ volumes:
 
 steps:
   - name: Test Python
-    image: python:3.9
+    image: python:3.10
     commands:
       - ln -fs .env.development .env
       - pip install -r requirements.txt
