@@ -139,7 +139,8 @@ class TestGrammar(unittest.TestCase):
 
 class TestStyle(unittest.TestCase):
     def check_title_case(self, note: note_util.Note) -> None:
-        self.assertEqual(note.title, titlecase(note.title), note.note_file)
+        title = re.sub('".*"', '', note.title)
+        self.assertEqual(title, titlecase(title), note.note_file)
 
 
 def make_check_grammar(note: note_util.Note) -> Callable[..., None]:
