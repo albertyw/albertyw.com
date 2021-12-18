@@ -58,6 +58,12 @@ def note(slug: str = '') -> Any:
     return render_template("note.htm", post=post)
 
 
+@handlers.route("/reference")
+def references() -> Any:
+    references = note_util.get_notes(note_util.REFERENCE_DIRECTORY)
+    return render_template("references.htm", references=references)
+
+
 @handlers.route("/about")
 def about() -> Any:
     return render_template("about.htm")

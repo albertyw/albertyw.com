@@ -24,6 +24,9 @@ class PageCase(unittest.TestCase):
     def test_shelf_load(self) -> None:
         self.page_test('/shelf', b'Shelf')
 
+    def test_reference(self) -> None:
+        self.page_test('/reference', b'Reference')
+
     def test_about_load(self) -> None:
         self.page_test('/about', b'Contact')
 
