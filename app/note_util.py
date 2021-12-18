@@ -123,7 +123,7 @@ def get_notes() -> List[Note]:
 @varsnap
 @cached_function
 def get_note_from_slug(slug: str) -> Optional[Note]:
-    """ Given the slug of a note, reurn the note contents """
+    """ Given the slug of a note, return the note contents """
     notes = get_notes()
     for note in notes:
         if note.slug == slug:
