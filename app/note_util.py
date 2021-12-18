@@ -16,6 +16,7 @@ MARKDOWN_EXTRAS = [
     'smarty-pants',
     'tables',
 ]
+TIMEZONE = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
 
 
 class Note(object):
@@ -41,10 +42,7 @@ class Note(object):
         )
 
     @staticmethod
-    def get_note_file_data(
-        note_file: str,
-        timezone: datetime.tzinfo
-    ) -> Optional["Note"]:
+    def get_note_file_data(note_file: str) -> Optional["Note"]:
         with open(note_file) as note_handle:
             lines = note_handle.readlines()
         lines = [line.strip("\n") for line in lines]
@@ -54,19 +52,16 @@ class Note(object):
         note_parsed.note_file = note_file
         note_parsed.title = lines[0]
         note_parsed.slug = lines[2]
-        note_parsed.time = Note.parse_time(lines[4], timezone)
+        note_parsed.time = Note.parse_time(lines[4])
         note_parsed.markdown = '\n'.join(lines[6:])
         note_parsed.note = Note.parse_markdown(note_parsed.markdown)
         return note_parsed
 
     @staticmethod
     @varsnap
-    def parse_time(
-        timestamp_str: str,
-        timezone: datetime.tzinfo
-    ) -> datetime.datetime:
+    def parse_time(timestamp_str: str) -> datetime.datetime:
         timestamp = int(timestamp_str)
-        time = datetime.datetime.fromtimestamp(timestamp, timezone)
+        time = datetime.datetime.fromtimestamp(timestamp, TIMEZONE)
         return time
 
     @staticmethod
@@ -111,10 +106,9 @@ def get_note_files() -> List[str]:
 @cached_function
 def get_notes() -> List[Note]:
     note_files = get_note_files()
-    timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
     notes = []
     for note_file in note_files:
-        note_parsed = Note.get_note_file_data(note_file, timezone)
+        note_parsed = Note.get_note_file_data(note_file)
         if note_parsed:
             notes.append(note_parsed)
     return notes

@@ -6,7 +6,6 @@ import tempfile
 from typing import Any, Callable, cast
 import unittest
 
-import pytz
 import requests
 from titlecase import titlecase
 from varsnap import test
@@ -20,10 +19,7 @@ class TestNote(unittest.TestCase):
 
     def test_parse_time(self) -> None:
         time = 1504334092
-        parsed_time = note_util.Note.parse_time(
-            time,
-            pytz.timezone('America/Los_Angeles')
-        )
+        parsed_time = note_util.Note.parse_time(time)
         self.assertEqual(parsed_time.year, 2017)
         self.assertEqual(parsed_time.month, 9)
         self.assertEqual(parsed_time.day, 1)
@@ -37,7 +33,7 @@ class TestNote(unittest.TestCase):
         note_data = b''
         with tempfile.NamedTemporaryFile() as note_file:
             note_file.write(note_data)
-            note = note_util.Note.get_note_file_data(note_file.name, pytz.UTC)
+            note = note_util.Note.get_note_file_data(note_file.name)
             self.assertEqual(note, None)
 
     def test_write_note(self) -> None:
@@ -155,10 +151,9 @@ def make_check_style(note: note_util.Note) -> Callable[..., None]:
     return test
 
 
-timezone = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
 first = True
 for note in note_util.get_notes():
-    delta = datetime.datetime.now(tz=timezone) - note.time
+    delta = datetime.datetime.now(tz=note_util.TIMEZONE) - note.time
     if delta <= datetime.timedelta(days=30) or first:
         test_func = make_check_grammar(note)
         setattr(TestGrammar, 'test_%s' % note.slug, test_func)
