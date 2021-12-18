@@ -15,4 +15,4 @@ pytz==2021.3           # Timezone support
 # Monitoring/tracking/logging
 blinker==1.4           # Dependency of rollbar
 rollbar==0.16.2        # rollbar.com error logging
-varsnap==1.4.5         # Test discovery
+varsnap==1.4.6         # Test discovery
