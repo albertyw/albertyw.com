@@ -73,11 +73,11 @@ class UtilCase(unittest.TestCase):
         self.check_prune_note_files('.asdf', False)
 
     def test_get_note_from_unknown_slug(self) -> None:
-        note = note_util.get_note_from_slug('asdf')
+        note = note_util.get_note_from_slug(note_util.NOTES_DIRECTORY, 'asdf')
         self.assertEqual(note, None)
 
     def test_slug_lower_case(self) -> None:
-        notes = note_util.get_notes()
+        notes = note_util.get_notes(note_util.NOTES_DIRECTORY)
         for note in notes:
             self.assertEqual(note.slug, note.slug.lower())
 
@@ -152,7 +152,7 @@ def make_check_style(note: note_util.Note) -> Callable[..., None]:
 
 
 first = True
-for note in note_util.get_notes():
+for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
     delta = datetime.datetime.now(tz=note_util.TIMEZONE) - note.time
     if delta <= datetime.timedelta(days=30) or first:
         test_func = make_check_grammar(note)
