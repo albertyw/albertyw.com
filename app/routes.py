@@ -38,7 +38,7 @@ def projects() -> Any:
 
 @handlers.route("/notes")
 def notes() -> Any:
-    posts = note_util.get_notes()
+    posts = note_util.get_notes(note_util.NOTES_DIRECTORY)
     return render_template("notes.htm", posts=posts)
 
 
@@ -52,10 +52,26 @@ def shelf() -> Any:
 def note(slug: str = '') -> Any:
     if slug.lower() != slug:
         return redirect(url_for('handlers.note', slug=slug.lower()))
-    post = note_util.get_note_from_slug(slug)
+    post = note_util.get_note_from_slug(note_util.NOTES_DIRECTORY, slug)
     if not post:
         abort(404)
     return render_template("note.htm", post=post)
+
+
+@handlers.route("/reference")
+def references() -> Any:
+    references = note_util.get_notes(note_util.REFERENCE_DIRECTORY)
+    return render_template("references.htm", references=references)
+
+
+@handlers.route("/reference/<slug>")
+def reference(slug: str = '') -> Any:
+    if slug.lower() != slug:
+        return redirect(url_for('handlers.reference', slug=slug.lower()))
+    post = note_util.get_note_from_slug(note_util.REFERENCE_DIRECTORY, slug)
+    if not post:
+        abort(404)
+    return render_template("reference.htm", post=post)
 
 
 @handlers.route("/about")
@@ -72,8 +88,8 @@ def atom_feed() -> Any:
     fg.link(href=request.url, rel='self')
     fg.link(href=request.url_root, rel='alternate')
     fg.language('en')
-    fg.updated(note_util.get_notes()[0].time)
-    for post in list(note_util.get_notes())[:5]:
+    fg.updated(note_util.get_notes(note_util.NOTES_DIRECTORY)[0].time)
+    for post in list(note_util.get_notes(note_util.NOTES_DIRECTORY))[:5]:
         url = url_for('handlers.note', slug=post.slug)
         url = urljoin(request.url_root, url)
 
@@ -90,5 +106,5 @@ def atom_feed() -> Any:
 
 @varsnap
 def sitemap_urls() -> Any:
-    for post in list(note_util.get_notes()):
+    for post in list(note_util.get_notes(note_util.NOTES_DIRECTORY)):
         yield url_for('handlers.note', slug=post.slug, _external=True)

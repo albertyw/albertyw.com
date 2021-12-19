@@ -1,0 +1,17 @@
+{% extends "includes/base.htm" %}
+{% block title %}Albert Wang - Reference{% endblock %}
+{% block description %}Reference{% endblock %}
+{% block content %}
+  <div class="content">
+    <h1>Reference</h1>
+    <ul>
+      {% for post in references %}
+        <li>
+          <a href="{{ url_for('handlers.reference', slug=post.slug) }}">
+            {{ post.title | safe }}
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endblock %}

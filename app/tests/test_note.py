@@ -73,11 +73,11 @@ class UtilCase(unittest.TestCase):
         self.check_prune_note_files('.asdf', False)
 
     def test_get_note_from_unknown_slug(self) -> None:
-        note = note_util.get_note_from_slug('asdf')
+        note = note_util.get_note_from_slug(note_util.NOTES_DIRECTORY, 'asdf')
         self.assertEqual(note, None)
 
     def test_slug_lower_case(self) -> None:
-        notes = note_util.get_notes()
+        notes = note_util.get_notes(note_util.NOTES_DIRECTORY)
         for note in notes:
             self.assertEqual(note.slug, note.slug.lower())
 
@@ -139,6 +139,23 @@ class TestStyle(unittest.TestCase):
         self.assertEqual(title, titlecase(title), note.note_file)
 
 
+class TestPage(unittest.TestCase):
+    def setUp(self) -> None:
+        serve.app.config['TESTING'] = True
+        self.app = serve.app.test_client()
+
+    def check_page_loads(self, directory: str, note: note_util.Note) -> None:
+        if directory == note_util.NOTES_DIRECTORY:
+            path = '/note/%s' % note.slug
+        elif directory == note_util.REFERENCE_DIRECTORY:
+            path = '/reference/%s' % note.slug
+        response = self.app.get(path)
+        self.assertEqual(response.status_code, 200)
+        response_data = response.get_data().decode('utf-8')
+        self.assertIn(note.title, response_data)
+        self.assertIn(note.note, response_data)
+
+
 def make_check_grammar(note: note_util.Note) -> Callable[..., None]:
     def test(self: Any) -> None:
         self.check_grammar(note.markdown)
@@ -151,8 +168,18 @@ def make_check_style(note: note_util.Note) -> Callable[..., None]:
     return test
 
 
+def make_check_page(
+    directory: str, note: note_util.Note,
+) -> Callable[..., None]:
+    def test(self: Any) -> None:
+        self.check_page_loads(directory, note)
+    return test
+
+
 first = True
-for note in note_util.get_notes():
+notes = note_util.get_notes(note_util.NOTES_DIRECTORY) + \
+        note_util.get_notes(note_util.NOTES_DIRECTORY)
+for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
     delta = datetime.datetime.now(tz=note_util.TIMEZONE) - note.time
     if delta <= datetime.timedelta(days=30) or first:
         test_func = make_check_grammar(note)
@@ -160,6 +187,12 @@ for note in note_util.get_notes():
         first = False
     test_func = make_check_style(note)
     setattr(TestStyle, 'test_%s' % note.slug, test_func)
+for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
+    test_func = make_check_page(note_util.NOTES_DIRECTORY, note)
+    setattr(TestPage, 'test_%s' % note.slug, test_func)
+for note in note_util.get_notes(note_util.REFERENCE_DIRECTORY):
+    test_func = make_check_page(note_util.REFERENCE_DIRECTORY, note)
+    setattr(TestPage, 'test_%s' % note.slug, test_func)
 
 
 class TestIntegration(unittest.TestCase):

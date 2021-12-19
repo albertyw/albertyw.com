@@ -1,4 +1,5 @@
 # Various utility functions
+import inspect
 import os
 from typing import Any, Callable
 
@@ -18,4 +19,5 @@ def cached_function(func: Callable[..., Any]) -> Callable[..., Any]:
         return data[cache_key]
 
     wrapper.__qualname__ = func.__qualname__
+    wrapper.__signature__ = inspect.signature(func)  # type: ignore
     return wrapper

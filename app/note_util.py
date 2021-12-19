@@ -17,6 +17,8 @@ MARKDOWN_EXTRAS = [
     'tables',
 ]
 TIMEZONE = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
+NOTES_DIRECTORY = 'notes'
+REFERENCE_DIRECTORY = 'reference'
 
 
 class Note(object):
@@ -92,9 +94,9 @@ def prune_note_files(note_files: List[str]) -> List[str]:
     return files
 
 
-def get_note_files() -> List[str]:
+def get_note_files(directory: str) -> List[str]:
     current_directory = os.path.dirname(os.path.realpath(__file__))
-    notes_directory = os.path.join(current_directory, 'notes')
+    notes_directory = os.path.join(current_directory, directory)
     files = os.listdir(notes_directory)
     files.sort(reverse=True)
     files = prune_note_files(files)
@@ -104,8 +106,8 @@ def get_note_files() -> List[str]:
 
 # @varsnap
 @cached_function
-def get_notes() -> List[Note]:
-    note_files = get_note_files()
+def get_notes(directory: str) -> List[Note]:
+    note_files = get_note_files(directory)
     notes = []
     for note_file in note_files:
         note_parsed = Note.get_note_file_data(note_file)
@@ -116,9 +118,9 @@ def get_notes() -> List[Note]:
 
 @varsnap
 @cached_function
-def get_note_from_slug(slug: str) -> Optional[Note]:
+def get_note_from_slug(directory: str, slug: str) -> Optional[Note]:
     """ Given the slug of a note, return the note contents """
-    notes = get_notes()
+    notes = get_notes(directory)
     for note in notes:
         if note.slug == slug:
             return cast(Note, note)
