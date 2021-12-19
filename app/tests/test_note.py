@@ -139,6 +139,20 @@ class TestStyle(unittest.TestCase):
         self.assertEqual(title, titlecase(title), note.note_file)
 
 
+class TestPage(unittest.TestCase):
+    def setUp(self) -> None:
+        serve.app.config['TESTING'] = True
+        self.app = serve.app.test_client()
+
+    def check_page_loads(self, note: note_util.Note) -> None:
+        path = '/note/%s' % note.slug
+        response = self.app.get(path)
+        self.assertEqual(response.status_code, 200)
+        response_data = response.get_data().decode('utf-8')
+        self.assertIn(note.title, response_data)
+        self.assertIn(note.note, response_data)
+
+
 def make_check_grammar(note: note_util.Note) -> Callable[..., None]:
     def test(self: Any) -> None:
         self.check_grammar(note.markdown)
@@ -151,6 +165,12 @@ def make_check_style(note: note_util.Note) -> Callable[..., None]:
     return test
 
 
+def make_check_page(note: note_util.Note) -> Callable[..., None]:
+    def test(self: Any) -> None:
+        self.check_page_loads(note)
+    return test
+
+
 first = True
 for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
     delta = datetime.datetime.now(tz=note_util.TIMEZONE) - note.time
@@ -160,6 +180,8 @@ for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
         first = False
     test_func = make_check_style(note)
     setattr(TestStyle, 'test_%s' % note.slug, test_func)
+    test_func = make_check_page(note)
+    setattr(TestPage, 'test_%s' % note.slug, test_func)
 
 
 class TestIntegration(unittest.TestCase):
