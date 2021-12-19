@@ -64,6 +64,16 @@ def references() -> Any:
     return render_template("references.htm", references=references)
 
 
+@handlers.route("/reference/<slug>")
+def reference(slug: str = '') -> Any:
+    if slug.lower() != slug:
+        return redirect(url_for('handlers.reference', slug=slug.lower()))
+    post = note_util.get_note_from_slug(note_util.REFERENCE_DIRECTORY, slug)
+    if not post:
+        abort(404)
+    return render_template("reference.htm", post=post)
+
+
 @handlers.route("/about")
 def about() -> Any:
     return render_template("about.htm")
