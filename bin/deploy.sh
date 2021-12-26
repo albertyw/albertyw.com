@@ -30,8 +30,7 @@ mv resume/resume.pdf static/gen/resume.pdf
 rm -rf resume
 
 # Build container and network
-docker pull "$(grep FROM Dockerfile | awk '{print $2}')"
-docker build -t "$CONTAINER:$BRANCH" .
+docker build --pull -t "$CONTAINER:$BRANCH" .
 docker network inspect "$NETWORK" &>/dev/null ||
     docker network create --driver bridge "$NETWORK"
 

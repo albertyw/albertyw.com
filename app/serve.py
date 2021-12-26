@@ -11,7 +11,7 @@ from flask import (
 from flask_sitemap import Sitemap
 from syspath import git_root
 from varsnap import varsnap
-dotenv.load_dotenv(os.path.join(git_root.path, '.env'))
+dotenv.load_dotenv(git_root.path / '.env')
 
 from app.routes import handlers, sitemap_urls  # noqa: E402
 
@@ -19,7 +19,7 @@ from app.routes import handlers, sitemap_urls  # noqa: E402
 app = Flask(
     __name__,
     static_url_path='/static',
-    static_folder=os.path.join(git_root.path, 'static'),
+    static_folder=git_root.path / 'static',
 )
 app.debug = os.environ['DEBUG'] == 'true'
 if os.environ.get('SERVER_NAME', ''):  # pragma: no cover
@@ -69,7 +69,6 @@ def robots() -> Any:
 
 
 @app.route("/health")
-@varsnap
 def health() -> Any:
     return Response('{"status": "ok"}', mimetype='text/json')
 
