@@ -28,12 +28,14 @@ def generate_note(reference_name: Optional[str]) -> Path:
     if reference_name:
         note_filename = f'{reference_name}.md'
         note_path = get_git_root() / 'app' / 'reference' / note_filename
+        slug = reference_name
     else:
         note_filename = current_time.strftime('%Y%m%d-%H%M.md')
         note_path = get_git_root() / 'app' / 'notes' / note_filename
+        slug = 'slug'
 
     timestamp = calendar.timegm(current_time.utctimetuple())
-    note = "title\n\nslug\n\n%s\n\nnote\n" % timestamp
+    note = f"title\n\n{slug}\n\n{timestamp}\n\nnote\n"
 
     if note_path.exists():
         raise ValueError(f'note at {note_path} already exists')
