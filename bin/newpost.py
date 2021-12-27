@@ -6,21 +6,20 @@ This script generates a new note
 import calendar
 import datetime
 import os
+from pathlib import Path
 import subprocess
+
+from syspath import get_git_root
 
 
 EDITOR = os.environ.get('EDITOR', 'vim')
 
 
-def generate_note() -> str:
+def generate_note() -> Path:
     current_time = datetime.datetime.utcnow()
 
-    current_directory = os.path.dirname(os.path.realpath(__file__))
-    notes_directory = os.path.join(
-        current_directory, '..', 'app', 'notes')
     note_filename = current_time.strftime('%Y%m%d-%H%M.md')
-    note_path = os.path.join(notes_directory, note_filename)
-    note_path = os.path.normpath(note_path)
+    note_path = get_git_root() / 'app' / 'notes' / note_filename
 
     timestamp = calendar.timegm(current_time.utctimetuple())
     note = "title\n\nslug\n\n%s\n\nnote\n" % timestamp
@@ -30,8 +29,8 @@ def generate_note() -> str:
     return note_path
 
 
-def edit_note(note_path: str) -> None:
-    subprocess.call([EDITOR, note_path])
+def edit_note(note_path: Path) -> None:
+    subprocess.call([EDITOR, str(note_path)])
 
 
 if __name__ == '__main__':
