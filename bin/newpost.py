@@ -35,6 +35,8 @@ def generate_note(reference_name: Optional[str]) -> Path:
     timestamp = calendar.timegm(current_time.utctimetuple())
     note = "title\n\nslug\n\n%s\n\nnote\n" % timestamp
 
+    if note_path.exists():
+        raise ValueError(f'note at {note_path} already exists')
     with open(note_path, 'w') as note_handle:
         note_handle.write(note)
     return note_path
