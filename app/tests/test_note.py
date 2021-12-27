@@ -156,6 +156,12 @@ class TestPage(unittest.TestCase):
         self.assertIn(note.note, response_data)
 
 
+class TestSlug(unittest.TestCase):
+    def check_slug(self, note: note_util.Note) -> None:
+        slug = note.slug
+        self.assertEqual(note.note_file.split('/')[-1], f'{slug}.md')
+
+
 def make_check_grammar(note: note_util.Note) -> Callable[..., None]:
     def test(self: Any) -> None:
         self.check_grammar(note.markdown)
@@ -176,6 +182,12 @@ def make_check_page(
     return test
 
 
+def make_check_slug(note: note_util.Note) -> Callable[..., None]:
+    def test(self: Any) -> None:
+        self.check_slug(note)
+    return test
+
+
 first = True
 notes = note_util.get_notes(note_util.NOTES_DIRECTORY) + \
         note_util.get_notes(note_util.NOTES_DIRECTORY)
@@ -192,6 +204,8 @@ for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
 for note in note_util.get_notes(note_util.REFERENCE_DIRECTORY):
     test_func = make_check_page(note_util.REFERENCE_DIRECTORY, note)
     setattr(TestPage, 'test_%s' % note.slug, test_func)
+    test_func = make_check_slug(note)
+    setattr(TestSlug, 'test_%s' % note.slug, test_func)
 
 
 class TestIntegration(unittest.TestCase):
