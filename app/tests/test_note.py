@@ -187,7 +187,6 @@ for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
         first = False
     test_func = make_check_style(note)
     setattr(TestStyle, 'test_%s' % note.slug, test_func)
-for note in note_util.get_notes(note_util.NOTES_DIRECTORY):
     test_func = make_check_page(note_util.NOTES_DIRECTORY, note)
     setattr(TestPage, 'test_%s' % note.slug, test_func)
 for note in note_util.get_notes(note_util.REFERENCE_DIRECTORY):
