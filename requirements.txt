@@ -10,7 +10,6 @@ git+git://github.com/albertyw/flask-sitemap@python-3-10#flask-sitemap
 # Web sitemaps
 markdown2==2.4.1       # Markdown formatting
 Pygments==2.10.0       # Syntax highlighting support
-pytz==2021.3           # Timezone support
 
 # Monitoring/tracking/logging
 blinker==1.4           # Dependency of rollbar

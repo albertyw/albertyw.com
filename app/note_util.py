@@ -3,7 +3,7 @@ import os
 from typing import Any, List, Optional, cast
 
 import markdown2
-import pytz
+from zoneinfo import ZoneInfo
 from varsnap import varsnap
 
 from app.util import cached_function
@@ -16,7 +16,7 @@ MARKDOWN_EXTRAS = [
     'smarty-pants',
     'tables',
 ]
-TIMEZONE = pytz.timezone(os.environ['DISPLAY_TIMEZONE'])
+TIMEZONE = ZoneInfo(os.environ['DISPLAY_TIMEZONE'])
 NOTES_DIRECTORY = 'notes'
 REFERENCE_DIRECTORY = 'reference'
 
