@@ -4,8 +4,8 @@ debian-releases
 
 1641619882
 
- - [Source](https://wiki.debian.org/DebianReleases)
- - [Source](https://www.debian.org/releases/)
+- [Source](https://wiki.debian.org/DebianReleases)
+- [Source](https://www.debian.org/releases/)
 
 | Version | Name     | Status       | End of Life           |
 |---------|----------|--------------|-----------------------|
