@@ -31,7 +31,7 @@ WORKDIR /var/www/app
 # Set up dependencies
 RUN pip install --no-cache-dir -r requirements.txt \
     && npm ci --only=production \
-    && cp config/supervisord.conf /etc/supervisor/conf.d/supervisord.conf && cp config/logrotate /etc/logrotate.d/uwsgi
+    && cp config/logrotate /etc/logrotate.d/uwsgi
 
 # Set startup script
 CMD ["bin/start.sh"]

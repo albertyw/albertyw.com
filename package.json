@@ -5,7 +5,7 @@
     "eslint": "eslint .",
     "stylelint": "stylelint static/css/*",
     "test": "npm run minify && npm run eslint && npm run stylelint && npm run cover",
-    "cover": "nyc --require dotenv/config --instrumenter false mochify --transform loose-envify --require source-map-support/register  --transform [ babelify --ignore [ test ] --plugins [ babel-plugin-istanbul ] ] static/js/test --allow-chrome-as-root"
+    "cover": "nyc --require dotenv/config --require varsnap/gitbranchenv --instrumenter false mochify --transform loose-envify --require source-map-support/register  --transform [ babelify --ignore [ test ] --plugins [ babel-plugin-istanbul ] ] static/js/test --allow-chrome-as-root"
   },
   "repository": {
     "type": "git",
@@ -20,7 +20,7 @@
     "bootstrap": "^5.0.0",
     "browserify": "^17.0.0",
     "clean-css": "^5.0.1",
-    "dotenv": "^10.0.0",
+    "dotenv": "^12.0.0",
     "exorcist": "^2.0.0",
     "logfit": "^0.8.2",
     "loose-envify": "^1.4.0",
@@ -28,14 +28,14 @@
     "popper.js": "^1.16.1",
     "rollbar": "^2.20.0",
     "uglifyify": "^5.0.2",
-    "varsnap": "^1.6.4"
+    "varsnap": "^1.8.0"
   },
   "devDependencies": {
     "babel-plugin-istanbul": "^6.0.0",
     "chai": "^4.3.0",
     "eslint": "^8.0.1",
     "mocha": "^9.0.1",
-    "mochify": "^8.0.0",
+    "mochify": "^9.0.0",
     "nyc": "^15.1.0",
     "source-map-support": "^0.5.19",
     "stylelint": "^14.0.1",
