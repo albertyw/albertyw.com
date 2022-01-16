@@ -9,7 +9,7 @@ feedgen==0.9.0         # Generate atom feeds
 git+git://github.com/albertyw/flask-sitemap@python-3-10#flask-sitemap
 # Web sitemaps
 markdown2==2.4.1       # Markdown formatting
-Pygments==2.10.0       # Syntax highlighting support
+Pygments==2.11.2       # Syntax highlighting support
 
 # Monitoring/tracking/logging
 blinker==1.4           # Dependency of rollbar
