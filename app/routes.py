@@ -108,3 +108,5 @@ def atom_feed() -> Any:
 def sitemap_urls() -> Any:
     for post in list(note_util.get_notes(note_util.NOTES_DIRECTORY)):
         yield url_for('handlers.note', slug=post.slug, _external=True)
+    for post in list(note_util.get_notes(note_util.REFERENCE_DIRECTORY)):
+        yield url_for('handlers.reference', slug=post.slug, _external=True)
