@@ -65,3 +65,9 @@ blockquote::before {
 blockquote p {
     display: inline;
 }
+
+.image-gallery img {
+    width: 150px;
+    display: inline;
+    margin: 20px;
+}
