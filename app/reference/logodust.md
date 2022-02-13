@@ -13,7 +13,6 @@ rehosted here:
 <img src="/static/notes/logodust/8s.svg">
 <img src="/static/notes/logodust/abstract1.svg">
 <img src="/static/notes/logodust/abstract.svg">
-<img src="/static/notes/logodust/asdf">
 <img src="/static/notes/logodust/assembly.svg">
 <img src="/static/notes/logodust/b3.svg">
 <img src="/static/notes/logodust/beek.svg">
