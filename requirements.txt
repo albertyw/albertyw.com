@@ -1,13 +1,12 @@
 # Core packages
 python-dotenv==0.19.2  # Read environment variables from .env
-Flask==2.0.2           # Web microframework
+Flask==2.0.3           # Web microframework
 uWSGI==2.0.20          # Application server
 syspath==3.0.0         # Modify paths
 
 # Features
 feedgen==0.9.0         # Generate atom feeds
-git+git://github.com/albertyw/flask-sitemap@python-3-10#flask-sitemap
-# Web sitemaps
+flask-sitemap==0.4.0   # Web sitemaps
 markdown2==2.4.2       # Markdown formatting
 Pygments==2.11.2       # Syntax highlighting support
 
