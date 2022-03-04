@@ -11,6 +11,10 @@
         {
             "link": "https://infiniteundo.com/post/25326999628/falsehoods-programmers-believe-about-time",
             "name": "Falsehoods programmers believe about time"
+        },
+        {
+            "link": "https://colin-scott.github.io/personal_website/research/interactive_latency.html",
+            "name": "Latency Numbers Every Programmer Should Know"
         }
     ],
     "Technical Leadership": [
