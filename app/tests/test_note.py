@@ -1,6 +1,7 @@
 import datetime
 import json
 import os
+from pathlib import Path
 import re
 import tempfile
 from typing import Any, Callable, cast
@@ -15,7 +16,7 @@ from app import note_util, serve
 
 class TestNote(unittest.TestCase):
     def setUp(self) -> None:
-        self.note = note_util.Note()
+        self.note = note_util.Note(Path('.'))
 
     def test_parse_time(self) -> None:
         time = 1504334092
@@ -33,12 +34,12 @@ class TestNote(unittest.TestCase):
         note_data = b''
         with tempfile.NamedTemporaryFile() as note_file:
             note_file.write(note_data)
-            note = note_util.Note.get_note_file_data(note_file.name)
+            note = note_util.Note.get_note_file_data(Path(note_file.name))
             self.assertEqual(note, None)
 
     def test_write_note(self) -> None:
         with tempfile.NamedTemporaryFile() as note_file:
-            self.note.note_file = note_file.name
+            self.note.note_file = Path(note_file.name)
             self.note.title = 'title'
             self.note.slug = 'slug'
             self.note.time = datetime.datetime.now()
@@ -56,7 +57,7 @@ class TestNote(unittest.TestCase):
 class UtilCase(unittest.TestCase):
     def check_prune_note_files(
         self,
-        file_name: str,
+        file_name: Path,
         assert_contains: bool
     ) -> None:
         note_files = note_util.prune_note_files([file_name])
@@ -64,13 +65,13 @@ class UtilCase(unittest.TestCase):
         self.assertTrue(contains == assert_contains)
 
     def test_normal_notes(self) -> None:
-        self.check_prune_note_files('asdf', True)
+        self.check_prune_note_files(Path('asdf'), True)
 
     def test_prune_tilde_notes(self) -> None:
-        self.check_prune_note_files('asdf~', False)
+        self.check_prune_note_files(Path('asdf~'), False)
 
     def test_prune_dotfile_notes(self) -> None:
-        self.check_prune_note_files('.asdf', False)
+        self.check_prune_note_files(Path('.asdf'), False)
 
     def test_get_note_from_unknown_slug(self) -> None:
         note = note_util.get_note_from_slug(note_util.NOTES_DIRECTORY, 'asdf')
@@ -159,7 +160,7 @@ class TestPage(unittest.TestCase):
 class TestSlug(unittest.TestCase):
     def check_slug(self, note: note_util.Note) -> None:
         slug = note.slug
-        self.assertEqual(note.note_file.split('/')[-1], f'{slug}.md')
+        self.assertEqual(str(note.note_file).split('/')[-1], f'{slug}.md')
 
 
 def make_check_grammar(note: note_util.Note) -> Callable[..., None]:

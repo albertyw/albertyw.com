@@ -1,10 +1,12 @@
 import datetime
 import os
+from pathlib import Path
 from typing import Any, List, Optional, cast
 
 import markdown2
-from zoneinfo import ZoneInfo
+import syspath
 from varsnap import varsnap
+from zoneinfo import ZoneInfo
 
 from app.util import cached_function
 
@@ -22,8 +24,8 @@ REFERENCE_DIRECTORY = 'reference'
 
 
 class Note(object):
-    def __init__(self) -> None:
-        self.note_file = ''
+    def __init__(self, note_file: Path) -> None:
+        self.note_file = note_file
         self.title = ''
         self.slug = ''
         self.time: datetime.datetime = datetime.datetime.now()
@@ -44,14 +46,13 @@ class Note(object):
         )
 
     @staticmethod
-    def get_note_file_data(note_file: str) -> Optional["Note"]:
+    def get_note_file_data(note_file: Path) -> Optional["Note"]:
         with open(note_file) as note_handle:
             lines = note_handle.readlines()
         lines = [line.strip("\n") for line in lines]
         if len(lines) < 4 or not lines[4].isdigit():
             return None
-        note_parsed = Note()
-        note_parsed.note_file = note_file
+        note_parsed = Note(note_file)
         note_parsed.title = lines[0]
         note_parsed.slug = lines[2]
         note_parsed.time = Note.parse_time(lines[4])
@@ -83,24 +84,24 @@ class Note(object):
 
 
 @varsnap
-def prune_note_files(note_files: List[str]) -> List[str]:
-    def is_valid_note(note_file: str) -> bool:
-        if '~' in note_file:
+def prune_note_files(note_files: List[Path]) -> List[Path]:
+    def is_valid_note(note_file: Path) -> bool:
+        if '~' in str(note_file):
             return False
-        if note_file[0] == '.':
+        if str(note_file)[0] == '.':
             return False
         return True
     files = [note_file for note_file in note_files if is_valid_note(note_file)]
     return files
 
 
-def get_note_files(directory: str) -> List[str]:
-    current_directory = os.path.dirname(os.path.realpath(__file__))
-    notes_directory = os.path.join(current_directory, directory)
-    files = os.listdir(notes_directory)
+def get_note_files(directory: str) -> List[Path]:
+    current_directory = syspath.get_current_path()
+    notes_directory = current_directory / directory
+    files = list(notes_directory.iterdir())
     files.sort(reverse=True)
     files = prune_note_files(files)
-    files = [os.path.join(notes_directory, note_file) for note_file in files]
+    files = [notes_directory / note_file for note_file in files]
     return files
 
 
