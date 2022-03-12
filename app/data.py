@@ -1,6 +1,7 @@
 import json
-import os
 from typing import Dict, List
+
+import syspath
 
 from app.util import cached_function
 
@@ -11,8 +12,8 @@ class Projects():
 
     @staticmethod
     def load_from_file() -> 'Projects':
-        current_directory = os.path.dirname(os.path.realpath(__file__))
-        path = os.path.join(current_directory, 'data', 'projects.json')
+        current_directory = syspath.get_current_path()
+        path = current_directory / 'data' / 'projects.json'
         with open(path, 'r') as handle:
             data = handle.read()
         parsed_data = json.loads(data)
@@ -88,8 +89,8 @@ class Shelf():
 
     @staticmethod
     def load_from_file() -> 'Shelf':
-        current_directory = os.path.dirname(os.path.realpath(__file__))
-        path = os.path.join(current_directory, 'data', 'shelf.json')
+        current_directory = syspath.get_current_path()
+        path = current_directory / 'data' / 'shelf.json'
         with open(path, 'r') as handle:
             shelf_data = handle.read()
         parsed_data = json.loads(shelf_data)
