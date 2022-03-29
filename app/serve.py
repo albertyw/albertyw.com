@@ -9,7 +9,7 @@ from flask import (
     render_template,
 )
 from flask_sitemap import Sitemap
-from syspath import git_root
+from syspath import get_current_path, git_root
 from varsnap import varsnap
 dotenv.load_dotenv(git_root.path / '.env')
 
@@ -43,7 +43,7 @@ if os.environ['ENV'] == 'production':
             # environment name
             os.environ['ENV'],
             # server root directory, makes tracebacks prettier
-            root=os.path.dirname(os.path.realpath(__file__)),
+            root=get_current_path(),
             # flask already sets up logging
             allow_logging_basic_config=False)
 
