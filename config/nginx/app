@@ -39,7 +39,7 @@ server {
 
     location /static {
         include          snippets/headers.conf;
-        root             /home/albertyw/albertyw.com;
+        alias            /home/albertyw/albertyw.com/static/mount;
         add_header       'Access-Control-Allow-Origin'   'https://www.albertyw.com';
         add_header       'Access-Control-Allow-Methods'  'GET, HEAD, OPTIONS';
         add_header       'Access-Control-Allow-Headers'  'range';
