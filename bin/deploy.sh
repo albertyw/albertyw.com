@@ -25,6 +25,7 @@ if [ -n "$DEPLOY_BRANCH" ]; then
 fi
 
 # Download resume
+rm -rf resume
 git clone git@github.com:albertyw/resume
 mv resume/resume.pdf static/gen/resume.pdf
 rm -rf resume
