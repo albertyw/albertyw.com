@@ -23,6 +23,10 @@
         {
             "link": "http://aosabook.org/en/index.html",
             "name": "Architecture of Open Source Applications"
+        },
+        {
+            "link": "https://grugbrain.dev/",
+            "name": "The Grug Brained Developer"
         }
     ],
     "Technical Leadership": [
