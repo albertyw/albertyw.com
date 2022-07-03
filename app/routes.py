@@ -21,29 +21,29 @@ handlers = Blueprint('handlers', __name__)
 
 @handlers.route("/")
 @varsnap
-def index() -> Any:
+def index() -> str:
     return render_template("index.htm")
 
 
 @handlers.route("/resume")
-def resume() -> Any:
+def resume() -> str:
     return render_template("resume.htm")
 
 
 @handlers.route("/projects")
-def projects() -> Any:
+def projects() -> str:
     projects = data.get_projects()
     return render_template("projects.htm", projects=projects)
 
 
 @handlers.route("/notes")
-def notes() -> Any:
+def notes() -> str:
     posts = note_util.get_notes(note_util.NOTES_DIRECTORY)
     return render_template("notes.htm", posts=posts)
 
 
 @handlers.route("/shelf")
-def shelf() -> Any:
+def shelf() -> str:
     shelf = data.get_shelf()
     return render_template("shelf.htm", shelf=shelf)
 
@@ -75,7 +75,7 @@ def reference(slug: str = '') -> Any:
 
 
 @handlers.route("/about")
-def about() -> Any:
+def about() -> str:
     return render_template("about.htm")
 
 

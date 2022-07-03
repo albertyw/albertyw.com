@@ -1,5 +1,5 @@
 import os
-from typing import Any, Dict
+from typing import Tuple
 
 import dotenv
 from flask import (
@@ -52,30 +52,23 @@ if os.environ['ENV'] == 'production':
             rollbar.contrib.flask.report_exception, app)
 
 
-@app.context_processor
-def inject_envs() -> Dict[str, Any]:
-    envs = {}
-    envs['SEGMENT_TOKEN'] = os.environ['SEGMENT_TOKEN']
-    return {'ENV': envs}
-
-
 app.register_blueprint(handlers)
 
 
 @app.route("/robots.txt")
 @varsnap
-def robots() -> Any:
+def robots() -> str:
     return ""
 
 
 @app.route("/health")
-def health() -> Any:
+def health() -> Response:
     return Response('{"status": "ok"}', mimetype='text/json')
 
 
 # https://github.com/pallets/flask/issues/4295
 @app.errorhandler(404)
-def page_not_found(e: Exception) -> Any:
+def page_not_found(e: Exception) -> Tuple[str, int]:
     return render_template("404.htm"), 404
 
 
