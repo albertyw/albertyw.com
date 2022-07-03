@@ -7,4 +7,4 @@ titlecase==2.3                   # Used for checking that note titles are title 
 
 # Types
 mypy==0.961                      # Type checking
-types-requests==2.27.15          # Type stubs for requests package
+types-requests==2.28.0           # Type stubs for requests package
