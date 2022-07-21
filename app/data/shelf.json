@@ -27,6 +27,10 @@
         {
             "link": "https://grugbrain.dev/",
             "name": "The Grug Brained Developer"
+        },
+        {
+            "link": "https://blog.codinghorror.com/a-pragmatic-quick-reference/",
+            "name": "The Pragmatic Programmer Quick Reference Guide"
         }
     ],
     "Technical Leadership": [
