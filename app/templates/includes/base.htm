@@ -21,14 +21,14 @@
     <link rel="manifest" href="{{ url_for('static', filename='img/favicon/manifest.json') }}">
     <link rel="shortcut icon" href="{{ url_for('static', filename='img/favicon/favicon.ico') }}">
 
-    <!-- Facebook Meta Tags -->
+    {# Facebook Meta Tags #}
     <meta property="og:url" content="https://www.albertyw.com/">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Albertyw.com">
     <meta property="og:description" content="Albert Wang">
     <meta property="og:image" content="https://www.albertyw.com/static/img/favicon/android-chrome-512x512.png">
 
-    <!-- Twitter Meta Tags -->
+    {# Twitter Meta Tags #}
     <meta name="twitter:card" content="summary">
     <meta property="twitter:domain" content="albertyw.com">
     <meta property="twitter:url" content="https://www.albertyw.com/">
@@ -40,6 +40,11 @@
     <meta name="google-site-verification" content="UYCq-dPrxkMhC7ZfCAhr9-sZQL_cJoOBf2EzJpqKho8" />
     <link rel="preconnect" href="https://www.google-analytics.com">
     <link rel="preconnect" href="https://www.googletagmanager.com">
+    <link rel="preconnect" href="https://ingest.log.fit">
+    <link rel="preconnect" href="https://www.varsnap.com">
+
+    {# Miscellaneous #}
+    <link type="text/plain" rel="author" href="{{ url_for('humans', _external=True) }}" />
 
     <link rel="alternate" href="{{ url_for('handlers.atom_feed') }}" title="Albert Wang" type="application/atom+xml" />
     {% endblock %}

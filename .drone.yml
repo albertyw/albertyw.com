@@ -72,7 +72,7 @@ steps:
   - name: Deploy
     depends_on:
       - Build Docker Container
-    image: appleboy/drone-ssh:1.6.3
+    image: appleboy/drone-ssh:1.6.4
     settings:
       host: direct.albertyw.com
       username: albertyw

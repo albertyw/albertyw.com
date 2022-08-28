@@ -1,6 +1,6 @@
 # Core packages
 python-dotenv==0.20.0  # Read environment variables from .env
-Flask==2.1.2           # Web microframework
+Flask==2.2.2           # Web microframework
 uWSGI==2.0.20          # Application server
 syspath==3.0.1         # Modify paths
 
@@ -11,6 +11,6 @@ markdown2==2.4.3       # Markdown formatting
 Pygments==2.12.0       # Syntax highlighting support
 
 # Monitoring/tracking/logging
-blinker==1.4           # Dependency of rollbar
+blinker==1.5           # Dependency of rollbar
 rollbar==0.16.3        # rollbar.com error logging
-varsnap==1.5.1         # Test discovery
+varsnap==1.5.2         # Test discovery
