@@ -3,7 +3,7 @@ coverage==6.4.4                  # Test coverage
 flake8==5.0.4                    # Python linting
 
 # Testing Help
-titlecase==2.3                   # Used for checking that note titles are title case
+titlecase==2.4                   # Used for checking that note titles are title case
 
 # Types
 mypy==0.971                      # Type checking
