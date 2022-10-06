@@ -58,7 +58,7 @@ app.register_blueprint(handlers)
 @app.route("/robots.txt")
 @varsnap
 def robots() -> Response:
-    return Response("", mimetype="text/json")
+    return Response("", mimetype="text/plain")
 
 
 @app.route("/.well-known/security.txt")
