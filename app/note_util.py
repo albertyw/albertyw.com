@@ -1,7 +1,7 @@
 import datetime
 import os
 from pathlib import Path
-from typing import Any, List, Optional, cast
+from typing import Any, Optional, cast
 
 import markdown2
 import syspath
@@ -84,7 +84,7 @@ class Note(object):
 
 
 @varsnap
-def prune_note_files(note_files: List[Path]) -> List[Path]:
+def prune_note_files(note_files: list[Path]) -> list[Path]:
     def is_valid_note(note_file: Path) -> bool:
         if '~' in str(note_file):
             return False
@@ -95,7 +95,7 @@ def prune_note_files(note_files: List[Path]) -> List[Path]:
     return files
 
 
-def get_note_files(directory: str) -> List[Path]:
+def get_note_files(directory: str) -> list[Path]:
     current_directory = syspath.get_current_path()
     notes_directory = current_directory / directory
     files = list(notes_directory.iterdir())
@@ -107,7 +107,7 @@ def get_note_files(directory: str) -> List[Path]:
 
 # @varsnap
 @cached_function
-def get_notes(directory: str) -> List[Note]:
+def get_notes(directory: str) -> list[Note]:
     note_files = get_note_files(directory)
     notes = []
     for note_file in note_files:

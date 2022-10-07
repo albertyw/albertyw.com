@@ -1,5 +1,5 @@
 import json
-from typing import Dict, List
+from typing import Dict
 
 import syspath
 
@@ -8,7 +8,7 @@ from app.util import cached_function
 
 class Projects():
     def __init__(self) -> None:
-        self.languages: List[Language] = []
+        self.languages: list[Language] = []
 
     @staticmethod
     def load_from_file() -> 'Projects':
@@ -31,7 +31,7 @@ class Projects():
 class Language():
     def __init__(self) -> None:
         self.name: str = ''
-        self.projects: List[Project] = []
+        self.projects: list[Project] = []
 
     @staticmethod
     def load(key: str, data: Dict[str, Dict[str, str]]) -> 'Language':
@@ -85,7 +85,7 @@ def get_projects() -> Projects:
 
 class Shelf():
     def __init__(self) -> None:
-        self.sections: List[Section] = []
+        self.sections: list[Section] = []
 
     @staticmethod
     def load_from_file() -> 'Shelf':
@@ -97,7 +97,7 @@ class Shelf():
         return Shelf.load(parsed_data)
 
     @staticmethod
-    def load(shelf_data: Dict[str, List[Dict[str, str]]]) -> 'Shelf':
+    def load(shelf_data: Dict[str, list[Dict[str, str]]]) -> 'Shelf':
         shelf = Shelf()
         for key, value in shelf_data.items():
             section = Section.load(key, value)
@@ -108,10 +108,10 @@ class Shelf():
 class Section():
     def __init__(self) -> None:
         self.name: str = ''
-        self.items: List[Item] = []
+        self.items: list[Item] = []
 
     @staticmethod
-    def load(name: str, data: List[Dict[str, str]]) -> 'Section':
+    def load(name: str, data: list[Dict[str, str]]) -> 'Section':
         section = Section()
         section.name = name
         for d in data:
