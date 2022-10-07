@@ -1,5 +1,4 @@
 import json
-from typing import Dict
 
 import syspath
 
@@ -20,7 +19,7 @@ class Projects():
         return Projects.load(parsed_data)
 
     @staticmethod
-    def load(data: Dict[str, Dict[str, Dict[str, str]]]) -> 'Projects':
+    def load(data: dict[str, dict[str, dict[str, str]]]) -> 'Projects':
         projects = Projects()
         for key, value in data.items():
             language = Language.load(key, value)
@@ -34,7 +33,7 @@ class Language():
         self.projects: list[Project] = []
 
     @staticmethod
-    def load(key: str, data: Dict[str, Dict[str, str]]) -> 'Language':
+    def load(key: str, data: dict[str, dict[str, str]]) -> 'Language':
         language = Language()
         language.name = key
         for key, value in data.items():
@@ -54,7 +53,7 @@ class Project():
         self.web: str = ''
 
     @staticmethod
-    def load(key: str, data: Dict[str, str]) -> 'Project':
+    def load(key: str, data: dict[str, str]) -> 'Project':
         project = Project()
         project.name = key
         project.description = data.get('description', '')
@@ -65,8 +64,8 @@ class Project():
         project.web = data.get('web', '')
         return project
 
-    def links(self) -> Dict[str, str]:
-        links: Dict[str, str] = {
+    def links(self) -> dict[str, str]:
+        links: dict[str, str] = {
             'github': self.github,
             'rubygems': self.rubygems,
             'pypi': self.pypi,
@@ -97,7 +96,7 @@ class Shelf():
         return Shelf.load(parsed_data)
 
     @staticmethod
-    def load(shelf_data: Dict[str, list[Dict[str, str]]]) -> 'Shelf':
+    def load(shelf_data: dict[str, list[dict[str, str]]]) -> 'Shelf':
         shelf = Shelf()
         for key, value in shelf_data.items():
             section = Section.load(key, value)
@@ -111,7 +110,7 @@ class Section():
         self.items: list[Item] = []
 
     @staticmethod
-    def load(name: str, data: list[Dict[str, str]]) -> 'Section':
+    def load(name: str, data: list[dict[str, str]]) -> 'Section':
         section = Section()
         section.name = name
         for d in data:
@@ -126,7 +125,7 @@ class Item():
         self.link: str = ''
 
     @staticmethod
-    def load(data: Dict[str, str]) -> 'Item':
+    def load(data: dict[str, str]) -> 'Item':
         item = Item()
         item.name = data['name']
         item.link = data['link']
