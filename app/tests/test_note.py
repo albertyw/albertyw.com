@@ -16,6 +16,8 @@ from app import note_util, serve
 
 class TestNote(unittest.TestCase):
     def setUp(self) -> None:
+        serve.app.config['TESTING'] = True
+        serve.app.config['SERVER_NAME'] = 'localhost'
         self.note = note_util.Note(Path('.'))
 
     def test_parse_time(self) -> None:
@@ -52,6 +54,11 @@ class TestNote(unittest.TestCase):
             self.assertIn('title', data)
             self.assertIn('slug', data)
             self.assertIn('markdown', data)
+
+    def test_url(self) -> None:
+        with serve.app.app_context():
+            url = self.note.url()
+        self.assertGreater(len(url), 0)
 
 
 class UtilCase(unittest.TestCase):

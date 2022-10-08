@@ -92,8 +92,7 @@ def atom_feed() -> Any:
     fg.language('en')
     fg.updated(note_util.get_notes(note_util.NOTES_DIRECTORY)[0].time)
     for post in list(note_util.get_notes(note_util.NOTES_DIRECTORY))[:5]:
-        url = url_for('handlers.note', slug=post.slug)
-        url = urljoin(request.url_root, url)
+        url = urljoin(request.url_root, post.url())
 
         fe = fg.add_entry()
         fe.title(post.title)

@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from typing import Any, List, Optional, cast
 
+from flask import url_for
 import markdown2
 import syspath
 from varsnap import varsnap
@@ -81,6 +82,9 @@ class Note(object):
             handle.write(self.slug + "\n\n")
             handle.write(str(int(self.time.timestamp())) + "\n\n")
             handle.write(self.markdown + "\n")
+
+    def url(self) -> str:
+        return url_for('handlers.note', slug=self.slug)
 
 
 @varsnap
