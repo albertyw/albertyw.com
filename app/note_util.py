@@ -84,7 +84,12 @@ class Note(object):
             handle.write(self.markdown + "\n")
 
     def url(self) -> str:
-        return url_for('handlers.note', slug=self.slug)
+        if REFERENCE_DIRECTORY in str(self.note_file.resolve()):
+            return url_for('handlers.reference', slug=self.slug)
+        elif NOTES_DIRECTORY in str(self.note_file.resolve()):
+            return url_for('handlers.note', slug=self.slug)
+        else:
+            raise ValueError('Cannot get url for unknown note type')
 
 
 @varsnap

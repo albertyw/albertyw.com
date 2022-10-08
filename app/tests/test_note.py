@@ -56,6 +56,7 @@ class TestNote(unittest.TestCase):
             self.assertIn('markdown', data)
 
     def test_url(self) -> None:
+        self.note.note_file = Path('notes/asdf')
         with serve.app.app_context():
             url = self.note.url()
         self.assertGreater(len(url), 0)
