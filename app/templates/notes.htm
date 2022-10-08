@@ -16,13 +16,13 @@
         <p>
           {{ post.note | safe }}
         </p>
-        <a href="{{ url_for('handlers.note', slug=post.slug) }}">Permalink</a>
+        <a href="{{ post.url() }}">Permalink</a>
       </section>
     {% endfor %}
     {% for post in posts[5:] %}
       <section class="note">
         <h2>
-          <a href="{{ url_for('handlers.note', slug=post.slug) }}">{{ post.title | safe }}</a>
+          <a href="{{ post.url() }}">{{ post.title | safe }}</a>
         </h2>
         <subtitle>
           {{ post.time.strftime("%B %-d, %Y") }}

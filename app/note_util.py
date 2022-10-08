@@ -3,6 +3,7 @@ import os
 from pathlib import Path
 from typing import Any, Optional, cast
 
+from flask import url_for
 import markdown2
 import syspath
 from varsnap import varsnap
@@ -82,6 +83,14 @@ class Note(object):
             handle.write(str(int(self.time.timestamp())) + "\n\n")
             handle.write(self.markdown + "\n")
 
+    def url(self) -> str:
+        if REFERENCE_DIRECTORY in str(self.note_file.resolve()):
+            return url_for('handlers.reference', slug=self.slug)
+        elif NOTES_DIRECTORY in str(self.note_file.resolve()):
+            return url_for('handlers.note', slug=self.slug)
+        else:
+            raise ValueError('Cannot get url for unknown note type')
+
 
 @varsnap
 def prune_note_files(note_files: list[Path]) -> list[Path]:
@@ -105,11 +114,20 @@ def get_note_files(directory: str) -> list[Path]:
     return files
 
 
+@cached_function
+def get_notes_directories(directories: list[str]) -> List[Note]:
+    notes: list[Note] = []
+    for directory in directories:
+        notes += get_notes(directory)
+    notes = sorted(notes, key=lambda n: n.time, reverse=True)
+    return notes
+
+
 # @varsnap
 @cached_function
 def get_notes(directory: str) -> list[Note]:
     note_files = get_note_files(directory)
-    notes = []
+    notes: list[Note] = []
     for note_file in note_files:
         note_parsed = Note.get_note_file_data(note_file)
         if note_parsed:

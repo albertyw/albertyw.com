@@ -38,7 +38,9 @@ def projects() -> str:
 
 @handlers.route("/notes")
 def notes() -> str:
-    posts = note_util.get_notes(note_util.NOTES_DIRECTORY)
+    posts = note_util.get_notes_directories(
+        [note_util.NOTES_DIRECTORY, note_util.REFERENCE_DIRECTORY],
+    )
     return render_template("notes.htm", posts=posts)
 
 
@@ -90,8 +92,7 @@ def atom_feed() -> Any:
     fg.language('en')
     fg.updated(note_util.get_notes(note_util.NOTES_DIRECTORY)[0].time)
     for post in list(note_util.get_notes(note_util.NOTES_DIRECTORY))[:5]:
-        url = url_for('handlers.note', slug=post.slug)
-        url = urljoin(request.url_root, url)
+        url = urljoin(request.url_root, post.url())
 
         fe = fg.add_entry()
         fe.title(post.title)
