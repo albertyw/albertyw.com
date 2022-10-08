@@ -115,7 +115,7 @@ def get_note_files(directory: str) -> list[Path]:
 
 
 @cached_function
-def get_notes_directories(directories: list[str]) -> List[Note]:
+def get_notes_directories(directories: list[str]) -> list[Note]:
     notes: list[Note] = []
     for directory in directories:
         notes += get_notes(directory)
