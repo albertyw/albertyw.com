@@ -38,7 +38,7 @@ def projects() -> str:
 
 @handlers.route("/notes")
 def notes() -> str:
-    posts = note_util.get_notes(note_util.NOTES_DIRECTORY)
+    posts = note_util.get_notes_directories([note_util.NOTES_DIRECTORY])
     return render_template("notes.htm", posts=posts)
 
 

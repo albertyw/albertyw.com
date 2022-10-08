@@ -105,11 +105,20 @@ def get_note_files(directory: str) -> List[Path]:
     return files
 
 
+@cached_function
+def get_notes_directories(directories: list[str]) -> List[Note]:
+    notes: list[Note] = []
+    for directory in directories:
+        notes += get_notes(directory)
+    notes = sorted(notes, key=lambda n: n.time, reverse=True)
+    return notes
+
+
 # @varsnap
 @cached_function
 def get_notes(directory: str) -> List[Note]:
     note_files = get_note_files(directory)
-    notes = []
+    notes: list[Note] = []
     for note_file in note_files:
         note_parsed = Note.get_note_file_data(note_file)
         if note_parsed:
