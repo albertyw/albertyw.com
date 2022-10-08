@@ -60,6 +60,13 @@ class TestNote(unittest.TestCase):
         with serve.app.app_context():
             url = self.note.url()
         self.assertGreater(len(url), 0)
+        self.assertIn('note', url)
+
+        self.note.note_file = Path('reference/asdf')
+        with serve.app.app_context():
+            url = self.note.url()
+        self.assertGreater(len(url), 0)
+        self.assertIn('reference', url)
 
 
 class UtilCase(unittest.TestCase):
