@@ -97,7 +97,7 @@ def prune_note_files(note_files: list[Path]) -> list[Path]:
     def is_valid_note(note_file: Path) -> bool:
         if '~' in str(note_file):
             return False
-        if str(note_file)[0] == '.':
+        if note_file.name[0] == '.':
             return False
         return True
     files = [note_file for note_file in note_files if is_valid_note(note_file)]

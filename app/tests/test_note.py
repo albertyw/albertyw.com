@@ -87,6 +87,7 @@ class UtilCase(unittest.TestCase):
 
     def test_prune_dotfile_notes(self) -> None:
         self.check_prune_note_files(Path('.asdf'), False)
+        self.check_prune_note_files(Path('/asdf/.asdf'), False)
 
     def test_get_note_from_unknown_slug(self) -> None:
         note = note_util.get_note_from_slug(note_util.NOTES_DIRECTORY, 'asdf')
