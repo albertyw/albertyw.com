@@ -5,6 +5,10 @@
             "name": "The Zen of Python"
         },
         {
+            "link": "https://ben.balter.com/2015/08/12/the-zen-of-github/",
+            "name": "The Zen of GitHub"
+        },
+        {
             "link": "http://sunnyday.mit.edu/papers/therac.pdf",
             "name": "Therac-25"
         },
