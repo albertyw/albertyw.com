@@ -1,6 +1,17 @@
-/var/www/app/logs/nginx/*.log
-/var/www/app/logs/uwsgi/app.log
-{
+"/var/www/app/logs/nginx/albertyw.com.access.log" {
+    su root root
+    daily
+    maxsize 10M
+    missingok
+    rotate 14
+    compress
+    delaycompress
+    notifempty
+    copytruncate
+    sharedscripts
+}
+
+"/var/www/app/logs/uwsgi/app.log" {
     su root root
     daily
     maxsize 10M
