@@ -35,6 +35,10 @@
         {
             "link": "https://blog.codinghorror.com/a-pragmatic-quick-reference/",
             "name": "The Pragmatic Programmer Quick Reference Guide"
+        },
+        {
+            "link": "https://tersesystems.com/blog/2020/01/22/developing-in-production/",
+            "name": "Developing in Production"
         }
     ],
     "Technical Leadership": [
