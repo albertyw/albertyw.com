@@ -7,6 +7,7 @@ import tempfile
 from typing import Any, Callable, cast
 import unittest
 
+from dotenv import dotenv_values
 import requests
 from titlecase import titlecase
 from varsnap import test
@@ -227,8 +228,10 @@ for note in note_util.get_notes(note_util.REFERENCE_DIRECTORY):
 
 class TestIntegration(unittest.TestCase):
     def test_varsnap(self) -> None:
+        config = dotenv_values('.env.production')
+        serve.app.config['SERVER_NAME'] = config['SERVER_NAME']
         with serve.app.test_request_context(
-            base_url='https://www.albertyw.com/'
+            environ_overrides={'wsgi.url_scheme': 'https'},
         ):
             matches, logs = test()
         if matches is None:
