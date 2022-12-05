@@ -61,6 +61,10 @@
         {
             "link": "https://jvns.ca/blog/2014/12/21/fear-makes-you-a-worse-programmer/",
             "name": "Fear makes you a worse programmer"
+        },
+        {
+            "link": "https://gist.github.com/chitchcock/1281611",
+            "name": "Steve Yegge's Google Platforms Rant"
         }
     ],
     "People and Management": [
