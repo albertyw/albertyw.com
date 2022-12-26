@@ -97,6 +97,10 @@
         {
             "link": "https://www.city-data.com/",
             "name": "City-Data.com"
+        },
+        {
+            "link": "https://lucide.dev/",
+            "name": "Lucide Icon Toolkit"
         }
     ],
     "Other": [
