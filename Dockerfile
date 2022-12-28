@@ -1,12 +1,11 @@
-FROM node:18 as node
+FROM node:18-slim as node
 WORKDIR /
 COPY . .
-RUN npm ci --only=production \
+RUN npm ci --omit=dev \
     && npm run minify
 
 
-# Need buster for uwsgi builds
-FROM python:3.11-buster
+FROM python:3.11-slim-bullseye
 
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5000

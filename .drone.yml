@@ -9,15 +9,16 @@ volumes:
 
 steps:
   - name: Test Python
-    image: python:3.11
+    image: python:3.11-slim-bullseye
     commands:
+      - apt-get update && apt-get install -y curl git
       - ln -fs .env.development .env
       - pip install -r requirements.txt
       - pip install -r requirements-test.txt
       - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > "${HOME}/bin/cc-test-reporter"
       - chmod +x "${HOME}/bin/cc-test-reporter"
       - flake8
-      - mypy . --ignore-missing-imports --strict
+      - gunicorn -c config/gunicorn.conf.py --check-config
       - cc-test-reporter before-build
       - coverage run -m unittest discover
       - exitcode="$?"
