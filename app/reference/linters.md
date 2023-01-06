@@ -20,3 +20,4 @@ A list of linters that I use for my projects:
 | Dockerfile | [Hadolint](https://github.com/hadolint/hadolint) |
 | Nginx      | [Gixy](https://github.com/yandex/gixy) |
 | Vimscript  | [vint](https://github.com/Vimjas/vint) |
+| LaTeX      | [chktex](https://www.nongnu.org/chktex/) |
