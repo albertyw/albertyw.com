@@ -120,12 +120,22 @@ class TestGrammar(unittest.TestCase):
     ]
 
     def check_grammar(self, text: str) -> None:
+        # Remove code blocks
         text = re.sub(r"```[.\w\W]*```", "CODE", text)
         text = re.sub(r"`[.\w\W]*`", "CODE", text)
-        text = re.sub(r"\[[.\w\W]*?\]\(.*?\)", "Z", text)
+
+        # Remove links
+        text = re.sub(r"\[[.\w\W]*?\]\(.*?\)", "LINK.", text)
+
+        # Remove tables
         text = re.sub(r"^\|.*\|$", "", text, flags=re.MULTILINE)
+
+        # Remove quotes
         text = re.sub(r"^>.*$", "", text, flags=re.MULTILINE)
+
+        # Remove newlines
         text = text.replace("\n", " ")
+
         url = 'http://api.grammarbot.io/v2/check'
         headers = {
             'content-type': 'application/json',
