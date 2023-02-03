@@ -190,6 +190,7 @@ class TestPage(unittest.TestCase):
         response_data = response.get_data().decode('utf-8')
         self.assertIn(note.title, response_data)
         self.assertIn(note.note, response_data)
+        response.close()
 
 
 class TestSlug(unittest.TestCase):

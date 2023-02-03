@@ -52,6 +52,7 @@ class PageCase(unittest.TestCase):
         response = self.app.get('/asdf')
         self.assertEqual(response.status_code, 404)
         self.assertIn(b'Not Found', response.get_data())
+        response.close()
 
     def test_note_load(self) -> None:
         self.page_test('/note/fibonaccoli', b'Romanesco')
@@ -60,6 +61,7 @@ class PageCase(unittest.TestCase):
         response = self.app.get('/note/Fibonaccoli')
         self.assertEqual(response.status_code, 302)
         self.assertEqual(urlparse(response.location).path, '/note/fibonaccoli')
+        response.close()
 
     def test_atom_feed_load(self) -> None:
         self.page_test('/atom.xml', b'xml')
@@ -67,6 +69,7 @@ class PageCase(unittest.TestCase):
     def test_nonexistent_note_load(self) -> None:
         response = self.app.get('/note/asdf')
         self.assertEqual(response.status_code, 404)
+        response.close()
 
     def page_test(self, path: str, string: bytes) -> None:
         response = self.app.get(path)
