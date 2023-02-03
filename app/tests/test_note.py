@@ -125,7 +125,15 @@ class TestGrammar(unittest.TestCase):
         text = re.sub(r"`[.\w\W]*`", "CODE", text)
 
         # Remove links
-        text = re.sub(r"[\!]?\[[.\w\W]*?\]\(.*?\)", "LINK.", text)
+        text = re.sub(r"[\!]?\[[.\w\W]*?\]\(.*?\)", "LINK0", text)
+        # Make sure sequential links have different replacement words
+        i = 1
+        while True:
+            replace = "LINK%s" % i
+            text = text.replace("LINK0", replace, 1)
+            if replace not in text:
+                break
+            i += 1
 
         # Remove tables
         text = re.sub(r"^\|.*\|$", "", text, flags=re.MULTILINE)
