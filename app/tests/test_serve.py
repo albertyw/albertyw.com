@@ -19,7 +19,10 @@ class PageCase(unittest.TestCase):
         self.page_test('/projects', b'Projects')
 
     def test_notes_load(self) -> None:
-        self.page_test('/notes', b'Notes')
+        response = self.app.get('/notes')
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(urlparse(response.location).path, '/')
+        response.close()
 
     def test_shelf_load(self) -> None:
         self.page_test('/shelf', b'Shelf')

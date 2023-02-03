@@ -20,9 +20,11 @@ handlers = Blueprint('handlers', __name__)
 
 
 @handlers.route("/")
-@varsnap
 def index() -> str:
-    return render_template("index.htm")
+    posts = note_util.get_notes_directories(
+        [note_util.NOTES_DIRECTORY, note_util.REFERENCE_DIRECTORY],
+    )
+    return render_template("notes.htm", posts=posts)
 
 
 @handlers.route("/resume")
@@ -37,11 +39,9 @@ def projects() -> str:
 
 
 @handlers.route("/notes")
+@varsnap
 def notes() -> str:
-    posts = note_util.get_notes_directories(
-        [note_util.NOTES_DIRECTORY, note_util.REFERENCE_DIRECTORY],
-    )
-    return render_template("notes.htm", posts=posts)
+    return redirect(url_for('handlers.index'))
 
 
 @handlers.route("/shelf")
