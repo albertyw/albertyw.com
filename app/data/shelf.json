@@ -47,10 +47,6 @@
             "name": "Building a Career in Software: A Comprehensive Guide to Success in the Software Industry"
         },
         {
-            "link": "https://softwareleadweekly.com/",
-            "name": "Software Lead Weekly"
-        },
-        {
             "link": "https://chriskiehl.com/article/thoughts-after-6-years",
             "name": "Software development topics I've changed my mind on after 6 years in the industry"
         },
@@ -91,6 +87,32 @@
         {
             "link": "https://staffeng.com/book",
             "name": "Staff Engineer: Leadership beyond the management"
+        }
+    ],
+    "Newsletters": [
+        {
+            "link": "https://softwareleadweekly.com/",
+            "name": "Software Lead Weekly"
+        },
+        {
+            "link": "https://golangweekly.com/",
+            "name": "Golang weekly"
+        },
+        {
+            "link": "https://www.techemails.com/",
+            "name": "Internal Tech Emails"
+        },
+        {
+            "link": "https://levelup.patkua.com/",
+            "name": "Level Up"
+        },
+        {
+            "link": "https://randsinrepose.com/",
+            "name": "Rands in Repose"
+        },
+        {
+            "link": "https://stratechery.com/",
+            "name": "Stratechery"
         }
     ],
     "Reference": [
