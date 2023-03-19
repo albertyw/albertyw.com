@@ -2,11 +2,6 @@ kind: pipeline
 type: docker
 name: test
 
-volumes:
-  - name: ssh_key
-    host:
-      path: /home/albertyw/.ssh/id_ed25519
-
 steps:
   - name: Test Python
     image: python:3.11-slim-bullseye
@@ -78,16 +73,15 @@ steps:
   - name: Deploy
     depends_on:
       - Build Docker Container
-    image: appleboy/drone-ssh:1.6.4
-    settings:
-      host: direct.albertyw.com
-      username: albertyw
-      key_path: /root/ssh/id_ed25519
-      script:
-        - "/home/albertyw/albertyw.com/bin/deploy.sh master"
-    volumes:
-      - name: ssh_key
-        path: /root/ssh/id_ed25519
+    environment:
+      SSH_KEY:
+        from_secret: ssh_key
+    image: albertyw/ssh-client:4.0.0
+    commands:
+      - ssh-keyscan direct.albertyw.com >> /root/.ssh/known_hosts
+      - echo "$${SSH_KEY}" > /root/.ssh/id_ed25519
+      - chmod 600 /root/.ssh/id_ed25519
+      - ssh albertyw@direct.albertyw.com albertyw.com/bin/deploy.sh master
     when:
       branch:
         - master
