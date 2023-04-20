@@ -39,6 +39,10 @@
         {
             "link": "https://tersesystems.com/blog/2020/01/22/developing-in-production/",
             "name": "Developing in Production"
+        },
+        {
+            "link": "https://missing.csail.mit.edu/",
+            "name": "The Missing Semester of your CS Education"
         }
     ],
     "Technical Leadership": [
