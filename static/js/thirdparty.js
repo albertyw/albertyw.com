@@ -2,6 +2,10 @@ const LogFit = require('logfit');
 const Rollbar = require('rollbar');
 const varsnap = require('varsnap');
 
+require('normalize.css/normalize.css');
+require('bootstrap/dist/css/bootstrap.css');
+require('bootstrap/dist/js/bootstrap.js');
+
 function setupRollbar() {
   const rollbarConfig = {
     accessToken: process.env.ROLLBAR_CLIENT_TOKEN,
@@ -24,7 +28,6 @@ function setupVarsnap() {
   varsnap.updateConfig({
     varsnap: 'true',
     env: process.env.ENV,
-    branch: process.env.GIT_BRANCH,
     producerToken: process.env.VARSNAP_PRODUCER_TOKEN,
     consumerToken: process.env.VARSNAP_CONSUMER_TOKEN,
   });
