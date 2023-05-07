@@ -53,7 +53,7 @@ pip install -r requirements-test.txt
 ln -s .env.development .env
 
 # Test
-flake8
+ruff check .
 mypy . --ignore-missing-imports --strict
 coverage run -m unittest discover
 coverage report
