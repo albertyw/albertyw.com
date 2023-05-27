@@ -40,7 +40,7 @@ def projects() -> str:
 
 @handlers.route("/notes")
 @varsnap
-def notes() -> str:
+def notes() -> Any:
     return redirect(url_for('handlers.index'))
 
 
