@@ -31,7 +31,7 @@ ext = Sitemap(app=app)
 ext.register_generator(sitemap_urls)
 
 
-if os.environ['ENV'] == 'production':
+if os.environ['ENV'] == 'production':  # pragma: no cover
     import rollbar
     import rollbar.contrib.flask
 
