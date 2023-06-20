@@ -35,11 +35,11 @@ class Note(object):
 
     def __eq__(self, other: Any) -> bool:
         return type(self) == type(other) and \
-                self.title == getattr(other, 'title') and \
-                self.slug == getattr(other, 'slug') and \
-                self.time == getattr(other, 'time') and \
-                self.note == getattr(other, 'note') and \
-                self.markdown == getattr(other, 'markdown')
+                self.title == other.title and \
+                self.slug == other.slug and \
+                self.time == other.time and \
+                self.note == other.note and \
+                self.markdown == other.markdown
 
     def __repr__(self) -> str:
         return 'Note: %s\n%s\n%s\n%s\n%s' % (
