@@ -7,7 +7,8 @@ server {
 
 # Change naked domain to www
 server {
-    listen          443 ssl http2;
+    listen          443 ssl;
+    http2 on;
     server_name     albertyw.com;
 
     include snippets/ssl.conf;
@@ -20,7 +21,8 @@ server {
 ### Servers ###
 
 server {
-    listen          443 ssl http2;
+    listen          443 ssl;
+    http2 on;
     server_name     www.albertyw.com;
     access_log      /var/log/nginx/albertyw.com/albertyw.com.access.log;
     error_log       /var/log/nginx/albertyw.com/albertyw.com.error.log;
