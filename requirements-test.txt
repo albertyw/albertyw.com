@@ -3,8 +3,8 @@ coverage==7.3.1                  # Test coverage
 ruff==0.0.291                    # Python linter
 
 # Testing Help
-titlecase==2.4                   # Used for checking that note titles are title case
+titlecase==2.4.1                 # Used for checking that note titles are title case
 
 # Types
 mypy==1.5.1                      # Type checking
-types-requests==2.31.0.2         # Type stubs for requests package
+types-requests==2.31.0.4         # Type stubs for requests package
