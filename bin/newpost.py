@@ -23,7 +23,7 @@ def get_reference_slug() -> Optional[str]:
 
 
 def generate_note(reference_name: Optional[str]) -> Path:
-    current_time = datetime.datetime.utcnow()
+    current_time = datetime.datetime.now(datetime.timezone.utc)
 
     if reference_name:
         note_filename = f'{reference_name}.md'
