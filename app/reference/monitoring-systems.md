@@ -6,6 +6,7 @@ monitoring-systems
 
 - `top` - Monitoring processes for CPU, Memory
 - `htop` - Better `top`
+- `btop` - Better `htop`
 - `iotop` - `top` for disk I/O
 - `iftop` - `top` for network I/O
 - `docker stats` - `top` across docker containers
