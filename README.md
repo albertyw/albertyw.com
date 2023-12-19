@@ -13,7 +13,7 @@ Personal website
 ### Setup (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/))
 
 ```bash
-mkvirtualenv albertyw -p python3.11
+mkvirtualenv albertyw -p python3.12
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
@@ -35,7 +35,7 @@ python app/serve.py
 
 ```bash
 ruff check .
-mypy . --ignore-missing-imports --strict
+mypy .
 shellcheck --exclude=SC1091 bin/*.sh
 coverage run -m unittest discover
 npm test
@@ -47,14 +47,14 @@ This repo uses:
 
 ```bash
 # Setup
-pyenv local 3.11
+pyenv local 3.12
 pip install -r requirements.txt
 pip install -r requirements-test.txt
 ln -s .env.development .env
 
 # Test
 ruff check .
-mypy . --ignore-missing-imports --strict
+mypy .
 coverage run -m unittest discover
 coverage report
 codeclimate-test-reporter
