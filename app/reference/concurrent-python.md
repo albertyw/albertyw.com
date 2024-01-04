@@ -79,7 +79,7 @@ if __name__ == '__main__':
     main()
 ```
 
- - [Python concurrent.futures documentation](https://docs.python.org/3/library/concurrent.futures.html)
- - [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
- - [threading](https://docs.python.org/3/library/threading.html)
- - [subprocess](https://docs.python.org/3/library/subprocess.html)
+- [Python concurrent.futures documentation](https://docs.python.org/3/library/concurrent.futures.html)
+- [multiprocessing](https://docs.python.org/3/library/multiprocessing.html)
+- [threading](https://docs.python.org/3/library/threading.html)
+- [subprocess](https://docs.python.org/3/library/subprocess.html)
