@@ -11,3 +11,4 @@ monitoring-systems
 - `iftop` - `top` for network I/O
 - `docker stats` - `top` across docker containers
 - `docker top` - `top` for processes within a docker container
+- `nvidia-smi` - for Nvidia GPUs
