@@ -3,6 +3,10 @@ html {
     min-height: 100%;
 }
 
+#main a:visited {
+  color: revert;
+}
+
 .project-logos {
     height: 50px;
 }
