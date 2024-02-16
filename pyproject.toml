@@ -3,13 +3,13 @@ name = "albertyw"
 version = "1.0.0"
 dependencies = [
     # Core packages
-    "python-dotenv==1.0.0",   # Read environment variables from .env
-    "Flask==3.0.0",           # Web microframework
+    "python-dotenv==1.0.1",   # Read environment variables from .env
+    "Flask==3.0.2",           # Web microframework
     "gunicorn==21.2.0",       # WSGI server
     "syspath==3.0.5",         # Modify paths
 
     # Features
-    "feedgen==0.9.0",         # Generate atom feeds
+    "feedgen==1.0.0",         # Generate atom feeds
     "flask-sitemap==0.4.0",   # Web sitemaps
     "markdown2==2.4.12",      # Markdown formatting
     "Pygments==2.17.2",       # Syntax highlighting support
@@ -27,19 +27,19 @@ py-modules = []
 [project.optional-dependencies]
 test = [
     # Testing
-    "coverage==7.3.3",                  # Test coverage
-    "ruff==0.1.8",                      # Python linter
+    "coverage==7.4.1",                  # Test coverage
+    "ruff==0.2.1",                      # Python linter
 
     # Testing Help
     "titlecase==2.4.1",                 # Used for checking that note titles are title case
 
     # Types
-    "mypy==1.7.1",                      # Type checking
-    "types-requests==2.31.0.10",        # Type stubs for requests package
+    "mypy==1.8.0",                      # Type checking
+    "types-requests==2.31.0.20240125",  # Type stubs for requests package
 ]
 
 [tool.ruff]
-select = ["E", "F", "B"]
+lint.select = ["E", "F", "B"]
 
 [tool.mypy]
 strict = true
