@@ -7,10 +7,6 @@ html {
   color: revert;
 }
 
-.project-logos {
-    height: 50px;
-}
-
 body {
     margin-bottom: 150px;
 }
@@ -25,6 +21,10 @@ img {
     bottom: 0;
     padding-top: 50px;
     height: 150px;
+}
+
+.project-logos {
+    height: 50px;
 }
 
 .note td, .note th {
