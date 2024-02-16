@@ -39,7 +39,7 @@ test = [
 ]
 
 [tool.ruff]
-select = ["E", "F", "B"]
+lint.select = ["E", "F", "B"]
 
 [tool.mypy]
 strict = true
