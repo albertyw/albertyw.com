@@ -1,6 +1,0 @@
-{
-  "extends": "stylelint-config-standard",
-  "ignoreFiles": [
-    "static/css/syntax.css"
-  ]
-}

@@ -8,8 +8,7 @@ steps:
     commands:
       - apt-get update && apt-get install -y curl git
       - ln -fs .env.development .env
-      - pip install -r requirements.txt
-      - pip install -r requirements-test.txt
+      - pip install -e .[test]
       - curl -L "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-$(dpkg --print-architecture)" > "${HOME}/bin/cc-test-reporter"
       - chmod +x "${HOME}/bin/cc-test-reporter"
       - ruff check .
