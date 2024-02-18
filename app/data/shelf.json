@@ -43,6 +43,10 @@
         {
             "link": "https://missing.csail.mit.edu/",
             "name": "The Missing Semester of your CS Education"
+        },
+        {
+           "link": "https://jvns.ca/blog/2024/02/16/popular-git-config-options/",
+           "name": "Popular git config options"
         }
     ],
     "Technical Leadership": [
