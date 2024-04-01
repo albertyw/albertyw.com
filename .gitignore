@@ -77,5 +77,6 @@ target/
 .env
 
 node_modules
+.coverage_js
 
 static/gen/resume.pdf

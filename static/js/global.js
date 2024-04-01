@@ -1,4 +1,2 @@
-if (typeof window !== 'undefined') {
-  require('../css/global.css');
-  require('../css/syntax.css');
-}
+import '../css/global.css';
+import '../css/syntax.css';
