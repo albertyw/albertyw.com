@@ -67,7 +67,7 @@ def main() -> None:
     print('concurrent_submit: %f' % duration)
     print(output)
 
-    # Parallel with executor.mao()
+    # Parallel with executor.map()
     start = time.time()
     output = concurrent_map(data)
     duration = time.time() - start
