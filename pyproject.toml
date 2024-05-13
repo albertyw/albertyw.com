@@ -4,8 +4,8 @@ version = "1.0.0"
 dependencies = [
     # Core packages
     "python-dotenv==1.0.1",   # Read environment variables from .env
-    "Flask==3.0.2",           # Web microframework
-    "gunicorn==21.2.0",       # WSGI server
+    "Flask==3.0.3",           # Web microframework
+    "gunicorn==22.0.0",       # WSGI server
     "syspath==3.0.6",         # Modify paths
 
     # Features
@@ -15,7 +15,7 @@ dependencies = [
     "Pygments==2.17.2",       # Syntax highlighting support
 
     # Monitoring/tracking/logging
-    "blinker==1.7.0",         # Dependency of rollbar
+    "blinker==1.8.2",         # Dependency of rollbar
     "rollbar==1.0.0",         # rollbar.com error logging
     "setproctitle==1.3.3",    # Allow gunicorn to set process title
     "varsnap==1.5.8",         # Test discovery
@@ -27,19 +27,20 @@ py-modules = []
 [project.optional-dependencies]
 test = [
     # Testing
-    "coverage==7.4.4",                  # Test coverage
-    "ruff==0.3.4",                      # Python linter
+    "coverage==7.5.1",                  # Test coverage
+    "ruff==0.4.4",                      # Python linter
 
     # Testing Help
     "titlecase==2.4.1",                 # Used for checking that note titles are title case
 
     # Types
-    "mypy==1.9.0",                      # Type checking
+    "mypy==1.10.0",                      # Type checking
     "types-requests==2.31.0.20240125",  # Type stubs for requests package
 ]
 
 [tool.ruff]
-lint.select = ["E", "F", "B"]
+# https://docs.astral.sh/ruff/rules/
+lint.select = ["E", "F", "W", "A", "B", "COM", "N", "PLC", "PLE", "PLW"]
 
 [tool.mypy]
 strict = true
