@@ -43,7 +43,7 @@ class Note(object):
 
     def __repr__(self) -> str:
         return 'Note: %s\n%s\n%s\n%s\n%s' % (
-            self.title, self.slug, self.time, self.note, self.markdown
+            self.title, self.slug, self.time, self.note, self.markdown,
         )
 
     @staticmethod
