@@ -42,6 +42,7 @@ def concurrent_submit(data: list[int]) -> list[int]:
 def concurrent_map(data: list[int]) -> list[int]:
     """ Concurrency using executor.map """
     with concurrent.futures.ProcessPoolExecutor() as executor:
+        # Use list to check for exceptions
         data = list(executor.map(calculate, data))
     return data
 
