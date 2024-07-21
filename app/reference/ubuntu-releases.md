@@ -8,6 +8,8 @@ ubuntu-releases
 
 | Version | Name    | LTS   | End of Life (Security) |
 |---------|---------|-------|------------------------|
+| 24.04   | Noble   | true  | April 2036             |
+| 23.10   | Mantic  | false | July 2024              |
 | 23.04   | Lunar   | false | January 2024           |
 | 22.04   | Jammy   | true  | April 2032             |
 | 21.10   | Impish  | false | July 2022              |
