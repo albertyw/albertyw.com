@@ -34,7 +34,7 @@ class Note(object):
         self.markdown = ''
 
     def __eq__(self, other: Any) -> bool:
-        return type(self) == type(other) and \
+        return type(self) is type(other) and \
                 self.title == other.title and \
                 self.slug == other.slug and \
                 self.time == other.time and \
