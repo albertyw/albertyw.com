@@ -6,14 +6,14 @@ ubuntu-releases
 
 [Source](https://wiki.ubuntu.com/Releases)
 
-| Version | Name    | Status    | LTS   | Release      | End of Life (Security) |
-|---------|---------|-----------|-------|--------------|------------------------|
-| 24.04   | Noble   | Supported | true  | April 2024   | April 2036             |
-| 23.10   | Mantic  | Obsolete  | false | October 2023 | July 2024              |
-| 23.04   | Lunar   | Obsolete  | false | April 2023   | January 2024           |
-| 22.04   | Jammy   | Supported | true  | April 2022   | April 2032             |
-| 21.10   | Impish  | Obsolete  | false | October 2021 | July 2022              |
-| 21.04   | Hirsute | Obsolete  | false | April 2021   | January 2022           |
-| 20.04   | Focal   | Supported | true  | April 2020   | April 2030             |
-| 18.04   | Bionic  | Supported | true  | April 2018   | April 2028             |
-| 16.04   | Xenial  | Supported | true  | April 2016   | April 2026             |
+| Version | Name    | Status    | LTS   | Release | End of Life (Security) |
+|---------|---------|-----------|-------|---------|------------------------|
+| 24.04   | Noble   | Supported | true  | 2024-04 | 2036-04                |
+| 23.10   | Mantic  | Obsolete  | false | 2023-10 | 2024-07                |
+| 23.04   | Lunar   | Obsolete  | false | 2023-04 | 2024-01                |
+| 22.04   | Jammy   | Supported | true  | 2022-4  | 2032-04                |
+| 21.10   | Impish  | Obsolete  | false | 2021-10 | 2022-07                |
+| 21.04   | Hirsute | Obsolete  | false | 2021-04 | 2022-01                |
+| 20.04   | Focal   | Supported | true  | 2020-04 | 2030-04                |
+| 18.04   | Bionic  | Supported | true  | 2018-04 | 2028-04                |
+| 16.04   | Xenial  | Supported | true  | 2016-04 | 2026-04                |
