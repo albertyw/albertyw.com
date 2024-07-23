@@ -24,7 +24,7 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     # Testing
-    "coverage==7.5.4",                  # Test coverage
+    "coverage==7.6.0",                  # Test coverage
     "ruff==0.5.1",                      # Python linter
 
     # Testing Help
