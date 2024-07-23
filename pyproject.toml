@@ -25,7 +25,7 @@ dependencies = [
 test = [
     # Testing
     "coverage==7.6.0",                  # Test coverage
-    "ruff==0.5.1",                      # Python linter
+    "ruff==0.5.4",                      # Python linter
 
     # Testing Help
     "titlecase==2.4.1",                 # Used for checking that note titles are title case
