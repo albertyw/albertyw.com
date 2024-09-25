@@ -47,6 +47,10 @@
         {
            "link": "https://jvns.ca/blog/2024/02/16/popular-git-config-options/",
            "name": "Popular git config options"
+        },
+        {
+            "link": "https://github.com/akshayjshah/grpc-demystified",
+            "name": "gRPC Demystified"
         }
     ],
     "Technical Leadership": [
