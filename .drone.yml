@@ -4,7 +4,7 @@ name: test
 
 steps:
   - name: Test Python
-    image: python:3.12-slim-bookworm
+    image: python:3.13-slim-bookworm
     commands:
       - apt-get update && apt-get install -y curl git
       - ln -fs .env.development .env
@@ -44,7 +44,7 @@ steps:
   - name: Test Nginx
     image: python:3.12-alpine
     commands:
-      - pip install gixy==0.1.20 pyparsing==2.4.7
+      - pip install gixy==0.1.21
       - gixy config/nginx/*
 
   - name: Test Markdown

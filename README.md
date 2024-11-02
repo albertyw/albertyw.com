@@ -9,10 +9,11 @@ Personal website
 
 ## Development
 
-### Setup (using [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/))
+### Setup
+Using [python venv](https://docs.python.org/3/library/venv.html)
 
 ```bash
-mkvirtualenv albertyw -p python3.12
+python3.13 -m venv env
 pip install -e .[test]
 ln -s .env.development .env
 npm install
@@ -45,7 +46,7 @@ This repo uses:
 
 ```bash
 # Setup
-pyenv local 3.12
+pyenv local 3.13
 pip install -e .[test]
 ln -s .env.development .env
 
