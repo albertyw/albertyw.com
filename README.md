@@ -9,7 +9,8 @@ Personal website
 
 ## Development
 
-### Setup
+### Setup Development Environment
+
 Using [python venv](https://docs.python.org/3/library/venv.html)
 
 ```bash
@@ -71,7 +72,7 @@ docker run -t -i -p 127.0.0.1:5000:5000 albertyw.com:test
 
 ## Production
 
-### Setup
+### Setup Production Environment
 
 Run this once on a new server to set up the web app:
 

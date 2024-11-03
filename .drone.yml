@@ -50,7 +50,7 @@ steps:
   - name: Test Markdown
     image: pipelinecomponents/markdownlint:0.13.3
     commands:
-      - git ls-files | grep '\.md$' | xargs mdl --style app/tests/mdl_style.rb
+      - mdl --style app/tests/mdl_style.rb -g .
 
   - name: Build Docker Container
     depends_on:
