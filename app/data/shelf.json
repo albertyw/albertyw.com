@@ -107,6 +107,14 @@
         {
             "link": "https://staffeng.com/book",
             "name": "Staff Engineer: Leadership beyond the management"
+        },
+        {
+            "link": "https://www.amazon.com/Principles-Life-Work-Ray-Dalio/dp/1501124021",
+            "name": "Ray Dalio: Principles"
+        },
+        {
+            "link": "https://www.amazon.com/How-Win-Friends-Influence-People/dp/0671027034",
+            "name": "How to Win Friends & Influence People"
         }
     ],
     "Newsletters": [
