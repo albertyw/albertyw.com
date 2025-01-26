@@ -1,13 +1,32 @@
 const keyHistory = [];
 
-const navigationOptions = {
-  'g': '/',
-  'n': '/',
-  's': '/shelf',
-  'p': '/projects',
-  'r': '/reference',
-};
-const navigationOptionsFlipped = Object.fromEntries(Object.entries(navigationOptions).map(a => a.reverse()))
+const navigationOptions = {};
+const navigationOptionsFlipped = {};
+function generateNavigationOptions() {
+  const links = document.querySelectorAll('.navbar a');
+  for (let i = 0; i < links.length; i++) {
+    const link = links[i];
+    const href = link.getAttribute('href');
+    const text = link.innerHTML;
+    const letter = findUnusedLetter(text, Object.keys(navigationOptions));
+    if (letter === undefined) {
+      continue;
+    }
+    navigationOptions[letter] = href;
+    if (navigationOptionsFlipped[href] === undefined) {
+      navigationOptionsFlipped[href] = letter;
+    }
+  }
+}
+function findUnusedLetter(text, usedLetters) {
+  for (let i = 0; i < text.length; i++) {
+    const letter = text[i].toLowerCase();
+    if (!usedLetters.includes(letter)) {
+      return letter;
+    }
+  }
+  return undefined;
+}
 
 function underlineText() {
   const links = document.querySelectorAll('.navbar a');
@@ -45,6 +64,7 @@ function processKeyHistory() {
 }
 
 export function watchKeyboardEvents() {
+  generateNavigationOptions();
   window.addEventListener('keyup', (event) => {
     keyHistory.push(event.key);
     processKeyHistory();
