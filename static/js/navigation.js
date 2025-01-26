@@ -1,7 +1,7 @@
 const keyHistory = [];
 
 const navigationOptions = {};
-const navigationOptionsFlipped = {};
+const navigationOptionsText = {};
 function generateNavigationOptions() {
   const links = document.querySelectorAll('.navbar a');
   for (let i = 0; i < links.length; i++) {
@@ -13,9 +13,7 @@ function generateNavigationOptions() {
       continue;
     }
     navigationOptions[letter] = href;
-    if (navigationOptionsFlipped[href] === undefined) {
-      navigationOptionsFlipped[href] = letter;
-    }
+    navigationOptionsText[text] = letter;
   }
 }
 function findUnusedLetter(text, usedLetters) {
@@ -33,7 +31,7 @@ function underlineText() {
   for (let i = 0; i < links.length; i++) {
     const link = links[i];
     const href = link.getAttribute('href');
-    const letter = navigationOptionsFlipped[href];
+    const letter = navigationOptionsText[link.innerHTML];
     let text = link.innerHTML;
     for (let j = 0; j < text.length; j++) {
       if (text[j].toLowerCase() === letter) {
