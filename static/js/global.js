@@ -1,14 +1,5 @@
 import '../css/global.css';
 import '../css/syntax.css';
-import { watchKeyboardEvents } from './navigation.js';
-watchKeyboardEvents();
-
-function navbarBold() {
-  const currentPage = window.location.pathname;
-  for (const link of document.getElementsByClassName('nav-link')) {
-    if (link.getAttribute('href') === currentPage) {
-      link.classList.add('active');
-    }
-  }
-}
+import { navbarBold, watchKeyboardEvents } from './navigation.js';
 navbarBold();
+watchKeyboardEvents();
