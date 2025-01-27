@@ -30,7 +30,6 @@ function underlineText() {
   const links = document.querySelectorAll('.navbar a');
   for (let i = 0; i < links.length; i++) {
     const link = links[i];
-    const href = link.getAttribute('href');
     const letter = navigationOptionsText[link.innerHTML];
     let text = link.innerHTML;
     for (let j = 0; j < text.length; j++) {
