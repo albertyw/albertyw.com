@@ -48,7 +48,7 @@ steps:
       - gixy config/nginx/*
 
   - name: Test Markdown
-    image: pipelinecomponents/markdownlint:0.13.3
+    image: pipelinecomponents/markdownlint:0.13.4
     commands:
       - mdl --style app/tests/mdl_style.rb -g .
 
@@ -72,7 +72,7 @@ steps:
     environment:
       SSH_KEY:
         from_secret: ssh_key
-    image: albertyw/ssh-client:4.1.4
+    image: albertyw/ssh-client:4.1.7
     commands:
       - ssh-keyscan direct.albertyw.com >> /root/.ssh/known_hosts
       - echo "$${SSH_KEY}" > /root/.ssh/id_ed25519
