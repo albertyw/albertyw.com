@@ -32,7 +32,7 @@ test = [
 
     # Types
     "mypy==1.14.1",                     # Type checking
-    "types-requests==2.32.0.20240712",  # Type stubs for requests package
+    "types-requests==2.32.0.20241016",  # Type stubs for requests package
 ]
 
 [tool.ruff]
