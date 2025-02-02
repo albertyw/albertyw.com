@@ -55,7 +55,6 @@ steps:
   - name: Build Docker Container
     depends_on:
       - Test Dockerfile
-      - Test Markdown
     image: plugins/docker:20
     settings:
       repo: albertyw.com
@@ -64,6 +63,11 @@ steps:
 
   - name: Deploy
     depends_on:
+      - Test Python
+      - Test Node
+      - Test Bash
+      - Test Nginx
+      - Test Markdown
       - Build Docker Container
     environment:
       SSH_KEY:
