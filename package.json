@@ -2,9 +2,9 @@
   "name": "albertyw.com",
   "type": "module",
   "sideEffects": [
-      "./static/js/index.js",
-      "./static/js/global.js",
-      "*.css"
+    "./static/js/index.js",
+    "./static/js/global.js",
+    "*.css"
   ],
   "scripts": {
     "eslint": "eslint -c .eslint.config.js .",
@@ -43,7 +43,7 @@
     "chai": "^5.0.0",
     "dotenv": "^16.0.0",
     "eslint": "^9.0.0",
-    "globals": "^15.0.0",
+    "globals": "^16.0.0",
     "stylelint": "^16.0.2",
     "stylelint-config-standard": "^37.0.0"
   },
