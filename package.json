@@ -2,8 +2,8 @@
   "name": "albertyw.com",
   "type": "module",
   "sideEffects": [
-    "./static/js/index.js",
-    "./static/js/global.js",
+    "./static/js/index.ts",
+    "./static/js/global.ts",
     "*.css"
   ],
   "scripts": {
@@ -13,7 +13,7 @@
     "build:dev": "tsx node_modules/.bin/webpack-cli --mode=development",
     "build:prod": "tsx node_modules/.bin/webpack-cli --mode=production --node-env=production",
     "watch": "webpack --watch",
-    "wdio": "wdio run ./wdio.conf.js"
+    "wdio": "wdio run ./wdio.conf.ts"
   },
   "repository": {
     "type": "git",
@@ -31,7 +31,9 @@
     "mini-css-extract-plugin": "^2.7.5",
     "normalize.css": "^8.0.1",
     "rollbar": "^2.20.0",
+    "ts-loader": "^9.5.2",
     "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
     "varsnap": "^1.8.0",
     "webpack": "^5.80.0",
     "webpack-cli": "^6.0.0"

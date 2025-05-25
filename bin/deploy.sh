@@ -13,6 +13,7 @@ PORT="5000"
 NETWORK="$CONTAINER"_net
 DEPLOY_BRANCH="${1:-}"
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+VERSION="$(git describe --always)"
 set +x  # Do not print contents of .env
 source .env
 set -x
@@ -31,7 +32,12 @@ mv resume/resume.pdf static/gen/resume.pdf
 rm -rf resume
 
 # Build container and network
-docker build --pull -t "$CONTAINER:$BRANCH" .
+docker build \
+    --pull \
+    --tag "$CONTAINER:$BRANCH" \
+    --build-arg GIT_VERSION="$VERSION" \
+    --build-arg GIT_BRANCH="$BRANCH" \
+    .
 docker network inspect "$NETWORK" &>/dev/null ||
     docker network create --driver bridge "$NETWORK"
 

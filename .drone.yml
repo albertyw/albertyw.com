@@ -24,11 +24,14 @@ steps:
       CC_TEST_REPORTER_ID: 6859e866e9159afd7aeb668eb616115e4403caca001083b57f24c2e7a4bd632c
 
   - name: Test Node
-    image: satantime/puppeteer-node:23-bookworm-slim
+    image: satantime/puppeteer-node:24-bookworm-slim
     commands:
       - ln -fs .env.development .env
       - npm ci
       - npm test
+    environment:
+      GIT_VERSION: ${DRONE_COMMIT}
+      GIT_BRANCH: ${DRONE_BRANCH}
 
   - name: Test Bash
     image: koalaman/shellcheck-alpine:stable

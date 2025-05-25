@@ -8,6 +8,10 @@ export function setupRollbar() {
     captureUncaught: true,
     payload: {
       environment: process.env.ENV,
+      server: {
+        branch: process.env.GIT_BRANCH,
+        commit: process.env.GIT_COMMIT,
+      },
     }
   };
   return Rollbar.init(rollbarConfig);
@@ -22,18 +26,19 @@ export function setupLogfit() {
 
 export function setupVarsnap() {
   varsnap.updateConfig({
-    varsnap: 'true',
+    varsnap: true,
     env: process.env.ENV,
     producerToken: process.env.VARSNAP_PRODUCER_TOKEN,
     consumerToken: process.env.VARSNAP_CONSUMER_TOKEN,
+    branch: process.env.GIT_BRANCH,
   });
 }
 
 export function setupGoogleAnalytics() {
   const script = document.createElement('script');
   script.onload = function () {
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){window.dataLayer.push(arguments);}
+    (window as any).dataLayer = (window as any).dataLayer || [];
+    function gtag(...args){(window as any).dataLayer.push(args);}
     gtag('js', new Date());
     gtag('config', process.env.GOOGLE_ANALYTICS_TOKEN);
   };
