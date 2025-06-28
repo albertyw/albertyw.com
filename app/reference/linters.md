@@ -8,8 +8,9 @@ A list of linters that I use for my projects:
 
 | Language   | Linter |
 |------------|--------|
-| Python     | [black](https://github.com/psf/black) |
+| Python     | [ruff](https://github.com/astral-sh/ruff) |
 | Python     | [flake8](https://github.com/PyCQA/flake8) |
+| Python     | [black](https://github.com/psf/black) |
 | Go         | [GoVet](https://pkg.go.dev/cmd/vet) |
 | Go         | [Staticcheck](https://github.com/dominikh/go-tools) |
 | Go         | [Errcheck](https://github.com/kisielk/errcheck) |
