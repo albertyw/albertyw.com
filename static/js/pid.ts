@@ -1,0 +1,73 @@
+type PID = {
+  kp: number; // Proportional gain
+  ki: number; // Integral gain
+  kd: number; // Derivative gain
+};
+
+type DataSeries = number[];
+
+type Data = {
+  setPoints: DataSeries;       // Desired values to achieve
+  measuredValues: DataSeries;  // Actual values measured
+  outputs: DataSeries;         // Control outputs computed by the PID controller
+};
+
+function roundToTwoDecimalPlaces(value: number): string {
+  let output = value.toFixed(2);
+  output = ' '.repeat(6 - output.length) + output;
+  return output;
+}
+
+function createPIDController(pid: PID): (setPoint: number, measuredValue: number) => number {
+  let integral = 0;
+  let previousError = 0;
+
+  return (setPoint: number, measuredValue: number): number => {
+    const error = setPoint - measuredValue;
+    integral += error;
+    const derivative = error - previousError;
+
+    const output = pid.kp * error + pid.ki * integral + pid.kd * derivative;
+
+    previousError = error;
+
+    return output;
+  };
+}
+
+function main(): void {
+  const pid: PID = { kp: 1.0, ki: 0.1, kd: 0.01 };
+  const pidController = createPIDController(pid);
+
+  const data: Data = {
+    setPoints: [],
+    measuredValues: [],
+    outputs: []
+  };
+
+  const stepCount = 20;
+  const setPoint = 10;
+  let measuredValue = 8;
+  console.log('  Step', 'Set Point', 'Measured Value', 'PID Output');
+  for (let step = 0; step < stepCount; step++) {
+    const output = pidController(setPoint, measuredValue);
+
+    data.setPoints.push(setPoint);
+    data.measuredValues.push(measuredValue);
+    data.outputs.push(output);
+
+    // Output
+    const row = [
+      roundToTwoDecimalPlaces(step),
+      roundToTwoDecimalPlaces(setPoint),
+      roundToTwoDecimalPlaces(measuredValue),
+      roundToTwoDecimalPlaces(output)
+    ];
+    console.log(...row);
+
+    // Simulate system response
+    measuredValue = measuredValue + output * 0.1;
+  }
+}
+
+main();
