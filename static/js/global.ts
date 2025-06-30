@@ -4,3 +4,6 @@ import { navbarBold, watchKeyboardEvents } from './navigation.js';
 
 navbarBold();
 watchKeyboardEvents();
+
+import { main } from './pid.js';
+main();
