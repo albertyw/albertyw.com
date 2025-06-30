@@ -46,7 +46,7 @@ function runPID(pid: PID): Data {
     outputs: []
   };
 
-  const stepCount = 200;
+  const stepCount = 100;
   const setPoint = 10;
   let measuredValue = 5;
   console.log('  Step', 'Set Point', 'Measured Value', 'PID Output');
@@ -73,24 +73,35 @@ function runPID(pid: PID): Data {
 }
 
 export function main(): void {
-  const pid: PID = { kp: 1.0, ki: 0.1, kd: 0.01 };
-  const result = runPID(pid);
+  const datasets = [];
+  for (const p of [0.1, 1.0, 5.0]) {
+    for (const i of [0.0, 0.1]) {
+      for (const d of [0.0, 1.0]) {
+        const pid: PID = { kp: p, ki: i, kd: d };
+        const result = runPID(pid);
+        if (datasets.length === 0) {
+          datasets.push({
+            label: 'Set Points',
+            data: result.setPoints,
+          });
+        }
+        const label = `P: ${p.toFixed(1)}, I: ${i.toFixed(1)}, D: ${d.toFixed(2)}`;
+        datasets.push({
+          label: label,
+          data: result.measuredValues,
+          borderColor: `hsl(${Math.random() * 360}, 100%, 50%)`,
+          fill: false
+        });
+      }
+    }
+  }
   new Chart(
     document.getElementById('pidChart') as HTMLCanvasElement,
     {
       type: 'line',
       data: {
-        labels: result.setPoints.map((_, index) => index),
-        datasets: [
-          {
-            label: 'Set Point',
-            data: result.setPoints,
-          },
-          {
-            label: 'Measured Values',
-            data: result.measuredValues,
-          },
-        ]
+        labels: datasets[0].data.map((_, index) => index),
+        datasets: datasets,
       }
     }
   );
