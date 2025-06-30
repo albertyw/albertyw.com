@@ -37,8 +37,7 @@ function createPIDController(pid: PID): (setPoint: number, measuredValue: number
   };
 }
 
-function runPID(): void {
-  const pid: PID = { kp: 1.0, ki: 0.1, kd: 0.01 };
+function runPID(pid: PID): Data {
   const pidController = createPIDController(pid);
 
   const data: Data = {
@@ -47,9 +46,9 @@ function runPID(): void {
     outputs: []
   };
 
-  const stepCount = 20;
+  const stepCount = 200;
   const setPoint = 10;
-  let measuredValue = 8;
+  let measuredValue = 5;
   console.log('  Step', 'Set Point', 'Measured Value', 'PID Output');
   for (let step = 0; step < stepCount; step++) {
     const output = pidController(setPoint, measuredValue);
@@ -70,30 +69,27 @@ function runPID(): void {
     // Simulate system response
     measuredValue = measuredValue + output * 0.1;
   }
+  return data;
 }
 
 export function main(): void {
-  runPID();
-  const data = [
-    { year: 2010, count: 10 },
-    { year: 2011, count: 20 },
-    { year: 2012, count: 15 },
-    { year: 2013, count: 25 },
-    { year: 2014, count: 22 },
-    { year: 2015, count: 30 },
-    { year: 2016, count: 28 },
-  ];
+  const pid: PID = { kp: 1.0, ki: 0.1, kd: 0.01 };
+  const result = runPID(pid);
   new Chart(
     document.getElementById('pidChart') as HTMLCanvasElement,
     {
-      type: 'bar',
+      type: 'line',
       data: {
-        labels: data.map(row => row.year),
+        labels: result.setPoints.map((_, index) => index),
         datasets: [
           {
-            label: 'Acquisitions by year',
-            data: data.map(row => row.count)
-          }
+            label: 'Set Point',
+            data: result.setPoints,
+          },
+          {
+            label: 'Measured Values',
+            data: result.measuredValues,
+          },
         ]
       }
     }
