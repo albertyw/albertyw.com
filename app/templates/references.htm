@@ -4,7 +4,7 @@
 {% block content %}
   <div class="content">
     <h1>Reference</h1>
-    <ul>
+    <ul class="selectable-list">
       {% for post in references %}
         <li>
           <a href="{{ url_for('handlers.reference', slug=post.slug) }}">
