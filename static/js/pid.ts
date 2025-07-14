@@ -73,6 +73,9 @@ function runPID(pid: PID): Data {
 }
 
 export function main(): void {
+  if (document.getElementById('pidChart') === null) {
+    return;
+  }
   const datasets = [];
   for (const p of [0.1, 1.0, 5.0]) {
     for (const i of [0.0, 0.1]) {
