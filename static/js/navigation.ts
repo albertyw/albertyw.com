@@ -79,9 +79,9 @@ export function navbarBold() {
 
 // Keyboard navigation for .selectable-list using "j" and "k"
 export function setupSelectableListNavigation() {
-  const list = document.querySelector('.selectable-list');
-  if (!list) return;
-  const items = Array.from(list.querySelectorAll('li'));
+  const lists = Array.from(document.querySelectorAll('.selectable-list'));
+  if (!lists) return;
+  const items = lists.map((list) => Array.from(list.querySelectorAll('li'))).flat();
   if (items.length === 0) return;
 
   let selectedIdx: number | null = null;
