@@ -49,7 +49,7 @@ function runPID(pid: PID): Data {
   const stepCount = 100;
   const setPoint = 10;
   let measuredValue = 5;
-  console.log('  Step', 'Set Point', 'Measured Value', 'PID Output');
+  // console.log('  Step', 'Set Point', 'Measured Value', 'PID Output');
   for (let step = 0; step < stepCount; step++) {
     const output = pidController(setPoint, measuredValue);
 
@@ -64,7 +64,7 @@ function runPID(pid: PID): Data {
       roundToTwoDecimalPlaces(measuredValue),
       roundToTwoDecimalPlaces(output)
     ];
-    console.log(...row);
+    // console.log(...row);
 
     // Simulate system response
     measuredValue = measuredValue + output * 0.1;
