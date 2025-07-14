@@ -78,7 +78,7 @@ export function navbarBold() {
 }
 
 // Keyboard navigation for .selectable-list using "j" and "k"
-function setupSelectableListNavigation() {
+export function setupSelectableListNavigation() {
   const list = document.querySelector('.selectable-list');
   if (!list) return;
   const items = Array.from(list.querySelectorAll('li'));
@@ -129,6 +129,3 @@ function setupSelectableListNavigation() {
 
   window.addEventListener('keydown', handleKeydown);
 }
-
-// Call this on page load
-setupSelectableListNavigation();
