@@ -75,3 +75,7 @@ blockquote p {
     display: inline;
     margin: 20px;
 }
+
+.selectable-list li.selected {
+    list-style-type: ">";
+}

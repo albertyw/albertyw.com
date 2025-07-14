@@ -6,7 +6,7 @@
     <h1>Shelf</h1>
     {% for section in shelf.sections %}
       <h2>{{ section.name }}</h2>
-      <ul>
+      <ul class="selectable-list">
         {% for item in section.items %}
           <li>
             <a href="{{ item.link }}">{{ item.name }}</a>
