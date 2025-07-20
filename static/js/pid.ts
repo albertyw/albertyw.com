@@ -14,11 +14,13 @@ type Data = {
   outputs: DataSeries;         // Control outputs computed by the PID controller
 };
 
+/*
 function roundToTwoDecimalPlaces(value: number): string {
   let output = value.toFixed(2);
   output = ' '.repeat(6 - output.length) + output;
   return output;
 }
+*/
 
 function createPIDController(pid: PID): (setPoint: number, measuredValue: number) => number {
   let integral = 0;
@@ -58,13 +60,15 @@ function runPID(pid: PID): Data {
     data.outputs.push(output);
 
     // Output
+    /*
     const row = [
       roundToTwoDecimalPlaces(step),
       roundToTwoDecimalPlaces(setPoint),
       roundToTwoDecimalPlaces(measuredValue),
       roundToTwoDecimalPlaces(output)
     ];
-    // console.log(...row);
+    console.log(...row);
+    */
 
     // Simulate system response
     measuredValue = measuredValue + output * 0.1;
