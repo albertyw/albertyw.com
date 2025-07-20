@@ -46,6 +46,9 @@ class Note(object):
             self.title, self.slug, self.time, self.note, self.markdown,
         )
 
+    def __hash__(self) -> int:
+        return hash((self.title, self.slug, self.time, self.note, self.markdown))
+
     @staticmethod
     def get_note_file_data(note_file: Path) -> Optional["Note"]:
         with open(note_file) as note_handle:

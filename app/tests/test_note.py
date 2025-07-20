@@ -21,6 +21,15 @@ class TestNote(unittest.TestCase):
         serve.app.config['SERVER_NAME'] = 'localhost'
         self.note = note_util.Note(Path('.'))
 
+    def test_hash(self) -> None:
+        hash1 = hash(self.note)
+        self.note.note_file = Path('notes/asdf')
+        hash2 = hash(self.note)
+        self.assertEqual(hash1, hash2)
+        self.note.slug = 'asdf'
+        hash3 = hash(self.note)
+        self.assertNotEqual(hash2, hash3)
+
     def test_parse_time(self) -> None:
         time = 1504334092
         parsed_time = note_util.Note.parse_time(time)
