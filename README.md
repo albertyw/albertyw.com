@@ -1,8 +1,8 @@
 # [albertyw.com](https://www.albertyw.com)
 
 [![Build Status](https://drone.albertyw.com/api/badges/albertyw/albertyw.com/status.svg)](https://drone.albertyw.com/albertyw/albertyw.com)
-[![Code Climate](https://codeclimate.com/github/albertyw/albertyw.com/badges/gpa.svg)](https://codeclimate.com/github/albertyw/albertyw.com)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/a41593e78d63ae7ec7d6/test_coverage)](https://codeclimate.com/github/albertyw/albertyw.com/test_coverage)
+[![Maintainability](https://qlty.sh/gh/albertyw/projects/albertyw.com/maintainability.svg)](https://qlty.sh/gh/albertyw/projects/albertyw.com)
+[![Code Coverage](https://qlty.sh/gh/albertyw/projects/albertyw.com/coverage.svg)](https://qlty.sh/gh/albertyw/projects/albertyw.com)
 [![Varsnap Status](https://www.varsnap.com/project/6bf37bef-44a3-4c93-947b-47a21f2d3f3a/varsnap_badge.svg)](https://www.varsnap.com/project/6bf37bef-44a3-4c93-947b-47a21f2d3f3a/)
 
 Personal website
@@ -56,7 +56,6 @@ ruff check .
 mypy .
 coverage run -m unittest discover
 coverage report
-codeclimate-test-reporter
 npm test
 
 # Deployment

@@ -6,32 +6,33 @@ steps:
   - name: Test Python
     image: python:3.13-slim-bookworm
     commands:
-      - apt-get update && apt-get install -y curl git
+      - apt-get update && apt-get install -y curl git xz-utils
+      - curl https://qlty.sh | sh
       - ln -fs .env.development .env
       - pip install -e .[test]
-      - curl -L "https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-$(dpkg --print-architecture)" > "${HOME}/bin/cc-test-reporter"
-      - chmod +x "${HOME}/bin/cc-test-reporter"
       - ruff check .
       - gunicorn -c config/gunicorn.conf.py --check-config
       - mypy .
-      - cc-test-reporter before-build
       - coverage run -m unittest discover
-      - exitcode="$?"
       - coverage report -m
-      - coverage xml -i
-      - cc-test-reporter after-build --exit-code "$exitcode"
+      - coverage lcov -o .coverage.lcov
+      - ~/.qlty/bin/qlty coverage publish .coverage.lcov --override-commit-sha "$DRONE_COMMIT_SHA" --override-branch "$DRONE_BRANCH" --override-build-id "$DRONE_BUILD_NUMBER"
     environment:
-      CC_TEST_REPORTER_ID: 6859e866e9159afd7aeb668eb616115e4403caca001083b57f24c2e7a4bd632c
+      QLTY_COVERAGE_TOKEN: qltcp_H4WBJvVbH8saIgr1
 
   - name: Test Node
     image: satantime/puppeteer-node:24-bookworm-slim
     commands:
+      - apt-get update && apt-get install -y curl
+      - curl https://qlty.sh | sh
       - ln -fs .env.development .env
       - npm ci
       - npm test
+      - ~/.qlty/bin/qlty coverage publish .coverage_js/clover.xml --override-commit-sha "$DRONE_COMMIT_SHA" --override-branch "$DRONE_BRANCH" --override-build-id "$DRONE_BUILD_NUMBER"
     environment:
       GIT_VERSION: ${DRONE_COMMIT}
       GIT_BRANCH: ${DRONE_BRANCH}
+      QLTY_COVERAGE_TOKEN: qltcp_H4WBJvVbH8saIgr1
 
   - name: Test Bash
     image: koalaman/shellcheck-alpine:stable
@@ -57,7 +58,7 @@ steps:
   - name: Build Docker Container
     depends_on:
       - Test Dockerfile
-    image: plugins/docker:20
+    image: plugins/docker:21
     settings:
       repo: albertyw.com
       tags: test
