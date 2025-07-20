@@ -12,7 +12,7 @@ dependencies = [
     "feedgen==1.0.0",                   # Generate atom feeds
     "flask-sitemap==0.4.0",             # Web sitemaps
     "markdown2==2.5.3",                 # Markdown formatting
-    "Pygments==2.19.1",                 # Syntax highlighting support
+    "Pygments==2.19.2",                 # Syntax highlighting support
 
     # Monitoring/tracking/logging
     "blinker==1.9.0",                   # Dependency of rollbar
