@@ -1,6 +1,7 @@
 import unittest
 
 from app import data, util
+import requests
 
 
 class TestProjects(unittest.TestCase):
@@ -45,3 +46,13 @@ class TestShelf(unittest.TestCase):
         shelf1 = data.get_shelf()
         shelf2 = data.get_shelf()
         self.assertEqual(shelf1, shelf2)
+
+    def test_links(self) -> None:
+        shelf = data.get_shelf()
+        for section in shelf.sections:
+            for item in section.items:
+                if 'amazon.com' in item.link:
+                    continue
+                response = requests.get(item.link)
+                self.assertEqual(response.status_code, 200, f"Failed to access link: {item.link}")
+                self.assertTrue(response.text, f"Link {item.link} returned empty response")
