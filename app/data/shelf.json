@@ -51,6 +51,10 @@
         {
             "link": "https://github.com/akshayjshah/grpc-demystified",
             "name": "gRPC Demystified"
+        },
+        {
+            "link": "https://12factor.net/",
+            "name": "The Twelve-Factor App"
         }
     ],
     "Technical Leadership": [
