@@ -49,9 +49,12 @@ class TestShelf(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(shelf1, shelf2)
 
     async def get(self, url: str, session: aiohttp.ClientSession) -> None:
-        async with session.get(url) as response:
+        headers = {
+            'User-Agent': 'albertyw.com link checker (https://www.albertyw.com/)',
+        }
+        async with session.get(url, headers=headers) as response:
             content = await response.read()
-            self.assertEqual(response.status, 200, f"Failed to access link: {url}")
+            self.assertEqual(response.status, 200, f"Failed to access link: {url}\n{content}")
             self.assertTrue(content, f"Link {url} returned empty response")
 
     async def test_links(self) -> None:
@@ -59,21 +62,6 @@ class TestShelf(unittest.IsolatedAsyncioTestCase):
         urls: list[str] = []
         for section in shelf.sections:
             for item in section.items:
-                if 'amazon.com' in item.link:
-                    # Amazon blocks automated requests
-                    continue
-                if 'brucefwebster.com' in item.link:
-                    # SSL certificate expired
-                    continue
-                if 'infiniteundo.com' in item.link:
-                    # infiteundo.com blocks automated requests
-                    continue
-                if 'ribbonfarm.com' in item.link:
-                    # ribbonfarm.com blocks automated requests
-                    continue
-                if 'randsinrepose.com' in item.link:
-                    # randsinrepose.com blocks automated requests
-                    continue
                 if 'unsplash.com' in item.link:
                     # Unsplash blocks automated requests
                     continue
