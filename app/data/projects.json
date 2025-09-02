@@ -78,6 +78,16 @@
             "pypi": "https://pypi.python.org/pypi/req-update"
         }
     },
+    "Go": {
+        "LocalTimeZone": {
+            "description": "Library for converting between latitude/longitude coordinates and time zones",
+            "github": "https://github.com/albertyw/localtimezone"
+        },
+        "Gaussian": {
+            "description": "Library for solving linear equations using Gaussian elimination",
+            "github": "https://github.com/albertyw/gaussian"
+        }
+    },
     "Javascript": {
         "ajax-cache-parser": {
             "description": "Library for parsing HTTP headers for caching information",
@@ -105,12 +115,6 @@
             "description": "Library for making configuration profiles for iOS",
             "github": "https://github.com/albertyw/ios_config_profile",
             "rubygems": "https://rubygems.org/gems/ios_config_profile"
-        }
-    },
-    "Go": {
-        "LocalTimeZone": {
-            "description": "Library for converting between latitude/longitude coordinates and time zones",
-            "github": "https://github.com/albertyw/localtimezone"
         }
     }
 }
