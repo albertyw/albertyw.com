@@ -53,8 +53,10 @@ class TestShelf(unittest.IsolatedAsyncioTestCase):
             'User-Agent': 'albertyw.com link checker (https://www.albertyw.com/)',
         }
         async with session.get(url, headers=headers) as response:
-            content = await response.read()
-            self.assertEqual(response.status, 200, f"Failed to access link: {url}\n{content}")
+            content_binary = await response.read()
+            content = content_binary.decode('utf-8')
+            debug_info = f"Failed to access link: {url}\n\n{content}"
+            self.assertEqual(response.status, 200, debug_info)
             self.assertTrue(content, f"Link {url} returned empty response")
 
     async def test_links(self) -> None:
