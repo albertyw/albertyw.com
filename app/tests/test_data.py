@@ -54,10 +54,14 @@ class TestShelf(unittest.IsolatedAsyncioTestCase):
         }
         async with session.get(url, headers=headers) as response:
             content_binary = await response.read()
-            content = content_binary.decode('utf-8')
-            debug_info = f"Failed to access link: {url}\n\n{content}"
+            debug_info = f"Failed to access link: {url}"
+            try:
+                content = content_binary.decode('utf-8')
+                debug_info += f"\n\n{content}"
+            except UnicodeDecodeError:
+                pass
             self.assertEqual(response.status, 200, debug_info)
-            self.assertTrue(content, f"Link {url} returned empty response")
+            self.assertTrue(content_binary, f"Link {url} returned empty response")
 
     async def test_links(self) -> None:
         shelf = data.get_shelf()
