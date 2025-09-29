@@ -81,11 +81,13 @@
     "Go": {
         "LocalTimeZone": {
             "description": "Library for converting between latitude/longitude coordinates and time zones",
-            "github": "https://github.com/albertyw/localtimezone"
+            "github": "https://github.com/albertyw/localtimezone",
+            "godoc": "https://godoc.org/github.com/albertyw/localtimezone/v3"
         },
         "Gaussian": {
             "description": "Library for solving linear equations using Gaussian elimination",
-            "github": "https://github.com/albertyw/gaussian"
+            "github": "https://github.com/albertyw/gaussian",
+            "godoc": "https://godoc.org/github.com/albertyw/gaussian"
         }
     },
     "Javascript": {

@@ -49,6 +49,7 @@ class Project():
         self.github: str = ''
         self.rubygems: str = ''
         self.pypi: str = ''
+        self.godoc: str = ''
         self.npm: str = ''
         self.web: str = ''
 
@@ -60,6 +61,7 @@ class Project():
         project.github = data.get('github', '')
         project.rubygems = data.get('rubygems', '')
         project.pypi = data.get('pypi', '')
+        project.godoc = data.get('godoc', '')
         project.npm = data.get('npm', '')
         project.web = data.get('web', '')
         return project
@@ -69,6 +71,7 @@ class Project():
             'github': self.github,
             'rubygems': self.rubygems,
             'pypi': self.pypi,
+            'godoc': self.godoc,
             'npm': self.npm,
             'web': self.web,
         }
