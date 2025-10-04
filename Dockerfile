@@ -9,7 +9,7 @@ RUN npm ci --omit=dev \
     && npm run build:prod
 
 
-FROM python:3.13-slim-bookworm
+FROM python:3.13-slim-trixie
 
 LABEL maintainer="git@albertyw.com"
 EXPOSE 5000
@@ -33,10 +33,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 WORKDIR /var/www/app
 RUN mkdir -p .
 COPY . .
-COPY --from=node /root/static/gen ./static/gen
 
 # Set up dependencies
 RUN pip install --no-cache-dir -e .
+COPY --from=node /root/static/gen ./static/gen
 
 # Set startup script
 CMD ["bin/start.sh"]
