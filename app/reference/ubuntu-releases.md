@@ -8,7 +8,8 @@ ubuntu-releases
 
 | Version | Name     | Status     | LTS   | Release | End of Life (Security) |
 |---------|----------|------------|-------|---------|------------------------|
-| 25.10   | Questing | Unreleased | false | 2025-10 | 2026-07                |
+| 26.04   | Resolute | Unreleased | true  | 2026-04 | 2038-04                |
+| 25.10   | Questing | Supported  | false | 2025-10 | 2026-07                |
 | 25.04   | Plucky   | Supported  | false | 2025-04 | 2026-01                |
 | 24.10   | Oracular | Obsolete   | false | 2024-10 | 2025-07                |
 | 24.04   | Noble    | Supported  | true  | 2024-04 | 2036-04                |
