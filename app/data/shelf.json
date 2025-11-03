@@ -179,6 +179,10 @@
         {
             "link": "https://en.wikipedia.org/wiki/Introduction_to_Algorithms",
             "name": "CLRS (Introduction to Algorithms)"
+        },
+        {
+            "link": "https://endoflife.date/",
+            "name": "End-of-life Dates"
         }
     ],
     "Other": [
