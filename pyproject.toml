@@ -11,7 +11,7 @@ dependencies = [
     # Features
     "feedgen==1.0.0",                   # Generate atom feeds
     "flask-sitemap==0.4.0",             # Web sitemaps
-    "markdown2==2.5.3",                 # Markdown formatting
+    "markdown2==2.5.4",                 # Markdown formatting
     "Pygments==2.19.2",                 # Syntax highlighting support
 
     # Monitoring/tracking/logging
