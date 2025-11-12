@@ -51,7 +51,7 @@ steps:
       - gixy config/nginx/*
 
   - name: Test Markdown
-    image: pipelinecomponents/markdownlint:0.14.0
+    image: pipelinecomponents/markdownlint:0.14.5
     commands:
       - mdl --style app/tests/mdl_style.rb -g .
 
