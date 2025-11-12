@@ -26,7 +26,7 @@ test = [
     # Testing
     "coverage==7.11.3",                 # Test coverage
     "ruff==0.14.4",                     # Python linter
-    "aiohttp==3.12.15",                 # Async HTTP client for testing
+    "aiohttp==3.13.2",                  # Async HTTP client for testing
 
     # Testing Help
     "titlecase==2.4.1",                 # Used for checking that note titles are title case
