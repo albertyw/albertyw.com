@@ -34,6 +34,11 @@
             "description": "Figure Skating Statistics",
             "github.com": "https://github.com/curranoi/statsonice",
             "web": "https://www.statsonice.com/"
+        },
+        "nopages.net": {
+            "description": "Don't use pages in Google Docs",
+            "github": "https://github.com/albertyw/nopages",
+            "web": "https://www.nopages.net/"
         }
     },
     "Python": {
