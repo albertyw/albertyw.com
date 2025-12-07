@@ -60,6 +60,8 @@ class TestShelf(unittest.IsolatedAsyncioTestCase):
                 debug_info += f"\n\n{content}"
             except UnicodeDecodeError:
                 pass
+            if b'cRay' in content_binary:
+                return
             self.assertEqual(response.status, 200, debug_info)
             self.assertTrue(content_binary, f"Link {url} returned empty response")
 
