@@ -25,9 +25,11 @@ steps:
     commands:
       - apt-get update && apt-get install -y curl
       - curl https://qlty.sh | sh
+      - curl -fsSL https://get.pnpm.io/install.sh | ENV="$HOME/.bashrc" SHELL="$(which bash)" bash -
+      - export PNPM_HOME="$HOME/.local/share/pnpm" && export PATH="$PNPM_HOME:$PATH"
       - ln -fs .env.development .env
-      - npm ci
-      - npm test
+      - pnpm install
+      - pnpm test
       - ~/.qlty/bin/qlty coverage publish .coverage_js/clover.xml --override-commit-sha "$DRONE_COMMIT_SHA" --override-branch "$DRONE_BRANCH" --override-build-id "$DRONE_BUILD_NUMBER"
     environment:
       GIT_VERSION: ${DRONE_COMMIT}
@@ -46,7 +48,7 @@ steps:
       - hadolint Dockerfile --ignore=DL3008 --ignore=SC2046 --ignore=SC2006
 
   - name: Test Nginx
-    image: getpagespeed/gixy:v0.2.12
+    image: getpagespeed/gixy:v0.2.18
     commands:
       - gixy config/nginx/*
 

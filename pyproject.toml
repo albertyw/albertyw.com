@@ -24,15 +24,15 @@ dependencies = [
 [project.optional-dependencies]
 test = [
     # Testing
-    "coverage==7.11.3",                 # Test coverage
-    "ruff==0.14.4",                     # Python linter
+    "coverage==7.13.0",                 # Test coverage
+    "ruff==0.14.9",                     # Python linter
     "aiohttp==3.13.2",                  # Async HTTP client for testing
 
     # Testing Help
     "titlecase==2.4.1",                 # Used for checking that note titles are title case
 
     # Types
-    "mypy==1.18.2",                     # Type checking
+    "mypy==1.19.0",                     # Type checking
     "types-requests==2.32.4.20250913",  # Type stubs for requests package
 ]
 
