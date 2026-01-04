@@ -102,7 +102,10 @@ def atom_feed() -> Any:
         fe.source(url)
         fe.updated(post.time)
         fe.link(href=url)
-    return Response(fg.atom_str(pretty=True), mimetype='application/atom+xml')
+    resp = Response(fg.atom_str(pretty=True), mimetype='application/atom+xml')
+    # Enable CORS so that browser-based feed readers can read the feed.
+    resp.headers['Access-Control-Allow-Origin'] = '*'
+    return resp
 
 
 @varsnap
