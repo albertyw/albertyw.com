@@ -79,3 +79,7 @@ blockquote p {
 .selectable-list li.selected {
     list-style-type: ">";
 }
+
+.codehilite {
+    background-color: #f0f0f0;
+}
