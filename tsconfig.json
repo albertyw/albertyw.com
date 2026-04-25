@@ -4,8 +4,11 @@
         "allowSyntheticDefaultImports": true,
         "module": "NodeNext",
         "outDir": "./static/gen-js",
+        "rootDir": "./static/js",
+        "strict": true,
         "target": "es6",
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "types": ["node"]
     },
     "include": [
         "./static/js/*"

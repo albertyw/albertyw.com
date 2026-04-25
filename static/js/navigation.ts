@@ -1,7 +1,7 @@
-const keyHistory = [];
+const keyHistory: string[] = [];
 
-const navigationOptions = {};
-const navigationOptionsText = {};
+const navigationOptions: Record<string, string> = {};
+const navigationOptionsText: Record<string, string> = {};
 function generateNavigationOptions() {
   const links = document.querySelectorAll('.navbar a');
   for (let i = 0; i < links.length; i++) {
@@ -9,14 +9,14 @@ function generateNavigationOptions() {
     const href = link.getAttribute('href');
     const text = link.innerHTML;
     const letter = findUnusedLetter(text, Object.keys(navigationOptions));
-    if (letter === undefined) {
+    if (letter === undefined || href === null) {
       continue;
     }
     navigationOptions[letter] = href;
     navigationOptionsText[text] = letter;
   }
 }
-function findUnusedLetter(text, usedLetters) {
+function findUnusedLetter(text: string, usedLetters: string[]): string | undefined {
   for (let i = 0; i < text.length; i++) {
     const letter = text[i].toLowerCase();
     if (!usedLetters.includes(letter)) {
@@ -75,57 +75,4 @@ export function navbarBold() {
       link.classList.add('active');
     }
   }
-}
-
-// Keyboard navigation for .selectable-list using "j" and "k"
-export function setupSelectableListNavigation() {
-  const lists = Array.from(document.querySelectorAll('.selectable-list'));
-  if (!lists) return;
-  const items = lists.map((list) => Array.from(list.querySelectorAll('li'))).flat();
-  if (items.length === 0) return;
-
-  let selectedIdx: number | null = null;
-
-  function updateSelection(newIdx: number | null) {
-    items.forEach((item, idx) => {
-      if (idx === newIdx) {
-        item.classList.add('selected');
-      } else {
-        item.classList.remove('selected');
-      }
-    });
-    selectedIdx = newIdx;
-  }
-
-  function handleKeydown(event: KeyboardEvent) {
-    if (event.target && (event.target as HTMLElement).tagName === 'INPUT') return;
-    if (event.target && (event.target as HTMLElement).tagName === 'TEXTAREA') return;
-    if (event.key === 'j') {
-      if (selectedIdx === null) {
-        updateSelection(0);
-      } else if (selectedIdx < items.length - 1) {
-        updateSelection(selectedIdx + 1);
-      }
-      event.preventDefault();
-    } else if (event.key === 'k') {
-      if (selectedIdx === null) {
-        updateSelection(items.length - 1);
-      } else if (selectedIdx > 0) {
-        updateSelection(selectedIdx - 1);
-      }
-      event.preventDefault();
-    } else if ((event.key === 'Enter' || event.key === 'o') && selectedIdx !== null) {
-      const selectedItem = items[selectedIdx];
-      const link = selectedItem.querySelector('a');
-      if (link && link instanceof HTMLAnchorElement) {
-        window.location.href = link.href;
-        event.preventDefault();
-      }
-    }
-  
-  }
-  // Ensure no item is selected initially
-  updateSelection(null);
-
-  window.addEventListener('keydown', handleKeydown);
 }
