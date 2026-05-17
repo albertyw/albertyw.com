@@ -65,14 +65,21 @@ class TestShelf(unittest.IsolatedAsyncioTestCase):
             self.assertEqual(response.status, 200, debug_info)
             self.assertTrue(content_binary, f"Link {url} returned empty response")
 
+    SKIP_HOSTS = (
+        'unsplash.com',           # Blocks automated requests
+        'hedgehoglibrarian.com',  # wordpress.com rate limiting
+        'stratechery.com',        # wordpress.com rate limiting
+        'acoup.blog',             # wordpress.com rate limiting
+        'steveblank.com',         # wordpress.com rate limiting
+    )
+
     async def test_links(self) -> None:
         shelf = data.get_shelf()
-        urls: list[str] = []
-        for section in shelf.sections:
-            for item in section.items:
-                if 'unsplash.com' in item.link:
-                    # Unsplash blocks automated requests
-                    continue
-                urls.append(item.link)
+        urls = [
+            item.link
+            for section in shelf.sections
+            for item in section.items
+            if not any(host in item.link for host in self.SKIP_HOSTS)
+        ]
         async with aiohttp.ClientSession() as session:
             await asyncio.gather(*(self.get(url, session) for url in urls))
