@@ -8,9 +8,10 @@ ubuntu-releases
 
 | Version | Name     | Status     | LTS   | Release | End of Life (Security) |
 |---------|----------|------------|-------|---------|------------------------|
-| 26.04   | Resolute | Unreleased | true  | 2026-04 | 2038-04                |
+| 27.04   | TBD      | Unreleased | false | 2027-04 | 2028-01                |
+| 26.04   | Resolute | Supported  | true  | 2026-04 | 2038-04                |
 | 25.10   | Questing | Supported  | false | 2025-10 | 2026-07                |
-| 25.04   | Plucky   | Supported  | false | 2025-04 | 2026-01                |
+| 25.04   | Plucky   | Obsolete   | false | 2025-04 | 2026-01                |
 | 24.10   | Oracular | Obsolete   | false | 2024-10 | 2025-07                |
 | 24.04   | Noble    | Supported  | true  | 2024-04 | 2036-04                |
 | 23.10   | Mantic   | Obsolete   | false | 2023-10 | 2024-07                |
@@ -20,4 +21,4 @@ ubuntu-releases
 | 21.04   | Hirsute  | Obsolete   | false | 2021-04 | 2022-01                |
 | 20.04   | Focal    | Supported  | true  | 2020-04 | 2030-04                |
 | 18.04   | Bionic   | Supported  | true  | 2018-04 | 2028-04                |
-| 16.04   | Xenial   | Supported  | true  | 2016-04 | 2026-04                |
+| 16.04   | Xenial   | Obsolete   | true  | 2016-04 | 2026-04                |
