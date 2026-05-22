@@ -71,6 +71,7 @@ class TestShelf(unittest.IsolatedAsyncioTestCase):
         'stratechery.com',        # wordpress.com rate limiting
         'acoup.blog',             # wordpress.com rate limiting
         'steveblank.com',         # wordpress.com rate limiting
+        'infiniteundo.com',       # tumblr drops datacenter IP connections
     )
 
     async def test_links(self) -> None:
