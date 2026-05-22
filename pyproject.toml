@@ -11,7 +11,7 @@ dependencies = [
     # Features
     "feedgen==1.0.0",                   # Generate atom feeds
     "flask-sitemap==0.4.0",             # Web sitemaps
-    "markdown2==2.5.4",                 # Markdown formatting
+    "markdown2==2.5.5",                 # Markdown formatting
     "Pygments==2.20.0",                 # Syntax highlighting support
 
     # Monitoring/tracking/logging
@@ -25,15 +25,15 @@ dependencies = [
 test = [
     # Testing
     "coverage==7.14.0",                 # Test coverage
-    "ruff==0.15.13",                    # Python linter
-    "aiohttp==3.13.4",                  # Async HTTP client for testing
+    "ruff==0.15.14",                    # Python linter
+    "aiohttp==3.13.5",                  # Async HTTP client for testing
 
     # Testing Help
     "titlecase==2.4.1",                 # Used for checking that note titles are title case
 
     # Types
     "mypy==2.1.0",                      # Type checking
-    "types-requests==2.32.4.20250913",  # Type stubs for requests package
+    "types-requests==2.33.0.20260518",  # Type stubs for requests package
 ]
 
 [tool.ruff]
