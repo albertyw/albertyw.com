@@ -1,4 +1,6 @@
-export const config = {
+import type { Options } from '@wdio/types';
+
+export const config: Options.Testrunner = {
   //
   // ====================
   // Runner Configuration
@@ -70,9 +72,9 @@ export const config = {
     //
     browserName: 'firefox',
     'moz:firefoxOptions': {
-      args: ['-headless']
+      args: ['-headless'],
     },
-    acceptInsecureCerts: true
+    acceptInsecureCerts: true,
     // If outputDir is provided WebdriverIO can capture driver session logs
     // it is possible to configure which logTypes to include/exclude.
     // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -122,6 +124,17 @@ export const config = {
   // Default request retries count
   connectionRetryCount: 3,
   //
+  // Strip the `Content-Length` and `Connection` headers that the webdriver
+  // package sets manually. Node 26 bundles undici v8, which enforces the Fetch
+  // spec and rejects these forbidden request headers with UND_ERR_INVALID_ARG,
+  // breaking session creation. See https://github.com/webdriverio/webdriverio/issues/15265
+  transformRequest: (requestOptions: RequestInit): RequestInit => {
+    const headers = requestOptions.headers as Headers | undefined;
+    headers?.delete('content-length');
+    headers?.delete('connection');
+    return requestOptions;
+  },
+  //
   // Test runner services
   // Services take over a specific job you don't want to take care of. They enhance
   // your test setup with almost no effort. Unlike plugins, they don't add new
@@ -155,7 +168,7 @@ export const config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: 'bdd',
-    timeout: 60000
+    timeout: 60000,
   },
 
   //
