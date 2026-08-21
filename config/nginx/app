@@ -3,6 +3,7 @@
 ### Redirects ###
 server {
     listen         80;
+    listen    [::]:80;
     server_name    albertyw.com www.albertyw.com;
     return         301 https://www.albertyw.com$request_uri;
 }
@@ -10,6 +11,7 @@ server {
 # Change naked domain to www
 server {
     listen          443 ssl;
+    listen     [::]:443 ssl;
     http2           on;
     server_name     albertyw.com;
 
@@ -24,6 +26,7 @@ server {
 
 server {
     listen          443 ssl;
+    listen     [::]:443 ssl;
     http2           on;
     server_name     www.albertyw.com;
     access_log      /var/log/nginx/albertyw.com/albertyw.com.access.log;
