@@ -8,3 +8,6 @@ setupSelectableListNavigation();
 
 import { main } from './pid.js';
 main();
+
+import { main as bilgingMain } from './bilging/render.js';
+bilgingMain();
