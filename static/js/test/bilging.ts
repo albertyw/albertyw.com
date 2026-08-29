@@ -4,7 +4,9 @@ import {
   COLUMNS,
   ROWS,
   Cell,
+  Coord,
   Grid,
+  Run,
   Random,
   applyGravity,
   clearCells,
@@ -43,6 +45,20 @@ import {
   spawnCrab,
   spawnFloatingSpecials,
 } from '../bilging/specials.js';
+import {
+  CHAIN_BONUS,
+  COMBO_ORDER,
+  COMBO_POINTS,
+  CRAB_BASE_POINTS,
+  CRAB_FLOOD_POINTS,
+  POINTS_PER_PIECE,
+  classifyGroup,
+  classifyStep,
+  comboRank,
+  crabPoints,
+  groupRuns,
+  scoreStep,
+} from '../bilging/scoring.js';
 
 // Deterministic generator so board tests never depend on Math.random.
 export function seededRandom(seed: number): Random {
@@ -541,6 +557,163 @@ describe('bilging specials', function() {
       }
       const flooded = { level: ROWS };
       expect(spawnCrab(grid, flooded, scriptedRandom([0, 2 / COLUMNS]))).to.equal(false);
+    });
+  });
+});
+
+
+function rowRun(row: number, column: number, length: number): Run {
+  return { orientation: 'row', row: row, column: column, length: length };
+}
+
+function columnRun(row: number, column: number, length: number): Run {
+  return { orientation: 'column', row: row, column: column, length: length };
+}
+
+function stepOf(runs: Run[]): { runs: Run[]; cells: Coord[] } {
+  return { runs: runs, cells: runCells(runs) };
+}
+
+describe('bilging scoring', function() {
+  describe('comboRank', function() {
+    it('orders the ladder from a plain clear up to Vegas', function() {
+      expect(comboRank('Clear')).to.equal(0);
+      expect(comboRank('Vegas!')).to.equal(COMBO_ORDER.length - 1);
+      expect(comboRank('Arrr!')).to.be.greaterThan(comboRank('Great'));
+      expect(comboRank('Yarrr!')).to.be.greaterThan(comboRank('Har!'));
+    });
+
+    it('gives every name a point value', function() {
+      for (const name of COMBO_ORDER) {
+        expect(COMBO_POINTS[name]).to.be.a('number');
+      }
+    });
+  });
+
+  describe('groupRuns', function() {
+    it('keeps two crossing runs in one group', function() {
+      const groups = groupRuns([rowRun(4, 1, 3), columnRun(3, 2, 3)]);
+      expect(groups).to.have.length(1);
+      expect(groups[0]).to.have.length(2);
+    });
+
+    it('separates runs that never touch', function() {
+      const groups = groupRuns([rowRun(0, 0, 3), rowRun(9, 0, 3)]);
+      expect(groups).to.have.length(2);
+    });
+
+    it('does not join two runs of the same orientation', function() {
+      expect(groupRuns([columnRun(0, 0, 3), columnRun(0, 1, 3)])).to.have.length(2);
+    });
+
+    it('chains a group through a shared middle run', function() {
+      const groups = groupRuns([
+        columnRun(3, 1, 3),
+        rowRun(4, 1, 4),
+        columnRun(3, 3, 3),
+      ]);
+      expect(groups).to.have.length(1);
+      expect(groups[0]).to.have.length(3);
+    });
+  });
+
+  describe('classifyGroup', function() {
+    it('names a single line by its length', function() {
+      expect(classifyGroup([rowRun(0, 0, 3)])).to.equal('Clear');
+      expect(classifyGroup([rowRun(0, 0, 4)])).to.equal('Good');
+      expect(classifyGroup([rowRun(0, 0, 5)])).to.equal('Great');
+    });
+
+    it('names a 3x3 and a 3x4 crossing Arrr!', function() {
+      expect(classifyGroup([rowRun(4, 1, 3), columnRun(3, 2, 3)])).to.equal('Arrr!');
+      expect(classifyGroup([rowRun(4, 1, 4), columnRun(3, 2, 3)])).to.equal('Arrr!');
+    });
+
+    it('names a 4x4 crossing Har!', function() {
+      expect(classifyGroup([rowRun(4, 1, 4), columnRun(2, 2, 4)])).to.equal('Har!');
+    });
+
+    it('names anything crossing a five Yarrr!', function() {
+      expect(classifyGroup([rowRun(4, 0, 5), columnRun(3, 2, 3)])).to.equal('Yarrr!');
+    });
+
+    it('names three crossing runs Bingo!', function() {
+      const group = [columnRun(3, 1, 3), rowRun(4, 1, 4), columnRun(3, 3, 3)];
+      expect(classifyGroup(group)).to.equal('Bingo!');
+    });
+
+    it('names three crossing runs including a five Vegas!', function() {
+      const group = [columnRun(3, 1, 3), rowRun(4, 0, 5), columnRun(3, 3, 3)];
+      expect(classifyGroup(group)).to.equal('Vegas!');
+    });
+  });
+
+  describe('classifyStep', function() {
+    it('falls back to a plain clear when nothing ran', function() {
+      expect(classifyStep(stepOf([]))).to.equal('Clear');
+    });
+
+    it('reports the best combo in the step', function() {
+      const step = stepOf([rowRun(0, 0, 3), rowRun(9, 1, 4), columnRun(8, 2, 3)]);
+      expect(classifyStep(step)).to.equal('Arrr!');
+    });
+
+    it('names two separate crossings Sea Donkey!', function() {
+      const step = stepOf([
+        rowRun(1, 1, 3), columnRun(0, 2, 3),
+        rowRun(9, 1, 3), columnRun(8, 2, 3),
+      ]);
+      expect(classifyStep(step)).to.equal('Sea Donkey!');
+    });
+
+    it('lets a higher combo outrank a Sea Donkey', function() {
+      const step = stepOf([
+        rowRun(1, 1, 3), columnRun(0, 2, 3),
+        rowRun(4, 1, 3), columnRun(3, 2, 3),
+        columnRun(8, 1, 3), rowRun(9, 0, 5), columnRun(8, 3, 3),
+      ]);
+      expect(classifyStep(step)).to.equal('Vegas!');
+    });
+  });
+
+  describe('scoreStep', function() {
+    it('pays the combo value plus a rate per piece', function() {
+      const step = stepOf([rowRun(0, 0, 3)]);
+      expect(scoreStep(step, 0)).to.equal(COMBO_POINTS['Clear'] + POINTS_PER_PIECE * 3);
+    });
+
+    it('pays more for each further link of a chain', function() {
+      const step = stepOf([rowRun(0, 0, 3)]);
+      const base = scoreStep(step, 0);
+      expect(scoreStep(step, 1)).to.equal(Math.round(base * (1 + CHAIN_BONUS)));
+      expect(scoreStep(step, 2)).to.be.greaterThan(scoreStep(step, 1));
+    });
+
+    it('pays more for a crossing than for the same pieces in two lines', function() {
+      const crossing = stepOf([rowRun(4, 1, 3), columnRun(3, 2, 3)]);
+      const separate = stepOf([rowRun(0, 0, 3), rowRun(9, 0, 3)]);
+      expect(scoreStep(crossing, 0)).to.be.greaterThan(scoreStep(separate, 0));
+    });
+  });
+
+  describe('crabPoints', function() {
+    it('is worth very little when the bilge is at the baseline', function() {
+      expect(crabPoints(createWater())).to.equal(CRAB_BASE_POINTS);
+    });
+
+    it('is worth a lot when the ship is nearly swamped', function() {
+      expect(crabPoints({ level: ROWS })).to.equal(CRAB_BASE_POINTS + CRAB_FLOOD_POINTS);
+    });
+
+    it('rises with the water in between', function() {
+      const low = crabPoints({ level: BASELINE_ROWS + 1 });
+      const high = crabPoints({ level: ROWS - 1 });
+      expect(high).to.be.greaterThan(low);
+      expect(low).to.be.greaterThan(CRAB_BASE_POINTS);
+    });
+
+    it('never pays less than the base for a dry bilge', function() {
+      expect(crabPoints({ level: 0 })).to.equal(CRAB_BASE_POINTS);
     });
   });
 });
