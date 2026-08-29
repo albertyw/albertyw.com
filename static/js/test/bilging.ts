@@ -51,6 +51,7 @@ import {
   COMBO_POINTS,
   CRAB_BASE_POINTS,
   CRAB_FLOOD_POINTS,
+  MOVE_PENALTY,
   POINTS_PER_PIECE,
   classifyGroup,
   classifyStep,
@@ -59,6 +60,16 @@ import {
   groupRuns,
   scoreStep,
 } from '../bilging/scoring.js';
+import {
+  JELLYFISH_POINTS_PER_PIECE,
+  PUFFER_POINTS,
+  createGame,
+  moveCursor,
+  performSwap,
+  popPuffer,
+  setCursor,
+  tick,
+} from '../bilging/game.js';
 
 // Deterministic generator so board tests never depend on Math.random.
 export function seededRandom(seed: number): Random {
@@ -714,6 +725,172 @@ describe('bilging scoring', function() {
 
     it('never pays less than the base for a dry bilge', function() {
       expect(crabPoints({ level: 0 })).to.equal(CRAB_BASE_POINTS);
+    });
+  });
+});
+
+function countCrabs(grid: Grid): number {
+  let count = 0;
+  for (const row of grid) {
+    for (const cell of row) {
+      if (cell !== null && cell.kind === 'crab') {
+        count++;
+      }
+    }
+  }
+  return count;
+}
+
+describe('bilging game', function() {
+  describe('createGame', function() {
+    it('starts settled, unscored, and afloat', function() {
+      const game = createGame(seededRandom(2));
+      expect(game.score).to.equal(0);
+      expect(game.moves).to.equal(0);
+      expect(game.over).to.equal(false);
+      expect(game.water.level).to.equal(BASELINE_ROWS);
+      expect(findRuns(game.grid)).to.deep.equal([]);
+    });
+  });
+
+  describe('cursor', function() {
+    it('never leaves room for less than two cells', function() {
+      const game = createGame(seededRandom(2));
+      setCursor(game, 0, COLUMNS);
+      expect(game.cursorColumn).to.equal(COLUMNS - 2);
+      setCursor(game, -5, -5);
+      expect(game.cursorRow).to.equal(0);
+      expect(game.cursorColumn).to.equal(0);
+      setCursor(game, ROWS + 5, 0);
+      expect(game.cursorRow).to.equal(ROWS - 1);
+    });
+
+    it('moves by a delta', function() {
+      const game = createGame(seededRandom(2));
+      setCursor(game, 4, 1);
+      moveCursor(game, 1, 1);
+      expect(game.cursorRow).to.equal(5);
+      expect(game.cursorColumn).to.equal(2);
+    });
+  });
+
+  describe('performSwap', function() {
+    it('costs a move and scores when the swap makes a run', function() {
+      const game = createGame(seededRandom(2));
+      // 2 2 1 2 ... swapping columns 2 and 3 lines up three 2s.
+      game.grid = gridFromBottomRows(['221234']);
+      setCursor(game, ROWS - 1, 2);
+      expect(performSwap(game)).to.equal(true);
+      expect(game.moves).to.equal(1);
+      expect(game.score).to.be.greaterThan(0);
+      expect(game.combo).to.not.equal(null);
+    });
+
+    it('allows a swap that makes no run at all', function() {
+      const game = createGame(seededRandom(2));
+      game.grid = gridFromBottomRows(['012345']);
+      setCursor(game, ROWS - 1, 0);
+      expect(performSwap(game)).to.equal(true);
+      expect(game.moves).to.equal(1);
+      expect(game.combo).to.equal(null);
+    });
+
+    it('refuses to swap a crab and costs nothing', function() {
+      const game = createGame(seededRandom(2));
+      game.grid = gridFromBottomRows(['C12345']);
+      setCursor(game, ROWS - 1, 0);
+      expect(performSwap(game)).to.equal(false);
+      expect(game.moves).to.equal(0);
+    });
+
+    it('sweeps a colour off the board when a jellyfish is swapped', function() {
+      const game = createGame(seededRandom(2));
+      game.grid = gridFromBottomRows(['J12341']);
+      setCursor(game, ROWS - 1, 0);
+      const before = game.water.level;
+      expect(performSwap(game)).to.equal(true);
+      expect(game.score).to.be.at.least(JELLYFISH_POINTS_PER_PIECE);
+      expect(game.water.level).to.be.at.most(before);
+    });
+
+    it('does nothing once the puzzle is lost', function() {
+      const game = createGame(seededRandom(2));
+      game.over = true;
+      expect(performSwap(game)).to.equal(false);
+      expect(game.moves).to.equal(0);
+    });
+  });
+
+  describe('popPuffer', function() {
+    it('clears the puffer and its neighbours for a flat rate', function() {
+      const game = createGame(seededRandom(2));
+      game.grid = gridFromBottomRows([]);
+      game.grid[5][3] = pufferPiece(1);
+      expect(popPuffer(game, 5, 3)).to.equal(true);
+      expect(game.moves).to.equal(1);
+      expect(game.score).to.be.at.least(PUFFER_POINTS - MOVE_PENALTY);
+    });
+
+    it('ignores a click on an ordinary piece', function() {
+      const game = createGame(seededRandom(2));
+      expect(popPuffer(game, 5, 3)).to.equal(false);
+      expect(game.moves).to.equal(0);
+    });
+
+    it('does nothing once the puzzle is lost', function() {
+      const game = createGame(seededRandom(2));
+      game.grid[5][3] = pufferPiece(1);
+      game.over = true;
+      expect(popPuffer(game, 5, 3)).to.equal(false);
+    });
+  });
+
+  describe('crabs', function() {
+    it('scuttles off once a clear pumps the water down past it', function() {
+      const game = createGame(seededRandom(2));
+      game.grid = gridFromBottomRows(['221234']);
+      // Water covers rows 7 upward; the crab sits just under the line, in a
+      // column the clear does not disturb, so only the drain can free it.
+      game.water.level = 5;
+      game.grid[ROWS - 5][COLUMNS - 1] = crabPiece();
+      expect(countCrabs(game.grid)).to.equal(1);
+
+      setCursor(game, ROWS - 1, 2);
+      expect(performSwap(game)).to.equal(true);
+
+      expect(game.score).to.be.greaterThan(CRAB_BASE_POINTS);
+      expect(game.grid[ROWS - 5][COLUMNS - 1]!.kind).to.not.equal('crab');
+    });
+
+    it('leaves a crab alone while it is still underwater', function() {
+      const game = createGame(seededRandom(2));
+      game.grid = gridFromBottomRows(['221234']);
+      game.grid[ROWS - 1][COLUMNS - 1] = crabPiece();
+      setCursor(game, ROWS - 1, 2);
+      performSwap(game);
+      expect(game.grid[ROWS - 1][COLUMNS - 1]!.kind).to.equal('crab');
+    });
+  });
+
+  describe('tick', function() {
+    it('raises the water as time passes', function() {
+      const game = createGame(seededRandom(2));
+      tick(game, 10);
+      expect(game.water.level).to.be.greaterThan(BASELINE_ROWS);
+      expect(game.over).to.equal(false);
+    });
+
+    it('ends the puzzle once the water reaches the top', function() {
+      const game = createGame(seededRandom(2));
+      tick(game, 100000);
+      expect(game.over).to.equal(true);
+    });
+
+    it('stops the clock once the puzzle is lost', function() {
+      const game = createGame(seededRandom(2));
+      game.over = true;
+      tick(game, 10);
+      expect(game.water.level).to.equal(BASELINE_ROWS);
     });
   });
 });
