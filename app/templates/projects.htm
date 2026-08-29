@@ -15,7 +15,7 @@
               <br />
               {% for link_type, link in project.links().items() %}
                 <a href="{{ link }}">
-                  <img class="project-logos" src="{{ url_for('static', filename=link_type+'.png') }}" />
+                  <img class="project-logos" src="{{ url_for('static', filename='img/'+link_type+'.png') }}" />
                 </a>
               {% endfor %}
             {% endfor %}
