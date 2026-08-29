@@ -33,6 +33,16 @@ import {
   surfacedCrabs,
   waterLineRow,
 } from '../bilging/water.js';
+import {
+  CRAB_SPAWN_CHANCE,
+  JELLYFISH_SPAWN_CHANCE,
+  PUFFER_SPAWN_CHANCE,
+  jellyfishSweep,
+  jellyfishSwap,
+  pufferBlast,
+  spawnCrab,
+  spawnFloatingSpecials,
+} from '../bilging/specials.js';
 
 // Deterministic generator so board tests never depend on Math.random.
 export function seededRandom(seed: number): Random {
@@ -379,6 +389,158 @@ describe('bilging water', function() {
       expect(surfacedCrabs(grid, water)).to.deep.equal([
         { row: ROWS - 1, column: 0 },
       ]);
+    });
+  });
+});
+
+// Feeds a fixed sequence of numbers so spawn rolls can be pinned down exactly.
+function scriptedRandom(values: number[]): Random {
+  let index = 0;
+  return (): number => values[index++];
+}
+
+describe('bilging specials', function() {
+  describe('pufferBlast', function() {
+    it('clears the puffer and its eight neighbours', function() {
+      const grid = gridFromBottomRows([]);
+      grid[5][3] = pufferPiece(1);
+      const cells = pufferBlast(grid, 5, 3);
+      expect(cells).to.have.length(9);
+      expect(cells).to.deep.include({ row: 4, column: 2 });
+      expect(cells).to.deep.include({ row: 5, column: 3 });
+      expect(cells).to.deep.include({ row: 6, column: 4 });
+    });
+
+    it('clips the blast at the corner of the board', function() {
+      const grid = gridFromBottomRows([]);
+      grid[0][0] = pufferPiece(1);
+      expect(pufferBlast(grid, 0, 0)).to.have.length(4);
+    });
+
+    it('does nothing when the cell is not a puffer', function() {
+      const grid = gridFromBottomRows([]);
+      expect(pufferBlast(grid, 5, 3)).to.deep.equal([]);
+      expect(pufferBlast(grid, -1, 0)).to.deep.equal([]);
+    });
+  });
+
+  describe('jellyfishSwap', function() {
+    it('reads the colour when the jellyfish is on the left', function() {
+      const grid = gridFromBottomRows(['J12345']);
+      expect(jellyfishSwap(grid, ROWS - 1, 0)).to.deep.equal({
+        color: 1,
+        jellyfish: { row: ROWS - 1, column: 0 },
+      });
+    });
+
+    it('reads the colour when the jellyfish is on the right', function() {
+      const grid = gridFromBottomRows(['1J2345']);
+      expect(jellyfishSwap(grid, ROWS - 1, 0)).to.deep.equal({
+        color: 1,
+        jellyfish: { row: ROWS - 1, column: 1 },
+      });
+    });
+
+    it('ignores a swap with no jellyfish in it', function() {
+      const grid = gridFromBottomRows(['012345']);
+      expect(jellyfishSwap(grid, ROWS - 1, 0)).to.equal(null);
+    });
+
+    it('ignores two jellyfish swapped together', function() {
+      const grid = gridFromBottomRows(['JJ2345']);
+      expect(jellyfishSwap(grid, ROWS - 1, 0)).to.equal(null);
+    });
+
+    it('ignores a jellyfish swapped with a colourless piece', function() {
+      const grid = gridFromBottomRows(['JC2345']);
+      expect(jellyfishSwap(grid, ROWS - 1, 0)).to.equal(null);
+    });
+
+    it('ignores a swap with an empty cell or off the board', function() {
+      const grid = gridFromBottomRows(['J.2345']);
+      expect(jellyfishSwap(grid, ROWS - 1, 0)).to.equal(null);
+      expect(jellyfishSwap(grid, ROWS - 1, COLUMNS - 1)).to.equal(null);
+    });
+  });
+
+  describe('jellyfishSweep', function() {
+    it('collects every piece of the colour plus the jellyfish itself', function() {
+      const grid = gridFromBottomRows(['J12145']);
+      const sweep = jellyfishSwap(grid, ROWS - 1, 0);
+      expect(sweep).to.not.equal(null);
+      const cells = jellyfishSweep(grid, sweep!);
+      expect(cells).to.deep.include({ row: ROWS - 1, column: 0 });
+      expect(cells).to.deep.include({ row: ROWS - 1, column: 1 });
+      expect(cells).to.deep.include({ row: ROWS - 1, column: 3 });
+      for (const cell of cells) {
+        const piece = grid[cell.row][cell.column];
+        const isTheJellyfish = cell.row === ROWS - 1 && cell.column === 0;
+        expect(isTheJellyfish || piece!.color === 1).to.equal(true);
+      }
+    });
+  });
+
+  describe('spawnFloatingSpecials', function() {
+    it('turns a top-row piece into a jellyfish on a low roll', function() {
+      const grid = gridFromBottomRows([]);
+      spawnFloatingSpecials(grid, scriptedRandom([0, 2 / COLUMNS]));
+      expect(grid[0][2]!.kind).to.equal('jellyfish');
+    });
+
+    it('turns a top-row piece into a puffer of the same colour', function() {
+      const grid = gridFromBottomRows([]);
+      const color = grid[0][2]!.color;
+      spawnFloatingSpecials(grid, scriptedRandom([JELLYFISH_SPAWN_CHANCE, 2 / COLUMNS]));
+      expect(grid[0][2]!.kind).to.equal('puffer');
+      expect(grid[0][2]!.color).to.equal(color);
+    });
+
+    it('leaves the board alone on a high roll', function() {
+      const grid = gridFromBottomRows([]);
+      const roll = JELLYFISH_SPAWN_CHANCE + PUFFER_SPAWN_CHANCE;
+      spawnFloatingSpecials(grid, scriptedRandom([roll, 2 / COLUMNS]));
+      expect(grid[0][2]!.kind).to.equal('color');
+    });
+
+    it('never replaces a piece that is already special', function() {
+      const grid = gridFromBottomRows([]);
+      grid[0][2] = crabPiece();
+      spawnFloatingSpecials(grid, scriptedRandom([0, 2 / COLUMNS]));
+      expect(grid[0][2]!.kind).to.equal('crab');
+    });
+  });
+
+  describe('spawnCrab', function() {
+    it('drops a crab into the bilge below the water line', function() {
+      const grid = gridFromBottomRows([]);
+      const placed = spawnCrab(grid, createWater(), scriptedRandom([0, 2 / COLUMNS]));
+      expect(placed).to.equal(true);
+      expect(grid[ROWS - 1][2]!.kind).to.equal('crab');
+    });
+
+    it('does nothing on a high roll', function() {
+      const grid = gridFromBottomRows([]);
+      const roll = CRAB_SPAWN_CHANCE;
+      expect(spawnCrab(grid, createWater(), scriptedRandom([roll, 2 / COLUMNS]))).to.equal(false);
+      expect(grid[ROWS - 1][2]!.kind).to.equal('color');
+    });
+
+    it('gives up when the whole submerged column is already crabs', function() {
+      const grid = gridFromBottomRows([
+        'C12345',
+        'C12345',
+        'C12345',
+      ]);
+      expect(spawnCrab(grid, createWater(), scriptedRandom([0, 0]))).to.equal(false);
+    });
+
+    it('gives up when a fully flooded column has no room left', function() {
+      const grid = gridFromBottomRows([]);
+      for (let row = 0; row < ROWS; row++) {
+        grid[row][2] = crabPiece();
+      }
+      const flooded = { level: ROWS };
+      expect(spawnCrab(grid, flooded, scriptedRandom([0, 2 / COLUMNS]))).to.equal(false);
     });
   });
 });
