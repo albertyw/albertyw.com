@@ -70,6 +70,7 @@ import {
   setCursor,
   tick,
 } from '../bilging/game.js';
+import { cellClass, main } from '../bilging/render.js';
 
 // Deterministic generator so board tests never depend on Math.random.
 export function seededRandom(seed: number): Random {
@@ -892,5 +893,138 @@ describe('bilging game', function() {
       tick(game, 10);
       expect(game.water.level).to.equal(BASELINE_ROWS);
     });
+  });
+});
+
+describe('bilging render', function() {
+  let container: HTMLDivElement | null = null;
+
+  afterEach(function() {
+    container?.remove();
+    container = null;
+  });
+
+  // The board repaints on an animation frame, so input tests have to let one
+  // land before reading the DOM back.
+  function nextFrame(): Promise<void> {
+    return new Promise((resolve) => window.requestAnimationFrame(() => resolve()));
+  }
+
+  function mount(): HTMLDivElement {
+    container = document.createElement('div');
+    container.id = 'bilging';
+    document.body.appendChild(container);
+    main();
+    return container;
+  }
+
+  it('does nothing on a page with no board on it', function() {
+    expect(() => main()).to.not.throw();
+  });
+
+  it('draws a cell for every square of the board', function() {
+    const node = mount();
+    expect(node.querySelectorAll('.bilging-cell')).to.have.length(ROWS * COLUMNS);
+    expect(node.querySelectorAll('.bilging-water')).to.have.length(1);
+  });
+
+  it('marks two cells side by side as the cursor', function() {
+    const node = mount();
+    const cursor = node.querySelectorAll('.bilging-cursor');
+    expect(cursor).to.have.length(2);
+    const first = cursor[0] as HTMLElement;
+    const second = cursor[1] as HTMLElement;
+    expect(first.dataset.row).to.equal(second.dataset.row);
+    expect(Number(second.dataset.column) - Number(first.dataset.column)).to.equal(1);
+  });
+
+  it('counts a move when a cell is clicked', async function() {
+    const node = mount();
+    const cell = node.querySelector('.bilging-cell') as HTMLElement;
+    cell.click();
+    await nextFrame();
+    const moves = node.querySelectorAll('.bilging-stat-value')[1];
+    expect(Number(moves.textContent)).to.equal(1);
+  });
+
+  it('moves the cursor with the arrow keys', async function() {
+    const node = mount();
+    const before = (node.querySelector('.bilging-cursor') as HTMLElement).dataset.column;
+    const frame = node.querySelector('.bilging-frame') as HTMLElement;
+    frame.dispatchEvent(new KeyboardEvent('keydown', { key: 'ArrowRight', bubbles: true }));
+    await nextFrame();
+    const after = (node.querySelector('.bilging-cursor') as HTMLElement).dataset.column;
+    expect(Number(after)).to.equal(Number(before) + 1);
+  });
+
+  it('moves the cursor in every direction', async function() {
+    const node = mount();
+    const frame = node.querySelector('.bilging-frame') as HTMLElement;
+    const press = async (key: string): Promise<HTMLElement> => {
+      frame.dispatchEvent(new KeyboardEvent('keydown', { key: key, bubbles: true }));
+      await nextFrame();
+      return node.querySelector('.bilging-cursor') as HTMLElement;
+    };
+    await press('ArrowRight');
+    const right = await press('ArrowLeft');
+    expect(Number(right.dataset.column)).to.equal(0);
+    const up = await press('ArrowUp');
+    expect(Number(up.dataset.row)).to.equal(ROWS - 2);
+    const down = await press('ArrowDown');
+    expect(Number(down.dataset.row)).to.equal(ROWS - 1);
+  });
+
+  it('swaps on the space bar', async function() {
+    const node = mount();
+    const frame = node.querySelector('.bilging-frame') as HTMLElement;
+    frame.dispatchEvent(new KeyboardEvent('keydown', { key: ' ', bubbles: true }));
+    await nextFrame();
+    expect(Number(node.querySelectorAll('.bilging-stat-value')[1].textContent)).to.equal(1);
+  });
+
+  it('follows the mouse across the board', async function() {
+    const node = mount();
+    const cells = node.querySelectorAll('.bilging-cell');
+    cells[COLUMNS * 2 + 1].dispatchEvent(new MouseEvent('mousemove', { bubbles: true }));
+    await nextFrame();
+    const cursor = node.querySelector('.bilging-cursor') as HTMLElement;
+    expect(Number(cursor.dataset.row)).to.equal(2);
+    expect(Number(cursor.dataset.column)).to.equal(1);
+  });
+
+  it('starts a fresh game from the play again button', async function() {
+    const node = mount();
+    (node.querySelector('.bilging-cell') as HTMLElement).click();
+    await nextFrame();
+    expect(Number(node.querySelectorAll('.bilging-stat-value')[1].textContent)).to.equal(1);
+
+    (node.querySelector('.bilging-again') as HTMLElement).click();
+    await nextFrame();
+    expect(Number(node.querySelectorAll('.bilging-stat-value')[1].textContent)).to.equal(0);
+    expect(Number(node.querySelectorAll('.bilging-stat-value')[0].textContent)).to.equal(0);
+  });
+
+  it('gives each kind of piece its own classes', function() {
+    expect(cellClass(null)).to.equal('bilging-cell');
+    expect(cellClass(colorPiece(3))).to.equal('bilging-cell bilging-color-3');
+    expect(cellClass(pufferPiece(2))).to.equal(
+      'bilging-cell bilging-color-2 bilging-special');
+    expect(cellClass(crabPiece())).to.equal('bilging-cell bilging-crab bilging-special');
+    expect(cellClass(jellyfishPiece())).to.equal(
+      'bilging-cell bilging-jellyfish bilging-special');
+  });
+
+  it('ignores a click on the board frame itself', function() {
+    const node = mount();
+    const frame = node.querySelector('.bilging-frame') as HTMLElement;
+    expect(() => frame.click()).to.not.throw();
+  });
+
+  it('ignores keys it does not handle', function() {
+    const node = mount();
+    const frame = node.querySelector('.bilging-frame') as HTMLElement;
+    expect(() => {
+      frame.dispatchEvent(new KeyboardEvent('keydown', { key: 'q', bubbles: true }));
+    }).to.not.throw();
   });
 });
