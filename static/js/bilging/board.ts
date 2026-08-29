@@ -76,7 +76,7 @@ export function isMovable(cell: Cell): boolean {
 
 // Only coloured pieces form runs.  A puffer fish keeps a colour so it can be
 // caught up in a run, but it is the click that makes it useful.
-function matchColor(cell: Cell): number {
+export function pieceColor(cell: Cell): number {
   if (cell === null) {
     return NO_COLOR;
   }
@@ -167,7 +167,7 @@ function scanLine(
   };
 
   for (let index = 0; index < length; index++) {
-    const current = matchColor(cellAt(index));
+    const current = pieceColor(cellAt(index));
     if (current !== color) {
       flush(index);
       start = index;
