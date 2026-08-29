@@ -21,6 +21,18 @@ import {
   runCells,
   swap,
 } from '../bilging/board.js';
+import {
+  BASELINE_ROWS,
+  DRAIN_ROWS_PER_PIECE,
+  RISE_ROWS_PER_SECOND,
+  createWater,
+  drain,
+  isFlooded,
+  isSubmerged,
+  rise,
+  surfacedCrabs,
+  waterLineRow,
+} from '../bilging/water.js';
 
 // Deterministic generator so board tests never depend on Math.random.
 export function seededRandom(seed: number): Random {
@@ -277,6 +289,96 @@ describe('bilging board', function() {
       expect(steps[1].runs).to.deep.include({
         orientation: 'row', row: ROWS - 1, column: 0, length: 3,
       });
+    });
+  });
+});
+
+describe('bilging water', function() {
+  describe('createWater', function() {
+    it('starts at the uncleaerable baseline', function() {
+      expect(createWater().level).to.equal(BASELINE_ROWS);
+    });
+  });
+
+  describe('rise', function() {
+    it('climbs at a steady rate', function() {
+      const water = createWater();
+      rise(water, 10);
+      expect(water.level).to.be.closeTo(BASELINE_ROWS + 10 * RISE_ROWS_PER_SECOND, 1e-9);
+    });
+
+    it('never climbs past the top of the board', function() {
+      const water = createWater();
+      rise(water, 100000);
+      expect(water.level).to.equal(ROWS);
+    });
+  });
+
+  describe('drain', function() {
+    it('falls in proportion to the pieces cleared', function() {
+      const water = { level: 6 };
+      drain(water, 4);
+      expect(water.level).to.be.closeTo(6 - 4 * DRAIN_ROWS_PER_PIECE, 1e-9);
+    });
+
+    it('stops at the baseline no matter how much is cleared', function() {
+      const water = { level: 6 };
+      drain(water, 1000);
+      expect(water.level).to.equal(BASELINE_ROWS);
+    });
+  });
+
+  describe('isSubmerged and waterLineRow', function() {
+    it('puts the baseline water under the bottom three rows', function() {
+      const water = createWater();
+      expect(waterLineRow(water)).to.equal(ROWS - BASELINE_ROWS);
+      expect(isSubmerged(water, ROWS - 1)).to.equal(true);
+      expect(isSubmerged(water, ROWS - BASELINE_ROWS)).to.equal(true);
+      expect(isSubmerged(water, ROWS - BASELINE_ROWS - 1)).to.equal(false);
+    });
+
+    it('treats a partly covered row as above the line', function() {
+      const water = { level: 3.5 };
+      expect(isSubmerged(water, ROWS - 4)).to.equal(false);
+      expect(waterLineRow(water)).to.equal(ROWS - 3);
+    });
+  });
+
+  describe('isFlooded', function() {
+    it('only reports a loss once the water reaches the top', function() {
+      expect(isFlooded({ level: ROWS - 0.01 })).to.equal(false);
+      expect(isFlooded({ level: ROWS })).to.equal(true);
+    });
+  });
+
+  describe('surfacedCrabs', function() {
+    it('finds crabs sitting above the water line', function() {
+      const grid = gridFromBottomRows([
+        'C12345',
+        '012345',
+        '012345',
+        '01234C',
+      ]);
+      // Baseline water covers the bottom three rows, so only the upper crab
+      // has surfaced.
+      expect(surfacedCrabs(grid, createWater())).to.deep.equal([
+        { row: ROWS - 4, column: 0 },
+      ]);
+    });
+
+    it('finds nothing when the water covers every crab', function() {
+      const grid = gridFromBottomRows(['C12345']);
+      expect(surfacedCrabs(grid, createWater())).to.deep.equal([]);
+    });
+
+    it('surfaces a crab once the water is pumped down past it', function() {
+      const grid = gridFromBottomRows(['C12345']);
+      const water = createWater();
+      expect(surfacedCrabs(grid, water)).to.deep.equal([]);
+      water.level = 0;
+      expect(surfacedCrabs(grid, water)).to.deep.equal([
+        { row: ROWS - 1, column: 0 },
+      ]);
     });
   });
 });
