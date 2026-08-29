@@ -1,0 +1,282 @@
+import { expect } from 'chai';
+
+import {
+  COLUMNS,
+  ROWS,
+  Cell,
+  Grid,
+  Random,
+  applyGravity,
+  clearCells,
+  colorPiece,
+  crabPiece,
+  createGrid,
+  emptyGrid,
+  findRuns,
+  isMovable,
+  jellyfishPiece,
+  pufferPiece,
+  refill,
+  resolve,
+  runCells,
+  swap,
+} from '../bilging/board.js';
+
+// Deterministic generator so board tests never depend on Math.random.
+export function seededRandom(seed: number): Random {
+  let state = seed >>> 0;
+  return (): number => {
+    state = (state + 0x6d2b79f5) >>> 0;
+    let t = state;
+    t = Math.imul(t ^ (t >>> 15), t | 1);
+    t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function parseCell(character: string): Cell {
+  if (character === '.') {
+    return null;
+  }
+  if (character === 'C') {
+    return crabPiece();
+  }
+  if (character === 'J') {
+    return jellyfishPiece();
+  }
+  return colorPiece(Number(character));
+}
+
+// Builds a full-height board from a handful of bottom rows.  Everything above
+// is padded with a diagonal pattern that cannot form a run of its own, so a
+// test only has to write the rows it cares about.
+export function gridFromBottomRows(rows: string[]): Grid {
+  const grid = emptyGrid();
+  const firstRow = ROWS - rows.length;
+  for (let row = 0; row < ROWS; row++) {
+    for (let column = 0; column < COLUMNS; column++) {
+      if (row < firstRow) {
+        grid[row][column] = colorPiece((row + column) % COLUMNS);
+      } else {
+        grid[row][column] = parseCell(rows[row - firstRow][column]);
+      }
+    }
+  }
+  return grid;
+}
+
+describe('bilging board', function() {
+  describe('gridFromBottomRows', function() {
+    it('pads with a pattern that contains no runs', function() {
+      expect(findRuns(gridFromBottomRows([]))).to.deep.equal([]);
+    });
+  });
+
+  describe('createGrid', function() {
+    it('fills every cell', function() {
+      const grid = createGrid(seededRandom(1));
+      expect(grid.length).to.equal(ROWS);
+      for (const row of grid) {
+        expect(row.length).to.equal(COLUMNS);
+        for (const cell of row) {
+          expect(cell).to.not.equal(null);
+        }
+      }
+    });
+
+    it('never starts with a run already on the board', function() {
+      for (let seed = 0; seed < 25; seed++) {
+        expect(findRuns(createGrid(seededRandom(seed)))).to.deep.equal([]);
+      }
+    });
+  });
+
+  describe('swap', function() {
+    it('exchanges a piece with its right-hand neighbour', function() {
+      const grid = gridFromBottomRows(['012345']);
+      expect(swap(grid, ROWS - 1, 2)).to.equal(true);
+      expect(grid[ROWS - 1][2]).to.deep.equal(colorPiece(3));
+      expect(grid[ROWS - 1][3]).to.deep.equal(colorPiece(2));
+    });
+
+    it('refuses to swap off the right edge', function() {
+      const grid = gridFromBottomRows(['012345']);
+      expect(swap(grid, ROWS - 1, COLUMNS - 1)).to.equal(false);
+      expect(grid[ROWS - 1][COLUMNS - 1]).to.deep.equal(colorPiece(5));
+    });
+
+    it('refuses to swap outside the board', function() {
+      const grid = gridFromBottomRows(['012345']);
+      expect(swap(grid, ROWS, 0)).to.equal(false);
+      expect(swap(grid, -1, 0)).to.equal(false);
+      expect(swap(grid, ROWS - 1, -1)).to.equal(false);
+    });
+
+    it('refuses to move a crab', function() {
+      const grid = gridFromBottomRows(['01C345']);
+      expect(swap(grid, ROWS - 1, 1)).to.equal(false);
+      expect(swap(grid, ROWS - 1, 2)).to.equal(false);
+      expect(grid[ROWS - 1][2]).to.deep.equal(crabPiece());
+    });
+
+    it('refuses to move an empty cell', function() {
+      const grid = gridFromBottomRows(['01.345']);
+      expect(swap(grid, ROWS - 1, 2)).to.equal(false);
+    });
+  });
+
+  describe('isMovable', function() {
+    it('rejects crabs and empty cells but accepts everything else', function() {
+      expect(isMovable(colorPiece(0))).to.equal(true);
+      expect(isMovable(jellyfishPiece())).to.equal(true);
+      expect(isMovable(crabPiece())).to.equal(false);
+      expect(isMovable(null)).to.equal(false);
+    });
+  });
+
+  describe('findRuns', function() {
+    it('finds a horizontal run of three', function() {
+      const runs = findRuns(gridFromBottomRows(['222345']));
+      expect(runs).to.deep.equal([
+        { orientation: 'row', row: ROWS - 1, column: 0, length: 3 },
+      ]);
+    });
+
+    it('finds a run longer than three as a single run', function() {
+      const runs = findRuns(gridFromBottomRows(['222245']));
+      expect(runs).to.deep.equal([
+        { orientation: 'row', row: ROWS - 1, column: 0, length: 4 },
+      ]);
+    });
+
+    it('finds a vertical run', function() {
+      const runs = findRuns(gridFromBottomRows([
+        '301234',
+        '312345',
+        '340123',
+      ]));
+      expect(runs).to.deep.equal([
+        { orientation: 'column', row: ROWS - 3, column: 0, length: 3 },
+      ]);
+    });
+
+    it('ignores runs of two', function() {
+      expect(findRuns(gridFromBottomRows(['220345']))).to.deep.equal([]);
+    });
+
+    it('does not match crabs against each other', function() {
+      expect(findRuns(gridFromBottomRows(['CCC345']))).to.deep.equal([]);
+    });
+
+    it('does not match jellyfish against each other', function() {
+      expect(findRuns(gridFromBottomRows(['JJJ345']))).to.deep.equal([]);
+    });
+
+    it('lets a puffer fish take part in a run of its own colour', function() {
+      const grid = gridFromBottomRows(['221345']);
+      grid[ROWS - 1][2] = pufferPiece(2);
+      expect(findRuns(grid)).to.deep.equal([
+        { orientation: 'row', row: ROWS - 1, column: 0, length: 3 },
+      ]);
+    });
+
+    it('does not treat empty cells as a run', function() {
+      expect(findRuns(gridFromBottomRows(['...345']))).to.deep.equal([]);
+    });
+  });
+
+  describe('runCells', function() {
+    it('expands a run into its cells', function() {
+      const cells = runCells([
+        { orientation: 'row', row: 4, column: 1, length: 3 },
+      ]);
+      expect(cells).to.deep.equal([
+        { row: 4, column: 1 },
+        { row: 4, column: 2 },
+        { row: 4, column: 3 },
+      ]);
+    });
+
+    it('counts the shared cell of two crossing runs only once', function() {
+      const cells = runCells([
+        { orientation: 'row', row: 4, column: 1, length: 3 },
+        { orientation: 'column', row: 3, column: 2, length: 3 },
+      ]);
+      expect(cells).to.have.length(5);
+      expect(cells.filter((c) => c.row === 4 && c.column === 2)).to.have.length(1);
+    });
+  });
+
+  describe('applyGravity', function() {
+    it('drops pieces into the gap below them', function() {
+      const grid = gridFromBottomRows([
+        '012345',
+        '......',
+      ]);
+      expect(applyGravity(grid)).to.equal(true);
+      expect(grid[ROWS - 1][0]).to.deep.equal(colorPiece(0));
+      // The whole column slides down, so the gap ends up at the very top.
+      expect(grid[0][0]).to.equal(null);
+    });
+
+    it('reports when nothing moved', function() {
+      expect(applyGravity(gridFromBottomRows(['012345']))).to.equal(false);
+    });
+
+    it('drops crabs like any other piece', function() {
+      const grid = gridFromBottomRows([
+        'C12345',
+        '.12345',
+      ]);
+      applyGravity(grid);
+      expect(grid[ROWS - 1][0]).to.deep.equal(crabPiece());
+    });
+  });
+
+  describe('clearCells and refill', function() {
+    it('empties the given cells and then fills every gap', function() {
+      const grid = gridFromBottomRows(['012345']);
+      clearCells(grid, [{ row: ROWS - 1, column: 0 }]);
+      expect(grid[ROWS - 1][0]).to.equal(null);
+      refill(grid, seededRandom(7));
+      expect(grid[ROWS - 1][0]).to.not.equal(null);
+    });
+  });
+
+  describe('resolve', function() {
+    it('does nothing on a quiet board', function() {
+      expect(resolve(gridFromBottomRows([]), seededRandom(3))).to.deep.equal([]);
+    });
+
+    it('clears a run and leaves the board full and quiet', function() {
+      const grid = gridFromBottomRows(['222345']);
+      const steps = resolve(grid, seededRandom(11));
+      expect(steps.length).to.be.at.least(1);
+      expect(steps[0].cells).to.have.length(3);
+      expect(findRuns(grid)).to.deep.equal([]);
+      for (const row of grid) {
+        for (const cell of row) {
+          expect(cell).to.not.equal(null);
+        }
+      }
+    });
+
+    it('reports each link of a chain as its own step', function() {
+      // The run of 0s in the bottom row clears first.  Columns 2, 3 and 4 then
+      // fall by one, which slides another 1 into the bottom row alongside the
+      // two already there and sets off a second clear.
+      const grid = gridFromBottomRows([
+        '201210',
+        '110002',
+      ]);
+      const steps = resolve(grid, seededRandom(5));
+      expect(steps.length).to.be.at.least(2);
+      expect(steps[0].runs).to.deep.include({
+        orientation: 'row', row: ROWS - 1, column: 2, length: 3,
+      });
+      expect(steps[1].runs).to.deep.include({
+        orientation: 'row', row: ROWS - 1, column: 0, length: 3,
+      });
+    });
+  });
+});
