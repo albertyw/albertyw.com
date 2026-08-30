@@ -16,12 +16,21 @@ dotenv.load_dotenv(git_root.path / '.env')
 from app.routes import handlers, sitemap_urls  # noqa: E402
 
 
+def validate_debug(env: str, debug: bool) -> bool:
+    """Flask's debug mode leaks tracebacks; never allow it in production."""
+    if env == 'production' and debug:
+        raise RuntimeError('DEBUG must not be enabled when ENV is production')
+    return debug
+
+
 app = Flask(
     __name__,
     static_url_path='/static',
     static_folder=git_root.path / 'static',
 )
-app.debug = os.environ['DEBUG'] == 'true'
+app.debug = validate_debug(
+    os.environ['ENV'], os.environ['DEBUG'] == 'true',
+)
 if os.environ.get('SERVER_NAME', ''):  # pragma: no cover
     app.config['SERVER_NAME'] = os.environ['SERVER_NAME']
 
@@ -43,7 +52,14 @@ if os.environ['ENV'] == 'production':  # pragma: no cover
             # server root directory, makes tracebacks prettier
             root=str(get_current_path()),
             # flask already sets up logging
-            allow_logging_basic_config=False)
+            allow_logging_basic_config=False,
+            # The default handler starts a single-use thread per report.  Each
+            # such thread gets its own 64MB glibc malloc arena and an 8MB
+            # stack, neither of which is fully returned to the OS, so a steady
+            # trickle of reports grows every worker by hundreds of megabytes.
+            # A small pool of persistent threads keeps that bounded.
+            handler='thread_pool',
+            thread_pool_workers=2)
 
         # send exceptions from `app` to rollbar, using flask's signal system.
         got_request_exception.connect(
