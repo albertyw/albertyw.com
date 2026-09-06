@@ -33,7 +33,7 @@ test = [
 
     # Types
     "mypy==2.3.1",                      # Type checking
-    "types-requests==2.33.0.20260518",  # Type stubs for requests package
+    "types-requests==2.33.0.20260906",  # Type stubs for requests package
 ]
 
 [tool.bandit]
