@@ -59,6 +59,10 @@
         {
             "link": "https://architecturenotes.co/",
             "name": "Architecture Notes"
+        },
+        {
+            "link": "https://greenteapress.com/semaphores/LittleBookOfSemaphores.pdf",
+            "name": "Little Book of Semaphores"
         }
     ],
     "Technical Leadership": [
