@@ -169,6 +169,10 @@
             "name": "City-Data.com"
         },
         {
+            "link": "https://www.timeanddate.com/sun/usa/san-francisco",
+            "name": "Sunrise and Sunset Times"
+        },
+        {
             "link": "https://lucide.dev/",
             "name": "Lucide Icon Toolkit"
         },
