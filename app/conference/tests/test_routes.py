@@ -67,6 +67,9 @@ class TestConferencePage(unittest.TestCase):
         self.assertIn(b'calendar.google.com/calendar/embed', page)
         self.assertIn(src.encode(), page)
 
+    def test_linked_from_reference(self) -> None:
+        self.assertIn(b'href="/conference"', self.get('/reference'))
+
     def test_not_in_navbar(self) -> None:
         self.assertNotIn(b'href="/conference"', self.get('/'))
 
