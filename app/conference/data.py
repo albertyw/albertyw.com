@@ -10,6 +10,7 @@ from app.util import cached_function
 
 DIRECTORY = syspath.get_current_path()
 CONFERENCES_PATH = DIRECTORY / 'conferences.json'
+METADATA_PATH = DIRECTORY / 'metadata.json'
 
 
 def parse_date(value: Optional[str]) -> Optional[datetime.date]:
@@ -97,6 +98,30 @@ class Conferences():
         return conferences
 
 
+class Metadata():
+    def __init__(self) -> None:
+        self.last_updated: datetime.datetime = datetime.datetime.min
+
+    @staticmethod
+    def load_from_file(path: Path = METADATA_PATH) -> 'Metadata':
+        with open(path, 'r') as handle:
+            parsed_data = json.loads(handle.read())
+        return Metadata.load(parsed_data)
+
+    @staticmethod
+    def load(data: dict[str, str]) -> 'Metadata':
+        metadata = Metadata()
+        metadata.last_updated = datetime.datetime.fromisoformat(data['last_updated'])
+        if metadata.last_updated.tzinfo is None:
+            raise ValueError('last_updated must include a timezone')
+        return metadata
+
+
 @cached_function
 def get_conferences() -> Conferences:
     return Conferences.load_from_file()
+
+
+@cached_function
+def get_metadata() -> Metadata:
+    return Metadata.load_from_file()
