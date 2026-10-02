@@ -1,8 +1,11 @@
 import copy
 import datetime
+import json
+from pathlib import Path
 from typing import Any
 import unittest
 
+from app import util
 from app.conference import data
 
 
@@ -25,6 +28,37 @@ def conference(**overrides: Any) -> dict[str, Any]:
     conference_data.update(overrides)
     return conference_data
 
+
+def canonical(path: Path) -> str:
+    parsed = json.loads(path.read_text())
+    return json.dumps(parsed, indent=4, sort_keys=True, ensure_ascii=False) + '\n'
+
+
+class TestDataFiles(unittest.TestCase):
+    def test_conferences_json_is_pretty_printed(self) -> None:
+        raw = data.CONFERENCES_PATH.read_text()
+        self.assertEqual(
+            raw, canonical(data.CONFERENCES_PATH),
+            'Rewrite conferences.json with json.dumps(indent=4, sort_keys=True, '
+            'ensure_ascii=False) plus a trailing newline',
+        )
+
+    def test_conferences_json_loads(self) -> None:
+        conferences = data.Conferences.load_from_file()
+        self.assertNotEqual(conferences.conferences, [])
+
+    def test_conferences_json_is_sorted(self) -> None:
+        conferences = data.Conferences.load_from_file().conferences
+        keys = [
+            (c.start_date is None, c.start_date or datetime.date.min, c.id)
+            for c in conferences
+        ]
+        self.assertEqual(keys, sorted(keys))
+
+    def test_rejected_entries_are_complete(self) -> None:
+        parsed = json.loads(data.CONFERENCES_PATH.read_text())
+        for rejected in parsed['rejected']:
+            self.assertEqual(set(rejected.keys()), {'name', 'reason', 'website'})
 
 class TestConference(unittest.TestCase):
     def test_load(self) -> None:
@@ -91,3 +125,15 @@ class TestConferences(unittest.TestCase):
     def test_duplicate_ids(self) -> None:
         with self.assertRaises(ValueError):
             data.Conferences.load({'conferences': [conference(), conference()]})
+
+
+class TestCachedGetters(unittest.TestCase):
+    def setUp(self) -> None:
+        self.original_cache = util.SHOULD_CACHE
+        util.SHOULD_CACHE = True
+
+    def tearDown(self) -> None:
+        util.SHOULD_CACHE = self.original_cache
+
+    def test_get_conferences(self) -> None:
+        self.assertIs(data.get_conferences(), data.get_conferences())
