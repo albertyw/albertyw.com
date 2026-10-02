@@ -11,6 +11,7 @@ dependencies = [
     # Features
     "feedgen==1.0.0",                   # Generate atom feeds
     "flask-sitemap==0.4.0",             # Web sitemaps
+    "icalendar==7.3.0",                 # iCal generator
     "markdown2==2.5.5",                 # Markdown formatting
     "Pygments==2.21.0",                 # Syntax highlighting support
 
