@@ -1,5 +1,15 @@
 import datetime
+import json
+from pathlib import Path
 from typing import Any, Optional
+
+import syspath
+
+from app.util import cached_function
+
+
+DIRECTORY = syspath.get_current_path()
+CONFERENCES_PATH = DIRECTORY / 'conferences.json'
 
 
 def parse_date(value: Optional[str]) -> Optional[datetime.date]:
@@ -72,6 +82,12 @@ class Conferences():
         self.conferences: list[Conference] = []
 
     @staticmethod
+    def load_from_file(path: Path = CONFERENCES_PATH) -> 'Conferences':
+        with open(path, 'r') as handle:
+            parsed_data = json.loads(handle.read())
+        return Conferences.load(parsed_data)
+
+    @staticmethod
     def load(data: dict[str, Any]) -> 'Conferences':
         conferences = Conferences()
         conferences.conferences = [Conference.load(c) for c in data['conferences']]
@@ -79,3 +95,8 @@ class Conferences():
         if len(ids) != len(set(ids)):
             raise ValueError('conference ids must be unique')
         return conferences
+
+
+@cached_function
+def get_conferences() -> Conferences:
+    return Conferences.load_from_file()

@@ -1,0 +1,36 @@
+{
+    "conferences": [
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-12",
+            "id": "kubecon-cloudnativecon-north-america-2026",
+            "last_verified": null,
+            "location": "Salt Lake City, UT, USA",
+            "name": "KubeCon + CloudNativeCon North America 2026",
+            "registration_deadlines": [],
+            "source": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/",
+            "start_date": "2026-11-09",
+            "website": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "September 2027; venue proposals open",
+            "id": "djangocon-us-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "DjangoCon US 2027",
+            "registration_deadlines": [],
+            "source": "https://djangocon.us/",
+            "start_date": null,
+            "website": "https://djangocon.us/"
+        }
+    ],
+    "rejected": [
+        {
+            "name": "RustConf 2026",
+            "reason": "out of scope: Rust",
+            "website": "https://rustconf.com/"
+        }
+    ]
+}
