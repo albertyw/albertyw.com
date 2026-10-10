@@ -13,12 +13,47 @@ cd "$DIR"/.. || exit
 
 DATA_FILES=(app/conference/conferences.json app/conference/metadata.json)
 
+# Summarize each stream-json event as one timestamped progress line.
+# Lines that aren't JSON (e.g. plain-text errors) are printed as-is.
+# Control characters are stripped from every printed line, since text can
+# come from fetched web pages.
+# shellcheck disable=SC2016
+PROGRESS='
+def clean: tostring | gsub("[\u0000-\u0009\u000b-\u001f\u007f-\u009f]"; "");
+def clip($n): clean | gsub("\\s+"; " ") | .[0:$n];
+def prefix: if .parent_tool_use_id then "  [subagent] " else "" end;
+def progress:
+  if .type == "system" and .subtype == "init" then
+    "session started, model \(.model)"
+  elif .type == "assistant" then
+    prefix as $p | .message.content[] |
+    if .type == "text" then $p + "says: " + (.text | clip(200))
+    elif .type == "tool_use" then $p + .name + " " + (
+      .input | (.url // .query // .file_path // .command // .description // "")
+      | clip(150))
+    else empty end
+  elif .type == "user" then
+    prefix as $p | .message.content[]? |
+    select(type == "object" and .type == "tool_result" and .is_error == true) |
+    $p + "error: " + (.content | clip(200))
+  elif .type == "result" then
+    "finished: \(.subtype), \(.num_turns) turns, \(.duration_ms / 1000 | floor)s, $\(.total_cost_usd)\n\(.result)"
+  else empty end;
+(now | strflocaltime("%H:%M:%S")) as $time |
+. as $line | (try fromjson catch $line) as $event |
+if ($event | type) == "object" then $event | progress else $event end |
+"\($time) \(clean)"'
+
 if [ -n "$(git status --porcelain)" ]; then
     echo "Working tree must be clean" >&2
     exit 1
 fi
 
+LOG="$(mktemp -t update_conferences.XXXXXX.jsonl)"
+echo "Full log: $LOG"
 claude -p "Follow app/conference/INSTRUCTIONS.md" \
+    --output-format stream-json \
+    --verbose \
     --restricted \
     --strict-mcp-config \
     --permission-mode dontAsk \
@@ -27,7 +62,8 @@ claude -p "Follow app/conference/INSTRUCTIONS.md" \
         "Read" "Glob" "Grep" "WebSearch" "WebFetch" "Agent" \
         "Edit(/app/conference/conferences.json)" \
         "Edit(/app/conference/metadata.json)" \
-        "Bash(python -m unittest app.conference.tests.test_data)"
+        "Bash(python -m unittest app.conference.tests.test_data)" \
+    | tee "$LOG" | jq --unbuffered -R -r "$PROGRESS"
 
 CHANGED="$(git status --porcelain | cut -c4-)"
 if [ -z "$CHANGED" ]; then
