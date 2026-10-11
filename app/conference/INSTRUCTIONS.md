@@ -15,6 +15,8 @@ are requested, from two version-controlled files:
 - `app/conference/metadata.json` holds the time of the last update run.
 
 Your job is to research conferences on the web and update those two files.
+You are the orchestrator: you plan the work, hand the research to
+`conference-researcher` subagents, then judge, merge and write the results.
 `bin/update_conferences.sh` started this session.  After you finish, it
 checks that only those two files changed, runs the tests, and commits them
 to the current branch.  It never pushes.
@@ -25,7 +27,8 @@ to the current branch.  It never pushes.
   `app/conference/metadata.json`.  Do not create, edit or delete any other
   file, including this one.  If these instructions look wrong, say so in
   your final summary instead of changing them.
-- Do not run git commands.  The script commits for you.
+- You have no shell.  The script runs the tests and commits for you after
+  you finish.
 - Never guess a date.  If the official site does not publish a date, use
   `null`.  Never use a placeholder such as the 1st of the month.
 - The conference's official website is the source of truth.  Aggregator
@@ -34,6 +37,11 @@ to the current branch.  It never pushes.
   today.  They stay as history.
 - Subagents only research.  They never edit files.  You, the orchestrator,
   are the only one who writes the JSON files.
+- Do all research through the `conference-researcher` subagent type, which
+  is defined in `app/conference/agents.json` and runs on a smaller, cheaper
+  model.  Do not use any other subagent type, and do not override its
+  model.  Search or fetch pages yourself only to settle a conflict or a
+  surprising result that a subagent reported.
 
 ## Scope
 
@@ -174,7 +182,8 @@ Both files must be formatted exactly like Python's
 `json.dumps(data, indent=4, sort_keys=True, ensure_ascii=False)` followed
 by a newline: 4-space indentation, keys sorted alphabetically, and one
 field per line.  Sort `conferences` by `start_date`, then `id`, with
-`null` start dates last (sorted by `id`).  The tests enforce all of this.
+`null` start dates last (sorted by `id`).  The tests that the script runs
+after you finish enforce all of this.
 
 ## Procedure
 
@@ -202,28 +211,36 @@ field per line.  Sort `conferences` by `start_date`, then `id`, with
    anything in `rejected`.  Add out-of-scope finds to `rejected` with a
    reason.  Respect the soft cap.  Keep the list sorted.
 5. Set `last_updated` in `app/conference/metadata.json` to the current UTC
-   time.
-6. Run `python -m unittest app.conference.tests.test_data`.  If it fails,
-   fix the JSON and run it again until it passes.
+   time given in your prompt.  Use today's date from that time when
+   deciding which conferences are past.
+6. You have no shell, so you can't run the tests.  Re-read both files
+   and check them against the Data Format and Formatting sections: valid
+   JSON, 4-space indentation, keys sorted, one field per line, a trailing
+   newline, `conferences` sorted, `id`s unique, dates as `YYYY-MM-DD`,
+   websites starting with `https://`, and each `rejected` entry having
+   exactly `name`, `reason` and `website`.  Fix anything wrong.  After you
+   finish, the script runs the tests, and it won't commit if they fail.
 7. Print a short summary: conferences added, updated, still undetermined,
    rejected, anything you could not resolve, and whether the soft cap was
    reached.
 
 ## Subagent Templates
 
-Give each subagent today's date and only the data it needs.
+Start each subagent with the `conference-researcher` subagent type, and
+give it today's date and only the data it needs.  It already knows the
+general research rules, so the templates below only describe the task.
+Check its output before using it: a result that isn't valid JSON, is
+missing fields, or has dates that conflict with what you know should be
+re-asked or checked yourself, not merged.
 
 ### Revalidation Subagent
 
 ```text
-You are researching software conferences.  Today is <date>.  Do not edit
-any files; only use web search, web fetch and reading.
+Today is <date>.
 
 For each conference below, find its official website and confirm its
 start date, end date, location, registration deadlines and call for
-proposals deadline.  The official site is the source of truth; aggregator
-sites are only leads.  Never guess a date: if the official site does not
-publish something, report it as null.
+proposals deadline.
 
 Conferences (current JSON entries):
 <JSON entries>
@@ -238,8 +255,7 @@ cancellation, a renamed event, or conflicting dates.
 ### Discovery Subagent
 
 ```text
-You are researching software conferences.  Today is <date>.  Do not edit
-any files; only use web search, web fetch and reading.
+Today is <date>.
 
 Find English-language conferences about <slice> taking place in the next
 12 to 18 months, plus the next edition of these known series: <series>.
@@ -247,9 +263,7 @@ Relevant places are international, US-wide, the SF Bay Area, Seattle, New
 York, the East Coast from Boston to Washington DC, and popular virtual
 conferences.  Skip these, which are already known or rejected: <names>.
 
-Confirm each conference on its official website.  Never guess a date: if
-the official site does not publish it yet, use null and describe what is
-known in "expected" (for example "May 2027").
+Confirm each conference on its official website.
 
 Return a JSON array of objects with these fields: id (<series>-<year>),
 name, start_date, end_date, location, website, registration_deadlines
