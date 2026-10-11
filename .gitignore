@@ -80,3 +80,4 @@ node_modules
 .coverage_js
 
 static/gen/resume.pdf
+static/notes/20260926-0504-timezone-boundaries.png
