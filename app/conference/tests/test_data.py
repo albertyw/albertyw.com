@@ -43,6 +43,10 @@ class TestDataFiles(unittest.TestCase):
             'ensure_ascii=False) plus a trailing newline',
         )
 
+    def test_metadata_json_is_pretty_printed(self) -> None:
+        raw = data.METADATA_PATH.read_text()
+        self.assertEqual(raw, canonical(data.METADATA_PATH))
+
     def test_conferences_json_loads(self) -> None:
         conferences = data.Conferences.load_from_file()
         self.assertNotEqual(conferences.conferences, [])
@@ -59,6 +63,11 @@ class TestDataFiles(unittest.TestCase):
         parsed = json.loads(data.CONFERENCES_PATH.read_text())
         for rejected in parsed['rejected']:
             self.assertEqual(set(rejected.keys()), {'name', 'reason', 'website'})
+
+    def test_metadata_json_loads(self) -> None:
+        metadata = data.Metadata.load_from_file()
+        self.assertIsNotNone(metadata.last_updated.tzinfo)
+
 
 class TestConference(unittest.TestCase):
     def test_load(self) -> None:
@@ -127,6 +136,19 @@ class TestConferences(unittest.TestCase):
             data.Conferences.load({'conferences': [conference(), conference()]})
 
 
+class TestMetadata(unittest.TestCase):
+    def test_load(self) -> None:
+        metadata = data.Metadata.load({'last_updated': '2026-09-27T18:04:00Z'})
+        self.assertEqual(
+            metadata.last_updated,
+            datetime.datetime(2026, 9, 27, 18, 4, tzinfo=datetime.timezone.utc),
+        )
+
+    def test_missing_timezone(self) -> None:
+        with self.assertRaises(ValueError):
+            data.Metadata.load({'last_updated': '2026-09-27T18:04:00'})
+
+
 class TestCachedGetters(unittest.TestCase):
     def setUp(self) -> None:
         self.original_cache = util.SHOULD_CACHE
@@ -137,3 +159,6 @@ class TestCachedGetters(unittest.TestCase):
 
     def test_get_conferences(self) -> None:
         self.assertIs(data.get_conferences(), data.get_conferences())
+
+    def test_get_metadata(self) -> None:
+        self.assertIs(data.get_metadata(), data.get_metadata())
