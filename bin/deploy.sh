@@ -25,11 +25,8 @@ if [ -n "$DEPLOY_BRANCH" ]; then
     git pull
 fi
 
-# Download resume
-rm -rf resume
-git clone git@github.com:albertyw/resume
-mv resume/resume.pdf static/gen/resume.pdf
-rm -rf resume
+# Download static files
+bin/download_static_files.sh
 
 # Build container and network
 docker build \
