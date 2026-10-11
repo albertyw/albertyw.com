@@ -51,18 +51,28 @@ fi
 
 LOG="$(mktemp -t update_conferences.XXXXXX.jsonl)"
 echo "Full log: $LOG"
-claude -p "Follow app/conference/INSTRUCTIONS.md" \
+NOW="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+claude -p "Follow app/conference/INSTRUCTIONS.md. The current UTC time is $NOW." \
     --output-format stream-json \
     --verbose \
+    --forward-subagent-text \
+    --model claude-sonnet-5-5 \
+    --agents app/conference/agents.json \
     --restricted \
     --strict-mcp-config \
     --permission-mode dontAsk \
-    --tools "Read,Glob,Grep,Edit,Write,WebSearch,WebFetch,Agent,Bash" \
+    --tools "Read,Edit,Write,WebSearch,WebFetch,Agent" \
     --allowedTools \
-        "Read" "Glob" "Grep" "WebSearch" "WebFetch" "Agent" \
+        "Read(/app/conference/**)" "WebSearch" "WebFetch" \
+        "Agent(conference-researcher)" \
         "Edit(/app/conference/conferences.json)" \
         "Edit(/app/conference/metadata.json)" \
-        "Bash(python -m unittest app.conference.tests.test_data)" \
+    --disallowedTools \
+        "Read(/.env*)" "Read(/env/**)" "Read(/.git/**)" \
+        "Read(/logs/**)" "Read(/claude/**)" "Read(/config/**)" \
+        "Agent(model:*)" "Agent(general-purpose)" "Agent(Explore)" \
+        "Agent(Plan)" "Agent(claude-code-guide)" "Agent(statusline-setup)" \
+        "Agent(claude)" \
     | tee "$LOG" | jq --unbuffered -R -r "$PROGRESS"
 
 CHANGED="$(git status --porcelain | cut -c4-)"
