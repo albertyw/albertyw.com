@@ -101,6 +101,15 @@ class TestConference(unittest.TestCase):
         loaded = data.Conference.load(conference(location=None))
         self.assertFalse(loaded.is_determined)
 
+    def test_is_upcoming(self) -> None:
+        loaded = data.Conference.load(conference())
+        self.assertTrue(loaded.is_upcoming(datetime.date(2027, 5, 20)))
+        self.assertFalse(loaded.is_upcoming(datetime.date(2027, 5, 21)))
+
+    def test_undetermined_is_not_upcoming(self) -> None:
+        loaded = data.Conference.load(conference(location=None))
+        self.assertFalse(loaded.is_upcoming(datetime.date(2020, 1, 1)))
+
     def test_missing_key(self) -> None:
         conference_data = conference()
         del conference_data['cfp_deadline']
