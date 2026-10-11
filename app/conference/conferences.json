@@ -493,118 +493,323 @@
             "website": "https://sigops.org/s/conferences/sosp/2026/"
         },
         {
-            "cfp_deadline": null,
+            "cfp_deadline": "2026-01-29",
             "end_date": "2026-10-09",
             "id": "issta-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Oakland, CA, USA",
             "name": "ISSTA 2026 (Int'l Symposium on Software Testing and Analysis)",
-            "registration_deadlines": [],
-            "source": "https://conf.researchr.org/home/issta-2026",
-            "start_date": "2026-10-03",
+            "registration_deadlines": [
+                {
+                    "date": "2026-09-03",
+                    "name": "Early bird"
+                }
+            ],
+            "source": "https://conf.researchr.org/dates/issta-2026",
+            "start_date": "2026-10-04",
             "website": "https://conf.researchr.org/home/issta-2026"
         },
         {
-            "cfp_deadline": null,
+            "cfp_deadline": "2026-06-24",
             "end_date": "2026-10-09",
             "id": "open-source-summit-europe-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Prague, Czechia",
             "name": "Open Source Summit Europe 2026",
             "registration_deadlines": [],
-            "source": "https://events.linuxfoundation.org/open-source-summit-europe/",
+            "source": "https://events.linuxfoundation.org/open-source-summit-europe/program/cfp/",
             "start_date": "2026-10-07",
             "website": "https://events.linuxfoundation.org/open-source-summit-europe/"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2026-10-10",
+            "id": "xo-ruby-nyc-2026",
+            "last_verified": "2026-10-09",
+            "location": "New York, NY, USA",
+            "name": "XO Ruby New York City 2026",
+            "registration_deadlines": [],
+            "source": "https://xoruby.com/",
+            "start_date": "2026-10-10",
+            "website": "https://xoruby.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-14",
+            "id": "ai-engineer-nyc-2026",
+            "last_verified": "2026-10-09",
+            "location": "New York, NY, USA",
+            "name": "AI Engineer New York 2026",
+            "registration_deadlines": [],
+            "source": "https://www.ai.engineer/nyc/2026",
+            "start_date": "2026-10-12",
+            "website": "https://www.ai.engineer/nyc/2026"
+        },
+        {
+            "cfp_deadline": "2026-03-26",
             "end_date": "2026-10-16",
             "id": "ase-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Munich, Germany",
             "name": "ASE 2026 (Automated Software Engineering)",
-            "registration_deadlines": [],
-            "source": "https://conf.researchr.org/home/ase-2026",
+            "registration_deadlines": [
+                {
+                    "date": "2026-08-31",
+                    "name": "Standard registration"
+                },
+                {
+                    "date": "2026-09-20",
+                    "name": "Late registration"
+                }
+            ],
+            "source": "https://conf.researchr.org/attending/ase-2026/registration",
             "start_date": "2026-10-12",
             "website": "https://conf.researchr.org/home/ase-2026"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2026-10-14",
+            "id": "elc-annual-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "ELC Annual 2026",
+            "registration_deadlines": [],
+            "source": "https://sfelc.com/annual2026",
+            "start_date": "2026-10-13",
+            "website": "https://sfelc.com/annual2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-13",
+            "id": "interrupt-london-2026",
+            "last_verified": "2026-10-09",
+            "location": "London, UK",
+            "name": "Interrupt London 2026 (LangChain)",
+            "registration_deadlines": [],
+            "source": "https://interrupt.langchain.com/london",
+            "start_date": "2026-10-13",
+            "website": "https://interrupt.langchain.com/london"
+        },
+        {
+            "cfp_deadline": "2026-05-27",
             "end_date": "2026-10-15",
             "id": "srecon-emea-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Dublin, Ireland",
             "name": "SREcon26 Europe/Middle East/Africa",
-            "registration_deadlines": [],
-            "source": "https://www.usenix.org/conference/srecon26emea",
+            "registration_deadlines": [
+                {
+                    "date": "2026-08-24",
+                    "name": "Early bird"
+                },
+                {
+                    "date": "2026-09-28",
+                    "name": "Standard registration"
+                }
+            ],
+            "source": "https://www.usenix.org/conference/srecon26emea/registration-information",
             "start_date": "2026-10-13",
             "website": "https://www.usenix.org/conference/srecon26emea"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2026-10-15",
+            "id": "vercel-ship-sf-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA + online",
+            "name": "Vercel Ship San Francisco 2026",
+            "registration_deadlines": [],
+            "source": "https://vercel.com/ship/sf",
+            "start_date": "2026-10-15",
+            "website": "https://vercel.com/ship/sf"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-15",
+            "id": "viteconf-2026",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "ViteConf 2026",
+            "registration_deadlines": [],
+            "source": "https://viteconf.org/",
+            "start_date": "2026-10-15",
+            "website": "https://viteconf.org/"
+        },
+        {
+            "cfp_deadline": "2026-03-31",
             "end_date": "2026-10-20",
             "id": "all-things-open-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Raleigh, NC, USA",
             "name": "All Things Open 2026",
-            "registration_deadlines": [],
-            "source": "https://allthingsopen.org/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-13",
+                    "name": "Last day before final price increase"
+                }
+            ],
+            "source": "https://2026.allthingsopen.org/",
             "start_date": "2026-10-19",
-            "website": "https://allthingsopen.org/"
+            "website": "https://2026.allthingsopen.org/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-10-20",
             "id": "devopsdays-boston-2026",
-            "last_verified": null,
-            "location": "Boston, MA, USA",
+            "last_verified": "2026-10-09",
+            "location": "Cambridge, MA, USA",
             "name": "DevOpsDays Boston 2026",
             "registration_deadlines": [],
-            "source": "https://devopsdays.org/events/2026-boston/",
+            "source": "https://devopsdays.org/events/2026-boston/welcome/",
             "start_date": "2026-10-19",
-            "website": "https://devopsdays.org/events/2026-boston/"
+            "website": "https://devopsdays.org/events/2026-boston/welcome/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-21",
+            "id": "observabilitycon-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "Grafana ObservabilityCON 2026",
+            "registration_deadlines": [],
+            "source": "https://grafana.com/events/observabilitycon/",
+            "start_date": "2026-10-19",
+            "website": "https://grafana.com/events/observabilitycon/"
+        },
+        {
+            "cfp_deadline": "2026-04-24",
+            "end_date": "2026-10-23",
+            "id": "issre-2026",
+            "last_verified": "2026-10-09",
+            "location": "Limassol, Cyprus",
+            "name": "ISSRE 2026 (IEEE Int'l Symposium on Software Reliability Engineering)",
+            "registration_deadlines": [
+                {
+                    "date": "2026-08-26",
+                    "name": "Author registration"
+                },
+                {
+                    "date": "2026-09-15",
+                    "name": "Early registration"
+                }
+            ],
+            "source": "https://cyprusconferences.org/issre2026/dates/",
+            "start_date": "2026-10-20",
+            "website": "https://cyprusconferences.org/issre2026/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-21",
+            "id": "pytorch-conference-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Jose, CA, USA",
+            "name": "PyTorch Conference North America 2026",
+            "registration_deadlines": [],
+            "source": "https://pytorch.org/event/pytorch-conference-2026/",
+            "start_date": "2026-10-20",
+            "website": "https://pytorch.org/event/pytorch-conference-2026/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-10-23",
-            "id": "issre-2026",
-            "last_verified": null,
-            "location": "Limassol, Cyprus",
-            "name": "ISSRE 2026 (IEEE Int'l Symposium on Software Reliability Engineering)",
+            "id": "cityjs-athens-2026",
+            "last_verified": "2026-10-09",
+            "location": "Athens, Greece",
+            "name": "CityJS Athens 2026",
             "registration_deadlines": [],
-            "source": "https://issre.github.io/",
-            "start_date": "2026-10-20",
-            "website": "https://issre.github.io/"
+            "source": "https://cityjsconf.org/",
+            "start_date": "2026-10-21",
+            "website": "https://cityjsconf.org/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-10-22",
             "id": "iqpc-observability-sre-summit-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "London, UK",
             "name": "Observability & SRE Summit 2026 (IQPC)",
             "registration_deadlines": [],
-            "source": "https://www.iqpc.com/",
+            "source": "https://www.iqpc.com/events-observability-sre-summit",
             "start_date": "2026-10-21",
-            "website": "https://www.iqpc.com/"
+            "website": "https://www.iqpc.com/events-observability-sre-summit"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-10-22",
             "id": "iqpc-platform-engineering-summit-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "London, UK",
-            "name": "Platform Engineering Summit 2026 (IQPC)",
+            "name": "Platform Engineering & Developer Experience Summit 2026 (IQPC)",
             "registration_deadlines": [],
-            "source": "https://www.iqpc.com/",
+            "source": "https://www.iqpc.com/events-platform-engineering-summit",
             "start_date": "2026-10-21",
-            "website": "https://www.iqpc.com/"
+            "website": "https://www.iqpc.com/events-platform-engineering-summit"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-22",
+            "id": "p99-conf-2026",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "P99 CONF 2026",
+            "registration_deadlines": [],
+            "source": "https://www.p99conf.io/",
+            "start_date": "2026-10-21",
+            "website": "https://www.p99conf.io/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-23",
+            "id": "agntcon-mcpcon-north-america-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Jose, CA, USA",
+            "name": "AGNTCon + MCPCon North America 2026",
+            "registration_deadlines": [],
+            "source": "https://events.linuxfoundation.org/agntcon-mcpcon-north-america/",
+            "start_date": "2026-10-22",
+            "website": "https://events.linuxfoundation.org/agntcon-mcpcon-north-america/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-26",
+            "id": "react-advanced-2026",
+            "last_verified": "2026-10-09",
+            "location": "London, UK + online",
+            "name": "React Advanced London 2026",
+            "registration_deadlines": [],
+            "source": "https://reactadvanced.com/",
+            "start_date": "2026-10-23",
+            "website": "https://reactadvanced.com/"
+        },
+        {
+            "cfp_deadline": "2026-06-30",
+            "end_date": "2026-10-24",
+            "id": "seagl-2026",
+            "last_verified": "2026-10-09",
+            "location": "Seattle, WA, USA + online",
+            "name": "SeaGL 2026",
+            "registration_deadlines": [],
+            "source": "https://seagl.org/",
+            "start_date": "2026-10-23",
+            "website": "https://seagl.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-23",
+            "id": "sreday-dallas-2026-q4",
+            "last_verified": "2026-10-09",
+            "location": "Dallas, TX, USA",
+            "name": "SREday Dallas 2026 Q4",
+            "registration_deadlines": [],
+            "source": "https://sreday.com/2026-dallas-q4/",
+            "start_date": "2026-10-23",
+            "website": "https://sreday.com/2026-dallas-q4/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-10-29",
             "id": "hashiconf-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Atlanta, GA, USA",
             "name": "HashiConf 2026 (at IBM TechXchange)",
             "registration_deadlines": [],
@@ -614,46 +819,250 @@
         },
         {
             "cfp_deadline": null,
+            "end_date": "2026-10-28",
+            "id": "containerdays-singapore-2026",
+            "last_verified": "2026-10-09",
+            "location": "Singapore",
+            "name": "ContainerDays & AI Context Singapore 2026",
+            "registration_deadlines": [],
+            "source": "https://www.containerdays.io/containerdays-singapore-2026/",
+            "start_date": "2026-10-27",
+            "website": "https://www.containerdays.io/containerdays-singapore-2026/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-29",
+            "id": "odsc-ai-west-2026",
+            "last_verified": "2026-10-09",
+            "location": "Burlingame, CA, USA + online",
+            "name": "ODSC AI West 2026",
+            "registration_deadlines": [],
+            "source": "https://odsc.ai/west/",
+            "start_date": "2026-10-27",
+            "website": "https://odsc.ai/west/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-27",
+            "id": "sev0-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "SEV0 San Francisco 2026",
+            "registration_deadlines": [],
+            "source": "https://www.sev0.com/",
+            "start_date": "2026-10-27",
+            "website": "https://www.sev0.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-29",
+            "id": "github-universe-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA + online",
+            "name": "GitHub Universe 2026",
+            "registration_deadlines": [],
+            "source": "https://githubuniverse.com/",
+            "start_date": "2026-10-28",
+            "website": "https://githubuniverse.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-29",
+            "id": "conf42-prompt-engineering-2026",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Prompt Engineering 2026",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2026-10-29",
+            "website": "https://www.conf42.com/prompt2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-10-30",
+            "id": "j-on-the-beach-2026",
+            "last_verified": "2026-10-09",
+            "location": "Málaga, Spain + online",
+            "name": "J On The Beach 2026",
+            "registration_deadlines": [],
+            "source": "https://www.jonthebeach.com/",
+            "start_date": "2026-10-29",
+            "website": "https://www.jonthebeach.com/"
+        },
+        {
+            "cfp_deadline": "2026-04-07",
             "end_date": "2026-11-04",
             "id": "micro-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Athens, Greece",
             "name": "MICRO 2026 (Int'l Symposium on Microarchitecture)",
-            "registration_deadlines": [],
-            "source": "https://microarch.org/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-09-28",
+                    "name": "Early registration"
+                }
+            ],
+            "source": "https://microarch.org/micro59/",
             "start_date": "2026-10-31",
-            "website": "https://microarch.org/"
+            "website": "https://microarch.org/micro59/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-03",
+            "id": "golab-2026",
+            "last_verified": "2026-10-09",
+            "location": "Bologna, Italy",
+            "name": "GoLab 2026",
+            "registration_deadlines": [],
+            "source": "https://golab.io/",
+            "start_date": "2026-11-01",
+            "website": "https://golab.io/"
+        },
+        {
+            "cfp_deadline": "2026-10-01",
+            "end_date": "2026-11-04",
+            "id": "ai-native-devcon-new-york-2026",
+            "last_verified": "2026-10-09",
+            "location": "Brooklyn, NY, USA + online",
+            "name": "AI Native DevCon New York 2026",
+            "registration_deadlines": [],
+            "source": "https://tessl.io/devcon",
+            "start_date": "2026-11-02",
+            "website": "https://tessl.io/devcon"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-02",
+            "id": "sreday-amsterdam-2026-q4",
+            "last_verified": "2026-10-09",
+            "location": "Amsterdam, Netherlands",
+            "name": "SREday Amsterdam 2026 Q4",
+            "registration_deadlines": [],
+            "source": "https://sreday.com/2026-amsterdam-q4/",
+            "start_date": "2026-11-02",
+            "website": "https://sreday.com/2026-amsterdam-q4/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-11-05",
             "id": "conf42-platform-engineering-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Online",
             "name": "Conf42 Platform Engineering 2026",
             "registration_deadlines": [],
-            "source": "https://www.conf42.com/",
+            "source": "https://www.conf42.com/platform2026",
             "start_date": "2026-11-05",
-            "website": "https://www.conf42.com/"
+            "website": "https://www.conf42.com/platform2026"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2026-11-07",
+            "id": "sreday-new-york-city-2026-q4",
+            "last_verified": "2026-10-09",
+            "location": "New York, NY, USA",
+            "name": "SREday New York City 2026 Q4",
+            "registration_deadlines": [],
+            "source": "https://sreday.com/2026-nyc-q4/",
+            "start_date": "2026-11-07",
+            "website": "https://sreday.com/2026-nyc-q4/"
+        },
+        {
+            "cfp_deadline": "2026-05-31",
             "end_date": "2026-11-12",
             "id": "kubecon-cloudnativecon-north-america-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Salt Lake City, UT, USA",
             "name": "KubeCon + CloudNativeCon North America 2026",
-            "registration_deadlines": [],
-            "source": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-05-12",
+                    "name": "Early bird"
+                },
+                {
+                    "date": "2026-09-02",
+                    "name": "Standard"
+                }
+            ],
+            "source": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/register/",
             "start_date": "2026-11-09",
             "website": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2026-11-10",
+            "id": "leaddev-berlin-2026",
+            "last_verified": "2026-10-09",
+            "location": "Berlin, Germany",
+            "name": "LeadDev Berlin 2026",
+            "registration_deadlines": [],
+            "source": "https://leaddev.com/leaddev-berlin/",
+            "start_date": "2026-11-09",
+            "website": "https://leaddev.com/leaddev-berlin/"
+        },
+        {
+            "cfp_deadline": "2026-10-11",
+            "end_date": "2026-11-12",
+            "id": "ai-engineer-code-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "AI Engineer Code Summit 2026",
+            "registration_deadlines": [],
+            "source": "https://www.ai.engineer/code/2026",
+            "start_date": "2026-11-10",
+            "website": "https://www.ai.engineer/code/2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-12",
+            "id": "sfruby-2026",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "San Francisco Ruby Conference 2026",
+            "registration_deadlines": [
+                {
+                    "date": "2026-11-08",
+                    "name": "Late bird"
+                }
+            ],
+            "source": "https://sfruby.com/",
+            "start_date": "2026-11-10",
+            "website": "https://sfruby.com/"
+        },
+        {
+            "cfp_deadline": "2026-06-10",
+            "end_date": "2026-11-18",
+            "id": "atc-2026",
+            "last_verified": "2026-10-09",
+            "location": "Hong Kong, China",
+            "name": "ACM SIGOPS ATC 2026 (Annual Technical Conference)",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-23",
+                    "name": "Early bird"
+                }
+            ],
+            "source": "https://atc.sigops.org/2026/",
+            "start_date": "2026-11-15",
+            "website": "https://atc.sigops.org/2026/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-19",
+            "id": "ai-coding-summit-nyc-2026",
+            "last_verified": "2026-10-09",
+            "location": "Jersey City, NJ, USA + online",
+            "name": "AI Coding Summit New York 2026",
+            "registration_deadlines": [],
+            "source": "https://aicodingsummit.com/nyc",
+            "start_date": "2026-11-16",
+            "website": "https://aicodingsummit.com/nyc"
+        },
+        {
+            "cfp_deadline": null,
             "end_date": "2026-11-19",
             "id": "jsnation-us-2026",
-            "last_verified": null,
-            "location": "New York, NY, USA + online",
+            "last_verified": "2026-10-09",
+            "location": "Jersey City, NJ, USA + online",
             "name": "JSNation US 2026",
             "registration_deadlines": [],
             "source": "https://jsnation.us/",
@@ -664,13 +1073,35 @@
             "cfp_deadline": null,
             "end_date": "2026-11-20",
             "id": "qcon-san-francisco-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "San Francisco, CA, USA",
             "name": "QCon San Francisco 2026",
-            "registration_deadlines": [],
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-13",
+                    "name": "Early bird"
+                }
+            ],
             "source": "https://qconsf.com/",
             "start_date": "2026-11-16",
             "website": "https://qconsf.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-19",
+            "id": "software-architecture-gathering-2026",
+            "last_verified": "2026-10-09",
+            "location": "Berlin, Germany",
+            "name": "Software Architecture Gathering 2026",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-15",
+                    "name": "Early bird"
+                }
+            ],
+            "source": "https://www.software-architecture-gathering.com/",
+            "start_date": "2026-11-16",
+            "website": "https://www.software-architecture-gathering.com/"
         },
         {
             "cfp_deadline": null,
@@ -686,85 +1117,323 @@
         },
         {
             "cfp_deadline": null,
+            "end_date": "2026-11-18",
+            "id": "mlops-world-2026",
+            "last_verified": "2026-10-09",
+            "location": "Austin, TX, USA + online",
+            "name": "MLOps World | GenAI Summit 2026",
+            "registration_deadlines": [],
+            "source": "https://mlopsworld.com/",
+            "start_date": "2026-11-17",
+            "website": "https://mlopsworld.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-20",
+            "id": "ndc-porto-2026",
+            "last_verified": "2026-10-09",
+            "location": "Porto, Portugal",
+            "name": "NDC Porto 2026",
+            "registration_deadlines": [],
+            "source": "https://ndcporto.com/",
+            "start_date": "2026-11-17",
+            "website": "https://ndcporto.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-20",
+            "id": "react-summit-us-2026",
+            "last_verified": "2026-10-09",
+            "location": "Jersey City, NJ, USA + online",
+            "name": "React Summit US 2026",
+            "registration_deadlines": [],
+            "source": "https://reactsummit.us/",
+            "start_date": "2026-11-17",
+            "website": "https://reactsummit.us/"
+        },
+        {
+            "cfp_deadline": "2026-07-14",
+            "end_date": "2026-11-20",
+            "id": "socc-2026",
+            "last_verified": "2026-10-09",
+            "location": "Singapore",
+            "name": "SoCC 2026 (ACM Symposium on Cloud Computing)",
+            "registration_deadlines": [],
+            "source": "https://acmsocc.org/2026/",
+            "start_date": "2026-11-18",
+            "website": "https://acmsocc.org/2026/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-19",
+            "id": "conf42-mlops-2026",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 MLOps 2026",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2026-11-19",
+            "website": "https://www.conf42.com/mlops2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-20",
+            "id": "svelte-summit-2026",
+            "last_verified": "2026-10-09",
+            "location": "Ljubljana, Slovenia + online",
+            "name": "Svelte Summit Ljubljana 2026",
+            "registration_deadlines": [],
+            "source": "https://sveltesummit.com/",
+            "start_date": "2026-11-19",
+            "website": "https://sveltesummit.com/"
+        },
+        {
+            "cfp_deadline": "2026-10-17",
+            "end_date": "2026-11-21",
+            "id": "boston-code-camp-2026",
+            "last_verified": "2026-10-09",
+            "location": "Burlington, MA, USA",
+            "name": "Boston Code Camp 41 (2026)",
+            "registration_deadlines": [],
+            "source": "https://www.bostoncodecamp.com/",
+            "start_date": "2026-11-21",
+            "website": "https://www.bostoncodecamp.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-11-22",
+            "id": "gophercon-india-2026",
+            "last_verified": "2026-10-09",
+            "location": "Hyderabad, India",
+            "name": "GopherCon India 2026",
+            "registration_deadlines": [],
+            "source": "https://gopherconindia.org/",
+            "start_date": "2026-11-22",
+            "website": "https://gopherconindia.org/"
+        },
+        {
+            "cfp_deadline": null,
             "end_date": "2026-11-24",
             "id": "civo-navigate-india-2026",
-            "last_verified": null,
-            "location": "Bangalore, India",
+            "last_verified": "2026-10-09",
+            "location": "Bengaluru, India",
             "name": "Civo Navigate India 2026",
             "registration_deadlines": [],
-            "source": "https://www.civo.com/navigate",
+            "source": "https://www.civo.com/navigate/india/2026",
             "start_date": "2026-11-24",
-            "website": "https://www.civo.com/navigate"
+            "website": "https://www.civo.com/navigate/india/2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-12-01",
+            "id": "ai-dev-nyc-2026",
+            "last_verified": "2026-10-09",
+            "location": "New York, NY, USA",
+            "name": "AI Dev 26 x NYC (DeepLearning.AI)",
+            "registration_deadlines": [],
+            "source": "https://ai-dev.deeplearning.ai/",
+            "start_date": "2026-11-30",
+            "website": "https://ai-dev.deeplearning.ai/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-12-04",
             "id": "aws-reinvent-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Las Vegas, NV, USA",
             "name": "AWS re:Invent 2026",
-            "registration_deadlines": [],
-            "source": "https://reinvent.awsevents.com/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-08-25",
+                    "name": "Early bird"
+                }
+            ],
+            "source": "https://aws.amazon.com/events/reinvent",
             "start_date": "2026-11-30",
-            "website": "https://reinvent.awsevents.com/"
+            "website": "https://aws.amazon.com/events/reinvent"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-12-04",
             "id": "devopscon-munich-2026",
-            "last_verified": null,
-            "location": "Munich, Germany",
+            "last_verified": "2026-10-09",
+            "location": "Munich, Germany + online",
             "name": "DevOpsCon Munich 2026",
-            "registration_deadlines": [],
-            "source": "https://devopscon.io/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-29",
+                    "name": "Early bird"
+                }
+            ],
+            "source": "https://devopscon.io/munich/",
             "start_date": "2026-11-30",
-            "website": "https://devopscon.io/"
+            "website": "https://devopscon.io/munich/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-12-04",
             "id": "yow-melbourne-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Melbourne, Australia",
             "name": "YOW! Melbourne 2026",
-            "registration_deadlines": [],
-            "source": "https://yowcon.com/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-11-17",
+                    "name": "Group discount"
+                }
+            ],
+            "source": "https://yowcon.com/melbourne-2026",
             "start_date": "2026-12-02",
-            "website": "https://yowcon.com/"
+            "website": "https://yowcon.com/melbourne-2026"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-12-03",
             "id": "conf42-chaos-engineering-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Online",
             "name": "Conf42 Chaos Engineering 2026",
             "registration_deadlines": [],
-            "source": "https://www.conf42.com/",
+            "source": "https://www.conf42.com/ce2026",
             "start_date": "2026-12-03",
-            "website": "https://www.conf42.com/"
+            "website": "https://www.conf42.com/ce2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-12-07",
+            "id": "react-day-berlin-2026",
+            "last_verified": "2026-10-09",
+            "location": "Berlin, Germany + online",
+            "name": "React Day Berlin 2026",
+            "registration_deadlines": [],
+            "source": "https://reactday.berlin/",
+            "start_date": "2026-12-04",
+            "website": "https://reactday.berlin/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-12-07",
+            "id": "pyladiescon-2026",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "PyLadiesCon 2026",
+            "registration_deadlines": [],
+            "source": "https://2026.conference.pyladies.com/en/",
+            "start_date": "2026-12-05",
+            "website": "https://2026.conference.pyladies.com/en/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-12-09",
+            "id": "yow-brisbane-2026",
+            "last_verified": "2026-10-09",
+            "location": "Brisbane, Australia",
+            "name": "YOW! Brisbane 2026",
+            "registration_deadlines": [
+                {
+                    "date": "2026-11-23",
+                    "name": "Group discount"
+                }
+            ],
+            "source": "https://yowcon.com/brisbane-2026",
+            "start_date": "2026-12-07",
+            "website": "https://yowcon.com/brisbane-2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-12-10",
+            "id": "pydata-global-2026",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "PyData Global 2026",
+            "registration_deadlines": [],
+            "source": "https://pydata.org/global2026",
+            "start_date": "2026-12-08",
+            "website": "https://pydata.org/global2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-12-18",
+            "id": "middleware-2026",
+            "last_verified": "2026-10-09",
+            "location": "Tarragona, Spain",
+            "name": "Middleware 2026 (ACM/IFIP International Middleware Conference)",
+            "registration_deadlines": [],
+            "source": "https://middleware-conf.github.io/2026/",
+            "start_date": "2026-12-14",
+            "website": "https://middleware-conf.github.io/2026/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2026-12-16",
+            "id": "qcon-ai-new-york-2026",
+            "last_verified": "2026-10-09",
+            "location": "Jersey City, NJ, USA",
+            "name": "QCon AI New York 2026",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-13",
+                    "name": "Early price"
+                },
+                {
+                    "date": "2026-11-27",
+                    "name": "Group registration"
+                }
+            ],
+            "source": "https://newyork.qcon.ai/",
+            "start_date": "2026-12-15",
+            "website": "https://newyork.qcon.ai/"
         },
         {
             "cfp_deadline": null,
             "end_date": "2026-12-22",
             "id": "devopsdays-tel-aviv-2026",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Tel Aviv, Israel",
             "name": "DevOpsDays Tel Aviv 2026",
             "registration_deadlines": [],
-            "source": "https://devopsdays.org/events/2026-tel-aviv/",
+            "source": "https://devopsdays.org/events/2026-tel-aviv/welcome/",
             "start_date": "2026-12-22",
-            "website": "https://devopsdays.org/events/2026-tel-aviv/"
+            "website": "https://devopsdays.org/events/2026-tel-aviv/welcome/"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-01-21",
+            "id": "conf42-devops-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 DevOps 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/devops2027",
+            "start_date": "2027-01-21",
+            "website": "https://www.conf42.com/devops2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-01-29",
+            "id": "ndc-london-2027",
+            "last_verified": "2026-10-09",
+            "location": "London, UK",
+            "name": "NDC London 2027",
+            "registration_deadlines": [],
+            "source": "https://ndclondon.com/tickets",
+            "start_date": "2027-01-25",
+            "website": "https://ndclondon.com/"
+        },
+        {
+            "cfp_deadline": "2026-04-30",
             "end_date": "2027-01-28",
             "id": "rams-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "St. Petersburg, FL, USA",
             "name": "RAMS 2027 (Reliability & Maintainability Symposium)",
-            "registration_deadlines": [],
-            "source": "https://rams.org/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-10",
+                    "name": "Register and reserve hotel"
+                }
+            ],
+            "source": "https://rams.org/2027-call-for-papers/",
             "start_date": "2027-01-25",
             "website": "https://rams.org/"
         },
@@ -772,47 +1441,293 @@
             "cfp_deadline": null,
             "end_date": "2027-02-09",
             "id": "tokenomicon-london-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "London, UK",
-            "name": "Tokenomicon London 2027",
+            "name": "Tokenomicon + FinOps X London 2027",
             "registration_deadlines": [],
-            "source": "https://x.finops.org/",
+            "source": "https://www.tokenomicon.com/",
             "start_date": "2027-02-08",
-            "website": "https://x.finops.org/"
+            "website": "https://www.tokenomicon.com/"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-02-11",
+            "id": "developerweek-2027",
+            "last_verified": "2026-10-09",
+            "location": "Santa Clara, CA, USA",
+            "name": "DeveloperWeek 2027",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-15",
+                    "name": "First price tier"
+                },
+                {
+                    "date": "2026-12-03",
+                    "name": "Second price tier"
+                },
+                {
+                    "date": "2027-01-07",
+                    "name": "Third price tier"
+                }
+            ],
+            "source": "https://www.developerweek.com/register/",
+            "start_date": "2027-02-09",
+            "website": "https://www.developerweek.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-02-11",
+            "id": "containerdays-london-2027",
+            "last_verified": "2026-10-09",
+            "location": "London, UK",
+            "name": "ContainerDays London 2027",
+            "registration_deadlines": [],
+            "source": "https://www.containerdays.io/containerdays-london-2027/",
+            "start_date": "2027-02-10",
+            "website": "https://www.containerdays.io/containerdays-london-2027/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-02-12",
+            "id": "gophercon-au-2027",
+            "last_verified": "2026-10-09",
+            "location": "Sydney, Australia",
+            "name": "GopherConAU 2027",
+            "registration_deadlines": [],
+            "source": "https://gophercon.com.au/",
+            "start_date": "2027-02-10",
+            "website": "https://gophercon.com.au/"
+        },
+        {
+            "cfp_deadline": "2026-10-25",
+            "end_date": "2027-02-14",
+            "id": "gophercon-japan-2027",
+            "last_verified": "2026-10-09",
+            "location": "Tokyo, Japan",
+            "name": "GopherCon Japan 2027",
+            "registration_deadlines": [],
+            "source": "https://gophercon.jp/2027/",
+            "start_date": "2027-02-13",
+            "website": "https://gophercon.jp/2027/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-02-19",
+            "id": "ai-engineer-europe-2027",
+            "last_verified": "2026-10-09",
+            "location": "London, UK",
+            "name": "AI Engineer Europe 2027",
+            "registration_deadlines": [],
+            "source": "https://www.ai.engineer/europe/2027",
+            "start_date": "2027-02-17",
+            "website": "https://www.ai.engineer/europe/2027"
+        },
+        {
+            "cfp_deadline": "2026-11-15",
+            "end_date": "2027-02-21",
+            "id": "djangocon-europe-2027",
+            "last_verified": "2026-10-09",
+            "location": "Innsbruck, Austria + online",
+            "name": "DjangoCon Europe 2027",
+            "registration_deadlines": [
+                {
+                    "date": "2026-11-30",
+                    "name": "Early bird"
+                }
+            ],
+            "source": "https://2027.djangocon.eu/",
+            "start_date": "2027-02-17",
+            "website": "https://2027.djangocon.eu/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-02-18",
+            "id": "conf42-machine-learning-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Machine Learning 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2027-02-18",
+            "website": "https://www.conf42.com/ml2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-02-24",
+            "id": "containerdays-warsaw-2027",
+            "last_verified": "2026-10-09",
+            "location": "Warsaw, Poland",
+            "name": "ContainerDays & AI Context Warsaw 2027",
+            "registration_deadlines": [],
+            "source": "https://www.containerdays.io/containerdays-warsaw-2027/",
+            "start_date": "2027-02-23",
+            "website": "https://www.containerdays.io/containerdays-warsaw-2027/"
+        },
+        {
+            "cfp_deadline": "2026-09-15",
+            "end_date": "2027-02-25",
+            "id": "fast-2027",
+            "last_verified": "2026-10-09",
+            "location": "Renton, WA, USA",
+            "name": "FAST '27 (USENIX Conference on File and Storage Technologies)",
+            "registration_deadlines": [],
+            "source": "https://www.usenix.org/conference/fast27/call-for-papers",
+            "start_date": "2027-02-23",
+            "website": "https://www.usenix.org/conference/fast27"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-02-25",
+            "id": "platformcon-san-francisco-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "PlatformCon Live Day San Francisco 2027",
+            "registration_deadlines": [],
+            "source": "https://sanfrancisco.platformcon.com/",
+            "start_date": "2027-02-24",
+            "website": "https://sanfrancisco.platformcon.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-03-04",
+            "id": "conf42-sre-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 SRE 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/sre2027",
+            "start_date": "2027-03-04",
+            "website": "https://www.conf42.com/sre2027"
+        },
+        {
+            "cfp_deadline": "2026-08-28",
+            "end_date": "2027-03-11",
+            "id": "monster-scale-summit-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Monster Scale Summit 2027",
+            "registration_deadlines": [],
+            "source": "https://lp.scylladb.com/monster-scale-summit-2027",
+            "start_date": "2027-03-10",
+            "website": "https://lp.scylladb.com/monster-scale-summit-2027"
+        },
+        {
+            "cfp_deadline": "2027-01-03",
+            "end_date": "2027-03-14",
+            "id": "cloud-native-rejekts-europe-2027",
+            "last_verified": "2026-10-09",
+            "location": "Barcelona, Spain",
+            "name": "Cloud Native Rejekts EU 2027",
+            "registration_deadlines": [],
+            "source": "https://cloud-native.rejekts.io/",
+            "start_date": "2027-03-13",
+            "website": "https://cloud-native.rejekts.io/"
+        },
+        {
+            "cfp_deadline": "2026-10-11",
             "end_date": "2027-03-18",
             "id": "kubecon-cloudnativecon-europe-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Barcelona, Spain",
             "name": "KubeCon + CloudNativeCon Europe 2027",
             "registration_deadlines": [],
-            "source": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/",
+            "source": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/program/cfp/",
             "start_date": "2027-03-15",
             "website": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe/"
         },
         {
             "cfp_deadline": null,
-            "end_date": "2027-04-15",
-            "id": "asplos-2027",
-            "last_verified": null,
-            "location": "Heraklion, Greece",
-            "name": "ASPLOS 2027",
+            "end_date": "2027-03-18",
+            "id": "nvidia-gtc-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Jose, CA, USA + online",
+            "name": "NVIDIA GTC 2027",
             "registration_deadlines": [],
-            "source": "https://www.asplos-conference.org/",
-            "start_date": "2027-04-11",
-            "website": "https://www.asplos-conference.org/"
+            "source": "https://www.nvidia.com/gtc/",
+            "start_date": "2027-03-15",
+            "website": "https://www.nvidia.com/gtc/"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-03-18",
+            "id": "conf42-devsecops-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 DevSecOps 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2027-03-18",
+            "website": "https://www.conf42.com/devsecops2027"
+        },
+        {
+            "cfp_deadline": "2026-07-31",
+            "end_date": "2027-03-24",
+            "id": "hpca-2027",
+            "last_verified": "2026-10-09",
+            "location": "Salt Lake City, UT, USA",
+            "name": "HPCA 2027 (IEEE International Symposium on High-Performance Computer Architecture)",
+            "registration_deadlines": [],
+            "source": "https://conf.researchr.org/track/hpca-2027/hpca-2027-main-conference",
+            "start_date": "2027-03-20",
+            "website": "https://conf.researchr.org/home/hpca-2027"
+        },
+        {
+            "cfp_deadline": "2026-10-26",
+            "end_date": "2027-03-21",
+            "id": "pycascades-2027",
+            "last_verified": "2026-10-09",
+            "location": "Seattle, WA, USA",
+            "name": "PyCascades 2027",
+            "registration_deadlines": [],
+            "source": "https://2027.pycascades.com/",
+            "start_date": "2027-03-20",
+            "website": "https://2027.pycascades.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-03-24",
+            "id": "ai-council-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "AI Council 2027",
+            "registration_deadlines": [],
+            "source": "https://aicouncil.com/",
+            "start_date": "2027-03-23",
+            "website": "https://aicouncil.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-04-08",
+            "id": "conf42-cloud-native-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Cloud Native 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/cloud2027",
+            "start_date": "2027-04-08",
+            "website": "https://www.conf42.com/cloud2027"
+        },
+        {
+            "cfp_deadline": "2026-09-09",
+            "end_date": "2027-04-15",
+            "id": "asplos-2027",
+            "last_verified": "2026-10-09",
+            "location": "Heraklion, Greece",
+            "name": "ASPLOS 2027",
+            "registration_deadlines": [],
+            "source": "https://www.asplos-conference.org/asplos2027/cfp/",
+            "start_date": "2027-04-11",
+            "website": "https://www.asplos-conference.org/asplos2027/"
+        },
+        {
+            "cfp_deadline": "2026-11-19",
             "end_date": "2027-04-14",
             "id": "srecon-americas-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Seattle, WA, USA",
             "name": "SREcon27 Americas",
             "registration_deadlines": [],
-            "source": "https://www.usenix.org/conference/srecon27americas",
+            "source": "https://www.usenix.org/conference/srecon27americas/call-for-participation",
             "start_date": "2027-04-12",
             "website": "https://www.usenix.org/conference/srecon27americas"
         },
@@ -820,23 +1735,32 @@
             "cfp_deadline": null,
             "end_date": "2027-04-15",
             "id": "google-cloud-next-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Las Vegas, NV, USA",
             "name": "Google Cloud Next 2027",
             "registration_deadlines": [],
-            "source": "https://cloud.withgoogle.com/next",
+            "source": "https://www.googlecloudevents.com/next-vegas/faq",
             "start_date": "2027-04-13",
-            "website": "https://cloud.withgoogle.com/next"
+            "website": "https://www.googlecloudevents.com/next-vegas"
         },
         {
             "cfp_deadline": null,
             "end_date": "2027-04-15",
             "id": "qcon-london-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "London, UK",
             "name": "QCon London 2027",
-            "registration_deadlines": [],
-            "source": "https://qconlondon.com/",
+            "registration_deadlines": [
+                {
+                    "date": "2026-10-13",
+                    "name": "Early bird"
+                },
+                {
+                    "date": "2026-11-10",
+                    "name": "Early bird (video-only pass)"
+                }
+            ],
+            "source": "https://qconlondon.com/registration",
             "start_date": "2027-04-13",
             "website": "https://qconlondon.com/"
         },
@@ -844,67 +1768,384 @@
             "cfp_deadline": null,
             "end_date": "2027-04-15",
             "id": "devopsdays-zurich-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Winterthur, Switzerland",
             "name": "DevOpsDays Zurich 2027",
             "registration_deadlines": [],
-            "source": "https://devopsdays.org/events/2027-zurich/",
+            "source": "https://devopsdays.org/events/2027-zurich/welcome/",
             "start_date": "2027-04-14",
-            "website": "https://devopsdays.org/events/2027-zurich/"
+            "website": "https://devopsdays.org/events/2027-zurich/welcome/"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-04-16",
+            "id": "rubykaigi-2027",
+            "last_verified": "2026-10-09",
+            "location": "Miyazaki, Japan",
+            "name": "RubyKaigi 2027",
+            "registration_deadlines": [],
+            "source": "https://rubykaigi.org/2027/",
+            "start_date": "2027-04-14",
+            "website": "https://rubykaigi.org/2027/"
+        },
+        {
+            "cfp_deadline": "2027-01-12",
+            "end_date": "2027-04-19",
+            "id": "react-summit-asia-2027",
+            "last_verified": "2026-10-09",
+            "location": "Singapore + online",
+            "name": "React Summit Asia 2027",
+            "registration_deadlines": [],
+            "source": "https://reactsummit.asia/",
+            "start_date": "2027-04-15",
+            "website": "https://reactsummit.asia/"
+        },
+        {
+            "cfp_deadline": "2026-09-24",
             "end_date": "2027-04-23",
             "id": "eurosys-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Rabat, Morocco",
             "name": "EuroSys 2027",
             "registration_deadlines": [],
-            "source": "https://www.eurosys.org/",
+            "source": "https://2027.eurosys.org/cfp.html",
             "start_date": "2027-04-19",
-            "website": "https://www.eurosys.org/"
+            "website": "https://2027.eurosys.org/"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-04-21",
+            "id": "devopsdays-atlanta-2027",
+            "last_verified": "2026-10-09",
+            "location": "Atlanta, GA, USA",
+            "name": "DevOpsDays Atlanta 2027",
+            "registration_deadlines": [],
+            "source": "https://devopsdays.org/events/2027-atlanta/welcome/",
+            "start_date": "2027-04-20",
+            "website": "https://devopsdays.org/events/2027-atlanta/welcome/"
+        },
+        {
+            "cfp_deadline": "2026-10-23",
             "end_date": "2027-05-01",
             "id": "icse-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Dublin, Ireland",
             "name": "ICSE 2027 (Int'l Conference on Software Engineering) - Industry Track",
             "registration_deadlines": [],
-            "source": "https://conf.researchr.org/home/icse-2027",
+            "source": "https://conf.researchr.org/track/icse-2027/icse-2027-seip",
             "start_date": "2027-04-25",
             "website": "https://conf.researchr.org/home/icse-2027"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-04-28",
+            "id": "devopsdays-raleigh-2027",
+            "last_verified": "2026-10-09",
+            "location": "Raleigh, NC, USA",
+            "name": "DevOpsDays Raleigh 2027",
+            "registration_deadlines": [],
+            "source": "https://devopsdays.org/events/2027-raleigh/welcome/",
+            "start_date": "2027-04-27",
+            "website": "https://devopsdays.org/events/2027-raleigh/welcome/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-04-29",
+            "id": "agntcon-mcpcon-north-america-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "AGNTCon + MCPCon North America 2027",
+            "registration_deadlines": [],
+            "source": "https://events.linuxfoundation.org/agntcon-mcpcon-north-america-2027",
+            "start_date": "2027-04-28",
+            "website": "https://events.linuxfoundation.org/agntcon-mcpcon-north-america-2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-04-30",
+            "id": "react-miami-2027",
+            "last_verified": "2026-10-09",
+            "location": "Miami, FL, USA",
+            "name": "React Miami 2027",
+            "registration_deadlines": [],
+            "source": "https://www.reactmiami.com/",
+            "start_date": "2027-04-29",
+            "website": "https://www.reactmiami.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-05-12",
+            "id": "odsc-ai-east-2027",
+            "last_verified": "2026-10-09",
+            "location": "Boston, MA, USA + online",
+            "name": "ODSC AI East 2027",
+            "registration_deadlines": [],
+            "source": "https://odsc.ai/east/",
+            "start_date": "2027-05-10",
+            "website": "https://odsc.ai/east/"
+        },
+        {
+            "cfp_deadline": "2026-09-17",
             "end_date": "2027-05-13",
             "id": "nsdi-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Providence, RI, USA",
             "name": "NSDI 2027 (Networked Systems Design and Implementation)",
             "registration_deadlines": [],
-            "source": "https://www.usenix.org/conference/nsdi27",
+            "source": "https://www.usenix.org/conference/nsdi27/call-for-papers",
             "start_date": "2027-05-11",
             "website": "https://www.usenix.org/conference/nsdi27"
         },
         {
             "cfp_deadline": null,
-            "end_date": "2027-05-26",
-            "id": "devopsdays-geneva-2027",
-            "last_verified": null,
-            "location": "Geneva, Switzerland",
-            "name": "DevOpsDays Geneva 2027",
+            "end_date": "2027-05-13",
+            "id": "conf42-golang-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Golang 2027",
             "registration_deadlines": [],
-            "source": "https://devopsdays.org/events/2027-geneva/",
-            "start_date": "2027-05-25",
-            "website": "https://devopsdays.org/events/2027-geneva/"
+            "source": "https://www.conf42.com/golang2027",
+            "start_date": "2027-05-13",
+            "website": "https://www.conf42.com/golang2027"
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-05-19",
+            "id": "open-source-summit-north-america-2027",
+            "last_verified": "2026-10-09",
+            "location": "Vancouver, Canada",
+            "name": "Open Source Summit North America 2027",
+            "registration_deadlines": [],
+            "source": "https://events.linuxfoundation.org/open-source-summit-north-america/",
+            "start_date": "2027-05-17",
+            "website": "https://events.linuxfoundation.org/open-source-summit-north-america/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-05-21",
+            "id": "devopsdays-nashville-2027",
+            "last_verified": "2026-10-09",
+            "location": "Murfreesboro, TN, USA",
+            "name": "DevOpsDays Nashville 2027",
+            "registration_deadlines": [],
+            "source": "https://devopsdays.org/events/2027-nashville/welcome/",
+            "start_date": "2027-05-20",
+            "website": "https://devopsdays.org/events/2027-nashville/welcome/"
+        },
+        {
+            "cfp_deadline": "2027-03-01",
+            "end_date": "2027-05-25",
+            "id": "jsnation-2027",
+            "last_verified": "2026-10-09",
+            "location": "Amsterdam, Netherlands + online",
+            "name": "JSNation 2027",
+            "registration_deadlines": [],
+            "source": "https://jsnation.com/",
+            "start_date": "2027-05-21",
+            "website": "https://jsnation.com/"
+        },
+        {
+            "cfp_deadline": "2027-02-05",
+            "end_date": "2027-05-25",
+            "id": "react-summit-2027",
+            "last_verified": "2026-10-09",
+            "location": "Amsterdam, Netherlands + online",
+            "name": "React Summit 2027",
+            "registration_deadlines": [],
+            "source": "https://reactsummit.com/",
+            "start_date": "2027-05-21",
+            "website": "https://reactsummit.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-05-28",
+            "id": "devopscon-san-diego-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Diego, CA, USA + online",
+            "name": "DevOpsCon San Diego 2027",
+            "registration_deadlines": [],
+            "source": "https://devopscon.io/san-diego/",
+            "start_date": "2027-05-24",
+            "website": "https://devopscon.io/san-diego/"
+        },
+        {
+            "cfp_deadline": "2027-02-07",
+            "end_date": "2027-05-26",
+            "id": "devopsdays-geneva-2027",
+            "last_verified": "2026-10-09",
+            "location": "Geneva, Switzerland",
+            "name": "DevOpsDays Geneva 2027",
+            "registration_deadlines": [],
+            "source": "https://devopsdays.org/events/2027-geneva/propose/",
+            "start_date": "2027-05-25",
+            "website": "https://devopsdays.org/events/2027-geneva/welcome/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-05-28",
+            "id": "jsheroes-2027",
+            "last_verified": "2026-10-09",
+            "location": "Cluj-Napoca, Romania",
+            "name": "JSHeroes 2027",
+            "registration_deadlines": [],
+            "source": "https://jsheroes.io/",
+            "start_date": "2027-05-27",
+            "website": "https://jsheroes.io/"
+        },
+        {
+            "cfp_deadline": "2027-01-16",
+            "end_date": "2027-06-04",
+            "id": "ddd-europe-2027",
+            "last_verified": "2026-10-09",
+            "location": "Amsterdam, Netherlands",
+            "name": "Domain-Driven Design Europe 2027",
+            "registration_deadlines": [],
+            "source": "https://2027.dddeurope.com/cfp/",
+            "start_date": "2027-05-31",
+            "website": "https://2027.dddeurope.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-06-04",
+            "id": "craft-conference-2027",
+            "last_verified": "2026-10-09",
+            "location": "Budapest, Hungary",
+            "name": "Craft Conference 2027",
+            "registration_deadlines": [],
+            "source": "https://craft-conf.com/",
+            "start_date": "2027-06-03",
+            "website": "https://craft-conf.com/"
+        },
+        {
+            "cfp_deadline": "2026-11-16",
+            "end_date": "2027-06-09",
+            "id": "isca-2027",
+            "last_verified": "2026-10-09",
+            "location": "Atlanta, GA, USA",
+            "name": "ISCA 2027 (International Symposium on Computer Architecture)",
+            "registration_deadlines": [],
+            "source": "https://www.iscaconf.org/isca2027",
+            "start_date": "2027-06-05",
+            "website": "https://www.iscaconf.org/isca2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-06-10",
+            "id": "tokenomicon-finops-x-san-diego-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Diego, CA, USA",
+            "name": "Tokenomicon + FinOps X San Diego 2027",
+            "registration_deadlines": [],
+            "source": "https://www.tokenomicon.com/",
+            "start_date": "2027-06-07",
+            "website": "https://www.tokenomicon.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-06-10",
+            "id": "conf42-llms-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Large Language Models (LLMs) 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2027-06-10",
+            "website": "https://www.conf42.com/llms2027"
+        },
+        {
+            "cfp_deadline": "2026-10-17",
+            "end_date": "2027-06-19",
+            "id": "sigmod-2027",
+            "last_verified": "2026-10-09",
+            "location": "Huntington Beach, CA, USA",
+            "name": "SIGMOD 2027 (ACM SIGMOD/PODS International Conference on Management of Data)",
+            "registration_deadlines": [],
+            "source": "https://2027.sigmodconf.hosting.acm.org/calls_papers_important_dates.shtml",
+            "start_date": "2027-06-13",
+            "website": "https://2027.sigmodconf.hosting.acm.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-06-17",
+            "id": "gophercon-europe-2027",
+            "last_verified": "2026-10-09",
+            "location": "Berlin, Germany",
+            "name": "GopherCon Europe 2027",
+            "registration_deadlines": [
+                {
+                    "date": "2026-12-01",
+                    "name": "Early ticket rate"
+                }
+            ],
+            "source": "https://gophercon.eu/",
+            "start_date": "2027-06-14",
+            "website": "https://gophercon.eu/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-06-16",
+            "id": "datadog-dash-2027",
+            "last_verified": "2026-10-09",
+            "location": "New York, NY, USA",
+            "name": "DASH 2027 (Datadog)",
+            "registration_deadlines": [],
+            "source": "https://dash.datadoghq.com/",
+            "start_date": "2027-06-15",
+            "website": "https://dash.datadoghq.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-06-24",
+            "id": "data-ai-summit-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA + online",
+            "name": "Data + AI Summit 2027",
+            "registration_deadlines": [],
+            "source": "https://www.databricks.com/dataaisummit",
+            "start_date": "2027-06-21",
+            "website": "https://www.databricks.com/dataaisummit"
+        },
+        {
+            "cfp_deadline": "2026-10-30",
+            "end_date": "2027-06-25",
+            "id": "mlsys-2027",
+            "last_verified": "2026-10-09",
+            "location": "Bellevue, WA, USA",
+            "name": "MLSys 2027 (Conference on Machine Learning and Systems)",
+            "registration_deadlines": [],
+            "source": "https://mlsys.org/",
+            "start_date": "2027-06-21",
+            "website": "https://mlsys.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-06-29",
+            "id": "ldx3-london-2027",
+            "last_verified": "2026-10-09",
+            "location": "London, UK",
+            "name": "LDX3 London 2027 (LeadDev London)",
+            "registration_deadlines": [],
+            "source": "https://leaddev.com/leaddev-london/",
+            "start_date": "2027-06-28",
+            "website": "https://leaddev.com/leaddev-london/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-07-01",
+            "id": "ai-engineer-worlds-fair-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "AI Engineer World's Fair 2027",
+            "registration_deadlines": [],
+            "source": "https://www.ai.engineer/worldsfair/2027",
+            "start_date": "2027-06-29",
+            "website": "https://www.ai.engineer/worldsfair/2027"
+        },
+        {
+            "cfp_deadline": "2026-12-08",
             "end_date": "2027-07-09",
             "id": "osdi-2027",
-            "last_verified": null,
+            "last_verified": "2026-10-09",
             "location": "Baltimore, MD, USA",
             "name": "OSDI '27 (USENIX Symposium on Operating Systems Design and Implementation)",
             "registration_deadlines": [],
@@ -914,12 +2155,418 @@
         },
         {
             "cfp_deadline": null,
+            "end_date": "2027-07-09",
+            "id": "qcon-ai-boston-2027",
+            "last_verified": "2026-10-09",
+            "location": "Boston, MA, USA",
+            "name": "QCon AI Boston 2027",
+            "registration_deadlines": [
+                {
+                    "date": "2026-11-10",
+                    "name": "Early bird"
+                },
+                {
+                    "date": "2027-06-18",
+                    "name": "Group registration"
+                }
+            ],
+            "source": "https://boston.qcon.ai/",
+            "start_date": "2027-07-08",
+            "website": "https://boston.qcon.ai/"
+        },
+        {
+            "cfp_deadline": "2026-10-03",
+            "end_date": "2027-07-16",
+            "id": "fse-2027",
+            "last_verified": "2026-10-09",
+            "location": "Shenzhen, China",
+            "name": "FSE 2027 (ACM International Conference on the Foundations of Software Engineering)",
+            "registration_deadlines": [],
+            "source": "https://conf.researchr.org/track/fse-2027/fse-2027-papers",
+            "start_date": "2027-07-12",
+            "website": "https://conf.researchr.org/home/fse-2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-07-16",
+            "id": "wearedevelopers-world-congress-2027",
+            "last_verified": "2026-10-09",
+            "location": "Berlin, Germany",
+            "name": "WeAreDevelopers World Congress Europe 2027",
+            "registration_deadlines": [],
+            "source": "https://www.wearedevelopers.com/world-congress",
+            "start_date": "2027-07-14",
+            "website": "https://www.wearedevelopers.com/world-congress"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-08-11",
+            "id": "devopsdays-chicago-2027",
+            "last_verified": "2026-10-09",
+            "location": "Chicago, IL, USA",
+            "name": "DevOpsDays Chicago 2027",
+            "registration_deadlines": [],
+            "source": "https://devopsdays.org/events/2027-chicago/welcome/",
+            "start_date": "2027-08-10",
+            "website": "https://devopsdays.org/events/2027-chicago/welcome/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-08-19",
+            "id": "renderatl-2027",
+            "last_verified": "2026-10-09",
+            "location": "Atlanta, GA, USA",
+            "name": "RenderATL 2027",
+            "registration_deadlines": [],
+            "source": "https://renderatl.com/",
+            "start_date": "2027-08-18",
+            "website": "https://renderatl.com/"
+        },
+        {
+            "cfp_deadline": "2027-03-01",
+            "end_date": "2027-08-27",
+            "id": "vldb-2027",
+            "last_verified": "2026-10-09",
+            "location": "Athens, Greece",
+            "name": "VLDB 2027 (International Conference on Very Large Data Bases)",
+            "registration_deadlines": [],
+            "source": "https://vldb.org/2027/important-dates.html",
+            "start_date": "2027-08-23",
+            "website": "https://vldb.org/2027/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-09-02",
+            "id": "ai-infra-summit-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Jose, CA, USA",
+            "name": "AI Infra Summit 2027",
+            "registration_deadlines": [],
+            "source": "https://ai-infra-summit.com/",
+            "start_date": "2027-08-31",
+            "website": "https://ai-infra-summit.com/"
+        },
+        {
+            "cfp_deadline": "2027-01-11",
+            "end_date": "2027-09-10",
+            "id": "issta-2027",
+            "last_verified": "2026-10-09",
+            "location": "Singapore",
+            "name": "ISSTA 2027 (ACM SIGSOFT International Symposium on Software Testing and Analysis)",
+            "registration_deadlines": [],
+            "source": "https://conf.researchr.org/home/issta-2027",
+            "start_date": "2027-09-07",
+            "website": "https://conf.researchr.org/home/issta-2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-09-09",
+            "id": "ldx3-new-york-2027",
+            "last_verified": "2026-10-09",
+            "location": "New York, NY, USA",
+            "name": "LDX3 New York 2027 (LeadDev New York)",
+            "registration_deadlines": [],
+            "source": "https://leaddev.com/leaddev-new-york/",
+            "start_date": "2027-09-08",
+            "website": "https://leaddev.com/leaddev-new-york/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-09-09",
+            "id": "conf42-observability-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Observability 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/obs2027",
+            "start_date": "2027-09-09",
+            "website": "https://www.conf42.com/obs2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-09-17",
+            "id": "djangocon-us-2027",
+            "last_verified": "2026-10-09",
+            "location": "Riverside, CA, USA",
+            "name": "DjangoCon US 2027",
+            "registration_deadlines": [],
+            "source": "https://2027.djangocon.us/",
+            "start_date": "2027-09-13",
+            "website": "https://2027.djangocon.us/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-09-22",
+            "id": "open-source-summit-europe-2027",
+            "last_verified": "2026-10-09",
+            "location": "Glasgow, UK",
+            "name": "Open Source Summit Europe 2027",
+            "registration_deadlines": [],
+            "source": "https://events.linuxfoundation.org/open-source-summit-europe-2027/",
+            "start_date": "2027-09-20",
+            "website": "https://events.linuxfoundation.org/open-source-summit-europe-2027/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-09-23",
+            "id": "conf42-ai-agents-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 AI Agents 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2027-09-23",
+            "website": "https://www.conf42.com/agents2027"
+        },
+        {
+            "cfp_deadline": "2026-11-30",
+            "end_date": "2027-09-27",
+            "id": "civo-navigate-london-2027",
+            "last_verified": "2026-10-09",
+            "location": "London, UK",
+            "name": "Civo Navigate London 2027",
+            "registration_deadlines": [
+                {
+                    "date": "2026-12-14",
+                    "name": "Super early bird"
+                },
+                {
+                    "date": "2027-03-22",
+                    "name": "Early bird"
+                },
+                {
+                    "date": "2027-06-20",
+                    "name": "General admission"
+                }
+            ],
+            "source": "https://www.civo.com/navigate/london/2027",
+            "start_date": "2027-09-27",
+            "website": "https://www.civo.com/navigate/london/2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-09-30",
+            "id": "wearedevelopers-world-congress-north-america-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Jose, CA, USA",
+            "name": "WeAreDevelopers World Congress North America 2027",
+            "registration_deadlines": [],
+            "source": "https://www.wearedevelopers.com/world-congress-us",
+            "start_date": "2027-09-28",
+            "website": "https://www.wearedevelopers.com/world-congress-us"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-10-08",
+            "id": "goto-copenhagen-2027",
+            "last_verified": "2026-10-09",
+            "location": "Copenhagen, Denmark",
+            "name": "GOTO Copenhagen 2027",
+            "registration_deadlines": [
+                {
+                    "date": "2026-12-18",
+                    "name": "Blind bird"
+                },
+                {
+                    "date": "2027-05-01",
+                    "name": "Early bird"
+                }
+            ],
+            "source": "https://gotocph.com/2027",
+            "start_date": "2027-10-04",
+            "website": "https://gotocph.com/2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-10-07",
+            "id": "srecon-emea-2027",
+            "last_verified": "2026-10-09",
+            "location": "Dublin, Ireland",
+            "name": "SREcon27 Europe/Middle East/Africa",
+            "registration_deadlines": [],
+            "source": "https://www.usenix.org/conferences/byname/925",
+            "start_date": "2027-10-05",
+            "website": "https://www.usenix.org/conference/srecon27emea"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-10-14",
+            "id": "the-ai-conference-2027",
+            "last_verified": "2026-10-09",
+            "location": "San Francisco, CA, USA",
+            "name": "The AI Conference 2027",
+            "registration_deadlines": [],
+            "source": "https://aiconference.com/",
+            "start_date": "2027-10-12",
+            "website": "https://aiconference.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-10-14",
+            "id": "conf42-prompt-engineering-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Prompt Engineering 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2027-10-14",
+            "website": "https://www.conf42.com/prompt2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-10-22",
+            "id": "issre-2027",
+            "last_verified": "2026-10-09",
+            "location": "Macau, China",
+            "name": "ISSRE 2027 (IEEE International Symposium on Software Reliability Engineering)",
+            "registration_deadlines": [],
+            "source": "https://conf.researchr.org/home/issre-2027",
+            "start_date": "2027-10-19",
+            "website": "https://conf.researchr.org/home/issre-2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-10-22",
+            "id": "dotjs-2027",
+            "last_verified": "2026-10-09",
+            "location": "Paris, France",
+            "name": "dotJS 2027",
+            "registration_deadlines": [],
+            "source": "https://www.dotjs.io/",
+            "start_date": "2027-10-22",
+            "website": "https://www.dotjs.io/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-11-11",
+            "id": "kubecon-cloudnativecon-north-america-2027",
+            "last_verified": "2026-10-09",
+            "location": "New Orleans, LA, USA",
+            "name": "KubeCon + CloudNativeCon North America 2027",
+            "registration_deadlines": [],
+            "source": "https://www.cncf.io/kubecon-cloudnativecon-events/",
+            "start_date": "2027-11-08",
+            "website": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-11-18",
+            "id": "conf42-platform-engineering-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Platform Engineering 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/platform2027",
+            "start_date": "2027-11-18",
+            "website": "https://www.conf42.com/platform2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-12-02",
+            "id": "conf42-mlops-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 MLOps 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/",
+            "start_date": "2027-12-02",
+            "website": "https://www.conf42.com/mlops2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2027-12-16",
+            "id": "conf42-chaos-engineering-2027",
+            "last_verified": "2026-10-09",
+            "location": "Online",
+            "name": "Conf42 Chaos Engineering 2027",
+            "registration_deadlines": [],
+            "source": "https://www.conf42.com/ce2027",
+            "start_date": "2027-12-16",
+            "website": "https://www.conf42.com/ce2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2028-03-01",
+            "id": "fast-2028",
+            "last_verified": "2026-10-09",
+            "location": "Seattle, WA, USA",
+            "name": "FAST '28 (USENIX Conference on File and Storage Technologies)",
+            "registration_deadlines": [],
+            "source": "https://www.usenix.org/conferences/all",
+            "start_date": "2028-02-28",
+            "website": "https://www.usenix.org/conference/fast28"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2028-04-27",
+            "id": "kubecon-cloudnativecon-europe-2028",
+            "last_verified": "2026-10-09",
+            "location": "Berlin, Germany",
+            "name": "KubeCon + CloudNativeCon Europe 2028",
+            "registration_deadlines": [],
+            "source": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe-2028/",
+            "start_date": "2028-04-24",
+            "website": "https://events.linuxfoundation.org/kubecon-cloudnativecon-europe-2028/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": "2028-05-11",
+            "id": "nsdi-2028",
+            "last_verified": "2026-10-09",
+            "location": "Santa Clara, CA, USA",
+            "name": "NSDI '28 (USENIX Symposium on Networked Systems Design and Implementation)",
+            "registration_deadlines": [],
+            "source": "https://www.usenix.org/conferences/all",
+            "start_date": "2028-05-09",
+            "website": "https://www.usenix.org/conference/nsdi28"
+        },
+        {
+            "cfp_deadline": null,
             "end_date": null,
-            "expected": "November 2026 (seed sheet had 2026-11-01 placeholder)",
-            "id": "atc-2026",
+            "expected": "2027, dates and venue TBA (2026 edition was mid-October)",
+            "id": "ai-engineer-nyc-2027",
             "last_verified": null,
-            "location": "Hong Kong, China",
-            "name": "ACM SIGOPS ATC 2026 (Annual Technical Conference)",
+            "location": "New York, NY, USA",
+            "name": "AI Engineer New York 2027",
+            "registration_deadlines": [],
+            "source": "https://www.ai.engineer/nyc/2027",
+            "start_date": null,
+            "website": "https://www.ai.engineer/nyc/2027"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "October-November 2027",
+            "id": "ase-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "ASE 2027 (Automated Software Engineering)",
+            "registration_deadlines": [],
+            "source": "https://ase-conferences.org/",
+            "start_date": null,
+            "website": "https://ase-conferences.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Spring 2028",
+            "id": "asplos-2028",
+            "last_verified": null,
+            "location": null,
+            "name": "ASPLOS 2028",
+            "registration_deadlines": [],
+            "source": "https://www.asplos-conference.org/",
+            "start_date": null,
+            "website": "https://www.asplos-conference.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Late 2027 if it follows the 2026 pattern",
+            "id": "atc-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "ACM SIGOPS ATC 2027 (Annual Technical Conference)",
             "registration_deadlines": [],
             "source": "https://www.sigops.org/",
             "start_date": null,
@@ -928,20 +2575,85 @@
         {
             "cfp_deadline": null,
             "end_date": null,
-            "expected": "September 2027; venue proposals open",
-            "id": "djangocon-us-2027",
+            "expected": "Late November/early December 2027; Las Vegas expected",
+            "id": "aws-reinvent-2027",
             "last_verified": null,
             "location": null,
-            "name": "DjangoCon US 2027",
+            "name": "AWS re:Invent 2027",
             "registration_deadlines": [],
-            "source": "https://djangocon.us/",
+            "source": "https://aws.amazon.com/events/reinvent",
             "start_date": null,
-            "website": "https://djangocon.us/"
+            "website": "https://aws.amazon.com/events/reinvent"
         },
         {
             "cfp_deadline": null,
             "end_date": null,
-            "expected": "April 2028; Europe expected",
+            "expected": "Around June 2027; Seattle expected",
+            "id": "cascadiajs-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "CascadiaJS 2027",
+            "registration_deadlines": [],
+            "source": "https://cascadiajs.com/",
+            "start_date": null,
+            "website": "https://cascadiajs.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "September 2027; Hamburg expected",
+            "id": "containerdays-hamburg-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "ContainerDays Hamburg 2027",
+            "registration_deadlines": [],
+            "source": "https://www.containerdays.io/",
+            "start_date": null,
+            "website": "https://www.containerdays.io/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "May 2027; site says dates coming soon",
+            "id": "devopscon-london-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "DevOpsCon London 2027",
+            "registration_deadlines": [],
+            "source": "https://devopscon.io/london/",
+            "start_date": null,
+            "website": "https://devopscon.io/london/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Fall 2027; site says dates coming soon",
+            "id": "devopscon-new-york-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "DevOpsCon New York 2027",
+            "registration_deadlines": [],
+            "source": "https://devopscon.io/new-york/",
+            "start_date": null,
+            "website": "https://devopscon.io/new-york/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "July 2027",
+            "id": "europython-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "EuroPython 2027",
+            "registration_deadlines": [],
+            "source": "https://europython.eu/",
+            "start_date": null,
+            "website": "https://europython.eu/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Likely April 2028; not announced",
             "id": "eurosys-2028",
             "last_verified": null,
             "location": null,
@@ -954,7 +2666,46 @@
         {
             "cfp_deadline": null,
             "end_date": null,
-            "expected": "August 2027; USA, venue TBD",
+            "expected": "2027, date TBD",
+            "id": "euruko-2027",
+            "last_verified": "2026-10-09",
+            "location": "Modena, Italy",
+            "name": "EuRuKo 2027",
+            "registration_deadlines": [],
+            "source": "https://euruko.org/",
+            "start_date": null,
+            "website": "https://euruko.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Around June 2027; site says coming in 2027",
+            "id": "frontend-nation-2027",
+            "last_verified": null,
+            "location": "Online",
+            "name": "Frontend Nation 2027",
+            "registration_deadlines": [],
+            "source": "https://frontendnation.com/",
+            "start_date": null,
+            "website": "https://frontendnation.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "May 2027; Mountain View expected",
+            "id": "google-io-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "Google I/O 2027",
+            "registration_deadlines": [],
+            "source": "https://io.google/",
+            "start_date": null,
+            "website": "https://io.google/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "August 2027; USA, venue TBD; call for speakers opens January 2027",
             "id": "gophercon-2027",
             "last_verified": null,
             "location": null,
@@ -967,41 +2718,171 @@
         {
             "cfp_deadline": null,
             "end_date": null,
-            "expected": "June 2027; Berlin, Germany expected",
-            "id": "gophercon-europe-2027",
+            "expected": "August 2027; London expected",
+            "id": "gophercon-uk-2027",
             "last_verified": null,
             "location": null,
-            "name": "GopherCon Europe 2027",
+            "name": "GopherCon UK 2027",
             "registration_deadlines": [],
-            "source": "https://gophercon.eu/",
+            "source": "https://www.gophercon.co.uk/",
             "start_date": null,
-            "website": "https://gophercon.eu/"
+            "website": "https://www.gophercon.co.uk/"
         },
         {
             "cfp_deadline": null,
             "end_date": null,
-            "expected": "April 2028; Hawaii, USA (city TBD)",
+            "expected": "April 2028; Hawaii, USA (venue and exact dates unconfirmed)",
             "id": "icse-2028",
             "last_verified": null,
             "location": null,
             "name": "ICSE 2028 (Int'l Conference on Software Engineering) - Industry Track",
             "registration_deadlines": [],
-            "source": "https://conf.researchr.org/series/icse",
+            "source": "https://icse-conferences.org/",
             "start_date": null,
             "website": "https://conf.researchr.org/series/icse"
         },
         {
             "cfp_deadline": null,
             "end_date": null,
-            "expected": "November 2027 (seed sheet days unreadable)",
-            "id": "kubecon-cloudnativecon-north-america-2027",
-            "last_verified": null,
-            "location": "New Orleans, LA, USA",
-            "name": "KubeCon + CloudNativeCon North America 2027",
+            "expected": "June 2027",
+            "id": "kcd-new-york-2027",
+            "last_verified": "2026-10-09",
+            "location": "New York, NY, USA",
+            "name": "KCD New York 2027",
             "registration_deadlines": [],
-            "source": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/",
+            "source": "https://www.cncf.io/blog/2026/08/20/announcing-h1-2027-kcds/",
             "start_date": null,
-            "website": "https://events.linuxfoundation.org/kubecon-cloudnativecon-north-america/"
+            "website": "https://community.cncf.io/new-york/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "May 2027",
+            "id": "kcd-san-francisco-bay-area-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "KCD San Francisco Bay Area 2027",
+            "registration_deadlines": [],
+            "source": "https://www.cncf.io/blog/2026/08/20/announcing-h1-2027-kcds/",
+            "start_date": null,
+            "website": "https://community.cncf.io/kcd-sf-bay-area/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "April 2027; rescheduled 2026 event page says April 13, 2027 but also says the new date is still to be announced",
+            "id": "kcd-washington-dc-2027",
+            "last_verified": null,
+            "location": "Washington, DC, USA",
+            "name": "KCD Washington DC 2027",
+            "registration_deadlines": [],
+            "source": "https://community2.cncf.io/events/details/cncf-kcd-washington-dc-presents-kcd-washington-dc-2026/",
+            "start_date": null,
+            "website": "https://community.cncf.io/kcd-washington-dc/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "December 2, 2026 (site omits the year); online like previous editions",
+            "id": "kubecrash-2026",
+            "last_verified": null,
+            "location": null,
+            "name": "KubeCrash Fall 2026",
+            "registration_deadlines": [],
+            "source": "https://www.kubecrash.io/",
+            "start_date": null,
+            "website": "https://www.kubecrash.io/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "October 2027",
+            "id": "micro-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "MICRO 2027 (Int'l Symposium on Microarchitecture)",
+            "registration_deadlines": [],
+            "source": "https://www.microarch.org/",
+            "start_date": null,
+            "website": "https://www.microarch.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "November 2027; San Francisco expected",
+            "id": "microsoft-ignite-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "Microsoft Ignite 2027",
+            "registration_deadlines": [],
+            "source": "https://ignite.microsoft.com/",
+            "start_date": null,
+            "website": "https://ignite.microsoft.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "September 2027",
+            "id": "ndc-oslo-2027",
+            "last_verified": null,
+            "location": "Oslo, Norway",
+            "name": "NDC Oslo 2027",
+            "registration_deadlines": [],
+            "source": "https://ndcoslo.com/",
+            "start_date": null,
+            "website": "https://ndcoslo.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Late October 2026; San Francisco + livestream expected",
+            "id": "nextjs-conf-2026",
+            "last_verified": null,
+            "location": null,
+            "name": "Next.js Conf 2026",
+            "registration_deadlines": [],
+            "source": "https://nextjs.org/conf",
+            "start_date": null,
+            "website": "https://nextjs.org/conf"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Spring 2027; online expected",
+            "id": "node-congress-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "Node Congress 2027",
+            "registration_deadlines": [],
+            "source": "https://nodecongress.com/",
+            "start_date": null,
+            "website": "https://nodecongress.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Spring 2027",
+            "id": "observability-summit-north-america-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "Observability Summit North America 2027",
+            "registration_deadlines": [],
+            "source": "https://events.linuxfoundation.org/observability-summit-north-america/",
+            "start_date": null,
+            "website": "https://events.linuxfoundation.org/observability-summit-north-america/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "November 2026 (aggregator lists Nov 4-6)",
+            "id": "oredev-2026",
+            "last_verified": null,
+            "location": "Malmö, Sweden",
+            "name": "Øredev 2026",
+            "registration_deadlines": [],
+            "source": "https://oredev.org/",
+            "start_date": null,
+            "website": "https://oredev.org/"
         },
         {
             "cfp_deadline": null,
@@ -1019,15 +2900,41 @@
         {
             "cfp_deadline": null,
             "end_date": null,
-            "expected": "May 2027 (seed sheet dates unreadable)",
+            "expected": "June 2027 Flagship Week; live days London 2027-06-22 and New York 2027-06-24",
+            "id": "platformcon-2027",
+            "last_verified": null,
+            "location": "Online + London, UK and New York, NY, USA",
+            "name": "PlatformCon 2027",
+            "registration_deadlines": [],
+            "source": "https://platformcon.com/",
+            "start_date": null,
+            "website": "https://platformcon.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Fall 2027; San Francisco expected",
+            "id": "pybay-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "PyBay 2027",
+            "registration_deadlines": [],
+            "source": "https://pybay.org/",
+            "start_date": null,
+            "website": "https://pybay.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "May 2027 (dates not yet announced)",
             "id": "pycon-us-2027",
             "last_verified": null,
             "location": "Long Beach, CA, USA",
             "name": "PyCon US 2027",
             "registration_deadlines": [],
-            "source": "https://us.pycon.org/2027/",
+            "source": "https://www.pycon.org/",
             "start_date": null,
-            "website": "https://us.pycon.org/2027/"
+            "website": "https://www.pycon.org/"
         },
         {
             "cfp_deadline": null,
@@ -1041,9 +2948,105 @@
             "source": "https://qconsf.com/",
             "start_date": null,
             "website": "https://qconsf.com/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "October 2027",
+            "id": "rails-world-2027",
+            "last_verified": "2026-10-09",
+            "location": "Lisbon, Portugal",
+            "name": "Rails World 2027",
+            "registration_deadlines": [],
+            "source": "https://rubyonrails.org/world",
+            "start_date": null,
+            "website": "https://rubyonrails.org/world"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Late summer 2027; San Francisco expected",
+            "id": "ray-summit-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "Ray Summit 2027",
+            "registration_deadlines": [],
+            "source": "https://www.anyscale.com/ray-summit/2026",
+            "start_date": null,
+            "website": "https://www.anyscale.com/ray-summit/2026"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "2027, date and location not announced",
+            "id": "rubyconf-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "RubyConf 2027",
+            "registration_deadlines": [],
+            "source": "https://rubyconf.org/",
+            "start_date": null,
+            "website": "https://rubyconf.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "November 2027",
+            "id": "socc-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "SoCC 2027 (ACM Symposium on Cloud Computing)",
+            "registration_deadlines": [],
+            "source": "https://acmsocc.org/",
+            "start_date": null,
+            "website": "https://acmsocc.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Fall 2027",
+            "id": "sosp-2027",
+            "last_verified": null,
+            "location": null,
+            "name": "SOSP 2027 (ACM Symposium on Operating Systems Principles)",
+            "registration_deadlines": [],
+            "source": "https://www.sigops.org/",
+            "start_date": null,
+            "website": "https://www.sigops.org/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "March 2027; site gives conflicting dates (March 18-19 vs March 11-12)",
+            "id": "vuejs-amsterdam-2027",
+            "last_verified": null,
+            "location": "Amsterdam, Netherlands",
+            "name": "Vue.js Amsterdam 2027",
+            "registration_deadlines": [],
+            "source": "https://vuejs.amsterdam/",
+            "start_date": null,
+            "website": "https://vuejs.amsterdam/"
+        },
+        {
+            "cfp_deadline": null,
+            "end_date": null,
+            "expected": "Early 2027",
+            "id": "vuejs-nation-2027",
+            "last_verified": null,
+            "location": "Online",
+            "name": "Vue.js Nation 2027",
+            "registration_deadlines": [],
+            "source": "https://vuejsnation.com/",
+            "start_date": null,
+            "website": "https://vuejsnation.com/"
         }
     ],
     "rejected": [
+        {
+            "name": "Blue Ridge Ruby 2027",
+            "reason": "out of scope: regional conference outside covered areas (Asheville, NC)",
+            "website": "https://blueridgeruby.com/"
+        },
         {
             "name": "CppCon 2026",
             "reason": "out of scope: C++",
@@ -1070,9 +3073,39 @@
             "website": "https://meetingcpp.com/"
         },
         {
+            "name": "Philly Tech Week 2027",
+            "reason": "out of scope: citywide event series, not a software engineering conference",
+            "website": "https://phillytechweek.com/"
+        },
+        {
+            "name": "PyOhio 2027",
+            "reason": "out of scope: regional conference outside covered areas (Ohio)",
+            "website": "https://www.pyohio.org/"
+        },
+        {
+            "name": "PyTexas 2027",
+            "reason": "out of scope: regional conference outside covered areas (Texas)",
+            "website": "https://www.pytexas.org/2027"
+        },
+        {
+            "name": "Rocky Mountain Ruby 2027",
+            "reason": "out of scope: regional conference outside covered areas (Boulder, CO)",
+            "website": "https://rockymtnruby.dev/"
+        },
+        {
             "name": "RustConf 2026",
             "reason": "out of scope: Rust",
             "website": "https://rustconf.com/"
+        },
+        {
+            "name": "Snowflake Summit 2027",
+            "reason": "out of scope: data warehouse vendor conference",
+            "website": "https://www.snowflake.com/en/summit/"
+        },
+        {
+            "name": "USENIX Security '27",
+            "reason": "out of scope: security",
+            "website": "https://www.usenix.org/conference/usenixsecurity27"
         }
     ]
 }
