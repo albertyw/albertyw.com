@@ -77,6 +77,11 @@ class Conference():
     def is_determined(self) -> bool:
         return bool(self.start_date and self.end_date and self.location)
 
+    def is_upcoming(self, today: datetime.date) -> bool:
+        if not self.is_determined or self.end_date is None:
+            return False
+        return self.end_date >= today
+
 
 class Conferences():
     def __init__(self) -> None:
