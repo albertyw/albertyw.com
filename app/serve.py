@@ -13,6 +13,7 @@ from syspath import get_current_path, git_root
 from varsnap import varsnap
 dotenv.load_dotenv(git_root.path / '.env')
 
+from app.conference.routes import conference_handlers  # noqa: E402
 from app.routes import handlers, sitemap_urls  # noqa: E402
 
 
@@ -67,6 +68,7 @@ if os.environ['ENV'] == 'production':  # pragma: no cover
 
 
 app.register_blueprint(handlers)
+app.register_blueprint(conference_handlers)
 
 
 file_cache: dict[str, str] = {}
