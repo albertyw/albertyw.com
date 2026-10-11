@@ -60,6 +60,9 @@ class TestConferencePage(unittest.TestCase):
         mock.return_value = data.Conferences()
         self.assertIn(b'No upcoming conferences', self.get('/conference'))
 
+    def test_linked_from_reference(self) -> None:
+        self.assertIn(b'href="/conference"', self.get('/reference'))
+
     def test_not_in_navbar(self) -> None:
         self.assertNotIn(b'href="/conference"', self.get('/'))
 
