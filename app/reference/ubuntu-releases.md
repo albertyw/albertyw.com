@@ -6,19 +6,21 @@ ubuntu-releases
 
 [Source](https://wiki.ubuntu.com/Releases)
 
-| Version | Name     | Status     | LTS   | Release | End of Life (Security) |
-|---------|----------|------------|-------|---------|------------------------|
-| 27.04   | TBD      | Unreleased | false | 2027-04 | 2028-01                |
-| 26.04   | Resolute | Supported  | true  | 2026-04 | 2038-04                |
-| 25.10   | Questing | Supported  | false | 2025-10 | 2026-07                |
-| 25.04   | Plucky   | Obsolete   | false | 2025-04 | 2026-01                |
-| 24.10   | Oracular | Obsolete   | false | 2024-10 | 2025-07                |
-| 24.04   | Noble    | Supported  | true  | 2024-04 | 2036-04                |
-| 23.10   | Mantic   | Obsolete   | false | 2023-10 | 2024-07                |
-| 23.04   | Lunar    | Obsolete   | false | 2023-04 | 2024-01                |
-| 22.04   | Jammy    | Supported  | true  | 2022-4  | 2032-04                |
-| 21.10   | Impish   | Obsolete   | false | 2021-10 | 2022-07                |
-| 21.04   | Hirsute  | Obsolete   | false | 2021-04 | 2022-01                |
-| 20.04   | Focal    | Supported  | true  | 2020-04 | 2030-04                |
-| 18.04   | Bionic   | Supported  | true  | 2018-04 | 2028-04                |
-| 16.04   | Xenial   | Obsolete   | true  | 2016-04 | 2026-04                |
+| Version | Name      | Status     | LTS   | Release | End of Life (Security) |
+|---------|-----------|------------|-------|---------|------------------------|
+| 28.04   | TBD       | Unreleased | true  | 2028-04 | 2040-04                |
+| 27.04   | Tenacious | Unreleased | false | 2027-04 | 2028-01                |
+| 26.10   | Stonking  | Supported  | false | 2026-10 | 2027-07                |
+| 26.04   | Resolute  | Supported  | true  | 2026-04 | 2038-04                |
+| 25.10   | Questing  | Obsolete   | false | 2025-10 | 2026-07                |
+| 25.04   | Plucky    | Obsolete   | false | 2025-04 | 2026-01                |
+| 24.10   | Oracular  | Obsolete   | false | 2024-10 | 2025-07                |
+| 24.04   | Noble     | Supported  | true  | 2024-04 | 2036-04                |
+| 23.10   | Mantic    | Obsolete   | false | 2023-10 | 2024-07                |
+| 23.04   | Lunar     | Obsolete   | false | 2023-04 | 2024-01                |
+| 22.04   | Jammy     | Supported  | true  | 2022-04 | 2032-04                |
+| 21.10   | Impish    | Obsolete   | false | 2021-10 | 2022-07                |
+| 21.04   | Hirsute   | Obsolete   | false | 2021-04 | 2022-01                |
+| 20.04   | Focal     | Supported  | true  | 2020-04 | 2030-04                |
+| 18.04   | Bionic    | Supported  | true  | 2018-04 | 2028-04                |
+| 16.04   | Xenial    | Obsolete   | true  | 2016-04 | 2026-04                |
