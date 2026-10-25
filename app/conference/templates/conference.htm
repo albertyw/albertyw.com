@@ -1,6 +1,24 @@
 {% extends "includes/base.htm" %}
 {% block title %}Albert Wang - Conferences{% endblock %}
 {% block description %}Software engineering conferences and deadlines{% endblock %}
+{% block head %}
+  {{ super() }}
+  <style>
+    .embed-calendar {
+      position: relative;
+      padding-bottom: 75%;
+      height: 0;
+      overflow: hidden;
+    }
+    .embed-calendar iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+{% endblock %}
 {% block content %}
   <div class="content">
     <h1>Conferences</h1>
@@ -14,6 +32,9 @@
       <pre>{{ url_for('conference.ical_file', _external=True, _scheme='https') }}</pre>
       or <a href="{{ url_for('conference.ical_file') }}">download it</a>
       (downloaded calendars won't receive updates).
+    </div>
+    <div class="embed-calendar">
+      <iframe src="https://calendar.google.com/calendar/embed?height=600&wkst=1&ctz=America/Los_Angeles&mode=AGENDA&title=Conferences&showCalendars=0&src={{ calendar_src }}" style="border-width:0" frameborder="0" scrolling="no" title="Conference calendar"></iframe>
     </div>
     <div class="table-responsive">
       <table class="table table-sm">

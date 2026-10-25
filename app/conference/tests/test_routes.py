@@ -1,10 +1,11 @@
+import base64
 import unittest
 from unittest.mock import MagicMock, patch
 
 from icalendar import Calendar
 
 from app import serve
-from app.conference import data
+from app.conference import data, routes
 from app.conference.tests.test_data import conference
 
 
@@ -60,6 +61,12 @@ class TestConferencePage(unittest.TestCase):
         mock.return_value = data.Conferences()
         self.assertIn(b'No upcoming conferences', self.get('/conference'))
 
+    def test_calendar_embed(self) -> None:
+        page = self.get('/conference')
+        src = routes.google_calendar_src(routes.GOOGLE_CALENDAR_ID)
+        self.assertIn(b'calendar.google.com/calendar/embed', page)
+        self.assertIn(src.encode(), page)
+
     def test_linked_from_reference(self) -> None:
         self.assertIn(b'href="/conference"', self.get('/reference'))
 
@@ -68,6 +75,18 @@ class TestConferencePage(unittest.TestCase):
 
     def test_sitemap(self) -> None:
         self.assertIn(b'/conference<', self.get('/sitemap.xml'))
+
+
+class TestGoogleCalendarSrc(unittest.TestCase):
+    def test_google_calendar_src(self) -> None:
+        # chase-center-calendar's embedded calendar
+        calendar_id = 'i5nc55dcqfpnsptuej0ncldo4jgotqu0@import.calendar.google.com'
+        src = routes.google_calendar_src(calendar_id)
+        self.assertEqual(src, (
+            'aTVuYzU1ZGNxZnBuc3B0dWVqMG5jbGRvNGpnb3RxdTBAaW1wb3J0'
+            'LmNhbGVuZGFyLmdvb2dsZS5jb20'
+        ))
+        self.assertEqual(base64.b64decode(src + '=').decode(), calendar_id)
 
 
 class TestICalFile(unittest.TestCase):

@@ -1,13 +1,21 @@
 import datetime
+from base64 import b64encode
 
 from flask import Blueprint, Response, render_template
 
 from app.conference import data, ical
 
 
+# Google Calendar "From URL" subscription to /conferences.ics
+GOOGLE_CALENDAR_ID = '4fqt0tj6gem0n2nulg8tkhkqqksi0733@import.calendar.google.com'
+
 conference_handlers = Blueprint(
     'conference', __name__, template_folder='templates',
 )
+
+
+def google_calendar_src(calendar_id: str) -> str:
+    return b64encode(calendar_id.encode()).decode().rstrip('=')
 
 
 @conference_handlers.route('/conference')
@@ -21,6 +29,7 @@ def conference() -> str:
         conferences=conferences,
         today=today,
         last_updated=data.get_metadata().last_updated,
+        calendar_src=google_calendar_src(GOOGLE_CALENDAR_ID),
     )
 
 
