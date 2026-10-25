@@ -1,0 +1,132 @@
+import datetime
+import json
+from pathlib import Path
+from typing import Any, Optional
+
+import syspath
+
+from app.util import cached_function
+
+
+DIRECTORY = syspath.get_current_path()
+CONFERENCES_PATH = DIRECTORY / 'conferences.json'
+METADATA_PATH = DIRECTORY / 'metadata.json'
+
+
+def parse_date(value: Optional[str]) -> Optional[datetime.date]:
+    if value is None:
+        return None
+    return datetime.date.fromisoformat(value)
+
+
+class Deadline():
+    def __init__(self) -> None:
+        self.name: str = ''
+        self.date: datetime.date = datetime.date.min
+
+    @staticmethod
+    def load(data: dict[str, str]) -> 'Deadline':
+        deadline = Deadline()
+        deadline.name = data['name']
+        deadline.date = datetime.date.fromisoformat(data['date'])
+        return deadline
+
+
+class Conference():
+    def __init__(self) -> None:
+        self.id: str = ''
+        self.name: str = ''
+        self.start_date: Optional[datetime.date] = None
+        self.end_date: Optional[datetime.date] = None
+        self.location: Optional[str] = None
+        self.website: str = ''
+        self.registration_deadlines: list[Deadline] = []
+        self.cfp_deadline: Optional[datetime.date] = None
+        self.expected: str = ''
+        self.source: str = ''
+        self.last_verified: Optional[datetime.date] = None
+
+    @staticmethod
+    def load(data: dict[str, Any]) -> 'Conference':
+        conference = Conference()
+        conference.id = data['id']
+        conference.name = data['name']
+        conference.start_date = parse_date(data['start_date'])
+        conference.end_date = parse_date(data['end_date'])
+        conference.location = data['location']
+        conference.website = data['website']
+        conference.registration_deadlines = [
+            Deadline.load(d) for d in data['registration_deadlines']
+        ]
+        conference.cfp_deadline = parse_date(data['cfp_deadline'])
+        conference.expected = data.get('expected', '')
+        conference.source = data['source']
+        conference.last_verified = parse_date(data['last_verified'])
+        conference.validate()
+        return conference
+
+    def validate(self) -> None:
+        if (self.start_date is None) != (self.end_date is None):
+            raise ValueError(f'{self.id}: set both start_date and end_date or neither')
+        if self.start_date and self.end_date and self.start_date > self.end_date:
+            raise ValueError(f'{self.id}: start_date is after end_date')
+        if not self.website.startswith('https://'):
+            raise ValueError(f'{self.id}: website must be https')
+
+    @property
+    def is_determined(self) -> bool:
+        return bool(self.start_date and self.end_date and self.location)
+
+    def is_upcoming(self, today: datetime.date) -> bool:
+        if not self.is_determined or self.end_date is None:
+            return False
+        return self.end_date >= today
+
+
+class Conferences():
+    def __init__(self) -> None:
+        self.conferences: list[Conference] = []
+
+    @staticmethod
+    def load_from_file(path: Path = CONFERENCES_PATH) -> 'Conferences':
+        with open(path, 'r') as handle:
+            parsed_data = json.loads(handle.read())
+        return Conferences.load(parsed_data)
+
+    @staticmethod
+    def load(data: dict[str, Any]) -> 'Conferences':
+        conferences = Conferences()
+        conferences.conferences = [Conference.load(c) for c in data['conferences']]
+        ids = [c.id for c in conferences.conferences]
+        if len(ids) != len(set(ids)):
+            raise ValueError('conference ids must be unique')
+        return conferences
+
+
+class Metadata():
+    def __init__(self) -> None:
+        self.last_updated: datetime.datetime = datetime.datetime.min
+
+    @staticmethod
+    def load_from_file(path: Path = METADATA_PATH) -> 'Metadata':
+        with open(path, 'r') as handle:
+            parsed_data = json.loads(handle.read())
+        return Metadata.load(parsed_data)
+
+    @staticmethod
+    def load(data: dict[str, str]) -> 'Metadata':
+        metadata = Metadata()
+        metadata.last_updated = datetime.datetime.fromisoformat(data['last_updated'])
+        if metadata.last_updated.tzinfo is None:
+            raise ValueError('last_updated must include a timezone')
+        return metadata
+
+
+@cached_function
+def get_conferences() -> Conferences:
+    return Conferences.load_from_file()
+
+
+@cached_function
+def get_metadata() -> Metadata:
+    return Metadata.load_from_file()

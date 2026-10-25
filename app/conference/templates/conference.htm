@@ -1,0 +1,59 @@
+{% extends "includes/base.htm" %}
+{% block title %}Albert Wang - Conferences{% endblock %}
+{% block description %}Software engineering conferences and deadlines{% endblock %}
+{% block content %}
+  <div class="content">
+    <h1>Conferences</h1>
+    <p>
+      Upcoming software engineering conferences, with their registration and
+      call for proposals deadlines.  Dates change; check each conference's
+      website before making plans.
+    </p>
+    <div>
+      Subscribe to this calendar in Google Calendar, Apple Calendar, etc. with:
+      <pre>{{ url_for('conference.ical_file', _external=True, _scheme='https') }}</pre>
+      or <a href="{{ url_for('conference.ical_file') }}">download it</a>
+      (downloaded calendars won't receive updates).
+    </div>
+    <div class="table-responsive">
+      <table class="table table-sm">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Dates</th>
+            <th>Location</th>
+            <th>Registration Deadlines</th>
+            <th>CFP Deadline</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for conference in conferences %}
+            <tr>
+              <td><a href="{{ conference.website }}">{{ conference.name }}</a></td>
+              <td class="text-nowrap">
+                {{ conference.start_date.isoformat() }}
+                {% if conference.end_date != conference.start_date %}
+                  to {{ conference.end_date.isoformat() }}
+                {% endif %}
+              </td>
+              <td>{{ conference.location }}</td>
+              <td>
+                {% for deadline in conference.registration_deadlines %}
+                  <span class="text-nowrap{% if deadline.date < today %} text-muted{% endif %}">
+                    {{ deadline.name }}: {{ deadline.date.isoformat() }}
+                  </span><br />
+                {% endfor %}
+              </td>
+              <td class="text-nowrap{% if conference.cfp_deadline and conference.cfp_deadline < today %} text-muted{% endif %}">
+                {% if conference.cfp_deadline %}{{ conference.cfp_deadline.isoformat() }}{% endif %}
+              </td>
+            </tr>
+          {% else %}
+            <tr><td colspan="5">No upcoming conferences.</td></tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-muted">Last updated: {{ last_updated.date().isoformat() }}</p>
+  </div>
+{% endblock %}
