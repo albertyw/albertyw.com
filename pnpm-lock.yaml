@@ -58,7 +58,7 @@ importers:
         version: 1.14.0(debug@4.4.3(supports-color@8.1.1))(supports-color@8.1.1)
       webpack:
         specifier: ^5.112.2
-        version: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+        version: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
       webpack-cli:
         specifier: ^7.2.3
         version: 7.2.3(js-yaml@5.5.0)(json5@2.2.3)(webpack@5.112.2)
@@ -1079,9 +1079,6 @@ packages:
   '@types/node@22.20.5':
     resolution: {integrity: sha512-U2+DNr+wSjpsTS/wZGYHq7GcwfuSmKiKvoPvK22zwTlRhU91yOniN4qRR5KhIjvif7ysw/dz/hKmfDH0Ris4aA==}
 
-  '@types/node@26.4.0':
-    resolution: {integrity: sha512-faiGnoIrLH/V8cibOMEAZ8pMw6oXqSukl29ra4mN8GdaB2ZewzeaLj+INpV5N+Z1eKWzY+IzaIZH2EIR6YZRNQ==}
-
   '@types/node@26.6.6':
     resolution: {integrity: sha512-MzQj+8Kx3XI40OmUAE6Qoh58ZMNstNNMwn2nfd3qWsfe7nDNSqJNzes4njhz6AHwrSHOffSLwXU6yb474Q4aog==}
 
@@ -1351,11 +1348,6 @@ packages:
   acorn-walk@8.3.5:
     resolution: {integrity: sha512-HEHNfbars9v4pgpW6SO1KSPkfoS0xVOM/9UzkJltjlsHZmJasxg8aXkuZa7SMf8vKGIBhpUsPluQSqhJFCqebw==}
     engines: {node: '>=0.4.0'}
-
-  acorn@8.18.0:
-    resolution: {integrity: sha512-lGq+9yr1/GuAWaVYIHRjvvySG5/4VfKIvC8EWxStPdcDh/Ka7FG3twP6v4d5BkravUilhIAsG4Qj83t02LWUPQ==}
-    engines: {node: '>=0.4.0'}
-    hasBin: true
 
   acorn@8.19.0:
     resolution: {integrity: sha512-oJlA3XiRm7Cyk6qFD2Jn8ak9B7jSy0qy00ADO3+8dpT0LSjFihQYv4C02LFCSYJV3Q37xYwwRy5m+IpIiUzqWw==}
@@ -1787,9 +1779,6 @@ packages:
   css-select@5.2.2:
     resolution: {integrity: sha512-TizTzUddG/xYLA3NXodFM0fSbNizXjOKhqiQQwvhlspadZokn1KDy0NZFS0wuEubIYAV5/c1/lAr0TaaFXEXzw==}
 
-  css-select@6.0.0:
-    resolution: {integrity: sha512-rZZVSLle8v0+EY8QAkDWrKhpgt6SA5OtHsgBnsj6ZaLb5dmDVOWUDtQitd9ydxxvEjhewNudS6eTVU7uOyzvXw==}
-
   css-shorthand-properties@1.1.2:
     resolution: {integrity: sha512-C2AugXIpRGQTxaCW0N7n5jD/p5irUmCrwl03TrnMFBHDbdq44CFWR2zO7rK9xPN4Eo3pUxC4vQzQgbIpzrD1PQ==}
 
@@ -1806,10 +1795,6 @@ packages:
 
   css-what@6.2.2:
     resolution: {integrity: sha512-u/O3vwbptzhMs3L1fQE82ZSLHQQfto5gyZzwteVIEyeaY5Fc7R4dapF/BvRoSYFeqfBk4m0V1Vafq5Pjv25wvA==}
-    engines: {node: '>= 6'}
-
-  css-what@7.0.0:
-    resolution: {integrity: sha512-wD5oz5xibMOPHzy13CyGmogB3phdvcDaB5t0W/Nr5Z2O/agcB8YwOz6e2Lsp10pNDzBoDO9nVa3RGs/2BttpHQ==}
     engines: {node: '>= 6'}
 
   cssesc@3.0.0:
@@ -3277,10 +3262,6 @@ packages:
     peerDependencies:
       postcss: ^8.4.31
 
-  postcss-selector-parser@7.1.6:
-    resolution: {integrity: sha512-7qASPzhKF2l2KLboRZux8CCTRMdGiV08vWmyKzPz22qZ7ZjQBOeY7rNzNoCLSUiftJ7HUq0GERHmxw/t0dCdMw==}
-    engines: {node: '>=4'}
-
   postcss-selector-parser@7.1.7:
     resolution: {integrity: sha512-wWBro/7hJ40ye6TPiXkUQoXKCw23xSsjriUvqd7Uls9Sso3oLiON1flc18cCdnjgCRXw4fBVqUJJeOdDTh3P3g==}
     engines: {node: '>=4'}
@@ -3678,11 +3659,6 @@ packages:
     engines: {node: '>=16'}
     hasBin: true
 
-  svgo@4.1.0:
-    resolution: {integrity: sha512-bkxnTg1kSU0guhIBmibA6UUhrQmPVA1XsQLN+ylCd+UWzbnLkySOcXpyk1mrl05f+pcaCx2eHb+sp6BgMZWX+Q==}
-    engines: {node: '>=16'}
-    hasBin: true
-
   table@6.9.0:
     resolution: {integrity: sha512-9kY+CygyYM6j02t5YFHbNz2FN5QmYGv9zAjVp4lCDjlCw7amdckXlEt/bjMhUIfj4ThGRE4gCUH5+yGnNuPo5A==}
     engines: {node: '>=10.0.0'}
@@ -3804,14 +3780,11 @@ packages:
   undici-types@6.21.0:
     resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
 
-  undici-types@8.3.0:
-    resolution: {integrity: sha512-j375ScV60dom+YkPFIfTLcOiPxkN/buHz5GobjLhixFuANaNs3C9l4GmrWqejgXWJ7BbJcFYpTEUkS1Ge8bpZQ==}
-
   undici-types@8.9.0:
     resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
 
-  undici@7.25.0:
-    resolution: {integrity: sha512-xXnp4kTyor2Zq+J1FfPI6Eq3ew5h6Vl0F/8d9XU5zZQf1tX9s2Su1/3PiMmUANFULpmksxkClamIZcaUqryHsQ==}
+  undici@7.30.1:
+    resolution: {integrity: sha512-03KrMbjIFDWQR5RNPrSw3bd1r12JpyFQl9/yxjUbJtqkjmllqC5lFjZh6ujeuJCKr8EOQvRW872Oy/az+nLYxg==}
     engines: {node: '>=20.18.1'}
 
   undici@8.12.3:
@@ -4869,10 +4842,6 @@ snapshots:
     dependencies:
       undici-types: 6.21.0
 
-  '@types/node@26.4.0':
-    dependencies:
-      undici-types: 8.3.0
-
   '@types/node@26.6.6':
     dependencies:
       undici-types: 8.9.0
@@ -4889,7 +4858,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 26.4.0
+      '@types/node': 26.6.6
 
   '@types/yargs-parser@21.0.3': {}
 
@@ -5417,8 +5386,6 @@ snapshots:
     dependencies:
       acorn: 8.19.0
 
-  acorn@8.18.0: {}
-
   acorn@8.19.0: {}
 
   agent-base@6.0.2(supports-color@8.1.1):
@@ -5636,8 +5603,8 @@ snapshots:
 
   caniuse-api@3.0.0:
     dependencies:
-      browserslist: 4.28.8
-      caniuse-lite: 1.0.30001810
+      browserslist: 4.29.5
+      caniuse-lite: 1.0.30001820
       lodash.memoize: 4.1.2
       lodash.uniq: 4.5.0
 
@@ -5680,7 +5647,7 @@ snapshots:
       parse5: 7.3.0
       parse5-htmlparser2-tree-adapter: 7.1.0
       parse5-parser-stream: 7.1.2
-      undici: 7.25.0
+      undici: 7.30.1
       whatwg-mimetype: 4.0.0
 
   chokidar@5.0.0:
@@ -5816,7 +5783,7 @@ snapshots:
       postcss-value-parser: 4.2.0
       semver: 7.8.5
     optionalDependencies:
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
 
   css-minimizer-webpack-plugin@8.0.0(csso@5.0.5)(esbuild@0.14.54)(webpack@5.112.2):
     dependencies:
@@ -5826,7 +5793,7 @@ snapshots:
       postcss: 8.5.32
       schema-utils: 4.8.1(webpack@5.112.2)
       serialize-javascript: 7.1.4
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
     optionalDependencies:
       csso: 5.0.5
       esbuild: 0.14.54
@@ -5838,15 +5805,6 @@ snapshots:
       domhandler: 5.0.3
       domutils: 3.2.2
       nth-check: 2.1.1
-
-  css-select@6.0.0:
-    dependencies:
-      boolbase: 1.0.0
-      css-what: 7.0.0
-      domhandler: 5.0.3
-      domutils: 3.2.2
-      nth-check: 2.1.1
-    optional: true
 
   css-shorthand-properties@1.1.2: {}
 
@@ -5864,14 +5822,11 @@ snapshots:
 
   css-what@6.2.2: {}
 
-  css-what@7.0.0:
-    optional: true
-
   cssesc@3.0.0: {}
 
   cssnano-preset-default@7.0.17(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       css-declaration-sorter: 7.4.0(postcss@8.5.32)
       cssnano-utils: 5.0.3(postcss@8.5.32)
       postcss: 8.5.32
@@ -5971,7 +5926,7 @@ snapshots:
   dotenv-webpack@9.0.0(webpack@5.112.2):
     dependencies:
       dotenv-defaults: 5.0.2
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
 
   dotenv@14.3.2: {}
 
@@ -6886,26 +6841,26 @@ snapshots:
     dependencies:
       schema-utils: 4.8.1(webpack@5.112.2)
       tapable: 2.3.3
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
 
   minimatch@10.2.6:
     dependencies:
       brace-expansion: 5.0.12
 
-  minimizer-webpack-plugin@5.13.1(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack@5.112.2):
+  minimizer-webpack-plugin@5.13.1(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack@5.112.2):
     dependencies:
       '@jridgewell/trace-mapping': 0.3.31
       jest-worker: 27.5.1
       schema-utils: 4.8.1(webpack@5.112.2)
       terser: 5.51.2
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
     optionalDependencies:
       '@swc/core': 1.16.20
       cssnano: 7.1.9(postcss@8.5.32)
       csso: 5.0.5
       esbuild: 0.14.54
       postcss: 8.5.32
-      svgo: 4.1.0
+      svgo: 4.0.2
 
   minipass@7.1.3: {}
 
@@ -7094,27 +7049,27 @@ snapshots:
   postcss-calc@10.1.1(postcss@8.5.32):
     dependencies:
       postcss: 8.5.32
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
       postcss-value-parser: 4.2.0
 
   postcss-colormin@7.0.10(postcss@8.5.32):
     dependencies:
       '@colordx/core': 5.5.0
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       caniuse-api: 3.0.0
       postcss: 8.5.32
       postcss-value-parser: 4.2.0
 
   postcss-convert-values@7.0.12(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       postcss: 8.5.32
       postcss-value-parser: 4.2.0
 
   postcss-discard-comments@7.0.8(postcss@8.5.32):
     dependencies:
       postcss: 8.5.32
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
 
   postcss-discard-duplicates@7.0.4(postcss@8.5.32):
     dependencies:
@@ -7136,11 +7091,11 @@ snapshots:
 
   postcss-merge-rules@7.0.11(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       caniuse-api: 3.0.0
       cssnano-utils: 5.0.3(postcss@8.5.32)
       postcss: 8.5.32
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
 
   postcss-minify-font-values@7.0.3(postcss@8.5.32):
     dependencies:
@@ -7156,18 +7111,18 @@ snapshots:
 
   postcss-minify-params@7.0.9(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       cssnano-utils: 5.0.3(postcss@8.5.32)
       postcss: 8.5.32
       postcss-value-parser: 4.2.0
 
   postcss-minify-selectors@7.1.2(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       caniuse-api: 3.0.0
       cssesc: 3.0.0
       postcss: 8.5.32
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
 
   postcss-modules-extract-imports@3.1.0(postcss@8.5.32):
     dependencies:
@@ -7221,7 +7176,7 @@ snapshots:
 
   postcss-normalize-unicode@7.0.9(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       postcss: 8.5.32
       postcss-value-parser: 4.2.0
 
@@ -7243,7 +7198,7 @@ snapshots:
 
   postcss-reduce-initial@7.0.9(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       caniuse-api: 3.0.0
       postcss: 8.5.32
 
@@ -7255,11 +7210,6 @@ snapshots:
   postcss-safe-parser@7.1.0(postcss@8.5.32):
     dependencies:
       postcss: 8.5.32
-
-  postcss-selector-parser@7.1.6:
-    dependencies:
-      cssesc: 3.0.0
-      util-deprecate: 1.0.2
 
   postcss-selector-parser@7.1.7:
     dependencies:
@@ -7275,7 +7225,7 @@ snapshots:
   postcss-unique-selectors@7.0.7(postcss@8.5.32):
     dependencies:
       postcss: 8.5.32
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
 
   postcss-value-parser@4.2.0: {}
 
@@ -7494,7 +7444,7 @@ snapshots:
       ajv-formats: 3.0.1(ajv@8.20.0)
       ajv-keywords: 5.1.0(ajv@8.20.0)
     optionalDependencies:
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
 
   scule@1.3.0:
     optional: true
@@ -7626,9 +7576,9 @@ snapshots:
 
   stylehacks@7.0.11(postcss@8.5.32):
     dependencies:
-      browserslist: 4.28.8
+      browserslist: 4.29.5
       postcss: 8.5.32
-      postcss-selector-parser: 7.1.6
+      postcss-selector-parser: 7.1.7
 
   stylelint-config-recommended@18.0.0(stylelint@17.16.0(supports-color@8.1.1)(typescript@6.0.3)):
     dependencies:
@@ -7709,17 +7659,6 @@ snapshots:
       picocolors: 1.1.1
       sax: 1.6.1
 
-  svgo@4.1.0:
-    dependencies:
-      commander: 11.1.0
-      css-select: 6.0.0
-      css-tree: 3.2.1
-      css-what: 7.0.0
-      csso: 5.0.5
-      picocolors: 1.1.1
-      sax: 1.6.1
-    optional: true
-
   table@6.9.0:
     dependencies:
       ajv: 8.20.0
@@ -7753,7 +7692,7 @@ snapshots:
   terser@5.51.2:
     dependencies:
       '@jridgewell/source-map': 0.3.11
-      acorn: 8.18.0
+      acorn: 8.19.0
       commander: 2.20.3
       source-map-support: 0.5.21
 
@@ -7792,7 +7731,7 @@ snapshots:
       picomatch: 4.0.7
       source-map: 0.7.6
       typescript: 6.0.3
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
 
   ts-node@10.9.2(@swc/core@1.16.20)(@swc/wasm@1.16.20)(@types/node@26.6.6)(typescript@6.0.3):
     dependencies:
@@ -7860,11 +7799,9 @@ snapshots:
 
   undici-types@6.21.0: {}
 
-  undici-types@8.3.0: {}
-
   undici-types@8.9.0: {}
 
-  undici@7.25.0: {}
+  undici@7.30.1: {}
 
   undici@8.12.3: {}
 
@@ -8076,7 +8013,7 @@ snapshots:
       import-local: 3.2.0
       interpret: 3.1.1
       rechoir: 0.8.0
-      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3)
+      webpack: 5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3)
       webpack-merge: 6.0.1
     optionalDependencies:
       js-yaml: 5.5.0
@@ -8093,7 +8030,7 @@ snapshots:
   webpack-virtual-modules@0.6.2:
     optional: true
 
-  webpack@5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack-cli@7.2.3):
+  webpack@5.112.2(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack-cli@7.2.3):
     dependencies:
       '@types/estree': 1.0.10
       '@types/json-schema': 7.0.15
@@ -8107,7 +8044,7 @@ snapshots:
       events: 3.3.0
       graceful-fs: 4.2.11
       mime-db: 1.54.0
-      minimizer-webpack-plugin: 5.13.1(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.1.0)(webpack@5.112.2)
+      minimizer-webpack-plugin: 5.13.1(@swc/core@1.16.20)(cssnano@7.1.9(postcss@8.5.32))(csso@5.0.5)(esbuild@0.14.54)(postcss@8.5.32)(svgo@4.0.2)(webpack@5.112.2)
       schema-utils: 4.8.1(webpack@5.112.2)
       tapable: 2.3.3
       watchpack: 2.6.3
