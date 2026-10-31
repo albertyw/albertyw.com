@@ -15,7 +15,7 @@ Using [python venv](https://docs.python.org/3/library/venv.html),
 [direnv](https://github.com/direnv/direnv), and [pnpm](http://pnpm.io/).
 
 ```bash
-python3.14 -m venv env
+python3 -m venv env
 pip install -e .[test]
 ln -s .env.development .env
 pnpm install
@@ -48,7 +48,6 @@ This repo uses:
 
 ```bash
 # Setup
-pyenv local 3.14
 pip install -e .[test]
 ln -s .env.development .env
 

@@ -12,18 +12,18 @@ CONTAINER="albertyw"
 PORT="5000"
 NETWORK="$CONTAINER"_net
 DEPLOY_BRANCH="${1:-}"
-BRANCH="$(git rev-parse --abbrev-ref HEAD)"
-VERSION="$(git describe --always)"
 set +x  # Do not print contents of .env
 source .env
 set -x
 
 if [ -n "$DEPLOY_BRANCH" ]; then
     # Update repository
-    git checkout "$DEPLOY_BRANCH"
     git fetch -tp
+    git checkout "$DEPLOY_BRANCH"
     git pull
 fi
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+VERSION="$(git describe --always)"
 
 # Download static files
 bin/download_static_files.sh
