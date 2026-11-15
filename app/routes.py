@@ -56,6 +56,8 @@ def note(slug: str = '') -> Any:
         return redirect(url_for('handlers.note', slug=slug.lower()))
     post = note_util.get_note_from_slug(note_util.NOTES_DIRECTORY, slug)
     if not post:
+        if note_util.get_note_from_slug(note_util.REFERENCE_DIRECTORY, slug):
+            return redirect(url_for('handlers.reference', slug=slug), 301)
         abort(404)
     return render_template("note.htm", post=post)
 
