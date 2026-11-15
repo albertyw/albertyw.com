@@ -8,7 +8,7 @@ How to tell common Airbus, Boeing, and Embraer airliners apart from the outside 
 
 ## Quick Key
 
-```
+```text
 How many engines?
 |
 +-- 4 engines
@@ -20,7 +20,7 @@ How many engines?
 |
 +-- 2 engines under the wings
     +-- One aisle (narrow body), 2 main wheels on each side
-    |   +-- Wheels exposed in flight, triangular fin at tail base . 737
+    |   +-- Tires visible in belly, triangular fin at tail base ... 737
     |   +-- Rounded nose, notched rear cockpit window ............. A320 family
     |   +-- 4 cockpit windows, long pointed nose, flat tail cone .. A220
     |   +-- Small and slim, 4 cockpit windows, pointed tail cone .. E-Jet
@@ -52,7 +52,7 @@ How many engines?
 | Model | Variant      | Length  | How to identify                                                                                       |
 |-------|--------------|---------|-------------------------------------------------------------------------------------------------------|
 | 717   |              | 124 ft  | Two engines on the sides of the rear fuselage; T-tail; larger with a rounder nose than regional jets with the same layout, such as the CRJ |
-| 737   | All          |         | Narrow body; main wheels have no doors so they are visible in flight; triangular fin at the front base of the tail; engines hang low under the wing |
+| 737   | All          |         | Narrow body; main gear bays have no doors over the wheels, so after takeoff the retracted tires show from below as two dark circles in the belly; triangular fin at the front base of the tail; engines hang low under the wing |
 | 737   | Classic (-300, -400, -500) | 102-120 ft | Smaller wings, usually no winglets; small engines with flat-bottomed nacelles; now rare in passenger service |
 | 737   | NG (-700, -800, -900) | 110-138 ft | Flat-bottomed oval nacelles with a straight rear edge; blunt tail cone; blended winglets, split scimitar winglets (pointed tips), or none |
 | 737   | MAX (7, 8, 9, 10) | 117-144 ft | Round nacelles with a sawtooth rear edge; long pointed tail cone; split winglets with flat, square tips |
