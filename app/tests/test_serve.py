@@ -63,6 +63,15 @@ class PageCase(unittest.TestCase):
         self.assertEqual(urlparse(response.location).path, '/note/fibonaccoli')
         response.close()
 
+    def test_note_moved_to_reference(self) -> None:
+        response = self.app.get('/note/ca-oak-tree')
+        self.assertEqual(response.status_code, 301)
+        self.assertEqual(
+            urlparse(response.location).path,
+            '/reference/ca-oak-tree',
+        )
+        response.close()
+
     def test_atom_feed_load(self) -> None:
         self.page_test('/atom.xml', b'xml')
 
