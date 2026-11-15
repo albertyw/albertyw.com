@@ -108,6 +108,14 @@ class UtilCase(unittest.TestCase):
         for note in notes:
             self.assertEqual(note.slug, note.slug.lower())
 
+    def test_slugs_unique(self) -> None:
+        notes = note_util.get_notes_directories(
+            [note_util.NOTES_DIRECTORY, note_util.REFERENCE_DIRECTORY],
+        )
+        slugs = [note.slug for note in notes]
+        duplicates = {slug for slug in slugs if slugs.count(slug) > 1}
+        self.assertEqual(duplicates, set())
+
 
 class TestGrammar(unittest.TestCase):
 
