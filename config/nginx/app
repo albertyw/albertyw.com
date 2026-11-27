@@ -17,7 +17,6 @@ server {
 
     include snippets/ssl.conf;
     include snippets/headers.conf;
-    resolver 127.0.0.1 [::1];
 
     rewrite         ^ https://www.albertyw.com$request_uri;
 }
@@ -39,7 +38,6 @@ server {
     # their own still inherit the security headers.  A location that declares
     # any add_header must include this snippet again -- see headers.conf.
     include snippets/headers.conf;
-    resolver 127.0.0.1 [::1];
 
     location / {
         proxy_pass       http://127.0.0.1:5000;
