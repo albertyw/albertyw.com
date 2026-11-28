@@ -33,6 +33,11 @@ to the current branch.  It never pushes.
   `null`.  Never use a placeholder such as the 1st of the month.
 - The conference's official website is the source of truth.  Aggregator
   sites are only leads.
+- Some listed conferences are fake, or imitate a well-known conference's
+  name (for example "PyConf" imitating "PyCon").  Add a new series only
+  if it has an `independent_source` that shows it is real, and fetch the
+  official site yourself before adding any series whose name closely
+  resembles another conference's.
 - Never delete or change past conferences, those with an `end_date` before
   today.  They stay as history.
 - Subagents only research.  They never edit files.  You, the orchestrator,
@@ -208,8 +213,10 @@ after you finish enforce all of this.
    revalidation.  Set `last_verified` to today only for entries that a
    subagent conclusively checked on the official site.  Add new
    conferences, skipping duplicates of existing `id`s or websites and
-   anything in `rejected`.  Add out-of-scope finds to `rejected` with a
-   reason.  Respect the soft cap.  Keep the list sorted.
+   anything in `rejected`.  A new series (one with no earlier edition in
+   the file) also needs `verified: true` and an `independent_source`;
+   leave it out otherwise, and add it to `rejected` if it looks fake.
+   Add out-of-scope finds to `rejected` with a reason.  Respect the soft cap.  Keep the list sorted.
 5. Set `last_updated` in `app/conference/metadata.json` to the current UTC
    time given in your prompt.  Use today's date from that time when
    deciding which conferences are past.
@@ -268,5 +275,8 @@ Confirm each conference on its official website.
 Return a JSON array of objects with these fields: id (<series>-<year>),
 name, start_date, end_date, location, website, registration_deadlines
 (list of {"name", "date"}), cfp_deadline, expected, source, verified
-(true if confirmed on the official site), and notes.
+(true if confirmed on the official site), independent_source (a page
+not run by the organizers, such as a news article, a community or
+foundation listing, or recorded talks from an earlier edition, that
+shows the conference is real; null if none), and notes.
 ```
