@@ -1344,23 +1344,6 @@
             "website": "https://www.conf42.com/chaos2026"
         },
         {
-            "cfp_deadline": "2026-08-31",
-            "end_date": "2026-12-06",
-            "id": "pyconf-2026",
-            "last_verified": "2026-10-25",
-            "location": "San Francisco, CA, USA",
-            "name": "PyConf 2026",
-            "registration_deadlines": [
-                {
-                    "date": "2026-10-27",
-                    "name": "Early bird"
-                }
-            ],
-            "source": "https://pyconf.org/",
-            "start_date": "2026-12-04",
-            "website": "https://pyconf.org/"
-        },
-        {
             "cfp_deadline": null,
             "end_date": "2026-12-07",
             "id": "react-day-berlin-2026",
@@ -3746,6 +3729,11 @@
             "name": "Philly Tech Week 2027",
             "reason": "out of scope: citywide event series, not a software engineering conference",
             "website": "https://phillytechweek.com/"
+        },
+        {
+            "name": "PyConf 2026",
+            "reason": "not a real conference; PyCon is the real one",
+            "website": "https://pyconf.org/"
         },
         {
             "name": "PyOhio 2027",
